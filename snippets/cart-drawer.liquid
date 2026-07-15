@@ -626,6 +626,8 @@
                       data-text-added="{{ 'cart_drawer.premium.added' | t | escape }}"
                       data-text-unavailable="{{ 'cart_drawer.premium.unavailable' | t | escape }}"
                       data-text-error="{{ 'cart_drawer.premium.error' | t | escape }}"
+                      data-text-expand="{{ 'cart_drawer.premium.other_models' | t | escape }}"
+                      data-text-collapse="{{ 'cart_drawer.premium.fewer_models' | t | escape }}"
                     >
                       <div class="cart-drawer-premium-upsell__heading">
                         <span class="cart-drawer-premium-upsell__eyebrow">{{ 'cart_drawer.premium.complete_order' | t }}</span>
@@ -643,7 +645,10 @@
                           aria-expanded="false"
                           data-upsell-toggle
                         >
-                          {{ 'cart_drawer.premium.other_models' | t }}
+                          <span data-upsell-toggle-label>{{ 'cart_drawer.premium.other_models' | t }}</span>
+                          <svg class="cart-drawer-premium-upsell__toggle-icon" aria-hidden="true" viewBox="0 0 12 8" fill="none">
+                            <path d="M1 1.5 6 6.5l5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
                         </button>
                       {% endif %}
                     </cart-drawer-premium-upsells>

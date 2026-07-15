@@ -6,7 +6,9 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
         adding: this.dataset.textAdding,
         added: this.dataset.textAdded,
         unavailable: this.dataset.textUnavailable,
-        error: this.dataset.textError
+        error: this.dataset.textError,
+        expand: this.dataset.textExpand,
+        collapse: this.dataset.textCollapse
       };
 
       this.querySelectorAll('.cart-drawer-premium-upsell__card').forEach((card) => {
@@ -22,12 +24,28 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
 
       if (!toggle || !list) return;
 
+      this.updateAlternativesToggle(toggle, false);
+
       toggle.addEventListener('click', () => {
         const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+        const willExpand = !isExpanded;
 
-        toggle.setAttribute('aria-expanded', String(!isExpanded));
-        list.classList.toggle('is-expanded', !isExpanded);
+        toggle.setAttribute('aria-expanded', String(willExpand));
+        list.classList.toggle('is-expanded', willExpand);
+        this.updateAlternativesToggle(toggle, willExpand);
+
+        if (willExpand) {
+          requestAnimationFrame(() => {
+            list.scrollTo({ left: 0, top: 0, behavior: 'auto' });
+          });
+        }
       });
+    }
+
+    updateAlternativesToggle(toggle, isExpanded) {
+      const label = toggle.querySelector('[data-upsell-toggle-label]');
+
+      if (label) label.textContent = isExpanded ? this.translations.collapse : this.translations.expand;
     }
 
     initializeCard(card) {
