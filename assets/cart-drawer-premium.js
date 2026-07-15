@@ -284,7 +284,82 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
     return;
   }
 
-  const checkoutLabels = new WeakMap();
+  const checkoutContents = new WeakMap();
+  const documentLockClasses = [
+    'overflow-hidden',
+    'cart-drawer-open',
+    'drawer-open',
+    'is-drawer-open',
+    'no-scroll',
+    'scroll-locked'
+  ];
+  const drawerStateClasses = [
+    'active',
+    'animate',
+    'open',
+    'opening',
+    'is-open',
+    'drawer--open',
+    'loading',
+    'is-loading'
+  ];
+  const interactionStyleProperties = [
+    'cursor',
+    'opacity',
+    'pointer-events',
+    'visibility'
+  ];
+  const layoutStyleProperties = [
+    'align-items',
+    'column-gap',
+    'display',
+    'flex',
+    'flex-basis',
+    'flex-grow',
+    'flex-shrink',
+    'gap',
+    'grid',
+    'grid-area',
+    'grid-auto-columns',
+    'grid-auto-flow',
+    'grid-auto-rows',
+    'grid-column',
+    'grid-column-end',
+    'grid-column-start',
+    'grid-row',
+    'grid-row-end',
+    'grid-row-start',
+    'grid-template',
+    'grid-template-areas',
+    'grid-template-columns',
+    'grid-template-rows',
+    'inline-size',
+    'justify-content',
+    'max-width',
+    'max-inline-size',
+    'min-width',
+    'min-inline-size',
+    'order',
+    'overflow-wrap',
+    'row-gap',
+    'white-space',
+    'width',
+    'word-break'
+  ];
+  const layoutSelector = [
+    '.drawer__inner',
+    '.cart-drawer__body',
+    '.cart-drawer-item',
+    '.cart-item__media',
+    '.cart-drawer-item__right',
+    '.cart-drawer-item__details-and-delete-btn',
+    '.cart-item__details',
+    '.cart-item__name',
+    '.product-option',
+    '.cart-drawer-item__quantity-and-prices',
+    '.cart-item__quantity',
+    '.cart-item__totals'
+  ].join(',');
   let observedDrawer = null;
   let drawerObserver = null;
   let refreshRequest = null;
@@ -292,6 +367,42 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
 
   function getCartDrawer() {
     return document.querySelector('cart-drawer');
+  }
+
+  function removeInlineProperties(element, properties) {
+    if (!element) return;
+    properties.forEach((property) => element.style.removeProperty(property));
+  }
+
+  function clearDocumentLocks() {
+    [document.documentElement, document.body].forEach((element) => {
+      if (!element) return;
+      element.classList.remove(...documentLockClasses);
+      removeInlineProperties(element, [
+        'overflow',
+        'overflow-x',
+        'overflow-y',
+        'pointer-events',
+        'touch-action'
+      ]);
+    });
+  }
+
+  function resetElementInteraction(element, enable = false) {
+    if (!element) return;
+
+    element.classList.remove('loading', 'is-loading', 'loading-active', 'pointer-events--none');
+    element.removeAttribute('aria-busy');
+    element.removeAttribute('aria-disabled');
+    element.removeAttribute('data-loading');
+    element.removeAttribute('inert');
+    removeInlineProperties(element, interactionStyleProperties);
+
+    if (enable) {
+      element.classList.remove('disabled');
+      element.removeAttribute('disabled');
+      element.disabled = false;
+    }
   }
 
   function ensurePremiumStylesheet(cartDrawer) {
@@ -319,34 +430,95 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
     const cartForm = cartDrawer.querySelector('#CartDrawer-Form');
     if (!checkoutButton || !cartForm) return;
 
-    const label = checkoutButton.querySelector('.button__label');
-    if (label && !checkoutLabels.has(checkoutButton)) {
-      checkoutLabels.set(checkoutButton, label.innerHTML);
-    } else if (label) {
-      label.innerHTML = checkoutLabels.get(checkoutButton);
+    if (!checkoutContents.has(checkoutButton)) {
+      checkoutContents.set(checkoutButton, checkoutButton.innerHTML);
+    } else if (checkoutButton.innerHTML !== checkoutContents.get(checkoutButton)) {
+      checkoutButton.innerHTML = checkoutContents.get(checkoutButton);
     }
 
-    checkoutButton.classList.remove('loading', 'disabled');
-    checkoutButton.removeAttribute('aria-busy');
-    checkoutButton.removeAttribute('aria-disabled');
-    checkoutButton.type = 'submit';
-    checkoutButton.name = 'checkout';
+    resetElementInteraction(checkoutButton, true);
+    checkoutButton.setAttribute('type', 'submit');
+    checkoutButton.setAttribute('name', 'checkout');
     checkoutButton.setAttribute('form', cartForm.id);
+    checkoutButton.removeAttribute('tabindex');
 
-    if (!cartDrawer.classList.contains('is-empty')) {
-      checkoutButton.disabled = false;
+    const label = checkoutButton.querySelector('.button__label');
+    if (label) {
+      label.classList.remove('hidden');
+      label.removeAttribute('aria-hidden');
+      removeInlineProperties(label, interactionStyleProperties);
     }
+
+    checkoutButton.querySelectorAll(
+      '.spinner, [class*="spinner"], [data-loading-spinner], .button__spinner, .loading__spinner'
+    ).forEach((spinner) => {
+      spinner.classList.add('hidden');
+      spinner.setAttribute('aria-hidden', 'true');
+      removeInlineProperties(spinner, interactionStyleProperties);
+    });
+
+    checkoutButton.disabled = cartDrawer.classList.contains('is-empty');
   }
 
-  function resetTransientStates(cartDrawer) {
+  function resetLayoutStyles(cartDrawer) {
+    [cartDrawer, ...cartDrawer.querySelectorAll(layoutSelector)].forEach((element) => {
+      removeInlineProperties(element, layoutStyleProperties);
+    });
+  }
+
+  function closeCartDrawer(cartDrawer) {
+    if (typeof cartDrawer.close === 'function') {
+      try {
+        cartDrawer.close();
+      } catch (error) {
+        // The explicit cleanup below is sufficient when a third-party focus trap fails.
+      }
+    }
+
+    const stateElements = [
+      cartDrawer,
+      cartDrawer.querySelector('#CartDrawer'),
+      ...cartDrawer.querySelectorAll('.drawer__inner, .cart-drawer__overlay')
+    ].filter(Boolean);
+
+    stateElements.forEach((element) => {
+      element.classList.remove(...drawerStateClasses);
+      element.removeAttribute('open');
+      element.removeAttribute('aria-busy');
+      removeInlineProperties(element, interactionStyleProperties);
+    });
+
+    clearDocumentLocks();
+  }
+
+  function resetCartDrawerState({ closeDrawer = false } = {}) {
+    const cartDrawer = getCartDrawer();
+    if (!cartDrawer) {
+      if (closeDrawer) clearDocumentLocks();
+      return;
+    }
+
+    ensurePremiumStylesheet(cartDrawer);
+    if (closeDrawer) closeCartDrawer(cartDrawer);
     cartDrawer.classList.add('cart-drawer-premium');
+    resetLayoutStyles(cartDrawer);
     cartDrawer.querySelectorAll('.cart__items--disabled').forEach((element) => {
       element.classList.remove('cart__items--disabled');
     });
-    cartDrawer.querySelectorAll('.loading').forEach((element) => element.classList.remove('loading'));
+    cartDrawer.querySelectorAll('.loading, .is-loading, .loading-active').forEach((element) => {
+      element.classList.remove('loading', 'is-loading', 'loading-active');
+    });
+    cartDrawer.querySelectorAll('.pointer-events--none').forEach((element) => {
+      element.classList.remove('pointer-events--none');
+      removeInlineProperties(element, interactionStyleProperties);
+    });
     cartDrawer.querySelectorAll('[aria-busy]').forEach((element) => element.removeAttribute('aria-busy'));
     cartDrawer.querySelectorAll('.loading-overlay, .loading-overlay__spinner').forEach((element) => {
       element.classList.add('hidden');
+      element.setAttribute('aria-hidden', 'true');
+    });
+    cartDrawer.querySelectorAll('[data-upsell-add]').forEach((button) => {
+      resetElementInteraction(button);
     });
     cartDrawer.querySelectorAll('cart-drawer-premium-upsells').forEach((upsells) => {
       if (typeof upsells.initialize === 'function') upsells.initialize();
@@ -355,7 +527,7 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
     resetCheckout(cartDrawer);
 
     if (!cartDrawer.classList.contains('active')) {
-      document.body.classList.remove('overflow-hidden');
+      clearDocumentLocks();
     }
   }
 
@@ -368,6 +540,7 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
   }
 
   function observeSectionRendering(cartDrawer) {
+    if (!cartDrawer) return;
     if (observedDrawer === cartDrawer && drawerObserver) return;
     if (drawerObserver) drawerObserver.disconnect();
 
@@ -385,8 +558,7 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
     const cartDrawer = getCartDrawer();
     if (!cartDrawer) return;
 
-    ensurePremiumStylesheet(cartDrawer);
-    resetTransientStates(cartDrawer);
+    resetCartDrawerState();
     observeSectionRendering(cartDrawer);
   }
 
@@ -425,6 +597,8 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
     url.searchParams.set('sections', 'cart-drawer,cart-icon-bubble');
 
     refreshRequest = fetch(url.toString(), {
+      cache: 'no-store',
+      credentials: 'same-origin',
       headers: {
         Accept: 'application/json',
         'X-Requested-With': 'XMLHttpRequest'
@@ -446,15 +620,27 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
     return refreshRequest;
   }
 
+  function handlePageHide() {
+    resetCartDrawerState({ closeDrawer: true });
+  }
+
   function handlePageShow(event) {
-    initialize();
     const navigationEntry = performance.getEntriesByType?.('navigation')?.[0];
     const restoredFromHistory = event.persisted || navigationEntry?.type === 'back_forward';
-    if (restoredFromHistory) refreshFromSections();
+    resetCartDrawerState({ closeDrawer: restoredFromHistory });
+    observeSectionRendering(getCartDrawer());
+
+    if (!restoredFromHistory) return;
+
+    const keepDrawerClosed = () => resetCartDrawerState({ closeDrawer: true });
+    requestAnimationFrame(keepDrawerClosed);
+    setTimeout(keepDrawerClosed, 0);
+    refreshFromSections().finally(keepDrawerClosed);
   }
 
   window.CartDrawerPremiumStability = {
     initialize,
+    resetCartDrawerState,
     refreshFromSections
   };
 
@@ -464,6 +650,7 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
     initialize();
   }
 
+  window.addEventListener('pagehide', handlePageHide);
   window.addEventListener('pageshow', handlePageShow);
   document.addEventListener('shopify:section:load', initialize);
 })();
