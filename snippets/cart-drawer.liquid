@@ -8,12 +8,24 @@
 {% liquid
   assign lift_collection_handle = 'lift-shoewear'
   assign lift_collection = collections[lift_collection_handle]
+  assign shipping_protection_product_handle = 'shipping-insurance'
   assign cart_has_lift = false
   assign cart_product_ids = '|'
   assign preferred_upsell_size = blank
   assign preferred_upsell_height = blank
+  assign visible_cart_item_count = 0
+  assign non_upsell_count = 0
 
   for item in cart.items
+    if item.product.handle == shipping_protection_product_handle
+      continue
+    endif
+
+    assign visible_cart_item_count = visible_cart_item_count | plus: item.quantity
+    unless item.product.tags contains 'cart-hidden'
+      assign non_upsell_count = non_upsell_count | plus: item.quantity
+    endunless
+
     assign cart_product_ids = cart_product_ids | append: item.product.id | append: '|'
     assign item_is_lift = false
 
@@ -59,7 +71,7 @@
 </style>
 
 <cart-drawer
-  class="drawer cart-drawer-premium{% if cart.item_count == 0 %} is-empty{% endif %}{% if section.settings.test_mode %} active{% endif %} cart-drawer--desktop-width-{{ section.settings.desktop_width }} cart-drawer--mobile-width-{{ section.settings.mobile_width }}"
+  class="drawer cart-drawer-premium{% if visible_cart_item_count == 0 %} is-empty{% endif %}{% if section.settings.test_mode %} active{% endif %} cart-drawer--desktop-width-{{ section.settings.desktop_width }} cart-drawer--mobile-width-{{ section.settings.mobile_width }}"
   data-type="modal"
   data-premium-stylesheet="{{ 'cart-drawer-premium.css' | asset_url }}"
 >
@@ -74,14 +86,6 @@
     >
       <div class="drawer__header" style='--alignment:{{ section.settings.heading_alignment }}'>
         <h2 class="drawer__heading">
-          {% liquid
-            assign non_upsell_count = cart.item_count
-            for item in cart.items
-              if item.product.tags contains 'cart-hidden'
-                assign non_upsell_count = non_upsell_count | minus: item.quantity
-              endif
-            endfor
-          %}
           {{ 'cart_drawer.premium.title' | t: count: non_upsell_count }}
         </h2>
         <button
@@ -93,7 +97,7 @@
           {% render 'icon-close' %}
         </button>
       </div>
-      {% if cart.item_count == 0 %}
+      {% if visible_cart_item_count == 0 %}
         <div class="drawer__inner-empty cart-drawer-premium__empty">
           <div class="cart-drawer__warnings center">
             <div class="cart-drawer__empty-content">
@@ -131,7 +135,7 @@
               </div>
             {% when 'cart_items' %}
               <cart-drawer-items
-                {% if cart == empty %}
+                {% if visible_cart_item_count == 0 %}
                   class=" is-empty"
                 {% endif %}
                 style="--image-size: {{ block.settings.image_size }}%;--title-size:{{ block.settings.title_size }}rem;--margin-top: {{ block.settings.margin_top | divided_by: 10.0 }}rem;--margin-bottom: {{ block.settings.margin_bottom | divided_by: 10.0 }}rem;" 
@@ -144,10 +148,20 @@
                   method="post"
                 >
                   <div id="CartDrawer-CartItems" class="drawer__contents js-contents">
-                    {%- if cart != empty -%}
+                    {%- if visible_cart_item_count > 0 -%}
                       <div class="drawer__cart-items-wrapper">
                         <ul class="cart-items list-unstyled">
                           {%- for item in cart.items -%}
+                            {% liquid
+                              assign is_shipping_protection_item = false
+                              if item.product.handle == shipping_protection_product_handle
+                                assign is_shipping_protection_item = true
+                              endif
+                            %}
+                            {% if is_shipping_protection_item %}
+                              {% assign total_compare_price = total_compare_price | plus: item.original_line_price %}
+                              {% continue %}
+                            {% endif %}
                             <li 
                               id="CartDrawer-Item-{{ item.index | plus: 1 }}" 
                               class="cart-drawer-item cart-item cart-item--product-{{ item.product.handle }}" 
@@ -699,7 +713,7 @@
         {% endfor %}
       </div>
       <div class="drawer__footer">
-        {% if cart != empty %}
+        {% if visible_cart_item_count > 0 %}
           <div class="cart-drawer-premium__discount-note">
             <span aria-hidden="true">%</span>
             <p>
