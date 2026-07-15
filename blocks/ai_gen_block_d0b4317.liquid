@@ -1,0 +1,578 @@
+{% doc %}
+  @prompt
+    Create a Shopify theme section for a responsive “4 features” product section.
+    
+    Design:
+    - Large rounded white container with thin light grey border
+    - Centered heading at the top
+    - 4 feature cards in a row on desktop
+    - Each card has an editable image, editable title, editable text, and optional small badge
+    - Images should have rounded corners and a light beige/grey background
+    - On mobile: make it a horizontal swipe carousel with scroll snap, or stack 1 per row if carousel is not possible
+    - The section must look clean, premium and similar to a modern travel/ecommerce landing page
+    
+    Important Shopify settings:
+    Add theme editor settings for:
+    - Main heading text
+    - Heading font size desktop
+    - Heading font size mobile
+    - Container max width
+    - Container padding desktop
+    - Container padding mobile
+    - Border radius
+    - Image height desktop
+    - Image height mobile
+    - Image border radius
+    - Card title font size desktop
+    - Card title font size mobile
+    - Card text font size desktop
+    - Card text font size mobile
+    - Gap between cards
+    - Background color
+    - Border color
+    - Text color
+    - Card text color
+    
+    Blocks:
+    Create repeatable feature blocks with max 4 blocks.
+    Each block needs:
+    - Image picker
+    - Badge text optional
+    - Feature title
+    - Feature text
+    
+    Default content:
+    Heading: <strong>4 slimme features</strong> die reizen veel makkelijker maken
+    
+    Block 1:
+    Badge: Nieuw
+    Title: Wieltjes wanneer je ze nodig hebt
+    Text: Rol de tas makkelijk door luchthavens en stations. Liever dragen? Dan gebruik je hem gewoon als stijlvolle schoudertas.
+    
+    Block 2:
+    Title: Je kleding blijft netjes georganiseerd
+    Text: Dankzij het slimme ontwerp neem je outfits overzichtelijk mee, zonder alles los in je tas te hoeven proppen.
+    
+    Block 3:
+    Title: Apart vak speciaal voor je schoenen
+    Text: Houd schoenen gescheiden van je kleding. Ideaal voor sneakers, hakken, slippers of een extra paar voor onderweg.
+    
+    Block 4:
+    Title: Past in handbagagevakken
+    Text: Ontworpen om slim mee te reizen. Neem meer mee zonder direct extra ruimbagage bij te hoeven boeken.
+    
+    Make sure the section is fully responsive, does not break on mobile, and all text/image sizes can be adjusted from the Shopify theme editor.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-features-section-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    padding: {{ block.settings.container_padding_desktop }}px 20px;
+  }
+
+  .ai-features-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.container_max_width }}px;
+    margin: 0 auto;
+    background-color: {{ block.settings.background_color }};
+    border: 1px solid {{ block.settings.border_color }};
+    border-radius: {{ block.settings.border_radius }}px;
+    padding: 40px;
+  }
+
+  .ai-features-heading-{{ ai_gen_id }} {
+    text-align: center;
+    margin: 0 0 40px;
+    font-size: {{ block.settings.heading_font_size_desktop }}px;
+    color: {{ block.settings.text_color }};
+    line-height: 1.3;
+  }
+
+  .ai-features-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: {{ block.settings.gap_between_cards }}px;
+  }
+
+  .ai-feature-card-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ai-feature-image-wrapper-{{ ai_gen_id }} {
+    width: 100%;
+    height: {{ block.settings.image_height_desktop }}px;
+    background-color: #f5f5dc;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .ai-feature-image-wrapper-{{ ai_gen_id }} img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .ai-feature-image-placeholder-{{ ai_gen_id }} {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5dc;
+  }
+
+  .ai-feature-image-placeholder-{{ ai_gen_id }} svg {
+    width: 60%;
+    height: 60%;
+    opacity: 0.3;
+  }
+
+  .ai-feature-badge-{{ ai_gen_id }} {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background-color: {{ block.settings.text_color }};
+    color: {{ block.settings.background_color }};
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .ai-feature-title-{{ ai_gen_id }} {
+    font-size: {{ block.settings.card_title_font_size_desktop }}px;
+    font-weight: 600;
+    margin: 0 0 8px;
+    color: {{ block.settings.text_color }};
+    line-height: 1.3;
+  }
+
+  .ai-feature-text-{{ ai_gen_id }} {
+    font-size: {{ block.settings.card_text_font_size_desktop }}px;
+    margin: 0;
+    color: {{ block.settings.card_text_color }};
+    line-height: 1.6;
+  }
+
+  @media screen and (max-width: 989px) {
+    .ai-features-section-{{ ai_gen_id }} {
+      padding: {{ block.settings.container_padding_mobile }}px 16px;
+    }
+
+    .ai-features-container-{{ ai_gen_id }} {
+      padding: 24px;
+    }
+
+    .ai-features-heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_font_size_mobile }}px;
+      margin-bottom: 24px;
+    }
+
+    .ai-features-grid-{{ ai_gen_id }} {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: {{ block.settings.gap_between_cards }}px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .ai-features-grid-{{ ai_gen_id }}::-webkit-scrollbar {
+      display: none;
+    }
+
+    .ai-feature-card-{{ ai_gen_id }} {
+      flex: 0 0 calc(100% - 40px);
+      scroll-snap-align: start;
+    }
+
+    .ai-feature-image-wrapper-{{ ai_gen_id }} {
+      height: {{ block.settings.image_height_mobile }}px;
+    }
+
+    .ai-feature-title-{{ ai_gen_id }} {
+      font-size: {{ block.settings.card_title_font_size_mobile }}px;
+    }
+
+    .ai-feature-text-{{ ai_gen_id }} {
+      font-size: {{ block.settings.card_text_font_size_mobile }}px;
+    }
+  }
+{% endstyle %}
+
+<features-section-{{ ai_gen_id }} class="ai-features-section-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-features-container-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank %}
+      <h2 class="ai-features-heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+    {% endif %}
+
+    <div class="ai-features-grid-{{ ai_gen_id }}">
+      {% for i in (1..4) %}
+        {% liquid
+          assign image_key = 'feature_' | append: i | append: '_image'
+          assign badge_key = 'feature_' | append: i | append: '_badge'
+          assign title_key = 'feature_' | append: i | append: '_title'
+          assign text_key = 'feature_' | append: i | append: '_text'
+
+          assign feature_image = block.settings[image_key]
+          assign feature_badge = block.settings[badge_key]
+          assign feature_title = block.settings[title_key]
+          assign feature_text = block.settings[text_key]
+        %}
+
+        <div class="ai-feature-card-{{ ai_gen_id }}">
+          <div class="ai-feature-image-wrapper-{{ ai_gen_id }}">
+            {% if feature_image %}
+              <img
+                src="{{ feature_image | image_url: width: 600 }}"
+                alt="{{ feature_title | escape }}"
+                loading="lazy"
+                width="600"
+                height="{{ block.settings.image_height_desktop }}"
+              >
+            {% else %}
+              <div class="ai-feature-image-placeholder-{{ ai_gen_id }}">
+                {{ 'image' | placeholder_svg_tag }}
+              </div>
+            {% endif %}
+
+            {% if feature_badge != blank %}
+              <div class="ai-feature-badge-{{ ai_gen_id }}">{{ feature_badge }}</div>
+            {% endif %}
+          </div>
+
+          {% if feature_title != blank %}
+            <h3 class="ai-feature-title-{{ ai_gen_id }}">{{ feature_title }}</h3>
+          {% endif %}
+
+          {% if feature_text != blank %}
+            <p class="ai-feature-text-{{ ai_gen_id }}">{{ feature_text }}</p>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</features-section-{{ ai_gen_id }}>
+
+{% schema %}
+{
+  "name": "4 features",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p><strong>4 slimme features</strong> die reizen veel makkelijker maken</p>"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "label": "Desktop font size",
+      "min": 16,
+      "max": 48,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Mobile font size",
+      "min": 14,
+      "max": 36,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Container"
+    },
+    {
+      "type": "range",
+      "id": "container_max_width",
+      "label": "Max width",
+      "min": 800,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "default": 1200
+    },
+    {
+      "type": "range",
+      "id": "container_padding_desktop",
+      "label": "Desktop padding",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "container_padding_mobile",
+      "label": "Mobile padding",
+      "min": 0,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "range",
+      "id": "image_height_desktop",
+      "label": "Desktop height",
+      "min": 100,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "default": 200
+    },
+    {
+      "type": "range",
+      "id": "image_height_mobile",
+      "label": "Mobile height",
+      "min": 100,
+      "max": 300,
+      "step": 10,
+      "unit": "px",
+      "default": 180
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Image border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 12
+    },
+    {
+      "type": "header",
+      "content": "Card title"
+    },
+    {
+      "type": "range",
+      "id": "card_title_font_size_desktop",
+      "label": "Desktop font size",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "card_title_font_size_mobile",
+      "label": "Mobile font size",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Card text"
+    },
+    {
+      "type": "range",
+      "id": "card_text_font_size_desktop",
+      "label": "Desktop font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "card_text_font_size_mobile",
+      "label": "Mobile font size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "gap_between_cards",
+      "label": "Gap between cards",
+      "min": 8,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Card text",
+      "default": "#666666"
+    },
+    {
+      "type": "header",
+      "content": "Feature 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_1_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "feature_1_badge",
+      "label": "Badge text",
+      "default": "Nieuw"
+    },
+    {
+      "type": "text",
+      "id": "feature_1_title",
+      "label": "Title",
+      "default": "Wieltjes wanneer je ze nodig hebt"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_1_text",
+      "label": "Text",
+      "default": "Rol de tas makkelijk door luchthavens en stations. Liever dragen? Dan gebruik je hem gewoon als stijlvolle schoudertas."
+    },
+    {
+      "type": "header",
+      "content": "Feature 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_2_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "feature_2_badge",
+      "label": "Badge text"
+    },
+    {
+      "type": "text",
+      "id": "feature_2_title",
+      "label": "Title",
+      "default": "Je kleding blijft netjes georganiseerd"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_2_text",
+      "label": "Text",
+      "default": "Dankzij het slimme ontwerp neem je outfits overzichtelijk mee, zonder alles los in je tas te hoeven proppen."
+    },
+    {
+      "type": "header",
+      "content": "Feature 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_3_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "feature_3_badge",
+      "label": "Badge text"
+    },
+    {
+      "type": "text",
+      "id": "feature_3_title",
+      "label": "Title",
+      "default": "Apart vak speciaal voor je schoenen"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_3_text",
+      "label": "Text",
+      "default": "Houd schoenen gescheiden van je kleding. Ideaal voor sneakers, hakken, slippers of een extra paar voor onderweg."
+    },
+    {
+      "type": "header",
+      "content": "Feature 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "feature_4_image",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "feature_4_badge",
+      "label": "Badge text"
+    },
+    {
+      "type": "text",
+      "id": "feature_4_title",
+      "label": "Title",
+      "default": "Past in handbagagevakken"
+    },
+    {
+      "type": "textarea",
+      "id": "feature_4_text",
+      "label": "Text",
+      "default": "Ontworpen om slim mee te reizen. Neem meer mee zonder direct extra ruimbagage bij te hoeven boeken."
+    }
+  ],
+  "presets": [
+    {
+      "name": "4 features"
+    }
+  ]
+}
+{% endschema %}

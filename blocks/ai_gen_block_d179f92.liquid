@@ -1,0 +1,587 @@
+{% doc %}
+  @prompt
+    Create a fully editable Shopify theme section called “Text with product collage image”.
+    
+    Design:
+    - Two-column layout on desktop
+    - Left side: large rounded white text box with a thin light-grey border
+    - Right side: one large image
+    - The text inside the left box must be vertically centered and horizontally centered
+    - The section should look premium, clean, and modern, like a luxury travel product page
+    - On mobile: stack the text box above the image
+    - Make sure it is fully responsive and does not break on mobile
+    
+    Theme editor settings:
+    Add settings for:
+    - Section background color
+    - Container max width
+    - Gap between text and image
+    - Text box background color
+    - Text box border color
+    - Text box border radius
+    - Text box padding desktop
+    - Text box padding mobile
+    - Text box minimum height desktop
+    - Text alignment
+    - Image picker
+    - Image height desktop
+    - Image border radius
+    - Heading color
+    - Heading font size desktop
+    - Heading font size mobile
+    - Heading font weight
+    - Body text color
+    - Body text font size desktop
+    - Body text font size mobile
+    - Spacing between each text block
+    - Section padding top desktop
+    - Section padding bottom desktop
+    - Section padding top mobile
+    - Section padding bottom mobile
+    
+    Blocks:
+    Create repeatable text blocks, max 3 blocks.
+    Each block needs:
+    - Heading
+    - Body text
+    
+    Default image:
+    Use an image picker, but set the default/example image to:
+    https://cdn.shopify.com/s/files/1/0773/7458/7204/files/ChatGPT_Image_26_apr_2026_10_37_33.png?v=1777192663
+    
+    Default text blocks:
+    1.
+    Heading: Klaar voor elk weer
+    Text: Waterbestendig materiaal beschermt tegen regen, morsen en onverwachte reismomenten.
+    
+    2.
+    Heading: Gemaakt om lang mee te gaan
+    Text: Stevige stof en sterke stiksels zorgen dat je tas mooi blijft, reis na reis.
+    
+    3.
+    Heading: Tijdloos & hoogwaardig
+    Text: Stijlvol ontworpen voor reizen, weekenden weg en dagelijks gebruik.
+    
+    Default styling:
+    - Section background: #ffffff
+    - Text box background: #ffffff
+    - Text box border: #e1e1e1
+    - Text box border radius: 28px
+    - Heading color: #281b1b
+    - Body text color: #111111
+    - Desktop heading size: 34px
+    - Mobile heading size: 27px
+    - Desktop body size: 18px
+    - Mobile body size: 15.5px
+    - Desktop layout: 52% text / 48% image
+    - Mobile layout: text first, image second
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-text-product-collage-{{ ai_gen_id }} {
+    display: block;
+    background-color: {{ block.settings.section_bg_color }};
+    padding-top: {{ block.settings.padding_top_mobile }}px;
+    padding-bottom: {{ block.settings.padding_bottom_mobile }}px;
+  }
+
+  .ai-text-product-collage-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.container_max_width }}px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .ai-text-product-collage-grid-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: {{ block.settings.gap_between }}px;
+  }
+
+  .ai-text-product-collage-text-box-{{ ai_gen_id }} {
+    background-color: {{ block.settings.text_box_bg_color }};
+    border: 1px solid {{ block.settings.text_box_border_color }};
+    border-radius: {{ block.settings.text_box_border_radius }}px;
+    padding: {{ block.settings.text_box_padding_mobile }}px;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: {{ block.settings.text_alignment }};
+    text-align: {{ block.settings.text_alignment }};
+    gap: {{ block.settings.spacing_between_blocks }}px;
+  }
+
+  .ai-text-product-collage-text-block-{{ ai_gen_id }} {
+    width: 100%;
+  }
+
+  .ai-text-product-collage-heading-{{ ai_gen_id }} {
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.heading_font_size_mobile }}px;
+    font-weight: {{ block.settings.heading_font_weight }};
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+  }
+
+  .ai-text-product-collage-body-{{ ai_gen_id }} {
+    color: {{ block.settings.body_text_color }};
+    font-size: {{ block.settings.body_font_size_mobile }}px;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .ai-text-product-collage-image-wrapper-{{ ai_gen_id }} {
+    width: 100%;
+    position: relative;
+  }
+
+  .ai-text-product-collage-image-{{ ai_gen_id }} {
+    width: 100%;
+    height: {{ block.settings.image_height_desktop }}px;
+    object-fit: cover;
+    border-radius: {{ block.settings.image_border_radius }}px;
+    display: block;
+  }
+
+  @media screen and (min-width: 750px) {
+    .ai-text-product-collage-{{ ai_gen_id }} {
+      padding-top: {{ block.settings.padding_top_desktop }}px;
+      padding-bottom: {{ block.settings.padding_bottom_desktop }}px;
+    }
+
+    .ai-text-product-collage-grid-{{ ai_gen_id }} {
+      flex-direction: row;
+      align-items: stretch;
+    }
+
+    .ai-text-product-collage-text-box-{{ ai_gen_id }} {
+      width: 52%;
+      padding: {{ block.settings.text_box_padding_desktop }}px;
+      min-height: {{ block.settings.text_box_min_height_desktop }}px;
+    }
+
+    .ai-text-product-collage-heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_font_size_desktop }}px;
+    }
+
+    .ai-text-product-collage-body-{{ ai_gen_id }} {
+      font-size: {{ block.settings.body_font_size_desktop }}px;
+    }
+
+    .ai-text-product-collage-image-wrapper-{{ ai_gen_id }} {
+      width: 48%;
+    }
+
+    .ai-text-product-collage-image-{{ ai_gen_id }} {
+      height: 100%;
+    }
+  }
+{% endstyle %}
+
+<text-product-collage-{{ ai_gen_id }}
+  class="ai-text-product-collage-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-text-product-collage-container-{{ ai_gen_id }}">
+    <div class="ai-text-product-collage-grid-{{ ai_gen_id }}">
+      <div class="ai-text-product-collage-text-box-{{ ai_gen_id }}">
+        {% if block.settings.heading_1 != blank or block.settings.body_text_1 != blank %}
+          <div class="ai-text-product-collage-text-block-{{ ai_gen_id }}">
+            {% if block.settings.heading_1 != blank %}
+              <h3 class="ai-text-product-collage-heading-{{ ai_gen_id }}">
+                {{ block.settings.heading_1 }}
+              </h3>
+            {% endif %}
+            {% if block.settings.body_text_1 != blank %}
+              <p class="ai-text-product-collage-body-{{ ai_gen_id }}">
+                {{ block.settings.body_text_1 }}
+              </p>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if block.settings.heading_2 != blank or block.settings.body_text_2 != blank %}
+          <div class="ai-text-product-collage-text-block-{{ ai_gen_id }}">
+            {% if block.settings.heading_2 != blank %}
+              <h3 class="ai-text-product-collage-heading-{{ ai_gen_id }}">
+                {{ block.settings.heading_2 }}
+              </h3>
+            {% endif %}
+            {% if block.settings.body_text_2 != blank %}
+              <p class="ai-text-product-collage-body-{{ ai_gen_id }}">
+                {{ block.settings.body_text_2 }}
+              </p>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if block.settings.heading_3 != blank or block.settings.body_text_3 != blank %}
+          <div class="ai-text-product-collage-text-block-{{ ai_gen_id }}">
+            {% if block.settings.heading_3 != blank %}
+              <h3 class="ai-text-product-collage-heading-{{ ai_gen_id }}">
+                {{ block.settings.heading_3 }}
+              </h3>
+            {% endif %}
+            {% if block.settings.body_text_3 != blank %}
+              <p class="ai-text-product-collage-body-{{ ai_gen_id }}">
+                {{ block.settings.body_text_3 }}
+              </p>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="ai-text-product-collage-image-wrapper-{{ ai_gen_id }}">
+        {% if block.settings.image %}
+          <img
+            src="{{ block.settings.image | image_url: width: 1200 }}"
+            alt="{{ block.settings.image.alt | escape }}"
+            class="ai-text-product-collage-image-{{ ai_gen_id }}"
+            loading="lazy"
+            width="{{ block.settings.image.width }}"
+            height="{{ block.settings.image.height }}"
+          >
+        {% else %}
+          <img
+            src="https://cdn.shopify.com/s/files/1/0773/7458/7204/files/ChatGPT_Image_26_apr_2026_10_37_33.png?v=1777192663"
+            alt="Product collage"
+            class="ai-text-product-collage-image-{{ ai_gen_id }}"
+            loading="lazy"
+          >
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</text-product-collage-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class TextProductCollage{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+      }
+    }
+
+    customElements.define('text-product-collage-{{ ai_gen_id }}', TextProductCollage{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Text product collage",
+  "tag": null,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "container_max_width",
+      "label": "Container max width",
+      "min": 800,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "default": 1400
+    },
+    {
+      "type": "range",
+      "id": "gap_between",
+      "label": "Gap between text and image",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Text box"
+    },
+    {
+      "type": "color",
+      "id": "text_box_bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_box_border_color",
+      "label": "Border color",
+      "default": "#e1e1e1"
+    },
+    {
+      "type": "range",
+      "id": "text_box_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "text_box_padding_desktop",
+      "label": "Padding desktop",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "text_box_padding_mobile",
+      "label": "Padding mobile",
+      "min": 15,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "text_box_min_height_desktop",
+      "label": "Minimum height desktop",
+      "min": 300,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "default": 500
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "range",
+      "id": "image_height_desktop",
+      "label": "Height desktop",
+      "min": 300,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "default": 500
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#281b1b"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "label": "Heading font size desktop",
+      "min": 16,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 34
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Heading font size mobile",
+      "min": 14,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 27
+    },
+    {
+      "type": "range",
+      "id": "heading_font_weight",
+      "label": "Heading font weight",
+      "min": 300,
+      "max": 900,
+      "step": 100,
+      "default": 700
+    },
+    {
+      "type": "color",
+      "id": "body_text_color",
+      "label": "Body text color",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_desktop",
+      "label": "Body font size desktop",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_mobile",
+      "label": "Body font size mobile",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "spacing_between_blocks",
+      "label": "Spacing between text blocks",
+      "min": 10,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding top desktop",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding bottom desktop",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Text block 1"
+    },
+    {
+      "type": "text",
+      "id": "heading_1",
+      "label": "Heading",
+      "default": "Klaar voor elk weer"
+    },
+    {
+      "type": "textarea",
+      "id": "body_text_1",
+      "label": "Body text",
+      "default": "Waterbestendig materiaal beschermt tegen regen, morsen en onverwachte reismomenten."
+    },
+    {
+      "type": "header",
+      "content": "Text block 2"
+    },
+    {
+      "type": "text",
+      "id": "heading_2",
+      "label": "Heading",
+      "default": "Gemaakt om lang mee te gaan"
+    },
+    {
+      "type": "textarea",
+      "id": "body_text_2",
+      "label": "Body text",
+      "default": "Stevige stof en sterke stiksels zorgen dat je tas mooi blijft, reis na reis."
+    },
+    {
+      "type": "header",
+      "content": "Text block 3"
+    },
+    {
+      "type": "text",
+      "id": "heading_3",
+      "label": "Heading",
+      "default": "Tijdloos & hoogwaardig"
+    },
+    {
+      "type": "textarea",
+      "id": "body_text_3",
+      "label": "Body text",
+      "default": "Stijlvol ontworpen voor reizen, weekenden weg en dagelijks gebruik."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text product collage"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,104 @@
+{% liquid
+  assign has_label = false
+  if block.settings.show_days and block.settings.label_days != blank
+    assign has_label = true
+  endif
+  if block.settings.show_hours and block.settings.label_hours != blank
+    assign has_label = true
+  endif
+  if block.settings.show_minutes and block.settings.label_minutes != blank
+    assign has_label = true
+  endif
+  if block.settings.show_seconds and block.settings.label_seconds != blank
+    assign has_label = true
+  endif
+%}
+<div
+  class="countdown-wrapper{% if block.settings.enable_background %} countdown-wrapper--bg{% endif %} countdown-wrapper--desktop-{{ block.settings.layout_desktop }} countdown-wrapper--mobile-{{ block.settings.layout_mobile }}{% if has_label %} countdown-wrapper--has-label{% endif %} countdown-wrapper--style-{{ block.settings.timer_style }}"
+  data-end-time="{{ block.settings.end_time }}"
+  data-timezone="{{ block.settings.timezone }}"
+  data-utc-offset="{{ block.settings.utc_offset }}"
+  data-end-behavior="{{ block.settings.end_behavior }}"
+  data-repeat-hours="{{ block.settings.repeat_hours }}"
+  data-show-days="{{ block.settings.show_days }}"
+  data-show-hours="{{ block.settings.show_hours }}"
+  data-show-minutes="{{ block.settings.show_minutes }}"
+  data-show-seconds="{{ block.settings.show_seconds }}"
+  data-label-days="{{ block.settings.label_days }}"
+  data-label-hours="{{ block.settings.label_hours }}"
+  data-label-minutes="{{ block.settings.label_minutes }}"
+  data-label-seconds="{{ block.settings.label_seconds }}"
+  data-colons="{{ block.settings.enable_colons }}"
+  style="
+    --vertical-heading-alignment: {{ block.settings.vertical_heading_alignment }};
+    --background: {% if block.settings.background_gradient != blank %}{{ block.settings.background_gradient }}{% else %}{{ block.settings.background_color }}{% endif %};
+    --radius: {{ block.settings.border_radius }}px;
+    --border-width: {{ block.settings.border_width }}px;
+    --border-color: {{ block.settings.border_color }};
+    --numbers-size: {{ block.settings.timer_number_size | divided_by: 10.0 }}rem;
+    --label-size: {{ block.settings.timer_label_size | divided_by: 10.0 }}rem;
+    --label-margin: {{ block.settings.timer_label_margin | divided_by: 10.0 }}rem;
+    {% if margins %}--margin-top: {{ block.settings.margin_top | divided_by: 10.0 }}rem;--margin-bottom: {{ block.settings.margin_bottom | divided_by: 10.0 }}rem;{% endif %}
+  "
+  {% if block_attributes %}
+    {{- block.shopify_attributes -}}
+  {% endif %}
+>
+  {% if block.settings.heading != blank %}
+    <p
+      class="countdown-heading font-size--responsive margin-0"
+      style="--font-size:{{ block.settings.heading_size_desktop | divided_by: 10.0 }}rem;--mobile-font-size: {{ block.settings.heading_size_mobile | divided_by: 10.0 }}rem; color: {{ block.settings.heading_color }};"
+    >
+      {{ block.settings.heading }}
+    </p>
+  {% endif %}
+
+  <date-countdown-timer
+    class="countdown countdown--style-{{ block.settings.timer_style }}{% if block.settings.enable_colons == true %} countdown--colons{% endif %}"
+    data-style='{{ block.settings.timer_style }}'
+    style="
+      --padding-x: {{ block.settings.timer_padding_x | divided_by: 10.0 }}rem;
+      --padding-y: {{ block.settings.timer_padding_y | divided_by: 10.0 }}rem;
+      --timer-bg: {% if block.settings.timer_bg_gradient != blank %}{{ block.settings.timer_bg_gradient }}{% else %}{{ block.settings.timer_bg_color }}{% endif %};
+      --item-spacing: {{ block.settings.timer_spacing | divided_by: 10.0 }}rem;
+      --timer-color: {{ block.settings.timer_text_color }};
+      --label-color: {{ block.settings.timer_label_color }};
+      --colon-color: {{ block.settings.timer_colon_color }};
+      --border-width: {{ block.settings.timer_border_width }}px;
+      --border-color: {{ block.settings.timer_border_color }};
+      --radius: {{ block.settings.timer_border_radius }}px;
+    ">
+    {% assign parts = '' %}
+    {% if block.settings.show_days %}{% assign parts = parts | append: 'day,' %}{% endif %}
+    {% if block.settings.show_hours %}{% assign parts = parts | append: 'hour,' %}{% endif %}
+    {% if block.settings.show_minutes %}{% assign parts = parts | append: 'minute,' %}{% endif %}
+    {% if block.settings.show_seconds %}{% assign parts = parts | append: 'second,' %}{% endif %}
+    
+    {% assign parts_array = parts | split: ',' %}
+    
+    {% for part in parts_array %}
+      {% if part != '' %}
+        <div class="countdown-timer__block">
+          <div class="countdown-timer__number">
+            {% if block.settings.timer_style == '4' %}
+              <span class="countdown-timer__digit">0</span>
+              <span class="countdown-timer__digit">0</span>
+            {% else %}
+              00
+            {% endif %}
+          </div>
+          <span class="countdown-timer__label">
+            {% if part == 'day' %}{{ block.settings.label_days }}
+            {% elsif part == 'hour' %}{{ block.settings.label_hours }}
+            {% elsif part == 'minute' %}{{ block.settings.label_minutes }}
+            {% elsif part == 'second' %}{{ block.settings.label_seconds }}
+            {% endif %}
+          </span>
+        </div>
+        {% if block.settings.enable_colons and forloop.last == false %}
+          <span class="countdown-timer__colon">:</span>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </date-countdown-timer>
+</div>

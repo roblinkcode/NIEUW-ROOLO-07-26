@@ -1,0 +1,692 @@
+{% doc %}
+  @prompt
+    Create a fully editable Shopify theme section called “Complaint Cards”.
+    
+    Design:
+    - Full-width section with editable background color
+    - Centered heading at the top
+    - Under the heading: 4 rounded white cards
+    - Desktop layout: 4 cards in one row
+    - Tablet layout: 2 cards per row
+    - Mobile layout must be adjustable in the theme editor:
+      - Option 1: 1 card per row
+      - Option 2: 2 cards per row / 2x2 layout
+    - Each card contains editable text and a small round X icon at the bottom
+    - Clean premium ecommerce style, similar to a modern travel product page
+    
+    Theme editor settings:
+    Add settings for:
+    - Section background color
+    - Heading text
+    - Heading color
+    - Heading font size desktop
+    - Heading font size mobile
+    - Heading font weight
+    - Heading max width
+    - Heading spacing below
+    - Card background color
+    - Card text color
+    - Card border radius
+    - Card padding desktop
+    - Card padding mobile
+    - Card text font size desktop
+    - Card text font size mobile
+    - Card text line height
+    - Card minimum height desktop
+    - Gap between cards
+    - X icon background color
+    - X icon color
+    - X icon size
+    - Mobile layout selector: “1 per row” or “2 per row”
+    - Section padding top desktop
+    - Section padding bottom desktop
+    - Section padding top mobile
+    - Section padding bottom mobile
+    - Container max width
+    
+    Blocks:
+    Create repeatable card blocks, max 4 blocks.
+    Each block needs:
+    - Card text, rich text field so some words can be bold
+    - Optional show/hide X icon
+    
+    Default heading:
+    Nog steeds gedoe met overvolle, onhandige tassen? Wij snappen je.
+    
+    Default cards:
+    1. Een zware koffer door drukke straten slepen? Geen pretje.
+    2. Je favoriete outfits thuislaten omdat er geen ruimte is? Herkenbaar.
+    3. Aankomen met gekreukte kleding terwijl je er juist goed uit wilt zien?
+    4. Extra betalen voor ruimbagage? Dat geld besteed je liever op reis.
+    
+    Default styling:
+    - Section background color: #f7f0eb
+    - Card background color: #ffffff
+    - Heading color: #251b1b
+    - Card text color: #111111
+    - X icon background color: #382928
+    - X icon color: #ffffff
+    - Desktop heading font size: 34px
+    - Mobile heading font size: 28px
+    - Desktop card text size: 17px
+    - Mobile card text size: 16px
+    - Card border radius: 14px
+    - Desktop grid: 4 columns
+    - Tablet grid: 2 columns
+    - Mobile default: 1 column, but adjustable to 2 columns
+    - Make sure the section is fully responsive and does not squeeze the text too much on mobile., Make the white card spacing more adjustable.
+    
+    Add theme editor settings for:
+    - Card padding top
+    - Card padding bottom
+    - Card padding left/right
+    - Mobile card padding top
+    - Mobile card padding bottom
+    - Mobile card padding left/right
+    - Card minimum height desktop
+    - Card minimum height mobile
+    
+    Right now there is too much empty space above and below the text/icons inside the cards. I want to be able to make the cards more compact from the Shopify theme editor.
+    
+    Also make sure the X icon stays near the bottom left, but the card height and inner spacing can be reduced without breaking the layout.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-complaint-cards-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    background-color: {{ block.settings.section_bg_color }};
+    padding-top: {{ block.settings.padding_top_desktop }}px;
+    padding-bottom: {{ block.settings.padding_bottom_desktop }}px;
+  }
+
+  .ai-complaint-cards-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.container_max_width }}px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .ai-complaint-cards-heading-{{ ai_gen_id }} {
+    text-align: center;
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.heading_font_size_desktop }}px;
+    font-weight: {{ block.settings.heading_font_weight }};
+    line-height: 1.3;
+    margin: 0 auto {{ block.settings.heading_spacing_below }}px;
+    max-width: {{ block.settings.heading_max_width }}px;
+  }
+
+  .ai-complaint-cards-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: {{ block.settings.card_gap }}px;
+  }
+
+  .ai-complaint-card-{{ ai_gen_id }} {
+    background-color: {{ block.settings.card_bg_color }};
+    border-radius: {{ block.settings.card_border_radius }}px;
+    padding-top: {{ block.settings.card_padding_top_desktop }}px;
+    padding-bottom: {{ block.settings.card_padding_bottom_desktop }}px;
+    padding-left: {{ block.settings.card_padding_horizontal_desktop }}px;
+    padding-right: {{ block.settings.card_padding_horizontal_desktop }}px;
+    min-height: {{ block.settings.card_min_height_desktop }}px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .ai-complaint-card-text-{{ ai_gen_id }} {
+    color: {{ block.settings.card_text_color }};
+    font-size: {{ block.settings.card_text_font_size_desktop }}px;
+    line-height: {{ block.settings.card_text_line_height }};
+    margin: 0 0 auto 0;
+  }
+
+  .ai-complaint-card-icon-{{ ai_gen_id }} {
+    width: {{ block.settings.x_icon_size }}px;
+    height: {{ block.settings.x_icon_size }}px;
+    background-color: {{ block.settings.x_icon_bg_color }};
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: {{ block.settings.icon_spacing_top }}px;
+  }
+
+  .ai-complaint-card-icon-{{ ai_gen_id }} svg {
+    width: calc({{ block.settings.x_icon_size }}px * 0.5);
+    height: calc({{ block.settings.x_icon_size }}px * 0.5);
+    stroke: {{ block.settings.x_icon_color }};
+  }
+
+  @media screen and (max-width: 989px) and (min-width: 750px) {
+    .ai-complaint-cards-grid-{{ ai_gen_id }} {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-complaint-cards-{{ ai_gen_id }} {
+      padding-top: {{ block.settings.padding_top_mobile }}px;
+      padding-bottom: {{ block.settings.padding_bottom_mobile }}px;
+    }
+
+    .ai-complaint-cards-heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_font_size_mobile }}px;
+    }
+
+    .ai-complaint-cards-grid-{{ ai_gen_id }} {
+      {% if block.settings.mobile_columns == '1' %}
+        grid-template-columns: 1fr;
+      {% else %}
+        grid-template-columns: repeat(2, 1fr);
+      {% endif %}
+    }
+
+    .ai-complaint-card-{{ ai_gen_id }} {
+      padding-top: {{ block.settings.card_padding_top_mobile }}px;
+      padding-bottom: {{ block.settings.card_padding_bottom_mobile }}px;
+      padding-left: {{ block.settings.card_padding_horizontal_mobile }}px;
+      padding-right: {{ block.settings.card_padding_horizontal_mobile }}px;
+      min-height: {{ block.settings.card_min_height_mobile }}px;
+    }
+
+    .ai-complaint-card-text-{{ ai_gen_id }} {
+      font-size: {{ block.settings.card_text_font_size_mobile }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-complaint-cards-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-complaint-cards-container-{{ ai_gen_id }}">
+    {% if block.settings.heading != blank %}
+      <h2 class="ai-complaint-cards-heading-{{ ai_gen_id }}">
+        {{ block.settings.heading }}
+      </h2>
+    {% endif %}
+
+    <div class="ai-complaint-cards-grid-{{ ai_gen_id }}">
+      {% if block.settings.card_1_text != blank %}
+        <div class="ai-complaint-card-{{ ai_gen_id }}">
+          <div class="ai-complaint-card-text-{{ ai_gen_id }}">
+            {{ block.settings.card_1_text }}
+          </div>
+          {% if block.settings.card_1_show_icon %}
+            <div class="ai-complaint-card-icon-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if block.settings.card_2_text != blank %}
+        <div class="ai-complaint-card-{{ ai_gen_id }}">
+          <div class="ai-complaint-card-text-{{ ai_gen_id }}">
+            {{ block.settings.card_2_text }}
+          </div>
+          {% if block.settings.card_2_show_icon %}
+            <div class="ai-complaint-card-icon-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if block.settings.card_3_text != blank %}
+        <div class="ai-complaint-card-{{ ai_gen_id }}">
+          <div class="ai-complaint-card-text-{{ ai_gen_id }}">
+            {{ block.settings.card_3_text }}
+          </div>
+          {% if block.settings.card_3_show_icon %}
+            <div class="ai-complaint-card-icon-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if block.settings.card_4_text != blank %}
+        <div class="ai-complaint-card-{{ ai_gen_id }}">
+          <div class="ai-complaint-card-text-{{ ai_gen_id }}">
+            {{ block.settings.card_4_text }}
+          </div>
+          {% if block.settings.card_4_show_icon %}
+            <div class="ai-complaint-card-icon-{{ ai_gen_id }}">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Complaint cards",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading text",
+      "default": "Nog steeds gedoe met overvolle, onhandige tassen? Wij snappen je."
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Color",
+      "default": "#251b1b"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "label": "Font size desktop",
+      "min": 16,
+      "max": 80,
+      "step": 2,
+      "unit": "px",
+      "default": 34
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Font size mobile",
+      "min": 16,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "heading_font_weight",
+      "label": "Font weight",
+      "min": 300,
+      "max": 900,
+      "step": 100,
+      "default": 700
+    },
+    {
+      "type": "range",
+      "id": "heading_max_width",
+      "label": "Max width",
+      "min": 400,
+      "max": 1200,
+      "step": 50,
+      "unit": "px",
+      "default": 900
+    },
+    {
+      "type": "range",
+      "id": "heading_spacing_below",
+      "label": "Spacing below",
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Card 1"
+    },
+    {
+      "type": "richtext",
+      "id": "card_1_text",
+      "label": "Text",
+      "default": "<p>Een zware koffer door drukke straten slepen? Geen pretje.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "card_1_show_icon",
+      "label": "Show X icon",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Card 2"
+    },
+    {
+      "type": "richtext",
+      "id": "card_2_text",
+      "label": "Text",
+      "default": "<p>Je favoriete outfits thuislaten omdat er geen ruimte is? Herkenbaar.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "card_2_show_icon",
+      "label": "Show X icon",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Card 3"
+    },
+    {
+      "type": "richtext",
+      "id": "card_3_text",
+      "label": "Text",
+      "default": "<p>Aankomen met gekreukte kleding terwijl je er juist goed uit wilt zien?</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "card_3_show_icon",
+      "label": "Show X icon",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Card 4"
+    },
+    {
+      "type": "richtext",
+      "id": "card_4_text",
+      "label": "Text",
+      "default": "<p>Extra betalen voor ruimbagage? Dat geld besteed je liever op reis.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "card_4_show_icon",
+      "label": "Show X icon",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Card style"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_text_color",
+      "label": "Text color",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "card_text_font_size_desktop",
+      "label": "Text font size desktop",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 17
+    },
+    {
+      "type": "range",
+      "id": "card_text_font_size_mobile",
+      "label": "Text font size mobile",
+      "min": 12,
+      "max": 28,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "card_text_line_height",
+      "label": "Text line height",
+      "min": 1,
+      "max": 2,
+      "step": 0.1,
+      "default": 1.5
+    },
+    {
+      "type": "range",
+      "id": "card_gap",
+      "label": "Gap between cards",
+      "min": 5,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Card spacing desktop"
+    },
+    {
+      "type": "range",
+      "id": "card_padding_top_desktop",
+      "label": "Padding top",
+      "min": 5,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "card_padding_bottom_desktop",
+      "label": "Padding bottom",
+      "min": 5,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "card_padding_horizontal_desktop",
+      "label": "Padding left/right",
+      "min": 5,
+      "max": 80,
+      "step": 5,
+      "unit": "px",
+      "default": 25
+    },
+    {
+      "type": "range",
+      "id": "card_min_height_desktop",
+      "label": "Minimum height",
+      "min": 100,
+      "max": 500,
+      "step": 10,
+      "unit": "px",
+      "default": 180
+    },
+    {
+      "type": "header",
+      "content": "Card spacing mobile"
+    },
+    {
+      "type": "range",
+      "id": "card_padding_top_mobile",
+      "label": "Padding top",
+      "min": 5,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "card_padding_bottom_mobile",
+      "label": "Padding bottom",
+      "min": 5,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "card_padding_horizontal_mobile",
+      "label": "Padding left/right",
+      "min": 5,
+      "max": 60,
+      "step": 5,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "card_min_height_mobile",
+      "label": "Minimum height",
+      "min": 80,
+      "max": 400,
+      "step": 10,
+      "unit": "px",
+      "default": 150
+    },
+    {
+      "type": "header",
+      "content": "X icon"
+    },
+    {
+      "type": "color",
+      "id": "x_icon_bg_color",
+      "label": "Background color",
+      "default": "#382928"
+    },
+    {
+      "type": "color",
+      "id": "x_icon_color",
+      "label": "Icon color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "x_icon_size",
+      "label": "Size",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "icon_spacing_top",
+      "label": "Spacing above icon",
+      "min": 5,
+      "max": 40,
+      "step": 5,
+      "unit": "px",
+      "default": 15
+    },
+    {
+      "type": "header",
+      "content": "Mobile layout"
+    },
+    {
+      "type": "select",
+      "id": "mobile_columns",
+      "label": "Columns on mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "1 per row"
+        },
+        {
+          "value": "2",
+          "label": "2 per row"
+        }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "header",
+      "content": "Section spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding top desktop",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding bottom desktop",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Container"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Background color",
+      "default": "#f7f0eb"
+    },
+    {
+      "type": "range",
+      "id": "container_max_width",
+      "label": "Max width",
+      "min": 800,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "default": 1200
+    }
+  ],
+  "presets": [
+    {
+      "name": "Complaint cards"
+    }
+  ]
+}
+{% endschema %}

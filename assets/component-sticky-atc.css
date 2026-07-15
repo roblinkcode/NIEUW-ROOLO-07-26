@@ -1,0 +1,132 @@
+.sticky-atc {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0.75rem 0 1.25rem;
+  z-index: 2;
+  box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.2);
+}
+.sticky-atc-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  column-gap: 10px;
+}
+.sticky-atc__button {
+  flex-shrink: 0;
+}
+.sticky-atc .button {
+  padding: 0 1rem;
+  min-height: auto;
+  min-width: auto;
+  line-height: 2.75em;
+  font-size: 1.5rem;
+}
+.sticky-atc__title {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.sticky-atc__price {
+  margin-top: 0.5rem;
+}
+.sticky-atc__price .price {
+  column-gap: 0.5rem;
+  margin-bottom: 0;
+}
+.sticky-atc__price .price,
+.sticky-atc__price .price-item--regular {
+  font-size: 1.3rem;
+}
+
+.sticky-atc__price .badge {
+  font-size: 0.8rem;
+}
+.sticky-atc.color-inverse .price-item {
+  color: rgb(var(--color-foreground));
+}
+.sticky-atc.color-inverse .price__sale .price-item--regular {
+  color: rgb(var(--color-base-accent-1));
+}
+
+.sticky-atc.color-accent-1 .price-item,
+.sticky-atc.color-accent-1 .price-item {
+  color: rgb(var(--color-foreground));
+}
+.sticky-atc.color-accent-1 .badge,
+.sticky-atc.color-accent-1 .badge {
+  background: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
+}
+
+.sticky-atc .price__regular .price-item--regular {
+  font-size: 2rem;
+  line-height: 1.1;
+}
+
+@media screen and (min-width: 400px) {
+  .sticky-atc__price .price,
+  .sticky-atc__price .price-item--regular {
+    font-size: 1.6rem;
+  }
+  .sticky-atc__title {
+    font-size: 1.7rem;
+  }
+  .sticky-atc__price .badge {
+    font-size: 1rem;
+  }
+  .sticky-atc .button {
+    font-size: 1.7rem;
+    padding: 0 1.1em;
+  }
+}
+@media screen and (min-width: 500px) {
+  .sticky-atc__price .badge {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .sticky-atc {
+    padding: 1rem 0;
+  }
+  .sticky-atc__price .price,
+  .sticky-atc__price .price-item--regular {
+    font-size: 1.8rem;
+  }
+  .sticky-atc .price__regular .price-item--regular {
+    font-size: 2.2rem;
+  }
+  .sticky-atc__title {
+    font-size: 2rem;
+  }
+  .sticky-atc__price .badge {
+    font-size: 1.3rem;
+  }
+  .sticky-atc .button {
+    font-size: 1.9rem;
+    padding: 0 1.5em;
+  }
+}
+
+.sticky-atc--after-scroll {
+  transform: translateY(100%);
+}
+.sticky-atc--after-scroll.sticky-atc--active {
+  animation: btnAppear 0.15s ease-in-out forwards;
+}
+
+@keyframes btnAppear {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.quick-add-modal__content .sticky-atc {
+  display: none;
+}

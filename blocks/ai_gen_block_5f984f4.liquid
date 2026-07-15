@@ -1,0 +1,945 @@
+{% doc %}
+  @prompt
+    Create a fully editable Shopify theme section called “Airline savings comparison”.
+    
+    Design:
+    - Two-column layout on desktop
+    - Left side: heading, body text, airline/company name cards, CTA button, and trust text underneath
+    - Right side: savings badge and two comparison cards
+    - Premium clean ecommerce style for a travel bag product page
+    - On mobile: stack left content first, comparison second
+    - Fully responsive and editable from the Shopify theme editor
+    
+    Important:
+    - The airline/company cards must be editable text fields.
+    - Add 6 airline/company card settings by default.
+    - If an airline/company text field is empty, hide that card completely.
+    - The CTA button must link back to the top/product section of the page.
+    - Use a customizable button link field. Default link should be #MainProduct-template--product or #product-form, whichever works best.
+    - All texts, colors, spacing, font sizes, and button styles must be editable.
+    
+    Theme editor settings:
+    Add settings for:
+    - Section background color
+    - Container max width
+    - Desktop layout columns ratio
+    - Gap between left and right column
+    - Section padding top desktop
+    - Section padding bottom desktop
+    - Section padding top mobile
+    - Section padding bottom mobile
+    
+    Left content settings:
+    - Heading text
+    - Heading color
+    - Heading font size desktop
+    - Heading font size mobile
+    - Heading font weight
+    - Body text
+    - Body text color
+    - Body text font size desktop
+    - Body text font size mobile
+    - Body max width
+    - Airline card background color
+    - Airline card text color
+    - Airline card border radius
+    - Airline card font size desktop
+    - Airline card font size mobile
+    - Airline card padding
+    - Airline card gap
+    - Airline card 1 text
+    - Airline card 2 text
+    - Airline card 3 text
+    - Airline card 4 text
+    - Airline card 5 text
+    - Airline card 6 text
+    - Button text
+    - Button link
+    - Button background color
+    - Button text color
+    - Button border radius
+    - Button font size
+    - Button height
+    - Button max width
+    - Trust text under button, rich text or multiline text
+    - Trust text color
+    - Trust text font size
+    
+    Right comparison settings:
+    - Savings badge text
+    - Savings badge background color
+    - Savings badge icon text, default €
+    - Savings badge icon background color
+    - Savings badge icon text color
+    - Savings badge text color
+    
+    Comparison card 1 settings:
+    - Card 1 background color
+    - Card 1 border color
+    - Card 1 price text
+    - Card 1 main text
+    - Card 1 label text
+    - Card 1 text color
+    
+    Comparison card 2 settings:
+    - Card 2 background color
+    - Card 2 border color
+    - Card 2 price text
+    - Card 2 main text
+    - Card 2 label text
+    - Card 2 text color
+    
+    Default content:
+    Heading:
+    Handbagage-ready — sla de check-in rij over
+    
+    Body text:
+    Ontworpen om slimmer te reizen zonder zware koffer. Neem je outfits, schoenen en essentials georganiseerd mee en bespaar op onnodige ruimbagagekosten.
+    
+    Airline cards:
+    KLM
+    Transavia
+    TUI fly
+    Ryanair
+    easyJet
+    Brussels Airlines
+    
+    Button text:
+    Kies jouw Roolo Reistas
+    
+    Button link:
+    #MainProduct-template--product
+    
+    Trust text:
+    ✓ 82+ beoordelingen   ✓ 30 dagen garantie
+    
+    Savings badge:
+    Gebaseerd op mogelijke ruimbagagekosten
+    
+    Comparison card 1:
+    Price: €0,00
+    Main text: Geen ruimbagage nodig
+    Label: Roolo
+    
+    Comparison card 2:
+    Price: €65+
+    Main text: Extra kosten & wachten
+    Label: Andere koffers
+    
+    Default colors:
+    - Section background: #fbf7f4
+    - Heading color: #281b1b
+    - Body text color: #111111
+    - Airline card background: #ffffff
+    - Airline card text: #202020
+    - Button background: #382928
+    - Button text: #ffffff
+    - Savings badge background: #eeeae7
+    - Savings badge icon background: #382928
+    - Savings badge icon text: #ffffff
+    - Comparison card 1 background: #382928
+    - Comparison card 1 text: #ffffff
+    - Comparison card 2 background: #ffffff
+    - Comparison card 2 text: #281b1b
+    
+    Make sure the section is clean on mobile and that empty airline card fields do not leave blank spaces.
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-airline-savings-{{ ai_gen_id }} {
+    display: block;
+    background-color: {{ block.settings.section_bg_color }};
+    padding-top: {{ block.settings.padding_top_mobile }}px;
+    padding-bottom: {{ block.settings.padding_bottom_mobile }}px;
+  }
+
+  .ai-airline-savings-container-{{ ai_gen_id }} {
+    max-width: {{ block.settings.container_max_width }}px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .ai-airline-savings-grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: {{ block.settings.column_gap }}px;
+  }
+
+  .ai-airline-savings-left-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .ai-airline-savings-heading-{{ ai_gen_id }} {
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.heading_font_size_mobile }}px;
+    font-weight: {{ block.settings.heading_font_weight }};
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .ai-airline-savings-body-{{ ai_gen_id }} {
+    color: {{ block.settings.body_text_color }};
+    font-size: {{ block.settings.body_font_size_mobile }}px;
+    line-height: 1.6;
+    max-width: {{ block.settings.body_max_width }}px;
+  }
+
+  .ai-airline-savings-cards-{{ ai_gen_id }} {
+    display: flex;
+    flex-wrap: wrap;
+    gap: {{ block.settings.airline_card_gap }}px;
+  }
+
+  .ai-airline-savings-card-{{ ai_gen_id }} {
+    background-color: {{ block.settings.airline_card_bg_color }};
+    color: {{ block.settings.airline_card_text_color }};
+    padding: {{ block.settings.airline_card_padding }}px;
+    border-radius: {{ block.settings.airline_card_border_radius }}px;
+    font-size: {{ block.settings.airline_card_font_size_mobile }}px;
+    white-space: nowrap;
+  }
+
+  .ai-airline-savings-button-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: {{ block.settings.button_bg_color }};
+    color: {{ block.settings.button_text_color }};
+    text-decoration: none;
+    border-radius: {{ block.settings.button_border_radius }}px;
+    font-size: {{ block.settings.button_font_size }}px;
+    height: {{ block.settings.button_height }}px;
+    max-width: {{ block.settings.button_max_width }}px;
+    width: 100%;
+    transition: opacity 0.3s ease;
+  }
+
+  .ai-airline-savings-button-{{ ai_gen_id }}:hover {
+    opacity: 0.85;
+  }
+
+  .ai-airline-savings-trust-{{ ai_gen_id }} {
+    color: {{ block.settings.trust_text_color }};
+    font-size: {{ block.settings.trust_text_font_size }}px;
+    margin: 0;
+  }
+
+  .ai-airline-savings-right-{{ ai_gen_id }} {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .ai-airline-savings-badge-{{ ai_gen_id }} {
+    background-color: {{ block.settings.savings_badge_bg_color }};
+    color: {{ block.settings.savings_badge_text_color }};
+    padding: 12px 16px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+  }
+
+  .ai-airline-savings-badge-icon-{{ ai_gen_id }} {
+    background-color: {{ block.settings.savings_badge_icon_bg_color }};
+    color: {{ block.settings.savings_badge_icon_text_color }};
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .ai-airline-savings-comparison-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .ai-airline-savings-comp-card-{{ ai_gen_id }} {
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border: 2px solid;
+  }
+
+  .ai-airline-savings-comp-card-1-{{ ai_gen_id }} {
+    background-color: {{ block.settings.card_1_bg_color }};
+    color: {{ block.settings.card_1_text_color }};
+    border-color: {{ block.settings.card_1_border_color }};
+  }
+
+  .ai-airline-savings-comp-card-2-{{ ai_gen_id }} {
+    background-color: {{ block.settings.card_2_bg_color }};
+    color: {{ block.settings.card_2_text_color }};
+    border-color: {{ block.settings.card_2_border_color }};
+  }
+
+  .ai-airline-savings-comp-price-{{ ai_gen_id }} {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+  }
+
+  .ai-airline-savings-comp-main-{{ ai_gen_id }} {
+    font-size: 14px;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  .ai-airline-savings-comp-label-{{ ai_gen_id }} {
+    font-size: 12px;
+    opacity: 0.8;
+    margin: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .ai-airline-savings-{{ ai_gen_id }} {
+      padding-top: {{ block.settings.padding_top_desktop }}px;
+      padding-bottom: {{ block.settings.padding_bottom_desktop }}px;
+    }
+
+    .ai-airline-savings-grid-{{ ai_gen_id }} {
+      grid-template-columns: {{ block.settings.desktop_columns_ratio }};
+    }
+
+    .ai-airline-savings-heading-{{ ai_gen_id }} {
+      font-size: {{ block.settings.heading_font_size_desktop }}px;
+    }
+
+    .ai-airline-savings-body-{{ ai_gen_id }} {
+      font-size: {{ block.settings.body_font_size_desktop }}px;
+    }
+
+    .ai-airline-savings-card-{{ ai_gen_id }} {
+      font-size: {{ block.settings.airline_card_font_size_desktop }}px;
+    }
+  }
+{% endstyle %}
+
+<airline-savings-{{ ai_gen_id }} class="ai-airline-savings-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-airline-savings-container-{{ ai_gen_id }}">
+    <div class="ai-airline-savings-grid-{{ ai_gen_id }}">
+      <div class="ai-airline-savings-left-{{ ai_gen_id }}">
+        {% if block.settings.heading != blank %}
+          <h2 class="ai-airline-savings-heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+        {% endif %}
+
+        {% if block.settings.body_text != blank %}
+          <div class="ai-airline-savings-body-{{ ai_gen_id }}">{{ block.settings.body_text }}</div>
+        {% endif %}
+
+        <div class="ai-airline-savings-cards-{{ ai_gen_id }}">
+          {% if block.settings.airline_card_1 != blank %}
+            <div class="ai-airline-savings-card-{{ ai_gen_id }}">{{ block.settings.airline_card_1 }}</div>
+          {% endif %}
+          {% if block.settings.airline_card_2 != blank %}
+            <div class="ai-airline-savings-card-{{ ai_gen_id }}">{{ block.settings.airline_card_2 }}</div>
+          {% endif %}
+          {% if block.settings.airline_card_3 != blank %}
+            <div class="ai-airline-savings-card-{{ ai_gen_id }}">{{ block.settings.airline_card_3 }}</div>
+          {% endif %}
+          {% if block.settings.airline_card_4 != blank %}
+            <div class="ai-airline-savings-card-{{ ai_gen_id }}">{{ block.settings.airline_card_4 }}</div>
+          {% endif %}
+          {% if block.settings.airline_card_5 != blank %}
+            <div class="ai-airline-savings-card-{{ ai_gen_id }}">{{ block.settings.airline_card_5 }}</div>
+          {% endif %}
+          {% if block.settings.airline_card_6 != blank %}
+            <div class="ai-airline-savings-card-{{ ai_gen_id }}">{{ block.settings.airline_card_6 }}</div>
+          {% endif %}
+        </div>
+
+        {% if block.settings.button_text != blank %}
+          <a href="{{ block.settings.button_link }}" class="ai-airline-savings-button-{{ ai_gen_id }}">
+            {{ block.settings.button_text }}
+          </a>
+        {% endif %}
+
+        {% if block.settings.trust_text != blank %}
+          <div class="ai-airline-savings-trust-{{ ai_gen_id }}">{{ block.settings.trust_text }}</div>
+        {% endif %}
+      </div>
+
+      <div class="ai-airline-savings-right-{{ ai_gen_id }}">
+        {% if block.settings.savings_badge_text != blank %}
+          <div class="ai-airline-savings-badge-{{ ai_gen_id }}">
+            <div class="ai-airline-savings-badge-icon-{{ ai_gen_id }}">{{ block.settings.savings_badge_icon_text }}</div>
+            <span>{{ block.settings.savings_badge_text }}</span>
+          </div>
+        {% endif %}
+
+        <div class="ai-airline-savings-comparison-{{ ai_gen_id }}">
+          <div class="ai-airline-savings-comp-card-{{ ai_gen_id }} ai-airline-savings-comp-card-1-{{ ai_gen_id }}">
+            {% if block.settings.card_1_price != blank %}
+              <div class="ai-airline-savings-comp-price-{{ ai_gen_id }}">{{ block.settings.card_1_price }}</div>
+            {% endif %}
+            {% if block.settings.card_1_main_text != blank %}
+              <div class="ai-airline-savings-comp-main-{{ ai_gen_id }}">{{ block.settings.card_1_main_text }}</div>
+            {% endif %}
+            {% if block.settings.card_1_label != blank %}
+              <div class="ai-airline-savings-comp-label-{{ ai_gen_id }}">{{ block.settings.card_1_label }}</div>
+            {% endif %}
+          </div>
+
+          <div class="ai-airline-savings-comp-card-{{ ai_gen_id }} ai-airline-savings-comp-card-2-{{ ai_gen_id }}">
+            {% if block.settings.card_2_price != blank %}
+              <div class="ai-airline-savings-comp-price-{{ ai_gen_id }}">{{ block.settings.card_2_price }}</div>
+            {% endif %}
+            {% if block.settings.card_2_main_text != blank %}
+              <div class="ai-airline-savings-comp-main-{{ ai_gen_id }}">{{ block.settings.card_2_main_text }}</div>
+            {% endif %}
+            {% if block.settings.card_2_label != blank %}
+              <div class="ai-airline-savings-comp-label-{{ ai_gen_id }}">{{ block.settings.card_2_label }}</div>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</airline-savings-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class AirlineSavings{{ ai_gen_id }} extends HTMLElement {
+      constructor() {
+        super();
+      }
+
+      connectedCallback() {
+      }
+    }
+
+    customElements.define('airline-savings-{{ ai_gen_id }}', AirlineSavings{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Airline savings",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section layout"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Background color",
+      "default": "#fbf7f4"
+    },
+    {
+      "type": "range",
+      "id": "container_max_width",
+      "label": "Container max width",
+      "min": 800,
+      "max": 1600,
+      "step": 50,
+      "unit": "px",
+      "default": 1200
+    },
+    {
+      "type": "select",
+      "id": "desktop_columns_ratio",
+      "label": "Desktop columns ratio",
+      "options": [
+        {
+          "value": "1fr 1fr",
+          "label": "50 / 50"
+        },
+        {
+          "value": "1.5fr 1fr",
+          "label": "60 / 40"
+        },
+        {
+          "value": "1fr 1.5fr",
+          "label": "40 / 60"
+        },
+        {
+          "value": "2fr 1fr",
+          "label": "66 / 33"
+        },
+        {
+          "value": "1fr 2fr",
+          "label": "33 / 66"
+        }
+      ],
+      "default": "1.5fr 1fr"
+    },
+    {
+      "type": "range",
+      "id": "column_gap",
+      "label": "Gap between columns",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding top desktop",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding bottom desktop",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding top mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding bottom mobile",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading text",
+      "default": "Handbagage-ready — sla de check-in rij over"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Color",
+      "default": "#281b1b"
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_desktop",
+      "label": "Font size desktop",
+      "min": 20,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "heading_font_size_mobile",
+      "label": "Font size mobile",
+      "min": 18,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "heading_font_weight",
+      "label": "Font weight",
+      "min": 400,
+      "max": 900,
+      "step": 100,
+      "default": 700
+    },
+    {
+      "type": "header",
+      "content": "Body text"
+    },
+    {
+      "type": "textarea",
+      "id": "body_text",
+      "label": "Body text",
+      "default": "Ontworpen om slimmer te reizen zonder zware koffer. Neem je outfits, schoenen en essentials georganiseerd mee en bespaar op onnodige ruimbagagekosten."
+    },
+    {
+      "type": "color",
+      "id": "body_text_color",
+      "label": "Color",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_desktop",
+      "label": "Font size desktop",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "body_font_size_mobile",
+      "label": "Font size mobile",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "body_max_width",
+      "label": "Max width",
+      "min": 300,
+      "max": 800,
+      "step": 50,
+      "unit": "px",
+      "default": 600
+    },
+    {
+      "type": "header",
+      "content": "Airline cards style"
+    },
+    {
+      "type": "color",
+      "id": "airline_card_bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "airline_card_text_color",
+      "label": "Text color",
+      "default": "#202020"
+    },
+    {
+      "type": "range",
+      "id": "airline_card_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "airline_card_font_size_desktop",
+      "label": "Font size desktop",
+      "min": 12,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "airline_card_font_size_mobile",
+      "label": "Font size mobile",
+      "min": 11,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 13
+    },
+    {
+      "type": "range",
+      "id": "airline_card_padding",
+      "label": "Padding",
+      "min": 6,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "airline_card_gap",
+      "label": "Gap between cards",
+      "min": 4,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "header",
+      "content": "Airline cards content"
+    },
+    {
+      "type": "text",
+      "id": "airline_card_1",
+      "label": "Card 1 text",
+      "default": "KLM"
+    },
+    {
+      "type": "text",
+      "id": "airline_card_2",
+      "label": "Card 2 text",
+      "default": "Transavia"
+    },
+    {
+      "type": "text",
+      "id": "airline_card_3",
+      "label": "Card 3 text",
+      "default": "TUI fly"
+    },
+    {
+      "type": "text",
+      "id": "airline_card_4",
+      "label": "Card 4 text",
+      "default": "Ryanair"
+    },
+    {
+      "type": "text",
+      "id": "airline_card_5",
+      "label": "Card 5 text",
+      "default": "easyJet"
+    },
+    {
+      "type": "text",
+      "id": "airline_card_6",
+      "label": "Card 6 text",
+      "default": "Brussels Airlines"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "Kies jouw Roolo Reistas"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Background color",
+      "default": "#382928"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "button_border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "button_font_size",
+      "label": "Font size",
+      "min": 12,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "button_height",
+      "label": "Height",
+      "min": 40,
+      "max": 70,
+      "step": 2,
+      "unit": "px",
+      "default": 52
+    },
+    {
+      "type": "range",
+      "id": "button_max_width",
+      "label": "Max width",
+      "min": 200,
+      "max": 600,
+      "step": 20,
+      "unit": "px",
+      "default": 400
+    },
+    {
+      "type": "header",
+      "content": "Trust text"
+    },
+    {
+      "type": "richtext",
+      "id": "trust_text",
+      "label": "Trust text",
+      "default": "<p>✓ 82+ beoordelingen   ✓ 30 dagen garantie</p>"
+    },
+    {
+      "type": "color",
+      "id": "trust_text_color",
+      "label": "Color",
+      "default": "#111111"
+    },
+    {
+      "type": "range",
+      "id": "trust_text_font_size",
+      "label": "Font size",
+      "min": 11,
+      "max": 18,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Savings badge"
+    },
+    {
+      "type": "text",
+      "id": "savings_badge_text",
+      "label": "Badge text",
+      "default": "Gebaseerd op mogelijke ruimbagagekosten"
+    },
+    {
+      "type": "color",
+      "id": "savings_badge_bg_color",
+      "label": "Background color",
+      "default": "#eeeae7"
+    },
+    {
+      "type": "text",
+      "id": "savings_badge_icon_text",
+      "label": "Icon text",
+      "default": "€"
+    },
+    {
+      "type": "color",
+      "id": "savings_badge_icon_bg_color",
+      "label": "Icon background color",
+      "default": "#382928"
+    },
+    {
+      "type": "color",
+      "id": "savings_badge_icon_text_color",
+      "label": "Icon text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "savings_badge_text_color",
+      "label": "Text color",
+      "default": "#281b1b"
+    },
+    {
+      "type": "header",
+      "content": "Comparison card 1"
+    },
+    {
+      "type": "color",
+      "id": "card_1_bg_color",
+      "label": "Background color",
+      "default": "#382928"
+    },
+    {
+      "type": "color",
+      "id": "card_1_border_color",
+      "label": "Border color",
+      "default": "#382928"
+    },
+    {
+      "type": "text",
+      "id": "card_1_price",
+      "label": "Price text",
+      "default": "€0,00"
+    },
+    {
+      "type": "text",
+      "id": "card_1_main_text",
+      "label": "Main text",
+      "default": "Geen ruimbagage nodig"
+    },
+    {
+      "type": "text",
+      "id": "card_1_label",
+      "label": "Label text",
+      "default": "Roolo"
+    },
+    {
+      "type": "color",
+      "id": "card_1_text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Comparison card 2"
+    },
+    {
+      "type": "color",
+      "id": "card_2_bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "card_2_border_color",
+      "label": "Border color",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "text",
+      "id": "card_2_price",
+      "label": "Price text",
+      "default": "€65+"
+    },
+    {
+      "type": "text",
+      "id": "card_2_main_text",
+      "label": "Main text",
+      "default": "Extra kosten & wachten"
+    },
+    {
+      "type": "text",
+      "id": "card_2_label",
+      "label": "Label text",
+      "default": "Andere koffers"
+    },
+    {
+      "type": "color",
+      "id": "card_2_text_color",
+      "label": "Text color",
+      "default": "#281b1b"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Airline savings"
+    }
+  ]
+}
+{% endschema %}
