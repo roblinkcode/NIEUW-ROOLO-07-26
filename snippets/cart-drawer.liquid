@@ -59,7 +59,7 @@
 </style>
 
 <cart-drawer
-  class="drawer cart-drawer-premium{% if cart == empty %} is-empty{% endif %}{% if section.settings.test_mode %} active{% endif %} cart-drawer--desktop-width-{{ section.settings.desktop_width }} cart-drawer--mobile-width-{{ section.settings.mobile_width }}"
+  class="drawer cart-drawer-premium{% if cart.item_count == 0 %} is-empty{% endif %}{% if section.settings.test_mode %} active{% endif %} cart-drawer--desktop-width-{{ section.settings.desktop_width }} cart-drawer--mobile-width-{{ section.settings.mobile_width }}"
   data-type="modal"
   data-premium-stylesheet="{{ 'cart-drawer-premium.css' | asset_url }}"
 >
@@ -72,40 +72,6 @@
       aria-label="{{ 'sections.cart.title' | t }}"
       tabindex="-1"
     >
-      {%- if cart == empty -%}
-        <div class="drawer__inner-empty">
-          <div class="cart-drawer__warnings center{% if settings.cart_drawer_collection != blank %} cart-drawer__warnings--has-collection{% endif %}">
-            <div class="cart-drawer__empty-content">
-              <h2 class="cart__empty-text">{{ 'sections.cart.empty' | t }}</h2>
-              <button
-                class="drawer__close"
-                type="button"
-                onclick="this.closest('cart-drawer').close()"
-                aria-label="{{ 'accessibility.close' | t }}"
-              >
-                {% render 'icon-close' %}
-              </button>
-              {% if settings.display_continue_shopping %}
-                <a href="{% if settings.continue_shopping_url == blank %}{{ routes.all_products_collection_url }}{% else %}{{ settings.continue_shopping_url }}{% endif %}" class="button">
-                  {{ 'general.continue_shopping' | t }}
-                </a>
-              {% endif %}
-
-              {%- if shop.customer_accounts_enabled and customer == null -%}
-                <p class="cart__login-title h3">{{ 'sections.cart.login.title' | t }}</p>
-                <p class="cart__login-paragraph">
-                  {{ 'sections.cart.login.paragraph_html' | t: link: routes.account_login_url }}
-                </p>
-              {%- endif -%}
-            </div>
-          </div>
-          {%- if settings.cart_drawer_collection != blank -%}
-            <div class="cart-drawer__collection">
-              {% render 'card-collection', card_collection: settings.cart_drawer_collection, columns: 1 %}
-            </div>
-          {%- endif -%}
-        </div>
-      {%- endif -%}
       <div class="drawer__header" style='--alignment:{{ section.settings.heading_alignment }}'>
         <h2 class="drawer__heading">
           {% liquid
@@ -127,6 +93,18 @@
           {% render 'icon-close' %}
         </button>
       </div>
+      {% if cart.item_count == 0 %}
+        <div class="drawer__inner-empty cart-drawer-premium__empty">
+          <div class="cart-drawer__warnings center">
+            <div class="cart-drawer__empty-content">
+              <h2 class="cart-drawer-premium__empty-title">{{ 'cart_drawer.premium.empty_title' | t }}</h2>
+              <a href="{{ routes.root_url }}" class="button cart-drawer-premium__empty-link">
+                {{ 'cart_drawer.premium.return_to_shop' | t }}
+              </a>
+            </div>
+          </div>
+        </div>
+      {% else %}
       {% if cart.total_price > 2000 %}
         <div class="cart-drawer-premium__shipping" role="status">
           <span class="cart-drawer-premium__shipping-check" aria-hidden="true">✓</span>
@@ -1011,6 +989,7 @@
         {% endfor %}
         <!-- end footer -->
       </div>
+      {% endif %}
     </div>
   </div>
 </cart-drawer>

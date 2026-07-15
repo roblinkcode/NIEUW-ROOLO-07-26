@@ -285,6 +285,8 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
   }
 
   const checkoutContents = new WeakMap();
+  const drawersBeingRestored = new WeakSet();
+  const drawerOpenStorageKey = 'premiumCartDrawerRestoreOpen';
   const documentLockClasses = [
     'overflow-hidden',
     'cart-drawer-open',
@@ -363,6 +365,7 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
   let observedDrawer = null;
   let drawerObserver = null;
   let refreshRequest = null;
+  let historyRestoreRequest = null;
   let initializeFrame = null;
 
   function getCartDrawer() {
@@ -466,6 +469,45 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
     });
   }
 
+  function synchronizeCartState(cartDrawer) {
+    const hasCartItems = Boolean(cartDrawer.querySelector('.cart-drawer-item'));
+    const emptyStates = Array.from(cartDrawer.querySelectorAll('.drawer__inner-empty'));
+
+    if (hasCartItems) {
+      emptyStates.forEach((emptyState) => emptyState.remove());
+      cartDrawer.classList.remove('is-empty');
+      return;
+    }
+
+    if (emptyStates.length > 0) cartDrawer.classList.add('is-empty');
+  }
+
+  function storeDrawerOpenState(isOpen) {
+    try {
+      window.sessionStorage.setItem(drawerOpenStorageKey, String(isOpen));
+    } catch (error) {
+      // History restoration still works; only the open-state preference is lost.
+    }
+  }
+
+  function takeStoredDrawerOpenState() {
+    try {
+      const shouldOpen = window.sessionStorage.getItem(drawerOpenStorageKey) === 'true';
+      window.sessionStorage.removeItem(drawerOpenStorageKey);
+      return shouldOpen;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function clearStoredDrawerOpenState() {
+    try {
+      window.sessionStorage.removeItem(drawerOpenStorageKey);
+    } catch (error) {
+      // sessionStorage can be unavailable in restricted browser contexts.
+    }
+  }
+
   function closeCartDrawer(cartDrawer) {
     if (typeof cartDrawer.close === 'function') {
       try {
@@ -501,6 +543,7 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
     ensurePremiumStylesheet(cartDrawer);
     if (closeDrawer) closeCartDrawer(cartDrawer);
     cartDrawer.classList.add('cart-drawer-premium');
+    synchronizeCartState(cartDrawer);
     resetLayoutStyles(cartDrawer);
     cartDrawer.querySelectorAll('.cart__items--disabled').forEach((element) => {
       element.classList.remove('cart__items--disabled');
@@ -563,31 +606,62 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
   }
 
   function replaceRenderedSections(sections) {
-    const cartDrawer = getCartDrawer();
-    const currentDrawer = cartDrawer?.querySelector('#CartDrawer');
+    const currentCartDrawers = Array.from(document.querySelectorAll('cart-drawer'));
+    const cartDrawer = currentCartDrawers[0];
     const currentBubble = document.getElementById('cart-icon-bubble');
-    if (!cartDrawer || !currentDrawer || !currentBubble) return false;
+    if (!cartDrawer || !currentBubble) return false;
 
     const parser = new DOMParser();
     const drawerDocument = parser.parseFromString(sections['cart-drawer'], 'text/html');
     const bubbleDocument = parser.parseFromString(sections['cart-icon-bubble'], 'text/html');
+    const currentDrawerSection = cartDrawer.closest('.shopify-section');
+    const incomingDrawerSection = drawerDocument.querySelector('.shopify-section');
     const incomingCartDrawer = drawerDocument.querySelector('cart-drawer');
-    const incomingDrawer = drawerDocument.getElementById('CartDrawer');
     const incomingBubbleSection = bubbleDocument.querySelector('.shopify-section');
-    if (!incomingDrawer || !incomingBubbleSection) return false;
+    if (!incomingCartDrawer || !incomingBubbleSection) return false;
 
-    currentDrawer.innerHTML = incomingDrawer.innerHTML;
-    currentBubble.innerHTML = incomingBubbleSection.innerHTML;
-    cartDrawer.classList.toggle('is-empty', incomingCartDrawer?.classList.contains('is-empty') ?? false);
-    cartDrawer.classList.add('cart-drawer-premium');
+    incomingCartDrawer.classList.remove(...drawerStateClasses);
+    incomingCartDrawer.classList.add('cart-drawer-premium');
 
-    const overlay = currentDrawer.querySelector('#CartDrawer-Overlay');
-    if (overlay && typeof cartDrawer.close === 'function') {
-      overlay.addEventListener('click', () => cartDrawer.close());
+    const incomingBubble = currentBubble.cloneNode(false);
+    incomingBubble.innerHTML = incomingBubbleSection.innerHTML;
+
+    if (drawerObserver) drawerObserver.disconnect();
+    drawerObserver = null;
+    observedDrawer = null;
+
+    currentCartDrawers.slice(1).forEach((duplicateDrawer) => duplicateDrawer.remove());
+    currentBubble.replaceWith(incomingBubble);
+    if (currentDrawerSection && incomingDrawerSection) {
+      currentDrawerSection.replaceWith(incomingDrawerSection);
+    } else {
+      cartDrawer.replaceWith(incomingCartDrawer);
     }
 
     initialize();
     return true;
+  }
+
+  function restoreDrawerOpenState(shouldOpen) {
+    const cartDrawer = getCartDrawer();
+    if (!cartDrawer) return;
+
+    if (!shouldOpen) {
+      closeCartDrawer(cartDrawer);
+      return;
+    }
+
+    if (cartDrawer.classList.contains('active') || drawersBeingRestored.has(cartDrawer)) return;
+    drawersBeingRestored.add(cartDrawer);
+
+    if (typeof cartDrawer.open === 'function') {
+      cartDrawer.open();
+    } else {
+      cartDrawer.classList.add('animate', 'active');
+      document.body.classList.add('overflow-hidden');
+    }
+
+    setTimeout(() => drawersBeingRestored.delete(cartDrawer), 250);
   }
 
   async function refreshFromSections() {
@@ -621,21 +695,36 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
   }
 
   function handlePageHide() {
+    const cartDrawer = getCartDrawer();
+    storeDrawerOpenState(Boolean(cartDrawer?.classList.contains('active')));
     resetCartDrawerState({ closeDrawer: true });
   }
 
   function handlePageShow(event) {
     const navigationEntry = performance.getEntriesByType?.('navigation')?.[0];
     const restoredFromHistory = event.persisted || navigationEntry?.type === 'back_forward';
-    resetCartDrawerState({ closeDrawer: restoredFromHistory });
+
+    if (!restoredFromHistory) {
+      clearStoredDrawerOpenState();
+      resetCartDrawerState();
+      observeSectionRendering(getCartDrawer());
+      return;
+    }
+
+    if (historyRestoreRequest) return;
+
+    const shouldRestoreOpen = takeStoredDrawerOpenState();
+    resetCartDrawerState({ closeDrawer: true });
     observeSectionRendering(getCartDrawer());
 
-    if (!restoredFromHistory) return;
-
-    const keepDrawerClosed = () => resetCartDrawerState({ closeDrawer: true });
-    requestAnimationFrame(keepDrawerClosed);
-    setTimeout(keepDrawerClosed, 0);
-    refreshFromSections().finally(keepDrawerClosed);
+    historyRestoreRequest = refreshFromSections()
+      .finally(() => {
+        resetCartDrawerState();
+        restoreDrawerOpenState(shouldRestoreOpen);
+      })
+      .finally(() => {
+        historyRestoreRequest = null;
+      });
   }
 
   window.CartDrawerPremiumStability = {
