@@ -1,8 +1,32 @@
 if (!customElements.get('cart-drawer-premium-upsells')) {
   class CartDrawerPremiumUpsells extends HTMLElement {
     connectedCallback() {
+      this.translations = {
+        add: this.dataset.textAdd,
+        adding: this.dataset.textAdding,
+        added: this.dataset.textAdded,
+        unavailable: this.dataset.textUnavailable,
+        error: this.dataset.textError
+      };
+
       this.querySelectorAll('.cart-drawer-premium-upsell__card').forEach((card) => {
         this.initializeCard(card);
+      });
+
+      this.initializeAlternatives();
+    }
+
+    initializeAlternatives() {
+      const toggle = this.querySelector('[data-upsell-toggle]');
+      const list = this.querySelector('[data-upsell-list]');
+
+      if (!toggle || !list) return;
+
+      toggle.addEventListener('click', () => {
+        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+
+        toggle.setAttribute('aria-expanded', String(!isExpanded));
+        list.classList.toggle('is-expanded', !isExpanded);
       });
     }
 
@@ -14,7 +38,7 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
       try {
         card.variants = JSON.parse(variantsElement.textContent);
       } catch (error) {
-        this.showError(card, 'Deze productopties konden niet worden geladen.');
+        this.showError(card, this.translations.error);
         return;
       }
 
@@ -26,9 +50,12 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
       card.selects.forEach((select) => {
         const preferredValue = select.dataset.optionType === 'size'
           ? this.dataset.preferredSize
-          : select.dataset.optionType === 'height'
-            ? this.dataset.preferredHeight
-            : '';
+            : select.dataset.optionType === 'height'
+              ? this.dataset.preferredHeight
+              : '';
+
+        if (!preferredValue) return;
+
         const preferredOption = Array.from(select.options).find((option) => option.value === preferredValue);
 
         if (preferredOption) select.value = preferredOption.value;
@@ -76,17 +103,17 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
       this.hideError(card);
 
       if (!hasSize || !hasHeight) {
-        this.setButtonAvailability(card, false, 'Maat of hoogte ontbreekt');
-        this.showError(card, 'Voor dit product ontbreken maat- of hoogteopties.');
+        this.setButtonAvailability(card, false, this.translations.unavailable);
+        this.showError(card, this.translations.unavailable);
         return;
       }
 
       if (!selectedVariant) {
-        this.setButtonAvailability(card, false, 'Combinatie niet beschikbaar');
+        this.setButtonAvailability(card, false, this.translations.unavailable);
         return;
       }
 
-      this.setButtonAvailability(card, true, 'Toevoegen');
+      this.setButtonAvailability(card, true, this.translations.add);
     }
 
     optionsMatch(variantOptions, selectedOptions) {
@@ -111,7 +138,7 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
 
       card.addButton.disabled = isLoading;
       card.addButton.setAttribute('aria-busy', String(isLoading));
-      if (label) label.classList.toggle('hidden', isLoading);
+      if (label && isLoading) label.textContent = this.translations.adding;
       if (spinner) spinner.classList.toggle('hidden', !isLoading);
     }
 
@@ -138,12 +165,13 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
         const state = await response.json();
 
         if (!response.ok || state.status) {
-          throw new Error(state.description || state.message || 'Toevoegen is niet gelukt.');
+          throw new Error(state.description || state.message || this.translations.error);
         }
 
+        this.setButtonAvailability(card, true, this.translations.added);
         this.renderCartSections(state);
       } catch (error) {
-        this.showError(card, error.message || 'Toevoegen is niet gelukt. Probeer het opnieuw.');
+        this.showError(card, error.message || this.translations.error);
         this.setLoading(card, false);
         this.resolveVariant(card);
       }
@@ -153,7 +181,7 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
       const cartDrawer = document.querySelector('cart-drawer');
 
       if (!state.sections?.['cart-drawer'] || !state.sections?.['cart-icon-bubble']) {
-        throw new Error('De winkelwagen kon niet worden vernieuwd.');
+        throw new Error(this.translations.error);
       }
 
       if (cartDrawer && typeof cartDrawer.renderContents === 'function') {
@@ -171,7 +199,7 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
       const incomingBubbleSection = bubbleDocument.querySelector('.shopify-section');
 
       if (!cartDrawer || !currentDrawer || !incomingDrawer || !currentBubble || !incomingBubbleSection) {
-        throw new Error('De winkelwagen kon niet worden vernieuwd.');
+        throw new Error(this.translations.error);
       }
 
       currentDrawer.innerHTML = incomingDrawer.innerHTML;

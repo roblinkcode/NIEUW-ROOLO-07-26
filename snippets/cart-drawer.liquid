@@ -112,7 +112,7 @@
               endif
             endfor
           %}
-          Je winkelwagen ({{ non_upsell_count }})
+          {{ 'cart_drawer.premium.title' | t: count: non_upsell_count }}
         </h2>
         <button
           class="drawer__close"
@@ -126,7 +126,7 @@
       {% if cart.total_price > 2000 %}
         <div class="cart-drawer-premium__shipping" role="status">
           <span class="cart-drawer-premium__shipping-check" aria-hidden="true">✓</span>
-          <span>Gratis verzending geactiveerd</span>
+          <span>{{ 'cart_drawer.premium.free_shipping_active' | t }}</span>
         </div>
       {% endif %}
       <div class="cart-drawer__body">
@@ -286,11 +286,11 @@
                                                 assign option_name_downcase = option.name | downcase
                                                 assign option_label = option.name
                                                 if option_name_downcase contains 'kleur' or option_name_downcase contains 'color' or option_name_downcase contains 'farbe' or option_name_downcase contains 'productvariant'
-                                                  assign option_label = 'Kleur'
+                                                  assign option_label = 'cart_drawer.premium.color' | t
                                                 elsif option_name_downcase contains 'schoenmaat' or option_name_downcase contains 'maat' or option_name_downcase contains 'size' or option_name_downcase contains 'größe' or option_name_downcase contains 'groesse'
-                                                  assign option_label = 'Schoenmaat'
+                                                  assign option_label = 'cart_drawer.premium.shoe_size' | t
                                                 elsif option_name_downcase contains 'hoogte' or option_name_downcase contains 'height' or option_name_downcase contains 'lengte' or option_name_downcase contains 'zunahme'
-                                                  assign option_label = 'Hoogte'
+                                                  assign option_label = 'cart_drawer.premium.height' | t
                                                 endif
                                               %}
                                               <div class="product-option">
@@ -341,7 +341,7 @@
                                       aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
                                     >
                                       {% render 'icon-remove' %}
-                                      <span class="cart-drawer-premium__remove-label">Verwijderen</span>
+                                      <span class="cart-drawer-premium__remove-label">{{ 'cart_drawer.premium.remove' | t }}</span>
                                     </button>
                                   </cart-remove-button>
                                 </div>
@@ -542,22 +542,22 @@
 
                                     if upsell_option_name contains 'schoenmaat' or upsell_option_name contains 'maat' or upsell_option_name contains 'size' or upsell_option_name contains 'größe' or upsell_option_name contains 'groesse'
                                       assign upsell_option_type = 'size'
-                                      assign upsell_option_label = 'Schoenmaat'
+                                      assign upsell_option_label = 'cart_drawer.premium.shoe_size' | t
                                     elsif upsell_option_name contains 'hoogte' or upsell_option_name contains 'height' or upsell_option_name contains 'lengte' or upsell_option_name contains 'zunahme'
                                       assign upsell_option_type = 'height'
-                                      assign upsell_option_label = 'Hoogte'
+                                      assign upsell_option_label = 'cart_drawer.premium.height' | t
                                     elsif upsell_option_name contains 'kleur' or upsell_option_name contains 'color' or upsell_option_name contains 'farbe' or upsell_option_name contains 'productvariant'
                                       assign upsell_option_type = 'color'
-                                      assign upsell_option_label = 'Kleur'
+                                      assign upsell_option_label = 'cart_drawer.premium.color' | t
                                     endif
                                   %}
-                                  <label class="cart-drawer-premium-upsell__option">
-                                    <span>{{ upsell_option_label }}</span>
+                                  {% if upsell_option_type == 'color' and option.values.size == 1 %}
                                     <select
+                                      hidden
                                       data-option-position="{{ option.position }}"
                                       data-option-type="{{ upsell_option_type }}"
-                                      aria-label="{{ upsell_option_label | escape }} voor {{ upsell_product.title | escape }}"
-                                      required
+                                      aria-hidden="true"
+                                      tabindex="-1"
                                     >
                                       {% for value in option.values %}
                                         <option value="{{ value | escape }}"{% if value == selected_option_value %} selected{% endif %}>
@@ -565,7 +565,23 @@
                                         </option>
                                       {% endfor %}
                                     </select>
-                                  </label>
+                                  {% else %}
+                                    <label class="cart-drawer-premium-upsell__option cart-drawer-premium-upsell__option--{{ upsell_option_type }}">
+                                      <span>{{ upsell_option_label }}</span>
+                                      <select
+                                        data-option-position="{{ option.position }}"
+                                        data-option-type="{{ upsell_option_type }}"
+                                        aria-label="{{ 'cart_drawer.premium.option_for_product' | t: option: upsell_option_label, product: upsell_product.title | escape }}"
+                                        required
+                                      >
+                                        {% for value in option.values %}
+                                          <option value="{{ value | escape }}"{% if value == selected_option_value %} selected{% endif %}>
+                                            {{ value }}
+                                          </option>
+                                        {% endfor %}
+                                      </select>
+                                    </label>
+                                  {% endif %}
                                 {% endfor %}
                               </div>
 
@@ -582,7 +598,7 @@
                               </script>
 
                               <button class="cart-drawer-premium-upsell__button" type="button" data-upsell-add>
-                                <span data-upsell-button-label>Toevoegen</span>
+                                <span data-upsell-button-label>{{ 'cart_drawer.premium.add_half_price' | t }}</span>
                                 <span class="loading-overlay__spinner hidden" aria-hidden="true">
                                   <svg class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
                                     <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
@@ -605,15 +621,31 @@
                       data-collection-handle="{{ lift_collection_handle }}"
                       data-preferred-size="{{ preferred_upsell_size | escape }}"
                       data-preferred-height="{{ preferred_upsell_height | escape }}"
+                      data-text-add="{{ 'cart_drawer.premium.add_half_price' | t | escape }}"
+                      data-text-adding="{{ 'cart_drawer.premium.adding' | t | escape }}"
+                      data-text-added="{{ 'cart_drawer.premium.added' | t | escape }}"
+                      data-text-unavailable="{{ 'cart_drawer.premium.unavailable' | t | escape }}"
+                      data-text-error="{{ 'cart_drawer.premium.error' | t | escape }}"
                     >
                       <div class="cart-drawer-premium-upsell__heading">
-                        <span class="cart-drawer-premium-upsell__eyebrow">Maak je bestelling compleet</span>
-                        <h3>Je tweede paar is nu 50% goedkoper</h3>
-                        <p>Kies eerst je hoogte en schoenmaat.</p>
+                        <span class="cart-drawer-premium-upsell__eyebrow">{{ 'cart_drawer.premium.complete_order' | t }}</span>
+                        <h3>{{ 'cart_drawer.premium.second_pair_half_price' | t }}</h3>
+                        <p>{{ 'cart_drawer.premium.choose_height_size' | t }}</p>
                       </div>
-                      <div class="cart-drawer-premium-upsell__list">
+                      <div class="cart-drawer-premium-upsell__list" id="CartDrawer-PremiumUpsellList-{{ section.id }}" data-upsell-list>
                         {{ premium_upsell_cards }}
                       </div>
+                      {% if premium_upsell_count > 1 %}
+                        <button
+                          class="cart-drawer-premium-upsell__toggle"
+                          type="button"
+                          aria-controls="CartDrawer-PremiumUpsellList-{{ section.id }}"
+                          aria-expanded="false"
+                          data-upsell-toggle
+                        >
+                          {{ 'cart_drawer.premium.other_models' | t }}
+                        </button>
+                      {% endif %}
                     </cart-drawer-premium-upsells>
                   {% endif %}
                 {% endif %}
@@ -699,9 +731,9 @@
             <span aria-hidden="true">%</span>
             <p>
               {% if cart_has_lift %}
-                50% korting op je tweede paar wordt automatisch toegepast.
+                {{ 'cart_drawer.premium.second_pair_discount_auto' | t }}
               {% else %}
-                Eventuele korting wordt automatisch verrekend.
+                {{ 'cart_drawer.premium.discount_auto' | t }}
               {% endif %}
             </p>
           </div>
@@ -743,7 +775,7 @@
                   {% if block.settings.display_subtotal %}
                     {% capture subtotal_money %}<span class='cart-drawer__totals__row__money'>{{ cart.total_price | money }}</span>{% endcapture %}
                     <p class='cart-drawer__totals__row cart-drawer__totals__row--{{ block.settings.subtotal_alignment }} text-color-{{ block.settings.subtotal_text_color }}' style='--text-size:{{ block.settings.subtotal_text_size | divided_by: 10.0 }}rem;'>
-                      <span><strong>Subtotaal</strong></span><span>{{ subtotal_money }}</span>
+                      <span><strong>{{ 'cart_drawer.premium.subtotal' | t }}</strong></span><span>{{ subtotal_money }}</span>
                     </p>
                   {% endif %}
                 </div>
@@ -810,7 +842,7 @@
                     <svg class="cart-drawer-premium__lock" aria-hidden="true" viewBox="0 0 24 24" fill="none">
                       <path d="M7 10V8a5 5 0 0 1 10 0v2M6 10h12v10H6V10Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-                    Veilig afrekenen
+                    {{ 'cart_drawer.premium.secure_checkout' | t }}
                     {% if block.settings.display_price %}
                       • {{ cart.total_price | money }}
                     {% endif %}
@@ -821,7 +853,7 @@
                     {{ content_for_additional_checkout_buttons }}
                   </div>
                 {%- endif -%}
-                <p class="cart-drawer-premium__klarna">Betaal nu of later met Klarna.</p>
+                <p class="cart-drawer-premium__klarna">{{ 'cart_drawer.premium.klarna' | t }}</p>
                 <div class='tnc-checkbox-warning tnc-checkbox-warning--under-button hidden' style='margin-top: 0.6em;'></div>
               </div>
             {%- when 'payment_badges' -%}
