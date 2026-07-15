@@ -5,6 +5,38 @@
   {% render 'cart-drawer' %}
 {% endcomment %}
 
+{% liquid
+  assign lift_collection_handle = 'lift-shoewear'
+  assign lift_collection = collections[lift_collection_handle]
+  assign cart_has_lift = false
+  assign cart_product_ids = '|'
+  assign preferred_upsell_size = blank
+  assign preferred_upsell_height = blank
+
+  for item in cart.items
+    assign cart_product_ids = cart_product_ids | append: item.product.id | append: '|'
+    assign item_is_lift = false
+
+    for item_collection in item.product.collections
+      if item_collection.handle == lift_collection_handle
+        assign cart_has_lift = true
+        assign item_is_lift = true
+      endif
+    endfor
+
+    if item_is_lift and preferred_upsell_size == blank and preferred_upsell_height == blank
+      for option in item.options_with_values
+        assign option_name_downcase = option.name | downcase
+        if option_name_downcase contains 'schoenmaat' or option_name_downcase contains 'maat' or option_name_downcase contains 'size' or option_name_downcase contains 'größe' or option_name_downcase contains 'groesse'
+          assign preferred_upsell_size = option.value
+        elsif option_name_downcase contains 'hoogte' or option_name_downcase contains 'height' or option_name_downcase contains 'lengte' or option_name_downcase contains 'zunahme'
+          assign preferred_upsell_height = option.value
+        endif
+      endfor
+    endif
+  endfor
+%}
+
 <style>
   .drawer {
     visibility: hidden;
@@ -26,7 +58,7 @@
   {% endif %}
 </style>
 
-<cart-drawer class="drawer{% if cart == empty %} is-empty{% endif %}{% if section.settings.test_mode %} active{% endif %} cart-drawer--desktop-width-{{ section.settings.desktop_width }} cart-drawer--mobile-width-{{ section.settings.mobile_width }}" data-type='modal'>
+<cart-drawer class="drawer cart-drawer-premium{% if cart == empty %} is-empty{% endif %}{% if section.settings.test_mode %} active{% endif %} cart-drawer--desktop-width-{{ section.settings.desktop_width }} cart-drawer--mobile-width-{{ section.settings.mobile_width }}" data-type='modal'>
   <div id="CartDrawer" class="cart-drawer">
     <div id="CartDrawer-Overlay" class="cart-drawer__overlay"></div>
     <div
@@ -76,11 +108,11 @@
             assign non_upsell_count = cart.item_count
             for item in cart.items
               if item.product.tags contains 'cart-hidden'
-                assign non_upsell_count = non_upsell_count | minus: 1
+                assign non_upsell_count = non_upsell_count | minus: item.quantity
               endif
             endfor
           %}
-          {{ section.settings.heading_text | replace: '[count]', non_upsell_count }}
+          Je winkelwagen ({{ non_upsell_count }})
         </h2>
         <button
           class="drawer__close"
@@ -91,6 +123,12 @@
           {% render 'icon-close' %}
         </button>
       </div>
+      {% if cart.total_price > 2000 %}
+        <div class="cart-drawer-premium__shipping" role="status">
+          <span class="cart-drawer-premium__shipping-check" aria-hidden="true">✓</span>
+          <span>Gratis verzending geactiveerd</span>
+        </div>
+      {% endif %}
       <div class="cart-drawer__body">
         {% if section.blocks.size == 0 %}
           <h3 class='h3 center'>To customize the cart, add blocks to the Cart drawer section (under the Header group)</h3>
@@ -244,11 +282,21 @@
                                             </div>
                                           {% else %}
                                             {%- for option in item.options_with_values -%}
+                                              {% liquid
+                                                assign option_name_downcase = option.name | downcase
+                                                assign option_label = option.name
+                                                if option_name_downcase contains 'kleur' or option_name_downcase contains 'color' or option_name_downcase contains 'farbe' or option_name_downcase contains 'productvariant'
+                                                  assign option_label = 'Kleur'
+                                                elsif option_name_downcase contains 'schoenmaat' or option_name_downcase contains 'maat' or option_name_downcase contains 'size' or option_name_downcase contains 'größe' or option_name_downcase contains 'groesse'
+                                                  assign option_label = 'Schoenmaat'
+                                                elsif option_name_downcase contains 'hoogte' or option_name_downcase contains 'height' or option_name_downcase contains 'lengte' or option_name_downcase contains 'zunahme'
+                                                  assign option_label = 'Hoogte'
+                                                endif
+                                              %}
                                               <div class="product-option">
-                                                <dt>{{ option.name }}:</dt>
+                                                <dt>{{ option_label }}:</dt>
                                                 <dd>
                                                   {{ option.value -}}
-                                                  {%- unless forloop.last %}, {% endunless %}
                                                 </dd>
                                               </div>
                                             {%- endfor -%}
@@ -293,6 +341,7 @@
                                       aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
                                     >
                                       {% render 'icon-remove' %}
+                                      <span class="cart-drawer-premium__remove-label">Verwijderen</span>
                                     </button>
                                   </cart-remove-button>
                                 </div>
@@ -449,6 +498,125 @@
                   </div>
                   <div id="CartDrawer-CartErrors" role="alert"></div>
                 </form>
+
+                {% if cart_has_lift and lift_collection != blank %}
+                  {% assign premium_upsell_count = 0 %}
+                  {% capture premium_upsell_cards %}
+                    {% for upsell_product in lift_collection.products %}
+                      {% capture upsell_product_token %}|{{ upsell_product.id }}|{% endcapture %}
+                      {% unless cart_product_ids contains upsell_product_token %}
+                        {% if upsell_product.available %}
+                          {% assign upsell_variant = upsell_product.selected_or_first_available_variant %}
+                          <article
+                            class="cart-drawer-premium-upsell__card"
+                            data-product-id="{{ upsell_product.id }}"
+                            data-product-handle="{{ upsell_product.handle }}"
+                          >
+                            <a class="cart-drawer-premium-upsell__media" href="{{ upsell_product.url }}" tabindex="-1" aria-hidden="true">
+                              {% if upsell_product.featured_image != blank %}
+                                <img
+                                  src="{{ upsell_product.featured_image | image_url: width: 240 }}"
+                                  alt="{{ upsell_product.featured_image.alt | default: upsell_product.title | escape }}"
+                                  width="120"
+                                  height="120"
+                                  loading="lazy"
+                                >
+                              {% endif %}
+                            </a>
+                            <div class="cart-drawer-premium-upsell__content">
+                              <div class="cart-drawer-premium-upsell__topline">
+                                <a href="{{ upsell_product.url }}" class="cart-drawer-premium-upsell__title">
+                                  {{ upsell_product.title | escape }}
+                                </a>
+                                <span class="cart-drawer-premium-upsell__price">{{ upsell_product.price | money }}</span>
+                              </div>
+
+                              <div class="cart-drawer-premium-upsell__options">
+                                {% for option in upsell_product.options_with_values %}
+                                  {% liquid
+                                    assign upsell_option_name = option.name | downcase
+                                    assign upsell_option_type = 'other'
+                                    assign upsell_option_label = option.name
+                                    assign option_index = option.position | minus: 1
+                                    assign selected_option_value = upsell_variant.options[option_index]
+
+                                    if upsell_option_name contains 'schoenmaat' or upsell_option_name contains 'maat' or upsell_option_name contains 'size' or upsell_option_name contains 'größe' or upsell_option_name contains 'groesse'
+                                      assign upsell_option_type = 'size'
+                                      assign upsell_option_label = 'Schoenmaat'
+                                    elsif upsell_option_name contains 'hoogte' or upsell_option_name contains 'height' or upsell_option_name contains 'lengte' or upsell_option_name contains 'zunahme'
+                                      assign upsell_option_type = 'height'
+                                      assign upsell_option_label = 'Hoogte'
+                                    elsif upsell_option_name contains 'kleur' or upsell_option_name contains 'color' or upsell_option_name contains 'farbe' or upsell_option_name contains 'productvariant'
+                                      assign upsell_option_type = 'color'
+                                      assign upsell_option_label = 'Kleur'
+                                    endif
+                                  %}
+                                  <label class="cart-drawer-premium-upsell__option">
+                                    <span>{{ upsell_option_label }}</span>
+                                    <select
+                                      data-option-position="{{ option.position }}"
+                                      data-option-type="{{ upsell_option_type }}"
+                                      aria-label="{{ upsell_option_label | escape }} voor {{ upsell_product.title | escape }}"
+                                      required
+                                    >
+                                      {% for value in option.values %}
+                                        <option value="{{ value | escape }}"{% if value == selected_option_value %} selected{% endif %}>
+                                          {{ value }}
+                                        </option>
+                                      {% endfor %}
+                                    </select>
+                                  </label>
+                                {% endfor %}
+                              </div>
+
+                              <script type="application/json" data-upsell-variants>
+                                [
+                                  {% for variant in upsell_product.variants %}
+                                    {
+                                      "id": {{ variant.id | json }},
+                                      "available": {{ variant.available | json }},
+                                      "options": {{ variant.options | json }}
+                                    }{% unless forloop.last %},{% endunless %}
+                                  {% endfor %}
+                                ]
+                              </script>
+
+                              <button class="cart-drawer-premium-upsell__button" type="button" data-upsell-add>
+                                <span data-upsell-button-label>Toevoegen</span>
+                                <span class="loading-overlay__spinner hidden" aria-hidden="true">
+                                  <svg class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                                    <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                                  </svg>
+                                </span>
+                              </button>
+                              <p class="cart-drawer-premium-upsell__error" data-upsell-error role="alert" hidden></p>
+                            </div>
+                          </article>
+                          {% assign premium_upsell_count = premium_upsell_count | plus: 1 %}
+                          {% if premium_upsell_count >= 3 %}{% break %}{% endif %}
+                        {% endif %}
+                      {% endunless %}
+                    {% endfor %}
+                  {% endcapture %}
+
+                  {% if premium_upsell_count > 0 %}
+                    <cart-drawer-premium-upsells
+                      class="cart-drawer-premium-upsell"
+                      data-collection-handle="{{ lift_collection_handle }}"
+                      data-preferred-size="{{ preferred_upsell_size | escape }}"
+                      data-preferred-height="{{ preferred_upsell_height | escape }}"
+                    >
+                      <div class="cart-drawer-premium-upsell__heading">
+                        <span class="cart-drawer-premium-upsell__eyebrow">Maak je bestelling compleet</span>
+                        <h3>Je tweede paar is nu 50% goedkoper</h3>
+                        <p>Kies eerst je hoogte en schoenmaat.</p>
+                      </div>
+                      <div class="cart-drawer-premium-upsell__list">
+                        {{ premium_upsell_cards }}
+                      </div>
+                    </cart-drawer-premium-upsells>
+                  {% endif %}
+                {% endif %}
               </cart-drawer-items>
             {% when 'product_upsells' %}
               {% if block.settings.position == 'body' %}
@@ -526,6 +694,18 @@
         {% endfor %}
       </div>
       <div class="drawer__footer">
+        {% if cart != empty %}
+          <div class="cart-drawer-premium__discount-note">
+            <span aria-hidden="true">%</span>
+            <p>
+              {% if cart_has_lift %}
+                50% korting op je tweede paar wordt automatisch toegepast.
+              {% else %}
+                Eventuele korting wordt automatisch verrekend.
+              {% endif %}
+            </p>
+          </div>
+        {% endif %}
         {% for block in section.blocks %}
           {% case block.type %}
             {% when 'discount_field' %}
@@ -563,7 +743,7 @@
                   {% if block.settings.display_subtotal %}
                     {% capture subtotal_money %}<span class='cart-drawer__totals__row__money'>{{ cart.total_price | money }}</span>{% endcapture %}
                     <p class='cart-drawer__totals__row cart-drawer__totals__row--{{ block.settings.subtotal_alignment }} text-color-{{ block.settings.subtotal_text_color }}' style='--text-size:{{ block.settings.subtotal_text_size | divided_by: 10.0 }}rem;'>
-                      <span>{{ block.settings.subtotal_left_text | replace: '[subtotal]', subtotal_money }}</span><span>{{ block.settings.subtotal_right_text | replace: '[subtotal]', subtotal_money }}</span>
+                      <span><strong>Subtotaal</strong></span><span>{{ subtotal_money }}</span>
                     </p>
                   {% endif %}
                 </div>
@@ -627,7 +807,10 @@
                   {% endif %}
                 >
                   <span class='button__label'>
-                    {{ 'sections.cart.checkout' | t }}
+                    <svg class="cart-drawer-premium__lock" aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                      <path d="M7 10V8a5 5 0 0 1 10 0v2M6 10h12v10H6V10Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Veilig afrekenen
                     {% if block.settings.display_price %}
                       • {{ cart.total_price | money }}
                     {% endif %}
@@ -638,6 +821,7 @@
                     {{ content_for_additional_checkout_buttons }}
                   </div>
                 {%- endif -%}
+                <p class="cart-drawer-premium__klarna">Betaal nu of later met Klarna.</p>
                 <div class='tnc-checkbox-warning tnc-checkbox-warning--under-button hidden' style='margin-top: 0.6em;'></div>
               </div>
             {%- when 'payment_badges' -%}
