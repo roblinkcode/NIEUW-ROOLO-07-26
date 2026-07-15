@@ -284,9 +284,8 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
     return;
   }
 
-  const checkoutContents = new WeakMap();
-  const drawersBeingRestored = new WeakSet();
-  const drawerOpenStorageKey = 'premiumCartDrawerRestoreOpen';
+  const CHECKOUT_RETURN_KEY = 'roolo_checkout_return';
+  const REOPEN_CART_KEY = 'roolo_reopen_cart';
   const documentLockClasses = [
     'overflow-hidden',
     'cart-drawer-open',
@@ -295,77 +294,14 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
     'no-scroll',
     'scroll-locked'
   ];
-  const drawerStateClasses = [
-    'active',
-    'animate',
-    'open',
-    'opening',
-    'is-open',
-    'drawer--open',
-    'loading',
-    'is-loading'
-  ];
   const interactionStyleProperties = [
     'cursor',
     'opacity',
     'pointer-events',
     'visibility'
   ];
-  const layoutStyleProperties = [
-    'align-items',
-    'column-gap',
-    'display',
-    'flex',
-    'flex-basis',
-    'flex-grow',
-    'flex-shrink',
-    'gap',
-    'grid',
-    'grid-area',
-    'grid-auto-columns',
-    'grid-auto-flow',
-    'grid-auto-rows',
-    'grid-column',
-    'grid-column-end',
-    'grid-column-start',
-    'grid-row',
-    'grid-row-end',
-    'grid-row-start',
-    'grid-template',
-    'grid-template-areas',
-    'grid-template-columns',
-    'grid-template-rows',
-    'inline-size',
-    'justify-content',
-    'max-width',
-    'max-inline-size',
-    'min-width',
-    'min-inline-size',
-    'order',
-    'overflow-wrap',
-    'row-gap',
-    'white-space',
-    'width',
-    'word-break'
-  ];
-  const layoutSelector = [
-    '.drawer__inner',
-    '.cart-drawer__body',
-    '.cart-drawer-item',
-    '.cart-item__media',
-    '.cart-drawer-item__right',
-    '.cart-drawer-item__details-and-delete-btn',
-    '.cart-item__details',
-    '.cart-item__name',
-    '.product-option',
-    '.cart-drawer-item__quantity-and-prices',
-    '.cart-item__quantity',
-    '.cart-item__totals'
-  ].join(',');
   let observedDrawer = null;
   let drawerObserver = null;
-  let refreshRequest = null;
-  let historyRestoreRequest = null;
   let initializeFrame = null;
 
   function getCartDrawer() {
@@ -433,12 +369,6 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
     const cartForm = cartDrawer.querySelector('#CartDrawer-Form');
     if (!checkoutButton || !cartForm) return;
 
-    if (!checkoutContents.has(checkoutButton)) {
-      checkoutContents.set(checkoutButton, checkoutButton.innerHTML);
-    } else if (checkoutButton.innerHTML !== checkoutContents.get(checkoutButton)) {
-      checkoutButton.innerHTML = checkoutContents.get(checkoutButton);
-    }
-
     resetElementInteraction(checkoutButton, true);
     checkoutButton.setAttribute('type', 'submit');
     checkoutButton.setAttribute('name', 'checkout');
@@ -463,12 +393,6 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
     checkoutButton.disabled = cartDrawer.classList.contains('is-empty');
   }
 
-  function resetLayoutStyles(cartDrawer) {
-    [cartDrawer, ...cartDrawer.querySelectorAll(layoutSelector)].forEach((element) => {
-      removeInlineProperties(element, layoutStyleProperties);
-    });
-  }
-
   function synchronizeCartState(cartDrawer) {
     const hasCartItems = Boolean(cartDrawer.querySelector('.cart-drawer-item'));
     const emptyStates = Array.from(cartDrawer.querySelectorAll('.drawer__inner-empty'));
@@ -482,69 +406,61 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
     if (emptyStates.length > 0) cartDrawer.classList.add('is-empty');
   }
 
-  function storeDrawerOpenState(isOpen) {
+  function setSessionMarker(key) {
     try {
-      window.sessionStorage.setItem(drawerOpenStorageKey, String(isOpen));
+      window.sessionStorage.setItem(key, 'true');
     } catch (error) {
-      // History restoration still works; only the open-state preference is lost.
+      // Checkout continues normally when sessionStorage is unavailable.
     }
   }
 
-  function takeStoredDrawerOpenState() {
+  function hasSessionMarker(key) {
     try {
-      const shouldOpen = window.sessionStorage.getItem(drawerOpenStorageKey) === 'true';
-      window.sessionStorage.removeItem(drawerOpenStorageKey);
-      return shouldOpen;
+      return window.sessionStorage.getItem(key) === 'true';
     } catch (error) {
       return false;
     }
   }
 
-  function clearStoredDrawerOpenState() {
+  function removeSessionMarker(key) {
     try {
-      window.sessionStorage.removeItem(drawerOpenStorageKey);
+      window.sessionStorage.removeItem(key);
     } catch (error) {
       // sessionStorage can be unavailable in restricted browser contexts.
     }
   }
 
-  function closeCartDrawer(cartDrawer) {
-    if (typeof cartDrawer.close === 'function') {
-      try {
-        cartDrawer.close();
-      } catch (error) {
-        // The explicit cleanup below is sufficient when a third-party focus trap fails.
-      }
-    }
-
-    const stateElements = [
-      cartDrawer,
-      cartDrawer.querySelector('#CartDrawer'),
-      ...cartDrawer.querySelectorAll('.drawer__inner, .cart-drawer__overlay')
-    ].filter(Boolean);
-
-    stateElements.forEach((element) => {
-      element.classList.remove(...drawerStateClasses);
-      element.removeAttribute('open');
-      element.removeAttribute('aria-busy');
-      removeInlineProperties(element, interactionStyleProperties);
-    });
-
-    clearDocumentLocks();
+  function takeSessionMarker(key) {
+    if (!hasSessionMarker(key)) return false;
+    removeSessionMarker(key);
+    return true;
   }
 
-  function resetCartDrawerState({ closeDrawer = false } = {}) {
-    const cartDrawer = getCartDrawer();
-    if (!cartDrawer) {
-      if (closeDrawer) clearDocumentLocks();
+  function markCheckoutReturn(event) {
+    if (event.type === 'click') {
+      const checkoutButton = event.target?.closest?.('[name="checkout"]');
+      if (!checkoutButton?.closest('cart-drawer')) return;
+
+      setSessionMarker(CHECKOUT_RETURN_KEY);
       return;
     }
 
+    const cartForm = event.target;
+    if (!cartForm?.matches?.('cart-drawer #CartDrawer-Form')) return;
+
+    const submitter = event.submitter;
+    if (submitter?.name === 'checkout' || cartForm.querySelector('[name="checkout"]')) {
+      setSessionMarker(CHECKOUT_RETURN_KEY);
+    }
+  }
+
+  function resetCartDrawerState() {
+    const cartDrawer = getCartDrawer();
+    if (!cartDrawer) return;
+
     ensurePremiumStylesheet(cartDrawer);
-    if (closeDrawer) closeCartDrawer(cartDrawer);
     cartDrawer.classList.add('cart-drawer-premium');
     synchronizeCartState(cartDrawer);
-    resetLayoutStyles(cartDrawer);
     cartDrawer.querySelectorAll('.cart__items--disabled').forEach((element) => {
       element.classList.remove('cart__items--disabled');
     });
@@ -605,132 +521,29 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
     observeSectionRendering(cartDrawer);
   }
 
-  function replaceRenderedSections(sections) {
-    const currentCartDrawers = Array.from(document.querySelectorAll('cart-drawer'));
-    const cartDrawer = currentCartDrawers[0];
-    const currentBubble = document.getElementById('cart-icon-bubble');
-    if (!cartDrawer || !currentBubble) return false;
-
-    const parser = new DOMParser();
-    const drawerDocument = parser.parseFromString(sections['cart-drawer'], 'text/html');
-    const bubbleDocument = parser.parseFromString(sections['cart-icon-bubble'], 'text/html');
-    const currentDrawerSection = cartDrawer.closest('.shopify-section');
-    const incomingDrawerSection = drawerDocument.querySelector('.shopify-section');
-    const incomingCartDrawer = drawerDocument.querySelector('cart-drawer');
-    const incomingBubbleSection = bubbleDocument.querySelector('.shopify-section');
-    if (!incomingCartDrawer || !incomingBubbleSection) return false;
-
-    incomingCartDrawer.classList.remove(...drawerStateClasses);
-    incomingCartDrawer.classList.add('cart-drawer-premium');
-
-    const incomingBubble = currentBubble.cloneNode(false);
-    incomingBubble.innerHTML = incomingBubbleSection.innerHTML;
-
-    if (drawerObserver) drawerObserver.disconnect();
-    drawerObserver = null;
-    observedDrawer = null;
-
-    currentCartDrawers.slice(1).forEach((duplicateDrawer) => duplicateDrawer.remove());
-    currentBubble.replaceWith(incomingBubble);
-    if (currentDrawerSection && incomingDrawerSection) {
-      currentDrawerSection.replaceWith(incomingDrawerSection);
-    } else {
-      cartDrawer.replaceWith(incomingCartDrawer);
-    }
-
-    initialize();
-    return true;
-  }
-
-  function restoreDrawerOpenState(shouldOpen) {
-    const cartDrawer = getCartDrawer();
-    if (!cartDrawer) return;
-
-    if (!shouldOpen) {
-      closeCartDrawer(cartDrawer);
-      return;
-    }
-
-    if (cartDrawer.classList.contains('active') || drawersBeingRestored.has(cartDrawer)) return;
-    drawersBeingRestored.add(cartDrawer);
-
-    if (typeof cartDrawer.open === 'function') {
-      cartDrawer.open();
-    } else {
-      cartDrawer.classList.add('animate', 'active');
-      document.body.classList.add('overflow-hidden');
-    }
-
-    setTimeout(() => drawersBeingRestored.delete(cartDrawer), 250);
-  }
-
-  async function refreshFromSections() {
-    if (refreshRequest) return refreshRequest;
-
-    const url = new URL(window.location.href);
-    url.searchParams.set('sections', 'cart-drawer,cart-icon-bubble');
-
-    refreshRequest = fetch(url.toString(), {
-      cache: 'no-store',
-      credentials: 'same-origin',
-      headers: {
-        Accept: 'application/json',
-        'X-Requested-With': 'XMLHttpRequest'
-      }
-    })
-      .then((response) => {
-        if (!response.ok) throw new Error(`Section rendering failed: ${response.status}`);
-        return response.json();
-      })
-      .then((sections) => {
-        if (!sections?.['cart-drawer'] || !sections?.['cart-icon-bubble']) return false;
-        return replaceRenderedSections(sections);
-      })
-      .catch(() => false)
-      .finally(() => {
-        refreshRequest = null;
-      });
-
-    return refreshRequest;
-  }
-
-  function handlePageHide() {
-    const cartDrawer = getCartDrawer();
-    storeDrawerOpenState(Boolean(cartDrawer?.classList.contains('active')));
-    resetCartDrawerState({ closeDrawer: true });
-  }
-
   function handlePageShow(event) {
     const navigationEntry = performance.getEntriesByType?.('navigation')?.[0];
     const restoredFromHistory = event.persisted || navigationEntry?.type === 'back_forward';
 
-    if (!restoredFromHistory) {
-      clearStoredDrawerOpenState();
-      resetCartDrawerState();
-      observeSectionRendering(getCartDrawer());
+    if (restoredFromHistory && hasSessionMarker(CHECKOUT_RETURN_KEY)) {
+      removeSessionMarker(CHECKOUT_RETURN_KEY);
+      setSessionMarker(REOPEN_CART_KEY);
+      window.location.reload();
       return;
     }
 
-    if (historyRestoreRequest) return;
+    initialize();
+    if (!takeSessionMarker(REOPEN_CART_KEY)) return;
 
-    const shouldRestoreOpen = takeStoredDrawerOpenState();
-    resetCartDrawerState({ closeDrawer: true });
-    observeSectionRendering(getCartDrawer());
-
-    historyRestoreRequest = refreshFromSections()
-      .finally(() => {
-        resetCartDrawerState();
-        restoreDrawerOpenState(shouldRestoreOpen);
-      })
-      .finally(() => {
-        historyRestoreRequest = null;
-      });
+    requestAnimationFrame(() => {
+      const cartDrawer = getCartDrawer();
+      if (typeof cartDrawer?.open === 'function') cartDrawer.open();
+    });
   }
 
   window.CartDrawerPremiumStability = {
     initialize,
-    resetCartDrawerState,
-    refreshFromSections
+    resetCartDrawerState
   };
 
   if (document.readyState === 'loading') {
@@ -739,7 +552,8 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
     initialize();
   }
 
-  window.addEventListener('pagehide', handlePageHide);
   window.addEventListener('pageshow', handlePageShow);
+  document.addEventListener('click', markCheckoutReturn, true);
+  document.addEventListener('submit', markCheckoutReturn, true);
   document.addEventListener('shopify:section:load', initialize);
 })();
