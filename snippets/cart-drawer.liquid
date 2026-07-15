@@ -215,39 +215,18 @@
                                       <p class="caption-with-letter-spacing light">{{ item.product.vendor }}</p>
                                     {%- endif -%}
         
-                                    <{% if block.settings.title_link %}a href="{{ item.url }}"{% else %}h4{% endif %} class="cart-item__name h4 break">
+                                    <{% if block.settings.title_link %}a href="{{ item.url }}"{% else %}h4{% endif %} class="cart-item__name h4">
                                       {{- item.product.title | escape -}}
                                     </{% if block.settings.title_link %}a{% else %}h4{% endif %}>
-        
-                                    {%- if item.original_price != item.final_price and block.settings.display_single_item_prices -%}
-                                      {% assign has_props = true %}
-                                      <div class="cart-item__discounted-prices cart-drawer-item__single-item-prices">
-                                        <span>
-                                          <span class="visually-hidden">
-                                            {{ 'products.product.price.regular_price' | t }}
-                                          </span>
-                                          <s class="cart-item__old-price product-option text-color-{{ block.settings.compare_price_color }}">
-                                            {{- compare_price | divided_by: item.quantity | money -}}
-                                          </s>
-                                          <span class="visually-hidden">
-                                            {{ 'products.product.price.sale_price' | t }}
-                                          </span>
-                                          <strong class="cart-item__final-price product-option text-color-{{ block.settings.price_color }}">
-                                            {% if block.settings.free_prices_text != blank and item.final_price == 0 %}
-                                              {{ block.settings.free_prices_text }}
-                                            {% else %}
-                                              {{ item.final_price | money }}
-                                            {% endif %}
-                                          </strong>
-                                        </span>
-                                        <div class="cart-drawer__discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
-                                          {%- for discount in item.discounts -%}
-                                            <div class="badge">
-                                              {%- render 'icon-discount' -%}
-                                              <span>{{ discount.title }}</span>
-                                            </div>
-                                          {%- endfor -%}
-                                        </div>
+
+                                    {%- if item.discounts.size > 0 -%}
+                                      <div class="cart-drawer__discounts cart-drawer-premium__item-discounts list-unstyled" role="list" aria-label="{{ 'customer.order.discount' | t }}">
+                                        {%- for discount in item.discounts -%}
+                                          <div class="badge">
+                                            {%- render 'icon-discount' -%}
+                                            <span>{{ discount.title }}</span>
+                                          </div>
+                                        {%- endfor -%}
                                       </div>
                                     {%- endif -%}
         
@@ -308,7 +287,6 @@
                                       aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
                                     >
                                       {% render 'icon-remove' %}
-                                      <span class="cart-drawer-premium__remove-label">{{ 'cart_drawer.premium.remove' | t }}</span>
                                     </button>
                                   </cart-remove-button>
                                 </div>
