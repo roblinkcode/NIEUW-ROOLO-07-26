@@ -9,6 +9,7 @@
   assign lift_collection_handle = 'lift-shoewear'
   assign lift_collection = collections[lift_collection_handle]
   assign shipping_protection_product_handle = 'shipping-insurance'
+  assign shipping_protection_titles = '|verzekerde verzending|verzekerd verzenden|versicherter versand|versicherter versandschutz|shipping protection|insured shipping|shipping insurance|'
   assign cart_has_lift = false
   assign cart_product_ids = '|'
   assign preferred_upsell_size = blank
@@ -17,7 +18,26 @@
   assign non_upsell_count = 0
 
   for item in cart.items
-    if item.product.handle == shipping_protection_product_handle
+    assign is_shipping_protection_item = false
+    assign item_title_downcase = item.product.title | downcase | strip
+    assign item_handle_downcase = item.product.handle | downcase | strip
+    assign item_vendor_downcase = item.product.vendor | downcase | strip
+    assign item_type_downcase = item.product.type | downcase | strip
+    assign item_title_token = item_title_downcase | prepend: '|' | append: '|'
+
+    if shipping_protection_titles contains item_title_token
+      assign is_shipping_protection_item = true
+    elsif item_handle_downcase == shipping_protection_product_handle or item_handle_downcase contains 'shipping-protection' or item_handle_downcase contains 'shipping-protect' or item_handle_downcase contains 'insured-shipping' or item_handle_downcase contains 'shipping-insurance' or item_handle_downcase contains 'shipping_insurance' or item_handle_downcase contains 'sam-shipping'
+      assign is_shipping_protection_item = true
+    elsif item_vendor_downcase == 'shopwill' and item_type_downcase == 'shopwill'
+      assign is_shipping_protection_item = true
+    elsif item_vendor_downcase == 'sam' or item_vendor_downcase contains 'sam shipping' or item_vendor_downcase contains 'shipping protect' or item_vendor_downcase contains 'shipping insurance' or item_vendor_downcase contains 'insured shipping'
+      assign is_shipping_protection_item = true
+    elsif item_type_downcase == 'sam' or item_type_downcase contains 'sam shipping' or item_type_downcase contains 'shipping protect' or item_type_downcase contains 'shipping insurance' or item_type_downcase contains 'insured shipping'
+      assign is_shipping_protection_item = true
+    endif
+
+    if is_shipping_protection_item
       continue
     endif
 
@@ -154,14 +174,28 @@
                           {%- for item in cart.items -%}
                             {% liquid
                               assign is_shipping_protection_item = false
-                              if item.product.handle == shipping_protection_product_handle
+                              assign item_title_downcase = item.product.title | downcase | strip
+                              assign item_handle_downcase = item.product.handle | downcase | strip
+                              assign item_vendor_downcase = item.product.vendor | downcase | strip
+                              assign item_type_downcase = item.product.type | downcase | strip
+                              assign item_title_token = item_title_downcase | prepend: '|' | append: '|'
+
+                              if shipping_protection_titles contains item_title_token
+                                assign is_shipping_protection_item = true
+                              elsif item_handle_downcase == shipping_protection_product_handle or item_handle_downcase contains 'shipping-protection' or item_handle_downcase contains 'shipping-protect' or item_handle_downcase contains 'insured-shipping' or item_handle_downcase contains 'shipping-insurance' or item_handle_downcase contains 'shipping_insurance' or item_handle_downcase contains 'sam-shipping'
+                                assign is_shipping_protection_item = true
+                              elsif item_vendor_downcase == 'shopwill' and item_type_downcase == 'shopwill'
+                                assign is_shipping_protection_item = true
+                              elsif item_vendor_downcase == 'sam' or item_vendor_downcase contains 'sam shipping' or item_vendor_downcase contains 'shipping protect' or item_vendor_downcase contains 'shipping insurance' or item_vendor_downcase contains 'insured shipping'
+                                assign is_shipping_protection_item = true
+                              elsif item_type_downcase == 'sam' or item_type_downcase contains 'sam shipping' or item_type_downcase contains 'shipping protect' or item_type_downcase contains 'shipping insurance' or item_type_downcase contains 'insured shipping'
                                 assign is_shipping_protection_item = true
                               endif
                             %}
                             {% if is_shipping_protection_item %}
                               {% assign total_compare_price = total_compare_price | plus: item.original_line_price %}
-                              {% continue %}
                             {% endif %}
+                            {% unless is_shipping_protection_item %}
                             <li 
                               id="CartDrawer-Item-{{ item.index | plus: 1 }}" 
                               class="cart-drawer-item cart-item cart-item--product-{{ item.product.handle }}" 
@@ -446,6 +480,7 @@
                                 </div>
                               </div>
                             </li>
+                            {% endunless %}
                           {%- endfor -%}
                         </ul>
                       </div>
