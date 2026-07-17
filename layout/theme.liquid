@@ -13,10 +13,12 @@
           navigationStarted: false,
           pageWasHidden: document.visibilityState === 'hidden',
           drawerOpenScheduled: false,
-          drawerOpened: false
+          drawerOpened: false,
+          restoreCheckTimers: []
         };
 
         window.__rooloCartReturnGuard = guard;
+        guard.restoreCheckTimers = guard.restoreCheckTimers || [];
 
         const hasSessionMarker = (key) => {
           try {
@@ -48,54 +50,110 @@
           return true;
         };
 
+        const hasHistoryCheckoutPending = () => Boolean(
+          window.history.state && window.history.state.rooloCheckoutPending === true
+        );
+
+        const setHistoryCheckoutPending = () => {
+          try {
+            window.history.replaceState(
+              { ...(window.history.state || {}), rooloCheckoutPending: true },
+              '',
+              window.location.href
+            );
+          } catch (error) {
+            // The session marker remains available when history state cannot be changed.
+          }
+        };
+
+        const clearHistoryCheckoutPending = (url = window.location.href) => {
+          try {
+            const currentState = window.history.state;
+            let nextState = currentState;
+
+            if (currentState && typeof currentState === 'object' && 'rooloCheckoutPending' in currentState) {
+              nextState = { ...currentState };
+              delete nextState.rooloCheckoutPending;
+            }
+
+            window.history.replaceState(nextState, '', url);
+          } catch (error) {
+            // A failed cleanup must not block the fresh storefront navigation.
+          }
+        };
+
         const markCheckoutPending = () => {
           removeSessionMarker(CHECKOUT_RELOAD_DONE_KEY);
           setSessionMarker(CHECKOUT_PENDING_KEY);
+          setHistoryCheckoutPending();
         };
 
         const cleanRestoreParameter = () => {
           const url = new URL(window.location.href);
-          if (!url.searchParams.has(RESTORE_PARAMETER)) return;
+          if (!url.searchParams.has(RESTORE_PARAMETER)) return false;
 
           url.searchParams.delete(RESTORE_PARAMETER);
-          window.history.replaceState(
-            window.history.state,
-            '',
-            `${url.pathname}${url.search}${url.hash}`
-          );
+          clearHistoryCheckoutPending(`${url.pathname}${url.search}${url.hash}`);
+          return true;
         };
+
+        const isCartDrawerOpen = (cartDrawer) => Boolean(
+          cartDrawer &&
+          (
+            cartDrawer.classList.contains('active') ||
+            cartDrawer.classList.contains('open') ||
+            cartDrawer.getAttribute('aria-hidden') === 'false'
+          )
+        );
+
+        const cartDrawerItemHasPremiumStructure = (item) => Boolean(
+          item.querySelector('.cart-item__media') &&
+          item.querySelector('.cart-drawer-item__right') &&
+          item.querySelector('.cart-item__details') &&
+          item.querySelector('.cart-item__quantity') &&
+          item.querySelector('.cart-item__totals')
+        );
 
         const hasCorruptCartDrawerDom = () => {
           const cartDrawer = document.querySelector('cart-drawer');
           if (!cartDrawer) return false;
           if (!cartDrawer.classList.contains('cart-drawer-premium')) return true;
 
-          const hasCartItems = Boolean(cartDrawer.querySelector('.cart-drawer-item, .cart-item'));
+          const premiumCartItems = Array.from(cartDrawer.querySelectorAll('.cart-drawer-item'));
+          const hasCartItems = premiumCartItems.length > 0 || Boolean(cartDrawer.querySelector('.cart-item'));
           const hasEmptyState = Boolean(cartDrawer.querySelector('.drawer__inner-empty'));
 
           if (hasCartItems && (hasEmptyState || cartDrawer.classList.contains('is-empty'))) {
             return true;
           }
 
-          const standardHeaders = Array.from(cartDrawer.querySelectorAll(
-            'table.cart-items th, cart-drawer-items th, th[id*="CartDrawer-Column"], [role="columnheader"]'
-          ));
-          if (standardHeaders.length > 0) return true;
+          if (hasCartItems && cartDrawer.querySelector('table.cart-items, cart-drawer-items table, cart-drawer-items thead')) {
+            return true;
+          }
 
           const headerText = Array.from(cartDrawer.querySelectorAll(
-            'table.cart-items thead, cart-drawer-items thead, .cart-items__heading, [class*="cart-table"][class*="header"]'
+            'th, [role="columnheader"], thead, .cart-items__heading, [class*="cart-table"][class*="header"]'
           ))
             .map((header) => header.textContent.trim().toUpperCase())
             .join(' ');
           const hasProductHeader = /\b(PRODUCT|PRODUKT)\b/.test(headerText);
           const hasTotalHeader = /\b(TOTAAL|TOTAL|GESAMT|SUMME)\b/.test(headerText);
 
-          return hasCartItems && hasProductHeader && hasTotalHeader;
+          if (hasProductHeader && hasTotalHeader) return true;
+          if (premiumCartItems.some((item) => !cartDrawerItemHasPremiumStructure(item))) return true;
+
+          return Array.from(cartDrawer.querySelectorAll(
+            '.cart-item__details, .cart-item__quantity, .cart-item__totals, .cart-item__price-wrapper'
+          )).some((element) => !element.closest('.cart-drawer-item'));
+        };
+
+        const clearDelayedRestoreChecks = () => {
+          guard.restoreCheckTimers.forEach((timer) => window.clearTimeout(timer));
+          guard.restoreCheckTimers = [];
         };
 
         const maybeForceFreshCartReturn = (event) => {
-          if (guard.navigationStarted || !hasSessionMarker(CHECKOUT_PENDING_KEY)) return;
-
+          const checkoutPending = hasSessionMarker(CHECKOUT_PENDING_KEY) || hasHistoryCheckoutPending();
           const navigationEntries = window.performance && typeof window.performance.getEntriesByType === 'function'
             ? window.performance.getEntriesByType('navigation')
             : [];
@@ -106,16 +164,28 @@
           );
           const returnedFromHidden = guard.pageWasHidden && document.visibilityState === 'visible';
           const corruptCartDrawer = hasCorruptCartDrawerDom();
+          const cartDrawer = document.querySelector('cart-drawer');
+          const drawerIsOpen = isCartDrawerOpen(cartDrawer);
 
-          if (!restoredFromHistory && !returnedFromHidden && !corruptCartDrawer) return;
+          if (guard.navigationStarted) return;
+
+          const mustRestore = Boolean(
+            corruptCartDrawer ||
+            (restoredFromHistory && drawerIsOpen) ||
+            (checkoutPending && (restoredFromHistory || returnedFromHidden))
+          );
+
+          if (!mustRestore) return;
           if (hasSessionMarker(CHECKOUT_RELOAD_DONE_KEY)) {
             guard.navigationStarted = true;
             return;
           }
 
           guard.navigationStarted = true;
-          removeSessionMarker(CHECKOUT_PENDING_KEY);
+          clearDelayedRestoreChecks();
           setSessionMarker(REOPEN_CART_KEY);
+          removeSessionMarker(CHECKOUT_PENDING_KEY);
+          clearHistoryCheckoutPending();
           setSessionMarker(CHECKOUT_RELOAD_DONE_KEY);
 
           const url = new URL(window.location.href);
@@ -131,6 +201,21 @@
           }
 
           window.location.replace(url.toString());
+        };
+
+        const runRestoreChecks = (event) => {
+          clearDelayedRestoreChecks();
+          maybeForceFreshCartReturn(event);
+          if (guard.navigationStarted) return;
+
+          const persisted = Boolean(event && event.persisted === true);
+          [100, 350, 800, 1500].forEach((delay) => {
+            const timer = window.setTimeout(() => {
+              maybeForceFreshCartReturn({ persisted });
+            }, delay);
+
+            guard.restoreCheckTimers.push(timer);
+          });
         };
 
         const waitForWindowLoad = () => new Promise((resolve) => {
@@ -258,6 +343,32 @@
           }
         };
 
+        const handlePageHide = () => {
+          guard.pageWasHidden = true;
+
+          const checkoutButton = document.querySelector('#CartDrawer-Checkout');
+          const cartDrawer = document.querySelector('cart-drawer');
+          const ariaBusy = checkoutButton && checkoutButton.hasAttribute('aria-busy')
+            ? checkoutButton.getAttribute('aria-busy') !== 'false'
+            : false;
+          const checkoutIsBusy = Boolean(
+            checkoutButton &&
+            (
+              checkoutButton.disabled ||
+              checkoutButton.hasAttribute('disabled') ||
+              ariaBusy ||
+              checkoutButton.classList.contains('loading') ||
+              checkoutButton.classList.contains('is-loading') ||
+              checkoutButton.classList.contains('loading-active')
+            )
+          );
+          const checkoutIsActive = Boolean(checkoutButton && document.activeElement === checkoutButton);
+
+          if (checkoutIsBusy || checkoutIsActive || isCartDrawerOpen(cartDrawer)) {
+            markCheckoutPending();
+          }
+        };
+
         const handleVisibilityChange = (event) => {
           if (document.visibilityState === 'hidden') {
             guard.pageWasHidden = true;
@@ -265,7 +376,7 @@
           }
 
           if (document.visibilityState === 'visible') {
-            maybeForceFreshCartReturn(event);
+            runRestoreChecks(event);
             guard.pageWasHidden = false;
           }
         };
@@ -280,9 +391,10 @@
           document.addEventListener('touchstart', markCheckoutButtonIntent, { capture: true, passive: true });
           document.addEventListener('click', markCheckoutButtonIntent, true);
           document.addEventListener('submit', handleCheckoutSubmit, true);
-          window.addEventListener('pageshow', maybeForceFreshCartReturn, true);
+          window.addEventListener('pagehide', handlePageHide, true);
+          window.addEventListener('pageshow', runRestoreChecks, true);
           document.addEventListener('visibilitychange', handleVisibilityChange, true);
-          window.addEventListener('focus', maybeForceFreshCartReturn, true);
+          window.addEventListener('focus', runRestoreChecks, true);
         }
 
         if (shouldReopenCart) openFreshPremiumCartDrawer();
