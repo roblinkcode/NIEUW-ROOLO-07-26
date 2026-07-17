@@ -1,6 +1,111 @@
 <!doctype html>
 <html class="no-js" lang="{{ request.locale.iso_code }}">
   <head>
+    <script>
+      (() => {
+        const CHECKOUT_PENDING_KEY = 'roolo_checkout_pending';
+        const CHECKOUT_RELOAD_DONE_KEY = 'roolo_checkout_reload_done';
+        const REOPEN_CART_KEY = 'roolo_reopen_cart';
+
+        const hasSessionMarker = (key) => {
+          try {
+            return window.sessionStorage.getItem(key) === '1';
+          } catch (error) {
+            return false;
+          }
+        };
+
+        const setSessionMarker = (key) => {
+          try {
+            window.sessionStorage.setItem(key, '1');
+          } catch (error) {
+            // Native checkout remains available when sessionStorage is unavailable.
+          }
+        };
+
+        const removeSessionMarker = (key) => {
+          try {
+            window.sessionStorage.removeItem(key);
+          } catch (error) {
+            // Nothing to clear when sessionStorage is unavailable.
+          }
+        };
+
+        const takeSessionMarker = (key) => {
+          if (!hasSessionMarker(key)) return false;
+          removeSessionMarker(key);
+          return true;
+        };
+
+        const markCheckoutPending = () => {
+          removeSessionMarker(CHECKOUT_RELOAD_DONE_KEY);
+          setSessionMarker(CHECKOUT_PENDING_KEY);
+        };
+
+        const openFreshCartDrawer = () => {
+          const openDrawer = () => {
+            const cartDrawer = document.querySelector('cart-drawer');
+            if (!cartDrawer || typeof cartDrawer.open !== 'function') return;
+
+            window.requestAnimationFrame(() => {
+              window.requestAnimationFrame(() => cartDrawer.open());
+            });
+          };
+
+          const waitForCartDrawer = () => {
+            if (window.customElements && typeof window.customElements.whenDefined === 'function') {
+              window.customElements.whenDefined('cart-drawer').then(openDrawer);
+              return;
+            }
+
+            openDrawer();
+          };
+
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', waitForCartDrawer, { once: true });
+          } else {
+            waitForCartDrawer();
+          }
+        };
+
+        document.addEventListener('submit', (event) => {
+          if (event.submitter && event.submitter.name === 'checkout') {
+            markCheckoutPending();
+          }
+        }, true);
+
+        document.addEventListener('click', (event) => {
+          const target = event.target;
+          const checkoutButton = target && typeof target.closest === 'function'
+            ? target.closest('#CartDrawer-Checkout')
+            : null;
+
+          if (checkoutButton) markCheckoutPending();
+        }, true);
+
+        window.addEventListener('pageshow', (event) => {
+          const navigationEntries = window.performance && typeof window.performance.getEntriesByType === 'function'
+            ? window.performance.getEntriesByType('navigation')
+            : [];
+          const restoredFromHistory = event.persisted === true || navigationEntries[0]?.type === 'back_forward';
+
+          if (!restoredFromHistory || !hasSessionMarker(CHECKOUT_PENDING_KEY)) return;
+
+          removeSessionMarker(CHECKOUT_PENDING_KEY);
+          setSessionMarker(REOPEN_CART_KEY);
+
+          if (hasSessionMarker(CHECKOUT_RELOAD_DONE_KEY)) return;
+
+          setSessionMarker(CHECKOUT_RELOAD_DONE_KEY);
+          event.stopImmediatePropagation();
+          window.location.reload();
+        }, true);
+
+        const shouldReopenCart = takeSessionMarker(REOPEN_CART_KEY);
+        removeSessionMarker(CHECKOUT_RELOAD_DONE_KEY);
+        if (shouldReopenCart) openFreshCartDrawer();
+      })();
+    </script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">

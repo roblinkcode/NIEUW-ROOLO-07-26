@@ -287,8 +287,6 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
     return;
   }
 
-  const CHECKOUT_RETURN_KEY = 'roolo_checkout_return';
-  const REOPEN_CART_KEY = 'roolo_reopen_cart';
   const documentLockClasses = [
     'overflow-hidden',
     'cart-drawer-open',
@@ -409,54 +407,6 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
     if (emptyStates.length > 0) cartDrawer.classList.add('is-empty');
   }
 
-  function setSessionMarker(key) {
-    try {
-      window.sessionStorage.setItem(key, 'true');
-    } catch (error) {
-      // Checkout continues normally when sessionStorage is unavailable.
-    }
-  }
-
-  function hasSessionMarker(key) {
-    try {
-      return window.sessionStorage.getItem(key) === 'true';
-    } catch (error) {
-      return false;
-    }
-  }
-
-  function removeSessionMarker(key) {
-    try {
-      window.sessionStorage.removeItem(key);
-    } catch (error) {
-      // sessionStorage can be unavailable in restricted browser contexts.
-    }
-  }
-
-  function takeSessionMarker(key) {
-    if (!hasSessionMarker(key)) return false;
-    removeSessionMarker(key);
-    return true;
-  }
-
-  function markCheckoutReturn(event) {
-    if (event.type === 'click') {
-      const checkoutButton = event.target?.closest?.('[name="checkout"]');
-      if (!checkoutButton?.closest('cart-drawer')) return;
-
-      setSessionMarker(CHECKOUT_RETURN_KEY);
-      return;
-    }
-
-    const cartForm = event.target;
-    if (!cartForm?.matches?.('cart-drawer #CartDrawer-Form')) return;
-
-    const submitter = event.submitter;
-    if (submitter?.name === 'checkout' || cartForm.querySelector('[name="checkout"]')) {
-      setSessionMarker(CHECKOUT_RETURN_KEY);
-    }
-  }
-
   function resetCartDrawerState() {
     const cartDrawer = getCartDrawer();
     if (!cartDrawer) return;
@@ -524,26 +474,6 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
     observeSectionRendering(cartDrawer);
   }
 
-  function handlePageShow(event) {
-    const navigationEntry = performance.getEntriesByType?.('navigation')?.[0];
-    const restoredFromHistory = event.persisted || navigationEntry?.type === 'back_forward';
-
-    if (restoredFromHistory && hasSessionMarker(CHECKOUT_RETURN_KEY)) {
-      removeSessionMarker(CHECKOUT_RETURN_KEY);
-      setSessionMarker(REOPEN_CART_KEY);
-      window.location.reload();
-      return;
-    }
-
-    initialize();
-    if (!takeSessionMarker(REOPEN_CART_KEY)) return;
-
-    requestAnimationFrame(() => {
-      const cartDrawer = getCartDrawer();
-      if (typeof cartDrawer?.open === 'function') cartDrawer.open();
-    });
-  }
-
   window.CartDrawerPremiumStability = {
     initialize,
     resetCartDrawerState
@@ -555,8 +485,5 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
     initialize();
   }
 
-  window.addEventListener('pageshow', handlePageShow);
-  document.addEventListener('click', markCheckoutReturn, true);
-  document.addEventListener('submit', markCheckoutReturn, true);
   document.addEventListener('shopify:section:load', initialize);
 })();
