@@ -42,6 +42,8 @@ class CartItems extends HTMLElement {
   }
 
   onChange(event) {
+    if (event.target.matches('[data-premium-upsell-select]')) return;
+
     this.updateQuantity(event.target.dataset.index, event.target.value, document.activeElement.getAttribute('name'));
   }
 

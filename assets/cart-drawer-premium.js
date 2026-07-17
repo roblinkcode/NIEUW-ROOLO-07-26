@@ -74,7 +74,7 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
         return;
       }
 
-      card.selects = Array.from(card.querySelectorAll('[data-option-position]')).sort(
+      card.selects = Array.from(card.querySelectorAll('[data-premium-upsell-select][data-option-position]')).sort(
         (first, second) => Number(first.dataset.optionPosition) - Number(second.dataset.optionPosition)
       );
       card.addButton = card.querySelector('[data-upsell-add]');
@@ -94,7 +94,10 @@ if (!customElements.get('cart-drawer-premium-upsells')) {
       });
 
       card.selects.forEach((select) => {
-        select.addEventListener('change', () => this.resolveVariant(card));
+        select.addEventListener('change', (event) => {
+          event.stopPropagation();
+          this.resolveVariant(card);
+        });
       });
 
       if (card.addButton) {

@@ -571,6 +571,7 @@
                                   {% if hide_upsell_option %}
                                     <select
                                       hidden
+                                      data-premium-upsell-select
                                       data-option-position="{{ option.position }}"
                                       data-option-type="{{ upsell_option_type }}"
                                       aria-hidden="true"
@@ -586,6 +587,7 @@
                                     <label class="cart-drawer-premium-upsell__option cart-drawer-premium-upsell__option--{{ upsell_option_type }}">
                                       <span>{{ upsell_option_label }}</span>
                                       <select
+                                        data-premium-upsell-select
                                         data-option-position="{{ option.position }}"
                                         data-option-type="{{ upsell_option_type }}"
                                         aria-label="{{ 'cart_drawer.premium.option_for_product' | t: option: upsell_option_label, product: upsell_product.title | escape }}"
