@@ -15,7 +15,7 @@
         "custom_liquid_eYW8zL": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<section class=\"promo-mini-box\" style=\"background:#fff;border-radius:10px;padding:8px 12px;display:flex;gap:10px;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,0.05);\">\n  <div class=\"promo-mini-box__media\" style=\"position:relative;width:70px;height:70px;flex:0 0 70px;\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0773/7458/7204/files/Schermafbeelding_2025-10-27_134030.png?v=1761568844\" \n         alt=\"Voorjaarssale\" \n         style=\"width:100%;height:100%;object-fit:contain;\">\n  </div>\n  <div class=\"promo-mini-box__content\" style=\"min-width:0;\">\n    <div style=\"font-weight:800;line-height:1.25;margin-bottom:2px;font-size:15px;\">\n      ZOMERSALE: −50% op het tweede paar\n    </div>\n    <div style=\"opacity:.9;font-size:11px;line-height:1.3;\">\n      Voeg twee paar toe aan je winkelmand en ontvang direct 50% korting op het tweede paar.\n    </div>\n  </div>\n</section>"
+            "custom_liquid": "<section class=\"promo-mini-box\" style=\"background:#FAF8F4;border:1px solid #E6DED2;border-radius:12px;padding:9px 13px;display:flex;gap:11px;align-items:center;box-shadow:0 6px 18px rgba(14,14,14,0.06);\">\n  <div class=\"promo-mini-box__media\" style=\"position:relative;width:70px;height:70px;flex:0 0 70px;background:#FFFFFF;border-radius:10px;display:flex;align-items:center;justify-content:center;overflow:hidden;\">\n    <img src=\"https://cdn.shopify.com/s/files/1/0969/5703/8925/files/ChatGPT_Image_19_jun_2026_10_37_56.png?v=1781882529\" alt=\"Zomersale\" style=\"width:100%;height:100%;object-fit:contain;\">\n  </div>\n\n  <div class=\"promo-mini-box__content\" style=\"min-width:0;\">\n    <div style=\"font-weight:900;line-height:1.25;margin-bottom:3px;font-size:15px;color:#0E0E0E;letter-spacing:-0.01em;\">\n      ZOMERSALE: <span style=\"color:#D07A32;\">50% KORTING</span> op het tweede paar\n    </div>\n\n    <div style=\"color:#4B4741;font-size:11px;line-height:1.35;\">\n      Voeg twee paar toe aan je winkelwagen en ontvang direct 50% korting op het tweede paar.\n    </div>\n  </div>\n</section>"
           }
         },
         "title": {
@@ -248,7 +248,7 @@
         "custom_liquid_wMyRPr": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% assign today = 'now' | date: \"%s\" %}\n{% assign morgen = today | plus: 86400 %}\n{% assign dag = morgen | date: \"%-d\" %}\n{% assign maand_nummer = morgen | date: \"%-m\" %}\n\n{% case maand_nummer %}\n  {% when '1' %}{% assign maand = 'jan' %}\n  {% when '2' %}{% assign maand = 'feb' %}\n  {% when '3' %}{% assign maand = 'maart' %}\n  {% when '4' %}{% assign maand = 'april' %}\n  {% when '5' %}{% assign maand = 'mei' %}\n  {% when '6' %}{% assign maand = 'juni' %}\n  {% when '7' %}{% assign maand = 'juli' %}\n  {% when '8' %}{% assign maand = 'aug' %}\n  {% when '9' %}{% assign maand = 'sep' %}\n  {% when '10' %}{% assign maand = 'okt' %}\n  {% when '11' %}{% assign maand = 'nov' %}\n  {% when '12' %}{% assign maand = 'dec' %}\n{% endcase %}\n\n<div style=\"text-align: left; margin-bottom: 24px;\">\n  <span style=\"color: #007000; font-size: 15px;\">\n    • Vandaag besteld, verzonden vóór: {{ dag }} {{ maand }}\n  </span>\n</div>"
+            "custom_liquid": "{% assign today = 'now' | date: \"%s\" %}\n{% assign tomorrow = today | plus: 86400 %}\n{% assign day = tomorrow | date: \"%-d\" %}\n{% assign month_number = tomorrow | date: \"%-m\" %}\n\n{% case month_number %}\n  {% when '1' %}{% assign month = 'jan' %}\n  {% when '2' %}{% assign month = 'feb' %}\n  {% when '3' %}{% assign month = 'mrt' %}\n  {% when '4' %}{% assign month = 'apr' %}\n  {% when '5' %}{% assign month = 'mei' %}\n  {% when '6' %}{% assign month = 'jun' %}\n  {% when '7' %}{% assign month = 'jul' %}\n  {% when '8' %}{% assign month = 'aug' %}\n  {% when '9' %}{% assign month = 'sep' %}\n  {% when '10' %}{% assign month = 'okt' %}\n  {% when '11' %}{% assign month = 'nov' %}\n  {% when '12' %}{% assign month = 'dec' %}\n{% endcase %}\n\n<div style=\"text-align:left;margin-bottom:24px;\">\n  <span style=\"display:inline-flex;align-items:center;gap:7px;color:#0E0E0E;font-size:15px;font-weight:600;\">\n    <span style=\"width:7px;height:7px;border-radius:999px;background:#FFB800;display:inline-block;box-shadow:0 0 0 4px rgba(255,184,0,0.14);\"></span>\n    Vandaag besteld, verzonden uiterlijk: <strong style=\"font-weight:900;\">{{ day }} {{ month }}</strong>\n  </span>\n</div>"
           }
         },
         "buy_buttons": {
@@ -315,7 +315,7 @@
         "custom_liquid_JawpD4": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div class=\"purchase-bubble\">\n  <div class=\"photo-group\">\n    <img src=\"https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?ga=GA1.1.512236851.1746736510&semt=ais_hybrid&w=740\" alt=\"Gebruiker 1\" class=\"photo\" />\n    <img src=\"https://img.freepik.com/free-photo/pretty-smiling-joyfully-female-with-fair-hair-dressed-casually-looking-with-satisfaction_176420-15187.jpg?t=st=1746650000~exp=1746653600~hmac=113f9adc8196161946ac06c2a29aa3130fcb266de9c12a906adcc34edee6a126&w=1380\" alt=\"Gebruiker 2\" class=\"photo\" />\n    <img src=\"https://img.freepik.com/free-photo/smiley-man-relaxing-outdoors_23-2148739334.jpg?ga=GA1.1.512236851.1746736510&semt=ais_hybrid&w=740\" alt=\"Gebruiker 3\" class=\"photo\" />\n  </div>\n  <div class=\"purchase-text\">\n    <span class=\"buyer-name\">Rob</span>\n    <img src=\"https://cdn.shopify.com/s/files/1/0773/7458/7204/files/image-removebg-preview_19.png?v=1776686273\" alt=\"Geverifieerd\" class=\"checkmark-icon\" />\n    <span>en <b>1.856</b> anderen gingen je voor</span>\n  </div>\n</div>\n\n<style>\n.purchase-bubble {\n  display: flex;\n  align-items: center;\n  background: #fff;\n  padding: 6px 14px;\n  border-radius: 9px;\n  font-size: 12px;\n  color: #1a1a1a;\n  margin-top: 0px !important;\n  padding-top: 0px;\n}\n\n.photo-group {\n  display: inline-flex;\n  margin-inline-end: 12px;\n}\n\n.photo {\n  width: 22px;\n  height: 22px;\n  object-fit: cover;\n  border-radius: 50%;\n  border: 2px solid #fff;\n  margin-left: -6px;\n}\n\n.purchase-text {\n  display: inline-flex;\n  align-items: center;\n  column-gap: 4px;\n  font-weight: 400;\n}\n\n.buyer-name {\n  font-weight: 800;\n}\n\n.checkmark-icon {\n  height: 13px;\n  width: 13px;\n  margin-top: -1px;\n}\n</style>"
+            "custom_liquid": "<div class=\"purchase-bubble\">\n  <div class=\"photo-group\">\n    <img src=\"https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?ga=GA1.1.512236851.1746736510&semt=ais_hybrid&w=740\" alt=\"Klant 1\" class=\"photo\" />\n    <img src=\"https://img.freepik.com/free-photo/pretty-smiling-joyfully-female-with-fair-hair-dressed-casually-looking-with-satisfaction_176420-15187.jpg?t=st=1746650000~exp=1746653600~hmac=113f9adc8196161946ac06c2a29aa3130fcb266de9c12a906adcc34edee6a126&w=1380\" alt=\"Klant 2\" class=\"photo\" />\n    <img src=\"https://img.freepik.com/free-photo/smiley-man-relaxing-outdoors_23-2148739334.jpg?ga=GA1.1.512236851.1746736510&semt=ais_hybrid&w=740\" alt=\"Klant 3\" class=\"photo\" />\n  </div>\n\n  <div class=\"purchase-text\">\n    <span class=\"buyer-name\">Rob</span>\n    <span class=\"checkmark-icon\">✓</span>\n    <span>en <b>1.856</b> anderen hebben LIFT al gekocht</span>\n  </div>\n</div>\n\n<style>\n.purchase-bubble {\n  display: flex;\n  align-items: center;\n  background: #FAF8F4;\n  border: 1px solid #E6DED2;\n  padding: 7px 13px;\n  border-radius: 10px;\n  font-size: 12px;\n  color: #0E0E0E;\n  margin-top: 0px !important;\n  box-shadow: 0 6px 16px rgba(14,14,14,0.05);\n}\n\n.photo-group {\n  display: inline-flex;\n  margin-inline-end: 12px;\n  flex-shrink: 0;\n}\n\n.photo {\n  width: 23px;\n  height: 23px;\n  object-fit: cover;\n  border-radius: 50%;\n  border: 2px solid #FAF8F4;\n  margin-left: -6px;\n  box-shadow: 0 2px 5px rgba(14,14,14,0.10);\n}\n\n.photo:first-child {\n  margin-left: 0;\n}\n\n.purchase-text {\n  display: inline-flex;\n  align-items: center;\n  column-gap: 4px;\n  font-weight: 500;\n  line-height: 1.25;\n  color: #4B4741;\n}\n\n.buyer-name {\n  font-weight: 900;\n  color: #0E0E0E;\n}\n\n.purchase-text b {\n  color: #0E0E0E;\n  font-weight: 900;\n}\n\n.checkmark-icon {\n  width: 14px;\n  height: 14px;\n  border-radius: 999px;\n  background: #FFB800;\n  color: #0E0E0E;\n  display: inline-flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 10px;\n  font-weight: 900;\n  line-height: 1;\n  flex-shrink: 0;\n  box-shadow: 0 2px 6px rgba(255,184,0,0.22);\n}\n\n@media screen and (max-width: 480px) {\n  .purchase-bubble {\n    padding: 7px 10px;\n    font-size: 11px;\n  }\n\n  .photo {\n    width: 21px;\n    height: 21px;\n  }\n\n  .photo-group {\n    margin-inline-end: 9px;\n  }\n}\n</style>"
           }
         },
         "custom_liquid_HJEbkP": {
@@ -479,6 +479,166 @@
         "desktop_padding_bottom": 36
       }
     },
+    "ss_testimonial_9_XU4Wxh": {
+      "type": "ss-testimonial-9",
+      "blocks": {
+        "testimonial_Xhx39z": {
+          "type": "testimonial",
+          "settings": {
+            "title": "GEVERIFIEERD",
+            "text": "Ik was bang dat ze lomp zouden ogen, maar ze zien er goed uit. Ze passen gewoon goed onder jeans en zitten comfortabel.",
+            "avatar": "shopify://shop_images/young-beautiful-woman-walking-park.jpg",
+            "hide_avatar": true,
+            "author": "Max M.",
+            "stars_count": 5
+          }
+        },
+        "testimonial_i7nxnf": {
+          "type": "testimonial",
+          "settings": {
+            "title": "GEVERIFIEERD",
+            "text": "Ik draag ze nu een paar dagen en het verschil merk je direct. Ze zien eruit als normale sneakers, maar ik voel me net wat zelfverzekerder.",
+            "avatar": "shopify://shop_images/side-view-woman-posing-chair.jpg",
+            "hide_avatar": true,
+            "author": "Daan K.",
+            "stars_count": 5
+          }
+        },
+        "testimonial_dMRYVJ": {
+          "type": "testimonial",
+          "settings": {
+            "title": "GEVERIFIEERD",
+            "text": "Mijn vriend draagt ze bijna dagelijks. Je ziet niet dat er extra hoogte in zit, maar zijn houding lijkt wel meteen beter.",
+            "avatar": "shopify://shop_images/happy-middle-aged-woman-relaxing-outdoors.jpg",
+            "hide_avatar": true,
+            "author": "Lisa V.",
+            "stars_count": 5
+          }
+        },
+        "testimonial_b7r6q3": {
+          "type": "testimonial",
+          "settings": {
+            "title": "GEVERIFIEERD",
+            "text": "Mijn vriend oogt er net wat langer en zelfverzekerder door. Het mooie is dat de schoenen gewoon modern en rustig blijven.",
+            "avatar": "shopify://shop_images/Schermafbeelding_2025-10-23_115127.png",
+            "hide_avatar": true,
+            "author": "Sanne R.",
+            "stars_count": 5
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_Xhx39z",
+        "testimonial_i7nxnf",
+        "testimonial_dMRYVJ",
+        "testimonial_b7r6q3"
+      ],
+      "name": "SS - Testimonial #9",
+      "settings": {
+        "heading": "<p>ERVARINGEN MET LIFT</p>",
+        "heading_custom": true,
+        "heading_font": "arial_n7",
+        "heading_size": 30,
+        "heading_size_mobile": 26,
+        "heading_height": 130,
+        "heading_align": "left",
+        "bottom": "",
+        "bottom_custom": false,
+        "bottom_font": "josefin_sans_n4",
+        "bottom_size": 18,
+        "bottom_size_mobile": 16,
+        "bottom_height": 130,
+        "bottom_align": "center",
+        "bottom_mt": 24,
+        "rating": 4.9,
+        "rating_hide": true,
+        "rating_align": "center",
+        "rating_custom": false,
+        "rating_font": "josefin_sans_n4",
+        "rating_size": 18,
+        "rating_size_mobile": 16,
+        "rating_height": 130,
+        "rating_mt": 16,
+        "stars_count": 0,
+        "stars_size": 14,
+        "slider_view": "1",
+        "slider_view_mobile": 1.5,
+        "slider_gap": 20,
+        "slider_gap_mobile": 20,
+        "slider_mt": 20,
+        "card_padding_vertical": 24,
+        "card_padding_vertical_mobile": 16,
+        "card_padding_horizontal": 24,
+        "card_padding_horizontal_mobile": 16,
+        "card_radius": 0,
+        "card_border_thickness": 0,
+        "card_shadow": false,
+        "title_custom": false,
+        "title_font": "josefin_sans_n4",
+        "title_size": 12,
+        "title_size_mobile": 12,
+        "title_height": 130,
+        "text_custom": true,
+        "text_font": "arial_n4",
+        "text_size": 18,
+        "text_size_mobile": 14,
+        "text_height": 130,
+        "text_mt": 20,
+        "avatar_size": 62,
+        "avatar_size_mobile": 40,
+        "author_custom": false,
+        "author_font": "josefin_sans_n4",
+        "author_size": 18,
+        "author_size_mobile": 16,
+        "author_height": 130,
+        "author_mt": 20,
+        "navigation_mt": 32,
+        "arrow_size": 34,
+        "arrow_size_mobile": 34,
+        "arrow_icon_size": 34,
+        "arrow_icon_size_mobile": 34,
+        "arrow_border_thickness": 0,
+        "arrow_show_desktop": true,
+        "arrow_show_mobile": true,
+        "progress_width": 150,
+        "progress_width_mobile": 150,
+        "progress_height": 6,
+        "progress_height_mobile": 6,
+        "progress_show_desktop": true,
+        "progress_show_mobile": true,
+        "card_bg_color": "#f8f8f8",
+        "card_border_color": "#000000",
+        "card_shadow_color": "#000000",
+        "title_color": "#b8b8b8",
+        "text_color": "#000000",
+        "author_color": "#000000",
+        "arrow_color": "#e6e6e6",
+        "arrow_hover_color": "#a7a7a4",
+        "arrow_bg_color": "#ffffff",
+        "arrow_bg_hover_color": "#ffffff",
+        "arrow_border_color": "#ffffff",
+        "arrow_border_hover_color": "#ffffff",
+        "progress_bg_color": "#d9d9d9",
+        "progress_color": "#838383",
+        "heading_color": "#000000",
+        "bottom_color": "#000000",
+        "rating_text_color": "#000000",
+        "stars_color": "#007f4e",
+        "background_color": "#f5f0e8",
+        "background_gradient": "",
+        "border_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0,
+        "padding_top": 36,
+        "padding_bottom": 36,
+        "padding_horizontal": 5,
+        "padding_horizontal_mobile": 1.5,
+        "full_width": false,
+        "content_width": 190,
+        "border_thickness": 0,
+        "lazy": true
+      }
+    },
     "ss_product_reviews_pKUEPj": {
       "type": "ss-product-reviews",
       "blocks": {
@@ -507,6 +667,7 @@
         "review_UXBchN",
         "review_GRccTp"
       ],
+      "disabled": true,
       "name": "SS - Product Reviews",
       "settings": {
         "reviews_position": "below_description",
@@ -633,60 +794,6 @@
         "custom_contaner_colors_background": "#ffffff",
         "custom_container_gradient_background": "",
         "custom_contaner_colors_text": "#2e2a39"
-      }
-    },
-    "ss_product_variant_m8tbRT": {
-      "type": "ss-product-variant",
-      "blocks": {
-        "item_z6PmFb": {
-          "type": "item",
-          "settings": {
-            "image": "shopify://shop_images/zwart_variant_bag.webp",
-            "url": "https://roolo.nl/products/roolo-bag"
-          }
-        },
-        "item_RFzpyV": {
-          "type": "item",
-          "settings": {
-            "image": "shopify://shop_images/Grijs_variant_bag.webp",
-            "url": "https://roolo.nl/products/roolo-bag?variant=47203182805316"
-          }
-        }
-      },
-      "block_order": [
-        "item_z6PmFb",
-        "item_RFzpyV"
-      ],
-      "disabled": true,
-      "settings": {
-        "variants_position": "below_price",
-        "use_blocks": true,
-        "layout": "grid",
-        "layout_row": 4,
-        "layout_row_mobile": 4,
-        "layout_gap": 8,
-        "layout_gap_mobile": 8,
-        "item_padding": 2,
-        "item_padding_mobile": 2,
-        "item_radius": 0,
-        "item_border_thickness": 1,
-        "item_ratio": "square",
-        "item_ratio_mobile": "square",
-        "item_bg_color": "#ffffff",
-        "item_border_color": "#ebebed",
-        "item_border_active_color": "#000000",
-        "button_icon_color": "#000000",
-        "button_icon_hover_color": "#000000",
-        "background_color": "",
-        "background_gradient": "",
-        "border_color": "#000000",
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "padding_horizontal": 0,
-        "padding_horizontal_mobile": 0,
-        "border_thickness": 0
       }
     },
     "ss_trust_badges_emojis_jAkdEY": {
@@ -1102,241 +1209,16 @@
         "border_thickness": 0
       }
     },
-    "rich_text_MbF96m": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_3tygXm": {
-          "type": "heading",
-          "settings": {
-            "title": "Stijlvol van buiten, schitterend van binnen.",
-            "title_highlight_color": "#6d388b",
-            "heading_size": "h1"
-          }
-        },
-        "text_Np4cag": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "<p>Share information about your brand with your customers. Describe a product, make announcements, or welcome customers to your store.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_3tygXm",
-        "text_Np4cag"
-      ],
-      "name": "t:sections.rich-text.presets.name",
+    "custom_liquid_XWbRPB": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
       "settings": {
         "display_id": false,
         "visibility": "always-display",
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "full_width": true,
-        "mobile_narrow_width": false,
+        "custom_liquid": "<section class=\"lift-why-section\">\n  <div class=\"lift-why-inner\">\n    <div class=\"lift-why-header\">\n      <span>WAAROM KLANTEN VOOR LIFT KIEZEN</span>\n      <h2>Meer lengte. Dezelfde natuurlijke look.</h2>\n    </div>\n\n    <div class=\"lift-why-grid\">\n      <div class=\"lift-why-card\">\n        <div class=\"lift-why-icon lift-icon-arrow-up\"></div>\n        <h3>Tot +10 cm extra lengte</h3>\n        <p>Kies de hoogte die het beste bij jou past: +4, +6, +8 of +10 cm.</p>\n      </div>\n\n      <div class=\"lift-why-card\">\n        <div class=\"lift-why-icon lift-icon-hidden\"></div>\n        <h3>Onzichtbare verhoging</h3>\n        <p>De verhoging is subtiel verwerkt aan de binnenkant van de schoen en is van buitenaf niet zichtbaar.</p>\n      </div>\n\n      <div class=\"lift-why-card\">\n        <div class=\"lift-why-icon lift-icon-check\"></div>\n        <h3>Comfortabel voor dagelijks gebruik</h3>\n        <p>Ontworpen voor dagelijks gebruik, met een zachte pasvorm en een stabiel gevoel.</p>\n      </div>\n\n      <div class=\"lift-why-card\">\n        <div class=\"lift-why-icon lift-icon-return\"></div>\n        <h3>30 dagen retourgarantie</h3>\n        <p>Probeer ze rustig thuis. Niet tevreden? Je kunt ze binnen 30 dagen retourneren.</p>\n      </div>\n    </div>\n  </div>\n</section>\n\n<style>\n  .lift-why-section {\n    background: #FFFFFF;\n    padding: 58px 20px;\n  }\n\n  .lift-why-inner {\n    max-width: 1120px;\n    margin: 0 auto;\n  }\n\n  .lift-why-header {\n    text-align: center;\n    margin-bottom: 32px;\n  }\n\n  .lift-why-header span {\n    display: inline-block;\n    margin-bottom: 11px;\n    font-size: 11px;\n    line-height: 1;\n    letter-spacing: 0.18em;\n    font-weight: 900;\n    color: #B86A2C;\n  }\n\n  .lift-why-header h2 {\n    margin: 0;\n    color: #0E0E0E;\n    font-size: clamp(28px, 3.2vw, 44px);\n    line-height: 1.08;\n    letter-spacing: -0.045em;\n    font-weight: 900;\n  }\n\n  .lift-why-grid {\n    display: grid;\n    grid-template-columns: repeat(4, 1fr);\n    gap: 14px;\n  }\n\n  .lift-why-card {\n    background: #FAF8F4;\n    border: 1px solid #E6DED2;\n    border-radius: 18px;\n    padding: 22px 18px;\n    min-height: 190px;\n    box-shadow: 0 8px 22px rgba(14,14,14,0.04);\n    transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;\n  }\n\n  .lift-why-card:hover {\n    transform: translateY(-2px);\n    border-color: #D8CBB8;\n    box-shadow: 0 14px 30px rgba(14,14,14,0.07);\n  }\n\n  .lift-why-icon {\n    width: 38px;\n    height: 38px;\n    border-radius: 999px;\n    background: linear-gradient(180deg, #1C1C1C 0%, #0E0E0E 100%);\n    color: #fff;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    margin-bottom: 16px;\n    position: relative;\n    flex: 0 0 38px;\n    box-shadow: 0 5px 14px rgba(14,14,14,0.18);\n  }\n\n  .lift-why-icon::marker {\n    display: none;\n  }\n\n  .lift-icon-arrow-up::before {\n    content: \"\";\n    width: 12px;\n    height: 12px;\n    border-top: 3px solid #FFB800;\n    border-right: 3px solid #FFB800;\n    transform: rotate(-45deg);\n    position: absolute;\n    top: 12px;\n  }\n\n  .lift-icon-arrow-up::after {\n    content: \"\";\n    width: 3px;\n    height: 15px;\n    background: #FFB800;\n    position: absolute;\n    top: 13px;\n    border-radius: 99px;\n  }\n\n  .lift-icon-hidden::before {\n    content: \"\";\n    width: 16px;\n    height: 16px;\n    border: 3px solid #FFB800;\n    border-radius: 999px;\n    position: absolute;\n  }\n\n  .lift-icon-hidden::after {\n    content: \"\";\n    width: 8px;\n    height: 18px;\n    background: #0E0E0E;\n    position: absolute;\n    right: 8px;\n  }\n\n  .lift-icon-check::before {\n    content: \"\";\n    width: 15px;\n    height: 8px;\n    border-left: 3px solid #FFB800;\n    border-bottom: 3px solid #FFB800;\n    transform: rotate(-45deg);\n    position: absolute;\n    top: 13px;\n  }\n\n  .lift-icon-return::before {\n    content: \"\";\n    width: 17px;\n    height: 13px;\n    border-top: 3px solid #FFB800;\n    border-left: 3px solid #FFB800;\n    border-radius: 8px 0 0 0;\n    position: absolute;\n    top: 13px;\n    left: 12px;\n  }\n\n  .lift-icon-return::after {\n    content: \"\";\n    width: 9px;\n    height: 9px;\n    border-left: 3px solid #FFB800;\n    border-bottom: 3px solid #FFB800;\n    transform: rotate(45deg);\n    position: absolute;\n    top: 11px;\n    left: 10px;\n  }\n\n  .lift-why-card h3 {\n    margin: 0;\n    color: #0E0E0E;\n    font-size: 16px;\n    line-height: 1.25;\n    font-weight: 900;\n    letter-spacing: -0.02em;\n  }\n\n  .lift-why-card p {\n    margin: 9px 0 0;\n    color: #4B4741;\n    font-size: 13.5px;\n    line-height: 1.45;\n    font-weight: 500;\n  }\n\n  @media screen and (max-width: 989px) {\n    .lift-why-grid {\n      grid-template-columns: repeat(2, 1fr);\n    }\n  }\n\n  @media screen and (max-width: 749px) {\n    .lift-why-section {\n      padding: 44px 16px;\n    }\n\n    .lift-why-header {\n      text-align: left;\n      margin-bottom: 22px;\n    }\n\n    .lift-why-header span {\n      font-size: 10px;\n      letter-spacing: 0.16em;\n      margin-bottom: 10px;\n    }\n\n    .lift-why-header h2 {\n      font-size: 30px;\n      line-height: 1.05;\n      letter-spacing: -0.04em;\n    }\n\n    .lift-why-grid {\n      grid-template-columns: 1fr;\n      gap: 10px;\n    }\n\n    .lift-why-card {\n      min-height: auto;\n      padding: 18px 16px;\n      border-radius: 15px;\n      display: block;\n    }\n\n    .lift-why-card:hover {\n      transform: none;\n    }\n\n    .lift-why-icon {\n      width: 36px;\n      height: 36px;\n      flex: 0 0 36px;\n      margin-bottom: 12px;\n    }\n\n    .lift-why-card h3 {\n      font-size: 16px;\n      line-height: 1.2;\n      margin: 0;\n      letter-spacing: -0.02em;\n    }\n\n    .lift-why-card p {\n      font-size: 13.5px;\n      line-height: 1.45;\n      margin-top: 8px;\n    }\n\n    .lift-icon-arrow-up::before {\n      width: 11px;\n      height: 11px;\n      top: 11px;\n    }\n\n    .lift-icon-arrow-up::after {\n      height: 14px;\n      top: 13px;\n    }\n\n    .lift-icon-hidden::before {\n      width: 15px;\n      height: 15px;\n    }\n\n    .lift-icon-hidden::after {\n      height: 17px;\n      right: 8px;\n    }\n\n    .lift-icon-check::before {\n      width: 14px;\n      height: 8px;\n      top: 12px;\n    }\n\n    .lift-icon-return::before {\n      width: 16px;\n      height: 12px;\n      top: 13px;\n      left: 11px;\n    }\n\n    .lift-icon-return::after {\n      top: 11px;\n      left: 9px;\n    }\n  }\n</style>",
         "color_scheme": "background-1",
-        "padding_top": 16,
-        "padding_bottom": 0,
-        "custom_colors_background": "#ffffff",
-        "custom_gradient_background": "",
-        "custom_colors_text": "#2e2a39",
-        "custom_colors_solid_button_background": "#dd1d1d",
-        "custom_colors_solid_button_text": "#ffffff",
-        "custom_colors_outline_button": "#dd1d1d"
-      }
-    },
-    "comparison_slider_MraLXq": {
-      "type": "comparison-slider",
-      "name": "Before & After slider",
-      "settings": {
-        "display_id": false,
-        "visibility": "always-display",
-        "title": "",
-        "title_highlight_color": "#6d388b",
-        "heading_size": "h1",
-        "text": "",
-        "button_label": "",
-        "link": "",
-        "button_style_secondary": false,
-        "atc_button_label": "",
-        "atc_product": "",
-        "atc_skip_cart": false,
-        "color_scheme": "background-1",
-        "layout": "slider_second",
-        "before_label": "",
-        "after_label": "",
-        "labels_color_scheme": "background-2",
-        "line_color": "background-1",
-        "arrows_style": "circle",
-        "before_image": "shopify://shop_images/ChatGPT_Image_8_jun_2026_21_34_28.png",
-        "after_image": "shopify://shop_images/ChatGPT_Image_22_mei_2026_09_17_23.png",
-        "padding_top": 12,
-        "padding_bottom": 28,
-        "custom_colors_background": "#ffffff",
-        "custom_gradient_background": "",
-        "custom_colors_text": "#2e2a39",
-        "custom_colors_solid_button_background": "#dd1d1d",
-        "custom_colors_solid_button_text": "#ffffff",
-        "custom_colors_outline_button": "#dd1d1d"
-      }
-    },
-    "ss_testimonial_9_U7wrpf": {
-      "type": "ss-testimonial-9",
-      "blocks": {
-        "testimonial_XPfDjD": {
-          "type": "testimonial",
-          "settings": {
-            "title": "GEVERIFIEERD",
-            "text": "Sinds hij deze schoenen draagt, ziet hij er meteen zelfverzekerder uit. Niemand merkt dat het door de schoenen komt, ik ook pas later! Echt top idee.",
-            "avatar": "shopify://shop_images/side-view-woman-posing-chair.jpg",
-            "hide_avatar": true,
-            "author": "Ella B.",
-            "stars_count": 5
-          }
-        },
-        "testimonial_xaiyHU": {
-          "type": "testimonial",
-          "settings": {
-            "title": "GEVERIFIEERD",
-            "text": "Mijn vriend is 6 cm langer met deze sneakers, maar het ziet er totaal natuurlijk uit. Zijn houding is beter en hij loopt er super comfortabel op.",
-            "avatar": "shopify://shop_images/happy-middle-aged-woman-relaxing-outdoors.jpg",
-            "hide_avatar": true,
-            "author": "Lotte D.",
-            "stars_count": 5
-          }
-        },
-        "testimonial_hfC3P6": {
-          "type": "testimonial",
-          "settings": {
-            "title": "GEVERIFIEERD",
-            "text": "Ik had niet verwacht dat schoenen zo’n verschil konden maken. Hij voelt zich zichtbaar zelfverzekerder en dat merk je meteen. Echt blij mee.",
-            "avatar": "shopify://shop_images/young-beautiful-woman-walking-park.jpg",
-            "hide_avatar": true,
-            "author": "Kim N.",
-            "stars_count": 5
-          }
-        },
-        "testimonial_EbfMbm": {
-          "type": "testimonial",
-          "settings": {
-            "title": "GEVERIFIEERD",
-            "text": "We hadden al eerder ‘verhogende schoenen’ geprobeerd, maar die zagen er altijd vreemd uit. Deze zijn juist modern en stijlvol, én het verschil is duidelijk.",
-            "avatar": "shopify://shop_images/Schermafbeelding_2025-10-23_115127.png",
-            "hide_avatar": true,
-            "author": "Lara S.",
-            "stars_count": 5
-          }
-        }
-      },
-      "block_order": [
-        "testimonial_XPfDjD",
-        "testimonial_xaiyHU",
-        "testimonial_hfC3P6",
-        "testimonial_EbfMbm"
-      ],
-      "name": "SS - Testimonial #9",
-      "settings": {
-        "heading": "<h2>WAT VROUWEN <br/>ZEGGEN OVER <br/>DE NIEUWE LOOK</h2>",
-        "heading_custom": true,
-        "heading_font": "arial_n7",
-        "heading_size": 30,
-        "heading_size_mobile": 26,
-        "heading_height": 130,
-        "heading_align": "left",
-        "bottom": "",
-        "bottom_custom": false,
-        "bottom_font": "josefin_sans_n4",
-        "bottom_size": 18,
-        "bottom_size_mobile": 16,
-        "bottom_height": 130,
-        "bottom_align": "center",
-        "bottom_mt": 24,
-        "rating": 4.9,
-        "rating_hide": true,
-        "rating_align": "center",
-        "rating_custom": false,
-        "rating_font": "josefin_sans_n4",
-        "rating_size": 18,
-        "rating_size_mobile": 16,
-        "rating_height": 130,
-        "rating_mt": 16,
-        "stars_count": 0,
-        "stars_size": 14,
-        "slider_view": "3",
-        "slider_view_mobile": 1.5,
-        "slider_gap": 20,
-        "slider_gap_mobile": 20,
-        "slider_mt": 20,
-        "card_padding_vertical": 24,
-        "card_padding_vertical_mobile": 16,
-        "card_padding_horizontal": 24,
-        "card_padding_horizontal_mobile": 16,
-        "card_radius": 0,
-        "card_border_thickness": 0,
-        "card_shadow": false,
-        "title_custom": false,
-        "title_font": "josefin_sans_n4",
-        "title_size": 12,
-        "title_size_mobile": 12,
-        "title_height": 130,
-        "text_custom": true,
-        "text_font": "arial_n4",
-        "text_size": 18,
-        "text_size_mobile": 14,
-        "text_height": 130,
-        "text_mt": 20,
-        "avatar_size": 62,
-        "avatar_size_mobile": 40,
-        "author_custom": false,
-        "author_font": "josefin_sans_n4",
-        "author_size": 18,
-        "author_size_mobile": 16,
-        "author_height": 130,
-        "author_mt": 20,
-        "navigation_mt": 32,
-        "arrow_size": 34,
-        "arrow_size_mobile": 34,
-        "arrow_icon_size": 34,
-        "arrow_icon_size_mobile": 34,
-        "arrow_border_thickness": 0,
-        "arrow_show_desktop": true,
-        "arrow_show_mobile": true,
-        "progress_width": 150,
-        "progress_width_mobile": 150,
-        "progress_height": 6,
-        "progress_height_mobile": 6,
-        "progress_show_desktop": true,
-        "progress_show_mobile": true,
-        "card_bg_color": "#f8f8f8",
-        "card_border_color": "#000000",
-        "card_shadow_color": "#000000",
-        "title_color": "#b8b8b8",
-        "text_color": "#000000",
-        "author_color": "#000000",
-        "arrow_color": "#e6e6e6",
-        "arrow_hover_color": "#a7a7a4",
-        "arrow_bg_color": "#ffffff",
-        "arrow_bg_hover_color": "#ffffff",
-        "arrow_border_color": "#ffffff",
-        "arrow_border_hover_color": "#ffffff",
-        "progress_bg_color": "#d9d9d9",
-        "progress_color": "#838383",
-        "heading_color": "#000000",
-        "bottom_color": "#000000",
-        "rating_text_color": "#000000",
-        "stars_color": "#007f4e",
-        "background_color": "#ececec",
-        "background_gradient": "",
-        "border_color": "#000000",
-        "margin_top": 0,
-        "margin_bottom": 0,
-        "padding_top": 36,
-        "padding_bottom": 36,
-        "padding_horizontal": 5,
-        "padding_horizontal_mobile": 1.5,
-        "full_width": false,
-        "content_width": 190,
-        "border_thickness": 0,
-        "lazy": true
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "7c2381c3-1795-445b-91da-9765523b1638": {
@@ -1411,7 +1293,7 @@
       "settings": {
         "display_id": false,
         "visibility": "always-display",
-        "custom_liquid": "<section class=\"lift-se-comparison\">\n  <div class=\"lift-se-comparison__inner\">\n    <div class=\"lift-se-comparison__content\">\n      <div class=\"lift-se-comparison__eyebrow\">VERGELIJKING</div>\n\n      <h2>\n        Waarom LIFT<br>\n        <span>de slimme keuze is</span>\n      </h2>\n\n      <p>\n        Onzichtbare extra lengte, een strak design en comfort voor de hele dag —\n        voor mannen die langer en zelfverzekerder willen lijken, zonder in te leveren op stijl.\n      </p>\n    </div>\n\n    <div class=\"lift-se-table\">\n      <div class=\"lift-se-table__head\">\n        <div class=\"lift-se-table__spacer\"></div>\n        <div class=\"lift-se-table__lift-head\">LIFT</div>\n        <div class=\"lift-se-table__normal-head\">Normale schoenen</div>\n      </div>\n\n      <div class=\"lift-se-table__row\">\n        <div class=\"lift-se-table__feature\">Onzichtbare lengteboost</div>\n        <div class=\"lift-se-table__lift\"><span>✓</span></div>\n        <div class=\"lift-se-table__normal\">×</div>\n      </div>\n\n      <div class=\"lift-se-table__row\">\n        <div class=\"lift-se-table__feature\">Tot +10 cm langer</div>\n        <div class=\"lift-se-table__lift\"><span>✓</span></div>\n        <div class=\"lift-se-table__normal\">×</div>\n      </div>\n\n      <div class=\"lift-se-table__row\">\n        <div class=\"lift-se-table__feature\">Comfortabel voor de hele dag</div>\n        <div class=\"lift-se-table__lift\"><span>✓</span></div>\n        <div class=\"lift-se-table__normal\">×</div>\n      </div>\n\n      <div class=\"lift-se-table__row\">\n        <div class=\"lift-se-table__feature\">Strak modern design</div>\n        <div class=\"lift-se-table__lift\"><span>✓</span></div>\n        <div class=\"lift-se-table__normal\">×</div>\n      </div>\n\n      <div class=\"lift-se-table__row\">\n        <div class=\"lift-se-table__feature\">Niet lomp of opvallend</div>\n        <div class=\"lift-se-table__lift\"><span>✓</span></div>\n        <div class=\"lift-se-table__normal\">×</div>\n      </div>\n    </div>\n  </div>\n</section>\n\n<style>\n.lift-se-comparison {\n  background: #f5f6f3;\n  padding: 90px 20px;\n}\n\n.lift-se-comparison__inner {\n  max-width: 1280px;\n  margin: 0 auto;\n  display: grid;\n  grid-template-columns: 0.95fr 1.05fr;\n  gap: 70px;\n  align-items: center;\n}\n\n.lift-se-comparison__eyebrow {\n  font-size: 12px;\n  letter-spacing: 0.22em;\n  font-weight: 800;\n  color: #4d6f5e;\n  margin-bottom: 18px;\n}\n\n.lift-se-comparison h2 {\n  margin: 0;\n  font-size: clamp(42px, 5vw, 76px);\n  line-height: 0.98;\n  letter-spacing: -0.055em;\n  font-weight: 900;\n  color: #0d0f14;\n}\n\n.lift-se-comparison h2 span {\n  color: #759a89;\n}\n\n.lift-se-comparison p {\n  margin: 24px 0 0;\n  max-width: 560px;\n  font-size: 18px;\n  line-height: 1.6;\n  color: #525b56;\n}\n\n.lift-se-table {\n  background: #ffffff;\n  border: 1px solid rgba(0,0,0,0.06);\n  border-radius: 28px;\n  overflow: hidden;\n  box-shadow: 0 18px 40px rgba(0,0,0,0.06);\n}\n\n.lift-se-table__head,\n.lift-se-table__row {\n  display: grid;\n  grid-template-columns: minmax(220px, 1fr) 120px 120px;\n}\n\n.lift-se-table__head {\n  min-height: 78px;\n  align-items: stretch;\n}\n\n.lift-se-table__spacer {\n  grid-column: 1;\n}\n\n.lift-se-table__lift-head {\n  grid-column: 2;\n  background: #759a89;\n  color: #fff;\n  font-size: 22px;\n  font-weight: 900;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 18px 18px 0 0;\n  letter-spacing: 0.02em;\n}\n\n.lift-se-table__normal-head {\n  grid-column: 3;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 15px;\n  font-weight: 800;\n  color: #111;\n  text-align: center;\n  padding: 0 12px;\n}\n\n.lift-se-table__row {\n  min-height: 74px;\n  align-items: stretch;\n}\n\n.lift-se-table__row + .lift-se-table__row,\n.lift-se-table__row:first-of-type {\n  border-top: 1px solid rgba(0,0,0,0.07);\n}\n\n.lift-se-table__feature {\n  grid-column: 1;\n  display: flex;\n  align-items: center;\n  padding: 0 24px;\n  font-size: 16px;\n  font-weight: 750;\n  color: #111827;\n  background: #fff;\n}\n\n.lift-se-table__lift {\n  grid-column: 2;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: linear-gradient(180deg, #759a89 0%, #6b8f80 100%);\n}\n\n.lift-se-table__lift span {\n  width: 32px;\n  height: 32px;\n  border-radius: 999px;\n  background: rgba(255,255,255,0.92);\n  color: #6a8f7d;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 20px;\n  font-weight: 900;\n  line-height: 1;\n}\n\n.lift-se-table__normal {\n  grid-column: 3;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 34px;\n  font-weight: 300;\n  color: #6a8577;\n  background: #fff;\n}\n\n@media screen and (max-width: 989px) {\n  .lift-se-comparison {\n    padding: 70px 16px;\n  }\n\n  .lift-se-comparison__inner {\n    grid-template-columns: 1fr;\n    gap: 36px;\n  }\n\n  .lift-se-comparison__content {\n    max-width: 760px;\n  }\n\n  .lift-se-table {\n    max-width: 760px;\n  }\n}\n\n@media screen and (max-width: 749px) {\n  .lift-se-comparison {\n    padding: 54px 14px;\n  }\n\n  .lift-se-comparison__eyebrow {\n    font-size: 11px;\n    margin-bottom: 12px;\n  }\n\n  .lift-se-comparison h2 {\n    font-size: 34px;\n    line-height: 1.03;\n  }\n\n  .lift-se-comparison p {\n    margin-top: 18px;\n    font-size: 15px;\n    line-height: 1.6;\n  }\n\n  .lift-se-table {\n    border-radius: 22px;\n  }\n\n  .lift-se-table__head,\n  .lift-se-table__row {\n    grid-template-columns: minmax(140px, 1fr) 84px 84px;\n  }\n\n  .lift-se-table__head {\n    min-height: 64px;\n  }\n\n  .lift-se-table__lift-head {\n    font-size: 16px;\n    border-radius: 14px 14px 0 0;\n  }\n\n  .lift-se-table__normal-head {\n    font-size: 12px;\n    line-height: 1.15;\n    padding: 0 8px;\n  }\n\n  .lift-se-table__row {\n    min-height: 62px;\n  }\n\n  .lift-se-table__feature {\n    padding: 0 14px;\n    font-size: 13px;\n    line-height: 1.2;\n  }\n\n  .lift-se-table__lift span {\n    width: 28px;\n    height: 28px;\n    font-size: 18px;\n  }\n\n  .lift-se-table__normal {\n    font-size: 28px;\n  }\n}\n\n@media screen and (max-width: 380px) {\n  .lift-se-table__head,\n  .lift-se-table__row {\n    grid-template-columns: minmax(125px, 1fr) 74px 74px;\n  }\n\n  .lift-se-table__feature {\n    font-size: 12px;\n  }\n\n  .lift-se-table__normal-head {\n    font-size: 11px;\n  }\n}\n</style>",
+        "custom_liquid": "<section class=\"lift-se-comparison\">\n  <div class=\"lift-se-comparison__inner\">\n    <div class=\"lift-se-comparison__content\">\n      <div class=\"lift-se-comparison__eyebrow\">VERGELIJKING</div>\n\n      <h2>\n        Waarom LIFT<br>\n        <span>de slimme keuze is</span>\n      </h2>\n\n      <p>\n        Onzichtbare verhoging, clean design en de hele dag comfort —\n        voor iedereen die langer en zelfverzekerder wil overkomen, zonder in te leveren op stijl.\n      </p>\n    </div>\n\n    <div class=\"lift-se-table\">\n      <div class=\"lift-se-table__head\">\n        <div class=\"lift-se-table__spacer\"></div>\n        <div class=\"lift-se-table__lift-head\">LIFT</div>\n        <div class=\"lift-se-table__normal-head\">Normale schoenen</div>\n      </div>\n\n      <div class=\"lift-se-table__row\">\n        <div class=\"lift-se-table__feature\">Onzichtbare verhoging</div>\n        <div class=\"lift-se-table__lift\"><span>✓</span></div>\n        <div class=\"lift-se-table__normal\">×</div>\n      </div>\n\n      <div class=\"lift-se-table__row\">\n        <div class=\"lift-se-table__feature\">Tot +10 cm</div>\n        <div class=\"lift-se-table__lift\"><span>✓</span></div>\n        <div class=\"lift-se-table__normal\">×</div>\n      </div>\n\n      <div class=\"lift-se-table__row\">\n        <div class=\"lift-se-table__feature\">De hele dag comfortabel</div>\n        <div class=\"lift-se-table__lift\"><span>✓</span></div>\n        <div class=\"lift-se-table__normal\">×</div>\n      </div>\n\n      <div class=\"lift-se-table__row\">\n        <div class=\"lift-se-table__feature\">Clean modern design</div>\n        <div class=\"lift-se-table__lift\"><span>✓</span></div>\n        <div class=\"lift-se-table__normal\">×</div>\n      </div>\n\n      <div class=\"lift-se-table__row\">\n        <div class=\"lift-se-table__feature\">Niet lomp</div>\n        <div class=\"lift-se-table__lift\"><span>✓</span></div>\n        <div class=\"lift-se-table__normal\">×</div>\n      </div>\n    </div>\n  </div>\n</section>\n\n<style>\n.lift-se-comparison {\n  background: #F5F0E8;\n  padding: 90px 20px;\n}\n\n.lift-se-comparison__inner {\n  max-width: 1280px;\n  margin: 0 auto;\n  display: grid;\n  grid-template-columns: 0.95fr 1.05fr;\n  gap: 70px;\n  align-items: center;\n}\n\n.lift-se-comparison__content {\n  position: relative;\n  z-index: 1;\n}\n\n.lift-se-comparison__eyebrow {\n  font-size: 12px;\n  letter-spacing: 0.22em;\n  font-weight: 900;\n  color: #B86A2C;\n  margin-bottom: 18px;\n}\n\n.lift-se-comparison h2 {\n  margin: 0;\n  font-size: clamp(42px, 5vw, 76px);\n  line-height: 0.98;\n  letter-spacing: -0.055em;\n  font-weight: 900;\n  color: #0E0E0E;\n}\n\n.lift-se-comparison h2 span {\n  color: #0E0E0E;\n  position: relative;\n  display: inline-block;\n  z-index: 1;\n}\n\n.lift-se-comparison h2 span::after {\n  content: \"\";\n  position: absolute;\n  left: 4px;\n  right: 8px;\n  bottom: 5px;\n  height: 11px;\n  background: #D07A32;\n  opacity: 0.28;\n  z-index: -1;\n  border-radius: 999px;\n}\n\n.lift-se-comparison p {\n  margin: 24px 0 0;\n  max-width: 560px;\n  font-size: 18px;\n  line-height: 1.6;\n  color: #4B4741;\n}\n\n.lift-se-table {\n  background: #FAF8F4;\n  border: 1px solid #E6DED2;\n  border-radius: 28px;\n  overflow: hidden;\n  box-shadow: 0 20px 45px rgba(14,14,14,0.08);\n}\n\n.lift-se-table__head,\n.lift-se-table__row {\n  display: grid;\n  grid-template-columns: minmax(220px, 1fr) 120px 120px;\n}\n\n.lift-se-table__head {\n  min-height: 78px;\n  align-items: stretch;\n}\n\n.lift-se-table__spacer {\n  grid-column: 1;\n  background: #FAF8F4;\n}\n\n.lift-se-table__lift-head {\n  grid-column: 2;\n  background: linear-gradient(180deg, #1C1C1C 0%, #0E0E0E 100%);\n  color: #FFFFFF;\n  font-size: 22px;\n  font-weight: 900;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 18px 18px 0 0;\n  letter-spacing: 0.04em;\n}\n\n.lift-se-table__normal-head {\n  grid-column: 3;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 15px;\n  font-weight: 800;\n  color: #111111;\n  text-align: center;\n  padding: 0 12px;\n  background: #FFFFFF;\n}\n\n.lift-se-table__row {\n  min-height: 74px;\n  align-items: stretch;\n}\n\n.lift-se-table__row + .lift-se-table__row,\n.lift-se-table__row:first-of-type {\n  border-top: 1px solid #E6DED2;\n}\n\n.lift-se-table__feature {\n  grid-column: 1;\n  display: flex;\n  align-items: center;\n  padding: 0 24px;\n  font-size: 16px;\n  font-weight: 800;\n  color: #111111;\n  background: #FAF8F4;\n}\n\n.lift-se-table__lift {\n  grid-column: 2;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background: linear-gradient(180deg, #1C1C1C 0%, #0E0E0E 100%);\n}\n\n.lift-se-table__lift span {\n  width: 32px;\n  height: 32px;\n  border-radius: 999px;\n  background: #FFB800;\n  color: #0E0E0E;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 20px;\n  font-weight: 900;\n  line-height: 1;\n  box-shadow: 0 3px 10px rgba(255,184,0,0.18);\n}\n\n.lift-se-table__normal {\n  grid-column: 3;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 34px;\n  font-weight: 400;\n  color: #8A8177;\n  background: #FFFFFF;\n}\n\n@media screen and (max-width: 989px) {\n  .lift-se-comparison {\n    padding: 70px 16px;\n  }\n\n  .lift-se-comparison__inner {\n    grid-template-columns: 1fr;\n    gap: 36px;\n  }\n\n  .lift-se-comparison__content {\n    max-width: 760px;\n  }\n\n  .lift-se-table {\n    max-width: 760px;\n  }\n}\n\n@media screen and (max-width: 749px) {\n  .lift-se-comparison {\n    padding: 54px 14px;\n  }\n\n  .lift-se-comparison__eyebrow {\n    font-size: 11px;\n    margin-bottom: 12px;\n  }\n\n  .lift-se-comparison h2 {\n    font-size: 34px;\n    line-height: 1.03;\n    letter-spacing: -0.04em;\n  }\n\n  .lift-se-comparison h2 span::after {\n    bottom: 3px;\n    height: 8px;\n    left: 2px;\n    right: 4px;\n  }\n\n  .lift-se-comparison p {\n    margin-top: 18px;\n    font-size: 15px;\n    line-height: 1.6;\n  }\n\n  .lift-se-table {\n    border-radius: 22px;\n  }\n\n  .lift-se-table__head,\n  .lift-se-table__row {\n    grid-template-columns: minmax(140px, 1fr) 84px 84px;\n  }\n\n  .lift-se-table__head {\n    min-height: 64px;\n  }\n\n  .lift-se-table__lift-head {\n    font-size: 16px;\n    border-radius: 14px 14px 0 0;\n  }\n\n  .lift-se-table__normal-head {\n    font-size: 12px;\n    line-height: 1.15;\n    padding: 0 8px;\n  }\n\n  .lift-se-table__row {\n    min-height: 62px;\n  }\n\n  .lift-se-table__feature {\n    padding: 0 14px;\n    font-size: 13px;\n    line-height: 1.2;\n  }\n\n  .lift-se-table__lift span {\n    width: 28px;\n    height: 28px;\n    font-size: 18px;\n  }\n\n  .lift-se-table__normal {\n    font-size: 28px;\n  }\n}\n\n@media screen and (max-width: 380px) {\n  .lift-se-table__head,\n  .lift-se-table__row {\n    grid-template-columns: minmax(125px, 1fr) 74px 74px;\n  }\n\n  .lift-se-table__feature {\n    font-size: 12px;\n  }\n\n  .lift-se-table__normal-head {\n    font-size: 11px;\n  }\n}\n</style>",
         "color_scheme": "background-1",
         "padding_top": 0,
         "padding_bottom": 0
@@ -1683,18 +1565,6 @@
         "border_thickness": 0,
         "section_radius": 0,
         "lazy": true
-      }
-    },
-    "custom_liquid_pniHEi": {
-      "type": "custom-liquid",
-      "name": "t:sections.custom-liquid.presets.name",
-      "settings": {
-        "display_id": false,
-        "visibility": "always-display",
-        "custom_liquid": "<section class=\"lift-why-section\">\n  <div class=\"lift-why-inner\">\n    <div class=\"lift-why-header\">\n      <span>WAAROM KLANTEN VOOR LIFT KIEZEN</span>\n      <h2>Meer lengte. Dezelfde natuurlijke look.</h2>\n    </div>\n\n    <div class=\"lift-why-grid\">\n      <div class=\"lift-why-card\">\n        <div class=\"lift-why-icon lift-icon-arrow-up\"></div>\n        <h3>Tot +10 cm extra lengte</h3>\n        <p>Kies de hoogte die het beste bij jou past: +4, +6, +8 of +10 cm.</p>\n      </div>\n\n      <div class=\"lift-why-card\">\n        <div class=\"lift-why-icon lift-icon-hidden\"></div>\n        <h3>Onzichtbare verhoging</h3>\n        <p>De verhoging zit discreet verborgen in de schoen en is van buitenaf niet te zien.</p>\n      </div>\n\n      <div class=\"lift-why-card\">\n        <div class=\"lift-why-icon lift-icon-check\"></div>\n        <h3>Comfortabel voor dagelijks gebruik</h3>\n        <p>Ontworpen voor elke dag, met een zachte pasvorm en een stabiel gevoel.</p>\n      </div>\n\n      <div class=\"lift-why-card\">\n        <div class=\"lift-why-icon lift-icon-return\"></div>\n        <h3>30 dagen retourgarantie</h3>\n        <p>Probeer ze thuis met vertrouwen. Niet tevreden? Je kunt ze binnen 30 dagen retourneren.</p>\n      </div>\n    </div>\n  </div>\n</section>\n\n<style>\n  .lift-why-section {\n    background: #ffffff;\n    padding: 54px 20px;\n  }\n\n  .lift-why-inner {\n    max-width: 1120px;\n    margin: 0 auto;\n  }\n\n  .lift-why-header {\n    text-align: center;\n    margin-bottom: 30px;\n  }\n\n  .lift-why-header span {\n    display: inline-block;\n    margin-bottom: 10px;\n    font-size: 11px;\n    line-height: 1;\n    letter-spacing: 0.16em;\n    font-weight: 800;\n    color: rgba(0,0,0,0.55);\n  }\n\n  .lift-why-header h2 {\n    margin: 0;\n    color: #111;\n    font-size: clamp(28px, 3.2vw, 44px);\n    line-height: 1.08;\n    letter-spacing: -0.045em;\n    font-weight: 850;\n  }\n\n  .lift-why-grid {\n    display: grid;\n    grid-template-columns: repeat(4, 1fr);\n    gap: 14px;\n  }\n\n  .lift-why-card {\n    background: #f6f6f6;\n    border: 1px solid rgba(0,0,0,0.06);\n    border-radius: 18px;\n    padding: 22px 18px;\n    min-height: 190px;\n  }\n\n  .lift-why-icon {\n    width: 38px;\n    height: 38px;\n    border-radius: 999px;\n    background: #111;\n    color: #fff;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    margin-bottom: 16px;\n    position: relative;\n    flex: 0 0 38px;\n  }\n\n  .lift-icon-arrow-up::before {\n    content: \"\";\n    width: 12px;\n    height: 12px;\n    border-top: 3px solid #fff;\n    border-right: 3px solid #fff;\n    transform: rotate(-45deg);\n    position: absolute;\n    top: 12px;\n  }\n\n  .lift-icon-arrow-up::after {\n    content: \"\";\n    width: 3px;\n    height: 15px;\n    background: #fff;\n    position: absolute;\n    top: 13px;\n    border-radius: 99px;\n  }\n\n  .lift-icon-hidden::before {\n    content: \"\";\n    width: 16px;\n    height: 16px;\n    border: 3px solid #fff;\n    border-radius: 999px;\n    position: absolute;\n  }\n\n  .lift-icon-hidden::after {\n    content: \"\";\n    width: 8px;\n    height: 18px;\n    background: #111;\n    position: absolute;\n    right: 8px;\n  }\n\n  .lift-icon-check::before {\n    content: \"\";\n    width: 15px;\n    height: 8px;\n    border-left: 3px solid #fff;\n    border-bottom: 3px solid #fff;\n    transform: rotate(-45deg);\n    position: absolute;\n    top: 13px;\n  }\n\n  .lift-icon-return::before {\n    content: \"\";\n    width: 17px;\n    height: 13px;\n    border-top: 3px solid #fff;\n    border-left: 3px solid #fff;\n    border-radius: 8px 0 0 0;\n    position: absolute;\n    top: 13px;\n    left: 12px;\n  }\n\n  .lift-icon-return::after {\n    content: \"\";\n    width: 9px;\n    height: 9px;\n    border-left: 3px solid #fff;\n    border-bottom: 3px solid #fff;\n    transform: rotate(45deg);\n    position: absolute;\n    top: 11px;\n    left: 10px;\n  }\n\n  .lift-why-card h3 {\n    margin: 0;\n    color: #111;\n    font-size: 16px;\n    line-height: 1.25;\n    font-weight: 850;\n    letter-spacing: -0.02em;\n  }\n\n  .lift-why-card p {\n    margin: 9px 0 0;\n    color: rgba(0,0,0,0.66);\n    font-size: 13.5px;\n    line-height: 1.45;\n    font-weight: 500;\n  }\n\n  @media screen and (max-width: 989px) {\n    .lift-why-grid {\n      grid-template-columns: repeat(2, 1fr);\n    }\n  }\n\n  @media screen and (max-width: 749px) {\n    .lift-why-section {\n      padding: 42px 16px;\n    }\n\n    .lift-why-header {\n      text-align: left;\n      margin-bottom: 22px;\n    }\n\n    .lift-why-header h2 {\n      font-size: 30px;\n      line-height: 1.05;\n    }\n\n    .lift-why-grid {\n      grid-template-columns: 1fr;\n      gap: 10px;\n    }\n\n    .lift-why-card {\n      min-height: auto;\n      padding: 18px 16px;\n      border-radius: 15px;\n      display: block;\n    }\n\n    .lift-why-icon {\n      width: 36px;\n      height: 36px;\n      flex: 0 0 36px;\n      margin-bottom: 12px;\n    }\n\n    .lift-why-card h3 {\n      font-size: 16px;\n      line-height: 1.2;\n      margin: 0;\n      letter-spacing: -0.02em;\n    }\n\n    .lift-why-card p {\n      font-size: 13.5px;\n      line-height: 1.45;\n      margin-top: 8px;\n    }\n\n    .lift-icon-arrow-up::before {\n      width: 11px;\n      height: 11px;\n      top: 11px;\n    }\n\n    .lift-icon-arrow-up::after {\n      height: 14px;\n      top: 13px;\n    }\n\n    .lift-icon-hidden::before {\n      width: 15px;\n      height: 15px;\n    }\n\n    .lift-icon-hidden::after {\n      height: 17px;\n      right: 8px;\n    }\n\n    .lift-icon-check::before {\n      width: 14px;\n      height: 8px;\n      top: 12px;\n    }\n\n    .lift-icon-return::before {\n      width: 16px;\n      height: 12px;\n      top: 13px;\n      left: 11px;\n    }\n\n    .lift-icon-return::after {\n      top: 11px;\n      left: 9px;\n    }\n  }\n</style>",
-        "color_scheme": "background-1",
-        "padding_top": 0,
-        "padding_bottom": 0
       }
     },
     "image_with_text_49PG6x": {
@@ -1994,7 +1864,19 @@
       "settings": {
         "display_id": false,
         "visibility": "always-display",
-        "custom_liquid": "{% liquid\n  assign show_lift_faq = false\n\n  if product\n    assign product_title_lower = product.title | downcase\n    assign product_vendor_lower = product.vendor | downcase\n\n    if product_title_lower contains 'lift' or product_vendor_lower contains 'lift'\n      assign show_lift_faq = true\n    endif\n\n    for product_collection in product.collections\n      if product_collection.handle contains 'lift'\n        assign show_lift_faq = true\n      endif\n    endfor\n  else\n    assign show_lift_faq = true\n  endif\n\n  assign support_email = 'info@roolo.nl'\n\n  if request.host contains 'roolo.de'\n    assign support_email = 'info@roolo.de'\n  elsif request.host contains 'getliftwear'\n    assign support_email = 'support@getliftwear.com'\n  endif\n\n  assign lift_faq_id = section.id | default: 'lift-faq'\n%}\n\n{% if show_lift_faq %}\n  <section\n    id=\"LiftFaq-{{ lift_faq_id }}\"\n    class=\"lift-faq\"\n    aria-labelledby=\"LiftFaqHeading-{{ lift_faq_id }}\"\n  >\n    <div class=\"lift-faq__inner\">\n\n      <header class=\"lift-faq__header\">\n        <span class=\"lift-faq__eyebrow\">ALLES OVER LIFT</span>\n\n        <h2 id=\"LiftFaqHeading-{{ lift_faq_id }}\">\n          Veelgestelde vragen\n        </h2>\n\n        <p class=\"lift-faq__intro\">\n          Alles wat je wilt weten over de pasvorm, ingebouwde verhoging,\n          verschillende hoogtes en het dagelijks dragen van LIFT schoenen.\n        </p>\n\n        <div class=\"lift-faq__benefits\" aria-label=\"Belangrijkste voordelen\">\n          <div class=\"lift-faq__benefit\">\n            <span class=\"lift-faq__benefit-icon\" aria-hidden=\"true\">\n              <svg viewBox=\"0 0 24 24\" fill=\"none\">\n                <path d=\"M12 19V5M7.5 9.5 12 5l4.5 4.5M7.5 14.5 12 19l4.5-4.5\"/>\n              </svg>\n            </span>\n            <span>Tot +10 cm</span>\n          </div>\n\n          <div class=\"lift-faq__benefit\">\n            <span class=\"lift-faq__benefit-icon\" aria-hidden=\"true\">\n              <svg viewBox=\"0 0 24 24\" fill=\"none\">\n                <path d=\"M3.5 15.5c4.2.2 7.1-.8 8.8-3.2l1.6-2.3c.4-.6 1.3-.6 1.7 0 1.2 1.8 2.7 3 4.9 3.7v3.1c0 1.2-1 2.2-2.2 2.2H5.7c-1.2 0-2.2-1-2.2-2.2v-1.3Z\"/>\n                <path d=\"M4 16.2h16\"/>\n              </svg>\n            </span>\n            <span>Ingebouwde lift</span>\n          </div>\n\n          <div class=\"lift-faq__benefit\">\n            <span class=\"lift-faq__benefit-icon\" aria-hidden=\"true\">\n              <svg viewBox=\"0 0 24 24\" fill=\"none\">\n                <path d=\"M2.5 12s3.5-5.5 9.5-5.5 9.5 5.5 9.5 5.5-3.5 5.5-9.5 5.5S2.5 12 2.5 12Z\"/>\n                <circle cx=\"12\" cy=\"12\" r=\"2.5\"/>\n              </svg>\n            </span>\n            <span>Natuurlijke look</span>\n          </div>\n\n          <div class=\"lift-faq__benefit\">\n            <span class=\"lift-faq__benefit-icon\" aria-hidden=\"true\">\n              <svg viewBox=\"0 0 24 24\" fill=\"none\">\n                <circle cx=\"9\" cy=\"8\" r=\"3\"/>\n                <circle cx=\"16.5\" cy=\"9\" r=\"2.5\"/>\n                <path d=\"M3.5 19c.4-3.6 2.3-5.5 5.5-5.5s5.1 1.9 5.5 5.5M14 14.5c.7-.7 1.6-1 2.7-1 2.4 0 3.8 1.7 4 4.5\"/>\n              </svg>\n            </span>\n            <span>Voor iedereen</span>\n          </div>\n        </div>\n      </header>\n\n      <div class=\"lift-faq__grid\">\n\n        <details class=\"lift-faq__item\" open>\n          <summary>\n            <span>Hoe werken LIFT schoenen?</span>\n            <span class=\"lift-faq__toggle\" aria-hidden=\"true\"></span>\n          </summary>\n\n          <div class=\"lift-faq__answer\">\n            <p>\n              In iedere LIFT schoen is een verhoogd binnenwerk verwerkt.\n              Hierdoor sta je, afhankelijk van de gekozen uitvoering,\n              ongeveer <strong>+4, +6, +8 of +10 cm langer</strong>.\n              De verhoging bevindt zich aan de binnenkant en is van buitenaf\n              niet zichtbaar.\n            </p>\n          </div>\n        </details>\n\n        <details class=\"lift-faq__item\">\n          <summary>\n            <span>Hoe lopen de schoenen?</span>\n            <span class=\"lift-faq__toggle\" aria-hidden=\"true\"></span>\n          </summary>\n\n          <div class=\"lift-faq__answer\">\n            <p>\n              LIFT schoenen lopen als normale sneakers. Het verhoogde\n              binnenwerk ondersteunt je voet en zorgt voor een stabiel gevoel.\n              Bij een hogere variant kan het de eerste paar keer even wennen\n              zijn, maar de meeste dragers raken hier snel aan gewend.\n            </p>\n          </div>\n        </details>\n\n        <details class=\"lift-faq__item\">\n          <summary>\n            <span>Voelt de ingebouwde verhoging hard aan?</span>\n            <span class=\"lift-faq__toggle\" aria-hidden=\"true\"></span>\n          </summary>\n\n          <div class=\"lift-faq__answer\">\n            <p>\n              Nee. De verhoging bestaat niet uit een los, hard blok.\n              Deze is geïntegreerd in het binnenwerk van de schoen en voorzien\n              van demping. Hierdoor voelt de overgang geleidelijker en zachter\n              aan dan bij veel losse verhogende zooltjes.\n            </p>\n          </div>\n        </details>\n\n        <details class=\"lift-faq__item\">\n          <summary>\n            <span>Is de verhoging aan de buitenkant zichtbaar?</span>\n            <span class=\"lift-faq__toggle\" aria-hidden=\"true\"></span>\n          </summary>\n\n          <div class=\"lift-faq__answer\">\n            <p>\n              De verhoging zit volledig aan de binnenkant van de schoen.\n              Van buiten ziet LIFT eruit als een moderne sneaker, zonder\n              zichtbare hak of opvallende platformconstructie.\n            </p>\n          </div>\n        </details>\n\n        <details class=\"lift-faq__item\">\n          <summary>\n            <span>Zit er een los verhogend zooltje in?</span>\n            <span class=\"lift-faq__toggle\" aria-hidden=\"true\"></span>\n          </summary>\n\n          <div class=\"lift-faq__answer\">\n            <p>\n              Nee. De lift is in de schoen gebouwd en verschuift daardoor niet\n              tijdens het lopen. Je hoeft dus geen losse verhogende zooltjes\n              toe te voegen.\n            </p>\n          </div>\n        </details>\n\n        <details class=\"lift-faq__item\">\n          <summary>\n            <span>Welke hoogte kan ik het beste kiezen?</span>\n            <span class=\"lift-faq__toggle\" aria-hidden=\"true\"></span>\n          </summary>\n\n          <div class=\"lift-faq__answer\">\n            <ul>\n              <li><strong>+4 cm:</strong> subtiel en gemakkelijk voor dagelijks gebruik.</li>\n              <li><strong>+6 cm:</strong> een duidelijke verhoging met een natuurlijke uitstraling.</li>\n              <li><strong>+8 cm:</strong> voor wie een groter verschil wil ervaren.</li>\n              <li><strong>+10 cm:</strong> de maximale hoogteboost.</li>\n            </ul>\n\n            <p>\n              Draag je nog nooit verhoogde schoenen? Dan is +4 of +6 cm vaak\n              een toegankelijke eerste keuze.\n            </p>\n          </div>\n        </details>\n\n        <details class=\"lift-faq__item\">\n          <summary>\n            <span>Welke schoenmaat moet ik bestellen?</span>\n            <span class=\"lift-faq__toggle\" aria-hidden=\"true\"></span>\n          </summary>\n\n          <div class=\"lift-faq__answer\">\n            <p>\n              Bekijk altijd de maattabel op de productpagina en vergelijk deze\n              met je voetlengte in centimeters. Zit je tussen twee maten in of\n              heb je brede voeten? Kies dan meestal de grotere maat.\n            </p>\n\n            <p>\n              Kom je er niet uit? Mail je normale schoenmaat en voetlengte naar\n              <a href=\"mailto:{{ support_email }}\">{{ support_email }}</a>.\n              We helpen je graag met kiezen.\n            </p>\n          </div>\n        </details>\n\n        <details class=\"lift-faq__item\">\n          <summary>\n            <span>Zijn LIFT schoenen voor mannen of vrouwen?</span>\n            <span class=\"lift-faq__toggle\" aria-hidden=\"true\"></span>\n          </summary>\n\n          <div class=\"lift-faq__answer\">\n            <p>\n              Alle LIFT schoenen kunnen door zowel mannen als vrouwen worden\n              gedragen. De modellen zijn niet uitsluitend voor één geslacht\n              ontworpen. Kies vooral het model, de kleur en de maat die het\n              beste bij jou passen.\n            </p>\n          </div>\n        </details>\n\n        <details class=\"lift-faq__item\">\n          <summary>\n            <span>Kan ik LIFT de hele dag dragen?</span>\n            <span class=\"lift-faq__toggle\" aria-hidden=\"true\"></span>\n          </summary>\n\n          <div class=\"lift-faq__answer\">\n            <p>\n              De schoenen zijn ontworpen voor dagelijks gebruik, zoals werk,\n              een dagje uit, winkelen of uitgaan. Bouw het dragen bij een hoge\n              variant eventueel rustig op, zodat je voeten en houding eraan\n              kunnen wennen.\n            </p>\n          </div>\n        </details>\n\n        <details class=\"lift-faq__item\">\n          <summary>\n            <span>Kan ik ermee sporten of hardlopen?</span>\n            <span class=\"lift-faq__toggle\" aria-hidden=\"true\"></span>\n          </summary>\n\n          <div class=\"lift-faq__answer\">\n            <p>\n              Sommige modellen hebben een sportieve uitstraling, maar LIFT\n              schoenen zijn bedoeld als lifestyle- en dagelijkse sneakers.\n              Voor hardlopen of intensieve training adviseren we speciale\n              sportschoenen.\n            </p>\n          </div>\n        </details>\n\n        <details class=\"lift-faq__item\">\n          <summary>\n            <span>Wat is het verschil tussen de LIFT modellen?</span>\n            <span class=\"lift-faq__toggle\" aria-hidden=\"true\"></span>\n          </summary>\n\n          <div class=\"lift-faq__answer\">\n            <p>\n              Elk model heeft een eigen design, materiaal en pasvorm. Zo zijn\n              er minimalistische, casual en sportievere modellen. De\n              beschikbare kleuren, maten en hoogtes vind je bij ieder product\n              op de productpagina.\n            </p>\n          </div>\n        </details>\n\n        <details class=\"lift-faq__item\">\n          <summary>\n            <span>Kan ik de schoenen thuis passen?</span>\n            <span class=\"lift-faq__toggle\" aria-hidden=\"true\"></span>\n          </summary>\n\n          <div class=\"lift-faq__answer\">\n            <p>\n              Ja. Pas de schoenen binnenshuis op een schone ondergrond en laat\n              labels en verpakking intact totdat je zeker weet dat de maat\n              goed is. Voor de actuele retourtermijn en voorwaarden kun je\n              ons retourbeleid bekijken.\n            </p>\n          </div>\n        </details>\n\n      </div>\n\n      <div class=\"lift-faq__contact\">\n        <div>\n          <span class=\"lift-faq__contact-label\">NOG EEN VRAAG?</span>\n          <h3>Wij helpen je met kiezen</h3>\n          <p>\n            Stuur ons je vraag, normale schoenmaat en eventueel je voetlengte\n            in centimeters.\n          </p>\n        </div>\n\n        <a class=\"lift-faq__contact-button\" href=\"mailto:{{ support_email }}\">\n          Mail {{ support_email }}\n          <svg viewBox=\"0 0 20 20\" fill=\"none\" aria-hidden=\"true\">\n            <path d=\"M4 10h12M11.5 5.5 16 10l-4.5 4.5\"/>\n          </svg>\n        </a>\n      </div>\n\n    </div>\n  </section>\n\n  <style>\n    #LiftFaq-{{ lift_faq_id }} {\n      --lift-faq-bg: #f5f2ec;\n      --lift-faq-card: #ffffff;\n      --lift-faq-text: #151515;\n      --lift-faq-muted: #686868;\n      --lift-faq-border: rgba(21, 21, 21, 0.13);\n      --lift-faq-accent: #426c57;\n      --lift-faq-accent-light: #e9f0ec;\n\n      background: var(--lift-faq-bg);\n      color: var(--lift-faq-text);\n      margin: 50px 0;\n      padding: 72px 20px;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} *,\n    #LiftFaq-{{ lift_faq_id }} *::before,\n    #LiftFaq-{{ lift_faq_id }} *::after {\n      box-sizing: border-box;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__inner {\n      width: 100%;\n      max-width: 1180px;\n      margin: 0 auto;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__header {\n      max-width: 800px;\n      margin: 0 auto 42px;\n      text-align: center;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__eyebrow {\n      display: inline-block;\n      margin-bottom: 12px;\n      color: var(--lift-faq-accent);\n      font-size: 12px;\n      font-weight: 750;\n      letter-spacing: 0.18em;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} h2 {\n      margin: 0;\n      color: var(--lift-faq-text);\n      font-family: inherit;\n      font-size: clamp(32px, 4vw, 52px);\n      font-weight: 750;\n      line-height: 1.05;\n      letter-spacing: -0.035em;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__intro {\n      max-width: 680px;\n      margin: 18px auto 0;\n      color: var(--lift-faq-muted);\n      font-size: 16px;\n      line-height: 1.65;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__benefits {\n      display: flex;\n      flex-wrap: wrap;\n      justify-content: center;\n      gap: 10px;\n      margin-top: 28px;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__benefit {\n      display: inline-flex;\n      align-items: center;\n      gap: 8px;\n      min-height: 42px;\n      padding: 8px 14px;\n      border: 1px solid rgba(66, 108, 87, 0.18);\n      border-radius: 999px;\n      background: var(--lift-faq-accent-light);\n      color: #294b3a;\n      font-size: 13px;\n      font-weight: 650;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__benefit-icon {\n      display: inline-flex;\n      width: 20px;\n      height: 20px;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__benefit-icon svg {\n      width: 100%;\n      height: 100%;\n      stroke: currentColor;\n      stroke-width: 1.65;\n      stroke-linecap: round;\n      stroke-linejoin: round;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__grid {\n      display: grid;\n      grid-template-columns: repeat(2, minmax(0, 1fr));\n      align-items: start;\n      gap: 12px;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__item {\n      overflow: hidden;\n      border: 1px solid var(--lift-faq-border);\n      border-radius: 12px;\n      background: var(--lift-faq-card);\n      transition:\n        border-color 180ms ease,\n        box-shadow 180ms ease;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__item:hover,\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__item[open] {\n      border-color: rgba(66, 108, 87, 0.42);\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__item[open] {\n      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.055);\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__item summary {\n      display: flex;\n      align-items: center;\n      justify-content: space-between;\n      gap: 20px;\n      min-height: 72px;\n      padding: 19px 22px;\n      cursor: pointer;\n      list-style: none;\n      color: var(--lift-faq-text);\n      font-size: 16px;\n      font-weight: 680;\n      line-height: 1.4;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__item summary::-webkit-details-marker {\n      display: none;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__item summary:focus-visible {\n      outline: 2px solid var(--lift-faq-accent);\n      outline-offset: -4px;\n      border-radius: 10px;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__toggle {\n      position: relative;\n      flex: 0 0 30px;\n      width: 30px;\n      height: 30px;\n      border-radius: 50%;\n      background: var(--lift-faq-bg);\n      transition:\n        background 180ms ease,\n        transform 180ms ease;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__toggle::before,\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__toggle::after {\n      content: \"\";\n      position: absolute;\n      top: 50%;\n      left: 50%;\n      width: 12px;\n      height: 1.5px;\n      border-radius: 2px;\n      background: var(--lift-faq-text);\n      transform: translate(-50%, -50%);\n      transition: transform 180ms ease;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__toggle::after {\n      transform: translate(-50%, -50%) rotate(90deg);\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__item[open] .lift-faq__toggle {\n      background: var(--lift-faq-accent);\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__item[open] .lift-faq__toggle::before,\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__item[open] .lift-faq__toggle::after {\n      background: #ffffff;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__item[open] .lift-faq__toggle::after {\n      transform: translate(-50%, -50%) rotate(0deg);\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__answer {\n      padding: 0 22px 22px;\n      color: var(--lift-faq-muted);\n      font-size: 14.5px;\n      line-height: 1.7;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__answer p {\n      margin: 0;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__answer p + p {\n      margin-top: 12px;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__answer ul {\n      margin: 0 0 12px;\n      padding-left: 19px;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__answer li + li {\n      margin-top: 5px;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__answer strong {\n      color: var(--lift-faq-text);\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__answer a {\n      color: var(--lift-faq-text);\n      font-weight: 650;\n      text-decoration: underline;\n      text-underline-offset: 3px;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__contact {\n      display: flex;\n      align-items: center;\n      justify-content: space-between;\n      gap: 30px;\n      margin-top: 32px;\n      padding: 30px 32px;\n      border-radius: 14px;\n      background: #171717;\n      color: #ffffff;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__contact-label {\n      display: block;\n      margin-bottom: 5px;\n      color: #aebfb6;\n      font-size: 11px;\n      font-weight: 750;\n      letter-spacing: 0.16em;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__contact h3 {\n      margin: 0;\n      color: #ffffff;\n      font-family: inherit;\n      font-size: 24px;\n      font-weight: 700;\n      line-height: 1.2;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__contact p {\n      margin: 8px 0 0;\n      color: rgba(255, 255, 255, 0.72);\n      font-size: 14px;\n      line-height: 1.55;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__contact-button {\n      display: inline-flex;\n      flex: 0 0 auto;\n      align-items: center;\n      justify-content: center;\n      gap: 10px;\n      min-height: 50px;\n      padding: 13px 20px;\n      border: 1px solid rgba(255, 255, 255, 0.22);\n      border-radius: 8px;\n      background: #ffffff;\n      color: #151515;\n      font-size: 14px;\n      font-weight: 700;\n      line-height: 1.2;\n      text-decoration: none;\n      transition:\n        transform 180ms ease,\n        background 180ms ease;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__contact-button:hover {\n      background: #e9f0ec;\n      transform: translateY(-1px);\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__contact-button svg {\n      width: 18px;\n      height: 18px;\n      stroke: currentColor;\n      stroke-width: 1.7;\n      stroke-linecap: round;\n      stroke-linejoin: round;\n    }\n\n    @media screen and (max-width: 749px) {\n      #LiftFaq-{{ lift_faq_id }} {\n        margin: 34px 0;\n        padding: 48px 14px;\n      }\n\n      #LiftFaq-{{ lift_faq_id }} .lift-faq__header {\n        margin-bottom: 30px;\n      }\n\n      #LiftFaq-{{ lift_faq_id }} .lift-faq__intro {\n        font-size: 14.5px;\n      }\n\n      #LiftFaq-{{ lift_faq_id }} .lift-faq__benefits {\n        display: grid;\n        grid-template-columns: repeat(2, minmax(0, 1fr));\n        gap: 8px;\n      }\n\n      #LiftFaq-{{ lift_faq_id }} .lift-faq__benefit {\n        justify-content: flex-start;\n        width: 100%;\n        padding: 8px 11px;\n        font-size: 12px;\n      }\n\n      #LiftFaq-{{ lift_faq_id }} .lift-faq__grid {\n        grid-template-columns: 1fr;\n        gap: 9px;\n      }\n\n      #LiftFaq-{{ lift_faq_id }} .lift-faq__item summary {\n        min-height: 64px;\n        padding: 17px 16px;\n        font-size: 14.5px;\n      }\n\n      #LiftFaq-{{ lift_faq_id }} .lift-faq__answer {\n        padding: 0 16px 18px;\n        font-size: 13.5px;\n      }\n\n      #LiftFaq-{{ lift_faq_id }} .lift-faq__contact {\n        flex-direction: column;\n        align-items: stretch;\n        margin-top: 24px;\n        padding: 24px 20px;\n        text-align: center;\n      }\n\n      #LiftFaq-{{ lift_faq_id }} .lift-faq__contact h3 {\n        font-size: 21px;\n      }\n\n      #LiftFaq-{{ lift_faq_id }} .lift-faq__contact-button {\n        width: 100%;\n      }\n    }\n\n    @media (prefers-reduced-motion: reduce) {\n      #LiftFaq-{{ lift_faq_id }} *,\n      #LiftFaq-{{ lift_faq_id }} *::before,\n      #LiftFaq-{{ lift_faq_id }} *::after {\n        scroll-behavior: auto !important;\n        transition: none !important;\n      }\n    }\n  </style>\n{% endif %}",
+        "custom_liquid": "{% liquid\n  assign show_lift_faq = false\n\n  if product\n    assign product_title_lower = product.title | downcase\n    assign product_vendor_lower = product.vendor | downcase\n\n    if product_title_lower contains 'lift' or product_vendor_lower contains 'lift'\n      assign show_lift_faq = true\n    endif\n\n    for product_collection in product.collections\n      if product_collection.handle contains 'lift'\n        assign show_lift_faq = true\n      endif\n    endfor\n  else\n    assign show_lift_faq = true\n  endif\n\n  assign support_email = 'info@roolo.nl'\n\n  if request.host contains 'roolo.de'\n    assign support_email = 'info@roolo.de'\n  elsif request.host contains 'getliftwear'\n    assign support_email = 'support@getliftwear.com'\n  endif\n\n  assign lift_faq_id = section.id | default: 'lift-faq'\n%}\n\n{% if show_lift_faq %}\n  <section\n    id=\"LiftFaq-{{ lift_faq_id }}\"\n    class=\"lift-faq\"\n    aria-labelledby=\"LiftFaqHeading-{{ lift_faq_id }}\"\n  >\n    <div class=\"lift-faq__inner\">\n\n      <header class=\"lift-faq__header\">\n        <span class=\"lift-faq__eyebrow\">ALLES OVER LIFT</span>\n\n        <h2 id=\"LiftFaqHeading-{{ lift_faq_id }}\">\n          Veelgestelde vragen\n        </h2>\n\n        <p class=\"lift-faq__intro\">\n          Alles wat je wilt weten over de pasvorm, ingebouwde verhoging,\n          verschillende hoogtes en het dagelijks dragen van LIFT schoenen.\n        </p>\n\n        <div class=\"lift-faq__benefits\" aria-label=\"Belangrijkste voordelen\">\n          <div class=\"lift-faq__benefit\">\n            <span class=\"lift-faq__benefit-icon\" aria-hidden=\"true\">\n              <svg viewBox=\"0 0 24 24\" fill=\"none\">\n                <path d=\"M12 19V5M7.5 9.5 12 5l4.5 4.5M7.5 14.5 12 19l4.5-4.5\"/>\n              </svg>\n            </span>\n            <span>Tot +10 cm</span>\n          </div>\n\n          <div class=\"lift-faq__benefit\">\n            <span class=\"lift-faq__benefit-icon\" aria-hidden=\"true\">\n              <svg viewBox=\"0 0 24 24\" fill=\"none\">\n                <path d=\"M3.5 15.5c4.2.2 7.1-.8 8.8-3.2l1.6-2.3c.4-.6 1.3-.6 1.7 0 1.2 1.8 2.7 3 4.9 3.7v3.1c0 1.2-1 2.2-2.2 2.2H5.7c-1.2 0-2.2-1-2.2-2.2v-1.3Z\"/>\n                <path d=\"M4 16.2h16\"/>\n              </svg>\n            </span>\n            <span>Ingebouwde lift</span>\n          </div>\n\n          <div class=\"lift-faq__benefit\">\n            <span class=\"lift-faq__benefit-icon\" aria-hidden=\"true\">\n              <svg viewBox=\"0 0 24 24\" fill=\"none\">\n                <path d=\"M2.5 12s3.5-5.5 9.5-5.5 9.5 5.5 9.5 5.5-3.5 5.5-9.5 5.5S2.5 12 2.5 12Z\"/>\n                <circle cx=\"12\" cy=\"12\" r=\"2.5\"/>\n              </svg>\n            </span>\n            <span>Natuurlijke look</span>\n          </div>\n\n          <div class=\"lift-faq__benefit\">\n            <span class=\"lift-faq__benefit-icon\" aria-hidden=\"true\">\n              <svg viewBox=\"0 0 24 24\" fill=\"none\">\n                <circle cx=\"9\" cy=\"8\" r=\"3\"/>\n                <circle cx=\"16.5\" cy=\"9\" r=\"2.5\"/>\n                <path d=\"M3.5 19c.4-3.6 2.3-5.5 5.5-5.5s5.1 1.9 5.5 5.5M14 14.5c.7-.7 1.6-1 2.7-1 2.4 0 3.8 1.7 4 4.5\"/>\n              </svg>\n            </span>\n            <span>Voor iedereen</span>\n          </div>\n        </div>\n      </header>\n\n      <div class=\"lift-faq__grid\">\n\n        <details class=\"lift-faq__item\" open>\n          <summary>\n            <span>Hoe werken LIFT schoenen?</span>\n            <span class=\"lift-faq__toggle\" aria-hidden=\"true\"></span>\n          </summary>\n\n          <div class=\"lift-faq__answer\">\n            <p>\n              In iedere LIFT schoen is een verhoogd binnenwerk verwerkt.\n              Hierdoor sta je, afhankelijk van de gekozen uitvoering,\n              ongeveer <strong>+4, +6, +8 of +10 cm langer</strong>.\n              De verhoging bevindt zich aan de binnenkant en is van buitenaf\n              niet zichtbaar.\n            </p>\n          </div>\n        </details>\n\n        <details class=\"lift-faq__item\">\n          <summary>\n            <span>Hoe lopen de schoenen?</span>\n            <span class=\"lift-faq__toggle\" aria-hidden=\"true\"></span>\n          </summary>\n\n          <div class=\"lift-faq__answer\">\n            <p>\n              LIFT schoenen lopen als normale sneakers. Het verhoogde\n              binnenwerk ondersteunt je voet en zorgt voor een stabiel gevoel.\n              Bij een hogere variant kan het de eerste paar keer even wennen\n              zijn, maar de meeste dragers raken hier snel aan gewend.\n            </p>\n          </div>\n        </details>\n\n        <details class=\"lift-faq__item\">\n          <summary>\n            <span>Voelt de ingebouwde verhoging hard aan?</span>\n            <span class=\"lift-faq__toggle\" aria-hidden=\"true\"></span>\n          </summary>\n\n          <div class=\"lift-faq__answer\">\n            <p>\n              Nee. De verhoging bestaat niet uit een los, hard blok.\n              Deze is geïntegreerd in het binnenwerk van de schoen en voorzien\n              van demping. Hierdoor voelt de overgang geleidelijker en zachter\n              aan dan bij veel losse verhogende zooltjes.\n            </p>\n          </div>\n        </details>\n\n        <details class=\"lift-faq__item\">\n          <summary>\n            <span>Is de verhoging aan de buitenkant zichtbaar?</span>\n            <span class=\"lift-faq__toggle\" aria-hidden=\"true\"></span>\n          </summary>\n\n          <div class=\"lift-faq__answer\">\n            <p>\n              De verhoging zit volledig aan de binnenkant van de schoen.\n              Van buiten ziet LIFT eruit als een moderne sneaker, zonder\n              zichtbare hak of opvallende platformconstructie.\n            </p>\n          </div>\n        </details>\n\n        <details class=\"lift-faq__item\">\n          <summary>\n            <span>Zit er een los verhogend zooltje in?</span>\n            <span class=\"lift-faq__toggle\" aria-hidden=\"true\"></span>\n          </summary>\n\n          <div class=\"lift-faq__answer\">\n            <p>\n              Nee. De lift is in de schoen gebouwd en verschuift daardoor niet\n              tijdens het lopen. Je hoeft dus geen losse verhogende zooltjes\n              toe te voegen.\n            </p>\n          </div>\n        </details>\n\n        <details class=\"lift-faq__item\">\n          <summary>\n            <span>Welke hoogte kan ik het beste kiezen?</span>\n            <span class=\"lift-faq__toggle\" aria-hidden=\"true\"></span>\n          </summary>\n\n          <div class=\"lift-faq__answer\">\n            <ul>\n              <li><strong>+4 cm:</strong> subtiel en gemakkelijk voor dagelijks gebruik.</li>\n              <li><strong>+6 cm:</strong> een duidelijke verhoging met een natuurlijke uitstraling.</li>\n              <li><strong>+8 cm:</strong> voor wie een groter verschil wil ervaren.</li>\n              <li><strong>+10 cm:</strong> de maximale hoogteboost.</li>\n            </ul>\n\n            <p>\n              Draag je nog nooit verhoogde schoenen? Dan is +4 of +6 cm vaak\n              een toegankelijke eerste keuze.\n            </p>\n          </div>\n        </details>\n\n        <details class=\"lift-faq__item\">\n          <summary>\n            <span>Welke schoenmaat moet ik bestellen?</span>\n            <span class=\"lift-faq__toggle\" aria-hidden=\"true\"></span>\n          </summary>\n\n          <div class=\"lift-faq__answer\">\n            <p>\n              Bekijk altijd de maattabel op de productpagina en vergelijk deze\n              met je voetlengte in centimeters. Zit je tussen twee maten in of\n              heb je brede voeten? Kies dan meestal de grotere maat.\n            </p>\n\n            <p>\n              Kom je er niet uit? Mail je normale schoenmaat en voetlengte naar\n              <a href=\"mailto:{{ support_email }}\">{{ support_email }}</a>.\n              We helpen je graag met kiezen.\n            </p>\n          </div>\n        </details>\n\n        <details class=\"lift-faq__item\">\n          <summary>\n            <span>Zijn LIFT schoenen voor mannen of vrouwen?</span>\n            <span class=\"lift-faq__toggle\" aria-hidden=\"true\"></span>\n          </summary>\n\n          <div class=\"lift-faq__answer\">\n            <p>\n              Alle LIFT schoenen kunnen door zowel mannen als vrouwen worden\n              gedragen. De modellen zijn niet uitsluitend voor één geslacht\n              ontworpen. Kies vooral het model, de kleur en de maat die het\n              beste bij jou passen.\n            </p>\n          </div>\n        </details>\n\n        <details class=\"lift-faq__item\">\n          <summary>\n            <span>Kan ik LIFT de hele dag dragen?</span>\n            <span class=\"lift-faq__toggle\" aria-hidden=\"true\"></span>\n          </summary>\n\n          <div class=\"lift-faq__answer\">\n            <p>\n              De schoenen zijn ontworpen voor dagelijks gebruik, zoals werk,\n              een dagje uit, winkelen of uitgaan. Bouw het dragen bij een hoge\n              variant eventueel rustig op, zodat je voeten en houding eraan\n              kunnen wennen.\n            </p>\n          </div>\n        </details>\n\n        <details class=\"lift-faq__item\">\n          <summary>\n            <span>Kan ik ermee sporten of hardlopen?</span>\n            <span class=\"lift-faq__toggle\" aria-hidden=\"true\"></span>\n          </summary>\n\n          <div class=\"lift-faq__answer\">\n            <p>\n              Sommige modellen hebben een sportieve uitstraling, maar LIFT\n              schoenen zijn bedoeld als lifestyle- en dagelijkse sneakers.\n              Voor hardlopen of intensieve training adviseren we speciale\n              sportschoenen.\n            </p>\n          </div>\n        </details>\n\n        <details class=\"lift-faq__item\">\n          <summary>\n            <span>Wat is het verschil tussen de LIFT modellen?</span>\n            <span class=\"lift-faq__toggle\" aria-hidden=\"true\"></span>\n          </summary>\n\n          <div class=\"lift-faq__answer\">\n            <p>\n              Elk model heeft een eigen design, materiaal en pasvorm. Zo zijn\n              er minimalistische, casual en sportievere modellen. De\n              beschikbare kleuren, maten en hoogtes vind je bij ieder product\n              op de productpagina.\n            </p>\n          </div>\n        </details>\n\n        <details class=\"lift-faq__item\">\n          <summary>\n            <span>Kan ik de schoenen thuis passen?</span>\n            <span class=\"lift-faq__toggle\" aria-hidden=\"true\"></span>\n          </summary>\n\n          <div class=\"lift-faq__answer\">\n            <p>\n              Ja. Pas de schoenen binnenshuis op een schone ondergrond en laat\n              labels en verpakking intact totdat je zeker weet dat de maat\n              goed is. Voor de actuele retourtermijn en voorwaarden kun je\n              ons retourbeleid bekijken.\n            </p>\n          </div>\n        </details>\n\n      </div>\n\n      <div class=\"lift-faq__contact\">\n        <div>\n          <span class=\"lift-faq__contact-label\">NOG EEN VRAAG?</span>\n          <h3>Wij helpen je met kiezen</h3>\n          <p>\n            Stuur ons je vraag, normale schoenmaat en eventueel je voetlengte\n            in centimeters.\n          </p>\n        </div>\n\n        <a class=\"lift-faq__contact-button\" href=\"mailto:{{ support_email }}\">\n          Mail {{ support_email }}\n          <svg viewBox=\"0 0 20 20\" fill=\"none\" aria-hidden=\"true\">\n            <path d=\"M4 10h12M11.5 5.5 16 10l-4.5 4.5\"/>\n          </svg>\n        </a>\n      </div>\n\n    </div>\n  </section>\n\n  <style>\n    #LiftFaq-{{ lift_faq_id }} {\n      --lift-faq-bg: #f5f2ec;\n      --lift-faq-card: #ffffff;\n      --lift-faq-text: #151515;\n      --lift-faq-muted: #686868;\n      --lift-faq-border: rgba(21, 21, 21, 0.13);\n      --lift-faq-accent: #426c57;\n      --lift-faq-accent-light: #e9f0ec;\n\n      background: var(--lift-faq-bg);\n      color: var(--lift-faq-text);\n\n      margin: 50px 0 0;\n      padding: 72px 20px 20px;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} *,\n    #LiftFaq-{{ lift_faq_id }} *::before,\n    #LiftFaq-{{ lift_faq_id }} *::after {\n      box-sizing: border-box;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__inner {\n      width: 100%;\n      max-width: 1180px;\n      margin: 0 auto;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__header {\n      max-width: 800px;\n      margin: 0 auto 42px;\n      text-align: center;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__eyebrow {\n      display: inline-block;\n      margin-bottom: 12px;\n      color: var(--lift-faq-accent);\n      font-size: 12px;\n      font-weight: 750;\n      letter-spacing: 0.18em;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} h2 {\n      margin: 0;\n      color: var(--lift-faq-text);\n      font-family: inherit;\n      font-size: clamp(32px, 4vw, 52px);\n      font-weight: 750;\n      line-height: 1.05;\n      letter-spacing: -0.035em;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__intro {\n      max-width: 680px;\n      margin: 18px auto 0;\n      color: var(--lift-faq-muted);\n      font-size: 16px;\n      line-height: 1.65;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__benefits {\n      display: flex;\n      flex-wrap: wrap;\n      justify-content: center;\n      gap: 10px;\n      margin-top: 28px;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__benefit {\n      display: inline-flex;\n      align-items: center;\n      gap: 8px;\n      min-height: 42px;\n      padding: 8px 14px;\n      border: 1px solid rgba(66, 108, 87, 0.18);\n      border-radius: 999px;\n      background: var(--lift-faq-accent-light);\n      color: #294b3a;\n      font-size: 13px;\n      font-weight: 650;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__benefit-icon {\n      display: inline-flex;\n      width: 20px;\n      height: 20px;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__benefit-icon svg {\n      width: 100%;\n      height: 100%;\n      stroke: currentColor;\n      stroke-width: 1.65;\n      stroke-linecap: round;\n      stroke-linejoin: round;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__grid {\n      display: grid;\n      grid-template-columns: repeat(2, minmax(0, 1fr));\n      align-items: start;\n      gap: 12px;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__item {\n      overflow: hidden;\n      border: 1px solid var(--lift-faq-border);\n      border-radius: 12px;\n      background: var(--lift-faq-card);\n      transition:\n        border-color 180ms ease,\n        box-shadow 180ms ease;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__item:hover,\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__item[open] {\n      border-color: rgba(66, 108, 87, 0.42);\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__item[open] {\n      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.055);\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__item summary {\n      display: flex;\n      align-items: center;\n      justify-content: space-between;\n      gap: 20px;\n      min-height: 72px;\n      padding: 19px 22px;\n      cursor: pointer;\n      list-style: none;\n      color: var(--lift-faq-text);\n      font-size: 16px;\n      font-weight: 680;\n      line-height: 1.4;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__item summary::-webkit-details-marker {\n      display: none;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__item summary:focus-visible {\n      outline: 2px solid var(--lift-faq-accent);\n      outline-offset: -4px;\n      border-radius: 10px;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__toggle {\n      position: relative;\n      flex: 0 0 30px;\n      width: 30px;\n      height: 30px;\n      border-radius: 50%;\n      background: var(--lift-faq-bg);\n      transition:\n        background 180ms ease,\n        transform 180ms ease;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__toggle::before,\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__toggle::after {\n      content: \"\";\n      position: absolute;\n      top: 50%;\n      left: 50%;\n      width: 12px;\n      height: 1.5px;\n      border-radius: 2px;\n      background: var(--lift-faq-text);\n      transform: translate(-50%, -50%);\n      transition: transform 180ms ease;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__toggle::after {\n      transform: translate(-50%, -50%) rotate(90deg);\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__item[open] .lift-faq__toggle {\n      background: var(--lift-faq-accent);\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__item[open] .lift-faq__toggle::before,\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__item[open] .lift-faq__toggle::after {\n      background: #ffffff;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__item[open] .lift-faq__toggle::after {\n      transform: translate(-50%, -50%) rotate(0deg);\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__answer {\n      padding: 0 22px 22px;\n      color: var(--lift-faq-muted);\n      font-size: 14.5px;\n      line-height: 1.7;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__answer p {\n      margin: 0;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__answer p + p {\n      margin-top: 12px;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__answer ul {\n      margin: 0 0 12px;\n      padding-left: 19px;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__answer li + li {\n      margin-top: 5px;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__answer strong {\n      color: var(--lift-faq-text);\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__answer a {\n      color: var(--lift-faq-text);\n      font-weight: 650;\n      text-decoration: underline;\n      text-underline-offset: 3px;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__contact {\n      display: flex;\n      align-items: center;\n      justify-content: space-between;\n      gap: 30px;\n      margin-top: 32px;\n      padding: 30px 32px;\n      border-radius: 14px;\n      background: #171717;\n      color: #ffffff;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__contact-label {\n      display: block;\n      margin-bottom: 5px;\n      color: #aebfb6;\n      font-size: 11px;\n      font-weight: 750;\n      letter-spacing: 0.16em;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__contact h3 {\n      margin: 0;\n      color: #ffffff;\n      font-family: inherit;\n      font-size: 24px;\n      font-weight: 700;\n      line-height: 1.2;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__contact p {\n      margin: 8px 0 0;\n      color: rgba(255, 255, 255, 0.72);\n      font-size: 14px;\n      line-height: 1.55;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__contact-button {\n      display: inline-flex;\n      flex: 0 0 auto;\n      align-items: center;\n      justify-content: center;\n      gap: 10px;\n      min-height: 50px;\n      padding: 13px 20px;\n      border: 1px solid rgba(255, 255, 255, 0.22);\n      border-radius: 8px;\n      background: #ffffff;\n      color: #151515;\n      font-size: 14px;\n      font-weight: 700;\n      line-height: 1.2;\n      text-decoration: none;\n      transition:\n        transform 180ms ease,\n        background 180ms ease;\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__contact-button:hover {\n      background: #e9f0ec;\n      transform: translateY(-1px);\n    }\n\n    #LiftFaq-{{ lift_faq_id }} .lift-faq__contact-button svg {\n      width: 18px;\n      height: 18px;\n      stroke: currentColor;\n      stroke-width: 1.7;\n      stroke-linecap: round;\n      stroke-linejoin: round;\n    }\n\n    @media screen and (max-width: 749px) {\n      #LiftFaq-{{ lift_faq_id }} {\n        margin: 34px 0 0;\n        padding: 48px 14px 16px;\n      }\n\n      #LiftFaq-{{ lift_faq_id }} .lift-faq__header {\n        margin-bottom: 30px;\n      }\n\n      #LiftFaq-{{ lift_faq_id }} .lift-faq__intro {\n        font-size: 14.5px;\n      }\n\n      #LiftFaq-{{ lift_faq_id }} .lift-faq__benefits {\n        display: grid;\n        grid-template-columns: repeat(2, minmax(0, 1fr));\n        gap: 8px;\n      }\n\n      #LiftFaq-{{ lift_faq_id }} .lift-faq__benefit {\n        justify-content: flex-start;\n        width: 100%;\n        padding: 8px 11px;\n        font-size: 12px;\n      }\n\n      #LiftFaq-{{ lift_faq_id }} .lift-faq__grid {\n        grid-template-columns: 1fr;\n        gap: 9px;\n      }\n\n      #LiftFaq-{{ lift_faq_id }} .lift-faq__item summary {\n        min-height: 64px;\n        padding: 17px 16px;\n        font-size: 14.5px;\n      }\n\n      #LiftFaq-{{ lift_faq_id }} .lift-faq__answer {\n        padding: 0 16px 18px;\n        font-size: 13.5px;\n      }\n\n      #LiftFaq-{{ lift_faq_id }} .lift-faq__contact {\n        flex-direction: column;\n        align-items: stretch;\n        margin-top: 24px;\n        padding: 24px 20px;\n        text-align: center;\n      }\n\n      #LiftFaq-{{ lift_faq_id }} .lift-faq__contact h3 {\n        font-size: 21px;\n      }\n\n      #LiftFaq-{{ lift_faq_id }} .lift-faq__contact-button {\n        width: 100%;\n      }\n    }\n\n    @media (prefers-reduced-motion: reduce) {\n      #LiftFaq-{{ lift_faq_id }} *,\n      #LiftFaq-{{ lift_faq_id }} *::before,\n      #LiftFaq-{{ lift_faq_id }} *::after {\n        scroll-behavior: auto !important;\n        transition: none !important;\n      }\n    }\n  </style>\n{% endif %}",
+        "color_scheme": "background-1",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "custom_liquid_HU6NjJ": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "display_id": false,
+        "visibility": "always-display",
+        "custom_liquid": "<style>\n  .lift-reviews {\n    --lift-bg: #f7f2ea;\n    --lift-card: #fffdf9;\n    --lift-black: #0c0f13;\n    --lift-muted: #68625b;\n    --lift-border: #ded3c5;\n    --lift-accent: #c8732b;\n    --lift-star: #ffb800;\n\n    background: var(--lift-bg);\n    padding: 80px 20px;\n    color: var(--lift-black);\n  }\n\n  .lift-reviews * {\n    box-sizing: border-box;\n  }\n\n  .lift-reviews__inner {\n    max-width: 1120px;\n    margin: 0 auto;\n  }\n\n  /* HEADER */\n\n  .lift-reviews__header {\n    display: flex;\n    align-items: flex-end;\n    justify-content: space-between;\n    gap: 40px;\n    margin-bottom: 38px;\n  }\n\n  .lift-reviews__eyebrow {\n    display: block;\n    margin-bottom: 12px;\n    color: var(--lift-accent) !important;\n    font-size: 12px;\n    font-weight: 800;\n    letter-spacing: .2em;\n    text-transform: uppercase;\n  }\n\n  .lift-reviews__title {\n    margin: 0;\n    max-width: 620px;\n    color: #111 !important;\n    font-size: clamp(40px, 5vw, 68px);\n    line-height: .95;\n    letter-spacing: -.05em;\n    font-weight: 900;\n  }\n\n  .lift-reviews__title-line {\n    display: inline;\n    background-image: linear-gradient(\n      transparent calc(100% - 7px),\n      #e6c8ae 7px\n    );\n    background-repeat: no-repeat;\n    background-size: 100% 100%;\n  }\n\n  /* SCORE */\n\n  .lift-reviews__summary {\n    min-width: 205px;\n    padding: 20px 24px;\n    background: var(--lift-black);\n    color: #fff !important;\n    border-radius: 18px;\n    text-align: center;\n  }\n\n  .lift-reviews__summary-stars {\n    color: var(--lift-star);\n    font-size: 20px;\n    letter-spacing: 2px;\n    margin-bottom: 5px;\n  }\n\n  .lift-reviews__summary-score {\n    color: #fff !important;\n    font-size: 25px;\n    font-weight: 900;\n  }\n\n  .lift-reviews__summary-text {\n    margin-top: 3px;\n    color: rgba(255,255,255,.7) !important;\n    font-size: 12px;\n  }\n\n  /* REVIEWS */\n\n  .lift-reviews__grid {\n    display: grid;\n    grid-template-columns: repeat(3, 1fr);\n    gap: 16px;\n  }\n\n  .lift-review-card {\n    min-height: 245px;\n    display: flex;\n    flex-direction: column;\n    background: var(--lift-card);\n    border: 1px solid var(--lift-border);\n    border-radius: 20px;\n    padding: 25px;\n  }\n\n  .lift-review-card__top {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n    gap: 12px;\n    margin-bottom: 18px;\n  }\n\n  .lift-review-card__stars {\n    color: var(--lift-star);\n    font-size: 17px;\n    letter-spacing: 1px;\n  }\n\n  .lift-review-card__verified {\n    color: var(--lift-muted) !important;\n    font-size: 10px;\n    font-weight: 800;\n    letter-spacing: .08em;\n    text-transform: uppercase;\n  }\n\n  .lift-review-card__text {\n    margin: 0 0 25px;\n    color: #111 !important;\n    font-size: 16px;\n    line-height: 1.55;\n    font-weight: 600;\n  }\n\n  .lift-review-card__bottom {\n    margin-top: auto;\n    padding-top: 16px;\n    border-top: 1px solid var(--lift-border);\n  }\n\n  .lift-review-card__name {\n    display: block;\n    color: #111 !important;\n    font-size: 14px;\n    font-weight: 900;\n  }\n\n  .lift-review-card__product {\n    display: block;\n    margin-top: 3px;\n    color: var(--lift-muted) !important;\n    font-size: 12px;\n  }\n\n  /* FORM CONTAINER */\n\n  .lift-reviews__form-wrap {\n    display: grid;\n    grid-template-columns: .85fr 1.15fr;\n    margin-top: 28px;\n    overflow: hidden;\n    background: var(--lift-card);\n    border: 1px solid var(--lift-border);\n    border-radius: 22px;\n  }\n\n  /* ZWARTE LINKERKANT */\n\n  .lift-reviews__form-intro {\n    background: #0c0f13 !important;\n    padding: 40px;\n  }\n\n  .lift-reviews .lift-reviews__form-intro h3,\n  .lift-reviews .lift-reviews__form-intro h3 *,\n  .lift-reviews__form-intro .lift-form-title {\n    margin: 0 0 12px !important;\n    color: #ffffff !important;\n    -webkit-text-fill-color: #ffffff !important;\n    font-size: 32px !important;\n    line-height: 1.05 !important;\n    letter-spacing: -.035em !important;\n    font-weight: 900 !important;\n  }\n\n  .lift-reviews .lift-reviews__form-intro p {\n    margin: 0 !important;\n    color: rgba(255,255,255,.78) !important;\n    -webkit-text-fill-color: rgba(255,255,255,.78) !important;\n    font-size: 14px !important;\n    line-height: 1.6 !important;\n  }\n\n  .lift-reviews .lift-reviews__form-intro .lift-reviews__eyebrow {\n    color: #d07a34 !important;\n    -webkit-text-fill-color: #d07a34 !important;\n  }\n\n  /* FORMULIER RECHTS */\n\n  .lift-reviews__form {\n    padding: 34px;\n    background: #fffdf9;\n  }\n\n  .lift-reviews__fields {\n    display: grid;\n    grid-template-columns: 1fr 1fr;\n    gap: 14px;\n  }\n\n  .lift-field {\n    margin-bottom: 14px;\n  }\n\n  .lift-field--full {\n    grid-column: 1 / -1;\n  }\n\n  .lift-field label {\n    display: block;\n    margin-bottom: 7px;\n    color: #111 !important;\n    font-size: 12px;\n    font-weight: 900;\n    letter-spacing: .04em;\n  }\n\n  .lift-field input,\n  .lift-field textarea {\n    width: 100%;\n    border: 1px solid var(--lift-border);\n    border-radius: 12px;\n    background: #fff;\n    color: #111 !important;\n    padding: 14px 15px;\n    font: inherit;\n    outline: none;\n  }\n\n  .lift-field input:focus,\n  .lift-field textarea:focus {\n    border-color: #111;\n    box-shadow: 0 0 0 2px rgba(17,17,17,.06);\n  }\n\n  .lift-field textarea {\n    min-height: 120px;\n    resize: vertical;\n  }\n\n  /* STERREN SELECTEREN */\n\n  .lift-star-input {\n    display: flex;\n    flex-direction: row-reverse;\n    justify-content: flex-end;\n    gap: 3px;\n  }\n\n  .lift-star-input input {\n    position: absolute;\n    opacity: 0;\n    pointer-events: none;\n  }\n\n  .lift-star-input label {\n    margin: 0;\n    cursor: pointer;\n    color: #d8cec2 !important;\n    font-size: 30px;\n    line-height: 1;\n  }\n\n  .lift-star-input label:hover,\n  .lift-star-input label:hover ~ label,\n  .lift-star-input input:checked ~ label {\n    color: var(--lift-star) !important;\n  }\n\n  /* BUTTON */\n\n  .lift-review-submit {\n    width: 100%;\n    margin-top: 5px;\n    border: 0;\n    border-radius: 12px;\n    background: #0c0f13 !important;\n    color: #fff !important;\n    padding: 16px 22px;\n    cursor: pointer;\n    font-size: 14px;\n    font-weight: 900;\n  }\n\n  .lift-review-submit:hover {\n    opacity: .9;\n  }\n\n  .lift-review-success {\n    margin-bottom: 20px;\n    padding: 14px 16px;\n    border: 1px solid #b8d6b8;\n    background: #f3faf2;\n    border-radius: 12px;\n    color: #111 !important;\n    font-weight: 700;\n    font-size: 14px;\n  }\n\n  .lift-review-errors {\n    margin-bottom: 20px;\n    padding: 14px 16px;\n    border: 1px solid #ddbbbb;\n    background: #fff4f4;\n    border-radius: 12px;\n    color: #111 !important;\n    font-size: 14px;\n  }\n\n  .lift-reviews__privacy {\n    margin: 12px 0 0;\n    color: var(--lift-muted) !important;\n    font-size: 11px;\n    line-height: 1.5;\n  }\n\n  /* TABLET */\n\n  @media screen and (max-width: 900px) {\n    .lift-reviews {\n      padding: 55px 16px;\n    }\n\n    .lift-reviews__header {\n      display: block;\n    }\n\n    .lift-reviews__summary {\n      display: inline-block;\n      margin-top: 24px;\n    }\n\n    .lift-reviews__grid {\n      grid-template-columns: 1fr 1fr;\n    }\n\n    .lift-reviews__form-wrap {\n      grid-template-columns: 1fr;\n    }\n  }\n\n  /* MOBILE */\n\n  @media screen and (max-width: 600px) {\n    .lift-reviews {\n      padding: 45px 16px;\n    }\n\n    .lift-reviews__title {\n      font-size: 43px;\n    }\n\n    .lift-reviews__grid {\n      grid-template-columns: 1fr;\n    }\n\n    .lift-review-card {\n      min-height: 0;\n      padding: 21px;\n    }\n\n    .lift-reviews__fields {\n      grid-template-columns: 1fr;\n    }\n\n    .lift-reviews__form-intro,\n    .lift-reviews__form {\n      padding: 26px 21px;\n    }\n\n    .lift-reviews .lift-reviews__form-intro h3,\n    .lift-reviews__form-intro .lift-form-title {\n      font-size: 29px !important;\n    }\n  }\n</style>\n\n<section class=\"lift-reviews\">\n  <div class=\"lift-reviews__inner\">\n\n    <div class=\"lift-reviews__header\">\n\n      <div>\n        <span class=\"lift-reviews__eyebrow\">\n          Ervaringen\n        </span>\n\n        <h2 class=\"lift-reviews__title\">\n          <span class=\"lift-reviews__title-line\">\n            Wat klanten van LIFT vinden\n          </span>\n        </h2>\n      </div>\n\n      <div class=\"lift-reviews__summary\">\n\n        <div class=\"lift-reviews__summary-stars\">\n          ★★★★★\n        </div>\n\n        <div class=\"lift-reviews__summary-score\">\n          4.8 / 5\n        </div>\n\n        <div class=\"lift-reviews__summary-text\">\n          Gebaseerd op klantreviews\n        </div>\n\n      </div>\n\n    </div>\n\n    <div class=\"lift-reviews__grid\">\n\n      <article class=\"lift-review-card\">\n\n        <div class=\"lift-review-card__top\">\n          <div class=\"lift-review-card__stars\">\n            ★★★★★\n          </div>\n\n          <span class=\"lift-review-card__verified\">\n            Klantreview\n          </span>\n        </div>\n\n        <p class=\"lift-review-card__text\">\n          “Je ziet aan de buitenkant echt niet dat er verhoging in zit.\n          Ze lopen verrassend comfortabel en geven precies het verschil\n          dat ik zocht.”\n        </p>\n\n        <div class=\"lift-review-card__bottom\">\n          <span class=\"lift-review-card__name\">\n            Thomas\n          </span>\n\n          <span class=\"lift-review-card__product\">\n            LIFT Sneakers · +6 cm\n          </span>\n        </div>\n\n      </article>\n\n      <article class=\"lift-review-card\">\n\n        <div class=\"lift-review-card__top\">\n          <div class=\"lift-review-card__stars\">\n            ★★★★★\n          </div>\n\n          <span class=\"lift-review-card__verified\">\n            Klantreview\n          </span>\n        </div>\n\n        <p class=\"lift-review-card__text\">\n          “Normaal draag ik nooit schoenen met een verhoging, maar deze\n          voelen gewoon als normale sneakers. Het verschil is wel direct\n          merkbaar.”\n        </p>\n\n        <div class=\"lift-review-card__bottom\">\n          <span class=\"lift-review-card__name\">\n            Milan\n          </span>\n\n          <span class=\"lift-review-card__product\">\n            LIFT Pure · +4 cm\n          </span>\n        </div>\n\n      </article>\n\n      <article class=\"lift-review-card\">\n\n        <div class=\"lift-review-card__top\">\n          <div class=\"lift-review-card__stars\">\n            ★★★★☆\n          </div>\n\n          <span class=\"lift-review-card__verified\">\n            Klantreview\n          </span>\n        </div>\n\n        <p class=\"lift-review-card__text\">\n          “De eerste dag moest ik even wennen aan de extra hoogte, maar\n          daarna liep het prima. Het model zelf ziet er heel normaal uit.”\n        </p>\n\n        <div class=\"lift-review-card__bottom\">\n          <span class=\"lift-review-card__name\">\n            Lucas\n          </span>\n\n          <span class=\"lift-review-card__product\">\n            LIFT Casual · +8 cm\n          </span>\n        </div>\n\n      </article>\n\n      <article class=\"lift-review-card\">\n\n        <div class=\"lift-review-card__top\">\n          <div class=\"lift-review-card__stars\">\n            ★★★★★\n          </div>\n\n          <span class=\"lift-review-card__verified\">\n            Klantreview\n          </span>\n        </div>\n\n        <p class=\"lift-review-card__text\">\n          “Precies wat ik wilde: wel langer, maar niet zo'n schoen waarvan\n          iedereen meteen ziet waarom je langer bent.”\n        </p>\n\n        <div class=\"lift-review-card__bottom\">\n          <span class=\"lift-review-card__name\">\n            Jasper\n          </span>\n\n          <span class=\"lift-review-card__product\">\n            LIFT Essential · +6 cm\n          </span>\n        </div>\n\n      </article>\n\n      <article class=\"lift-review-card\">\n\n        <div class=\"lift-review-card__top\">\n          <div class=\"lift-review-card__stars\">\n            ★★★★★\n          </div>\n\n          <span class=\"lift-review-card__verified\">\n            Klantreview\n          </span>\n        </div>\n\n        <p class=\"lift-review-card__text\">\n          “Voor een avond uit gekocht en inmiddels draag ik ze bijna iedere\n          week. De verhoging is netjes in de schoen weggewerkt.”\n        </p>\n\n        <div class=\"lift-review-card__bottom\">\n          <span class=\"lift-review-card__name\">\n            Daan\n          </span>\n\n          <span class=\"lift-review-card__product\">\n            LIFT Sneakers · +8 cm\n          </span>\n        </div>\n\n      </article>\n\n      <article class=\"lift-review-card\">\n\n        <div class=\"lift-review-card__top\">\n          <div class=\"lift-review-card__stars\">\n            ★★★★☆\n          </div>\n\n          <span class=\"lift-review-card__verified\">\n            Klantreview\n          </span>\n        </div>\n\n        <p class=\"lift-review-card__text\">\n          “Mooie schoen en het hoogteverschil is duidelijk merkbaar.\n          Persoonlijk vind ik de +6 cm voor dagelijks gebruik het prettigst.”\n        </p>\n\n        <div class=\"lift-review-card__bottom\">\n          <span class=\"lift-review-card__name\">\n            Sam\n          </span>\n\n          <span class=\"lift-review-card__product\">\n            LIFT Pure · +6 cm\n          </span>\n        </div>\n\n      </article>\n\n    </div>\n\n    <div class=\"lift-reviews__form-wrap\">\n\n      <div class=\"lift-reviews__form-intro\">\n\n        <span\n          class=\"lift-reviews__eyebrow\"\n          style=\"color:#d07a34 !important; -webkit-text-fill-color:#d07a34 !important;\"\n        >\n          Jouw ervaring\n        </span>\n\n        <h3\n          class=\"lift-form-title\"\n          style=\"\n            color:#ffffff !important;\n            -webkit-text-fill-color:#ffffff !important;\n            opacity:1 !important;\n          \"\n        >\n          Hoe bevalt jouw LIFT?\n        </h3>\n\n        <p\n          style=\"\n            color:rgba(255,255,255,.78) !important;\n            -webkit-text-fill-color:rgba(255,255,255,.78) !important;\n          \"\n        >\n          Laat je review achter. Na verzending ontvangen wij je ervaring\n          per e-mail en kunnen we deze na controle toevoegen.\n        </p>\n\n      </div>\n\n      <div class=\"lift-reviews__form\">\n\n        {% form 'contact', id: 'LiftReviewForm' %}\n\n          {% if form.posted_successfully? %}\n\n            <div class=\"lift-review-success\">\n              Bedankt! Je review is succesvol verzonden.\n            </div>\n\n          {% endif %}\n\n          {% if form.errors %}\n\n            <div class=\"lift-review-errors\">\n              {{ form.errors | default_errors }}\n            </div>\n\n          {% endif %}\n\n          <input\n            type=\"hidden\"\n            name=\"contact[Onderwerp]\"\n            value=\"Nieuwe LIFT review\"\n          >\n\n          <div class=\"lift-reviews__fields\">\n\n            <div class=\"lift-field\">\n\n              <label for=\"LiftReviewName\">\n                Naam\n              </label>\n\n              <input\n                id=\"LiftReviewName\"\n                type=\"text\"\n                name=\"contact[name]\"\n                placeholder=\"Je naam\"\n                required\n              >\n\n            </div>\n\n            <div class=\"lift-field\">\n\n              <label for=\"LiftReviewEmail\">\n                E-mailadres\n              </label>\n\n              <input\n                id=\"LiftReviewEmail\"\n                type=\"email\"\n                name=\"contact[email]\"\n                placeholder=\"naam@email.nl\"\n                required\n              >\n\n            </div>\n\n            <div class=\"lift-field lift-field--full\">\n\n              <label>\n                Beoordeling\n              </label>\n\n              <div class=\"lift-star-input\">\n\n                <input\n                  id=\"lift-star-5\"\n                  type=\"radio\"\n                  name=\"contact[Beoordeling]\"\n                  value=\"5 sterren\"\n                  required\n                >\n                <label for=\"lift-star-5\" aria-label=\"5 sterren\">★</label>\n\n                <input\n                  id=\"lift-star-4\"\n                  type=\"radio\"\n                  name=\"contact[Beoordeling]\"\n                  value=\"4 sterren\"\n                >\n                <label for=\"lift-star-4\" aria-label=\"4 sterren\">★</label>\n\n                <input\n                  id=\"lift-star-3\"\n                  type=\"radio\"\n                  name=\"contact[Beoordeling]\"\n                  value=\"3 sterren\"\n                >\n                <label for=\"lift-star-3\" aria-label=\"3 sterren\">★</label>\n\n                <input\n                  id=\"lift-star-2\"\n                  type=\"radio\"\n                  name=\"contact[Beoordeling]\"\n                  value=\"2 sterren\"\n                >\n                <label for=\"lift-star-2\" aria-label=\"2 sterren\">★</label>\n\n                <input\n                  id=\"lift-star-1\"\n                  type=\"radio\"\n                  name=\"contact[Beoordeling]\"\n                  value=\"1 ster\"\n                >\n                <label for=\"lift-star-1\" aria-label=\"1 ster\">★</label>\n\n              </div>\n\n            </div>\n\n            <div class=\"lift-field lift-field--full\">\n\n              <label for=\"LiftReviewProduct\">\n                Welk model draag je?\n              </label>\n\n              <input\n                id=\"LiftReviewProduct\"\n                type=\"text\"\n                name=\"contact[Product]\"\n                placeholder=\"Bijv. LIFT Sneakers +6 cm\"\n              >\n\n            </div>\n\n            <div class=\"lift-field lift-field--full\">\n\n              <label for=\"LiftReviewBody\">\n                Je review\n              </label>\n\n              <textarea\n                id=\"LiftReviewBody\"\n                name=\"contact[body]\"\n                placeholder=\"Vertel kort wat je van je LIFT schoenen vindt...\"\n                required\n              ></textarea>\n\n            </div>\n\n          </div>\n\n          <button\n            type=\"submit\"\n            class=\"lift-review-submit\"\n          >\n            Review versturen\n          </button>\n\n          <p class=\"lift-reviews__privacy\">\n            Je e-mailadres wordt alleen gebruikt om je review te kunnen\n            controleren en wordt niet openbaar weergegeven.\n          </p>\n\n        {% endform %}\n\n      </div>\n\n    </div>\n\n  </div>\n</section>",
         "color_scheme": "background-1",
         "padding_top": 0,
         "padding_bottom": 0
@@ -2024,29 +1906,27 @@
   },
   "order": [
     "main",
+    "ss_testimonial_9_XU4Wxh",
     "ss_product_reviews_pKUEPj",
     "2be139f8-05a0-4790-a783-2a5f2a2daad0",
-    "ss_product_variant_m8tbRT",
     "ss_trust_badges_emojis_jAkdEY",
     "facebook_testimonials_txczGa",
     "ss_video_slider_XBjFLH",
     "related-products",
     "ss_image_with_text_7Qe9eP",
-    "rich_text_MbF96m",
-    "comparison_slider_MraLXq",
-    "ss_testimonial_9_U7wrpf",
+    "custom_liquid_XWbRPB",
     "7c2381c3-1795-445b-91da-9765523b1638",
     "custom_liquid_aAHWaA",
     "image_with_text_BT8FVJ",
     "custom_liquid_mzW6am",
     "2cb68c65-93ce-4030-a625-5bac24b42fe4",
     "ss_glow_testimonial_LcMNmU",
-    "custom_liquid_pniHEi",
     "image_with_text_49PG6x",
     "ss_simple_faq_w4p4Vr",
     "01e44fca-e5d3-4b7e-a501-4420559a80d3",
     "featured_collection_KGK83G",
     "custom_liquid_qfw9wU",
+    "custom_liquid_HU6NjJ",
     "1694520940915c1b12"
   ]
 }
