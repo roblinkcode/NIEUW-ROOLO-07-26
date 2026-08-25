@@ -28,19 +28,25 @@
         },
         "price": {
           "type": "price",
-          "disabled": true,
           "settings": {
-            "price_color": "accent-1",
+            "layout": "price_first",
+            "price_color": "accent-2",
             "compare_price_color": "text",
-            "displayed_badge": "sale",
+            "displayed_badge": "custom",
             "icon_scale": 140,
-            "custom_badge_text": "[icon_1] SPECIAL OFFER",
+            "custom_badge_text": "BESPAAR €30",
             "icon_1": "redeem",
             "filled_icon_1": false,
             "icon_2": "check_circle",
             "filled_icon_2": false,
             "margin_top": 15,
             "margin_bottom": 15
+          }
+        },
+        "custom_liquid_JhVk83": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"hipipet-benefits\">\n  <p class=\"hipipet-benefits__intro\">\n    Comfortabel draagharnas voor kleine honden. Wandel, til op en draag je hond eenvoudig onderweg.\n  </p>\n\n  <div class=\"hipipet-benefits__list\">\n\n    <div class=\"hipipet-benefits__item\">\n      <span class=\"hipipet-benefits__check\">\n        <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n          <circle cx=\"12\" cy=\"12\" r=\"9\"></circle>\n          <path d=\"M8.5 12.2l2.2 2.2 4.8-5\"></path>\n        </svg>\n      </span>\n      <span>Makkelijk optillen</span>\n    </div>\n\n    <div class=\"hipipet-benefits__item\">\n      <span class=\"hipipet-benefits__check\">\n        <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n          <circle cx=\"12\" cy=\"12\" r=\"9\"></circle>\n          <path d=\"M8.5 12.2l2.2 2.2 4.8-5\"></path>\n        </svg>\n      </span>\n      <span>Comfortabele pasvorm voor kleine honden</span>\n    </div>\n\n    <div class=\"hipipet-benefits__item\">\n      <span class=\"hipipet-benefits__check\">\n        <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n          <circle cx=\"12\" cy=\"12\" r=\"9\"></circle>\n          <path d=\"M8.5 12.2l2.2 2.2 4.8-5\"></path>\n        </svg>\n      </span>\n      <span>Wandelen & dragen in één</span>\n    </div>\n\n  </div>\n</div>\n\n<style>\n  .hipipet-benefits {\n    background: #faf7f3;\n    border: 1px solid #eadfd5;\n    border-radius: 10px;\n    padding: 11px 12px;\n    margin: 11px 0 13px;\n    width: 100%;\n    box-sizing: border-box;\n  }\n\n  .hipipet-benefits__intro {\n    margin: 0 0 8px;\n    padding: 0;\n    color: #2d2723;\n    font-size: 12.8px;\n    font-weight: 500;\n    line-height: 1.4;\n  }\n\n  .hipipet-benefits__list {\n    display: grid;\n    gap: 5px;\n  }\n\n  .hipipet-benefits__item {\n    display: flex;\n    align-items: center;\n    gap: 7px;\n    color: #211c19;\n    font-size: 12.7px;\n    font-weight: 700;\n    line-height: 1.3;\n  }\n\n  .hipipet-benefits__check {\n    width: 16px;\n    height: 16px;\n    flex: 0 0 16px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n  }\n\n  .hipipet-benefits__check svg {\n    width: 16px;\n    height: 16px;\n    fill: none;\n    stroke: #9a6645;\n    stroke-width: 1.9;\n    stroke-linecap: round;\n    stroke-linejoin: round;\n  }\n\n  @media screen and (max-width: 749px) {\n    .hipipet-benefits {\n      padding: 9px 10px;\n      margin: 9px 0 11px;\n      border-radius: 9px;\n    }\n\n    .hipipet-benefits__intro {\n      font-size: 12.2px;\n      line-height: 1.35;\n      margin-bottom: 7px;\n    }\n\n    .hipipet-benefits__list {\n      gap: 4px;\n    }\n\n    .hipipet-benefits__item {\n      font-size: 12.2px;\n      line-height: 1.25;\n      gap: 6px;\n    }\n\n    .hipipet-benefits__check,\n    .hipipet-benefits__check svg {\n      width: 15px;\n      height: 15px;\n      flex-basis: 15px;\n    }\n  }\n</style>"
           }
         },
         "de244682-4323-4802-b4ba-b79b08e0c71d": {
@@ -60,7 +66,7 @@
             "skip_unavailable": false,
             "swatches_size": "medium",
             "swatches_custom_colors": "custom",
-            "swatches_custom_colors_list": "#3b4868, #000000, #9a9a9a, #fc1e19, #666e33, #7c344c, #38c9c9",
+            "swatches_custom_colors_list": "#E8E3E0, #000000",
             "full_width_dropdowns": false,
             "breaks_style": "normal",
             "breaks_headline": "BUNDLE & SAVE",
@@ -117,11 +123,12 @@
         },
         "48b7eaf2-2c4d-4d42-a430-ab9107e675d0": {
           "type": "quantity_selector",
+          "disabled": true,
           "settings": {
             "full_width_classic": false,
             "atc_append": "none",
             "atc_append_heights": "stretch-quantity",
-            "enable_quantity_discounts": true,
+            "enable_quantity_discounts": false,
             "style": "normal",
             "headline": "",
             "preselected": "option_1",
@@ -139,6 +146,7 @@
             "image_width": 70,
             "space_images": true,
             "vertical_images_position": "top",
+            "vertical_prices_layout": "vertical",
             "option_1_quantity": 1,
             "option_1_badge": "",
             "option_1_badge_style": "1",
@@ -151,7 +159,7 @@
             "option_1_caption": "",
             "option_1_percentage_off_text": "0",
             "option_1_fixed_amount_off": "0",
-            "option_1_price_text": "<em><strong>[price]</strong></em>",
+            "option_1_price_text": "[price]",
             "option_1_compare_price": "compare_price",
             "option_1_compare_price_text": "[compare_price]",
             "option_2_quantity": 2,
@@ -166,7 +174,7 @@
             "option_2_caption": "Je bespaard 10%",
             "option_2_percentage_off_text": "0",
             "option_2_fixed_amount_off": "6.95",
-            "option_2_price_text": "<em><strong>[price]</strong></em>",
+            "option_2_price_text": "[price]",
             "option_2_compare_price": "price",
             "option_2_compare_price_text": "[compare_price]",
             "option_3_quantity": 0,
@@ -181,7 +189,7 @@
             "option_3_caption": "Je bespaard 20%",
             "option_3_percentage_off_text": "0",
             "option_3_fixed_amount_off": "0",
-            "option_3_price_text": "<em><strong>[price]</strong></em>",
+            "option_3_price_text": "[price]",
             "option_3_compare_price": "compare_price",
             "option_3_compare_price_text": "[compare_price]",
             "option_4_quantity": 0,
@@ -196,7 +204,7 @@
             "option_4_caption": "You save [amount]",
             "option_4_percentage_off_text": "0",
             "option_4_fixed_amount_off": "0",
-            "option_4_price_text": "<em><strong>[price]</strong></em>",
+            "option_4_price_text": "[price]",
             "option_4_compare_price": "compare_price",
             "option_4_compare_price_text": "[compare_price]",
             "margin_top": 15,
@@ -206,7 +214,7 @@
         "custom_liquid_yAzWJb": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% assign today = 'now' | date: \"%s\" %}\n{% assign morgen = today | plus: 86400 %}\n{% assign dag = morgen | date: \"%-d\" %}\n{% assign maand_nummer = morgen | date: \"%-m\" %}\n\n{% case maand_nummer %}\n  {% when '1' %}{% assign maand = 'jan' %}\n  {% when '2' %}{% assign maand = 'feb' %}\n  {% when '3' %}{% assign maand = 'maart' %}\n  {% when '4' %}{% assign maand = 'april' %}\n  {% when '5' %}{% assign maand = 'mei' %}\n  {% when '6' %}{% assign maand = 'juni' %}\n  {% when '7' %}{% assign maand = 'juli' %}\n  {% when '8' %}{% assign maand = 'aug' %}\n  {% when '9' %}{% assign maand = 'sep' %}\n  {% when '10' %}{% assign maand = 'okt' %}\n  {% when '11' %}{% assign maand = 'nov' %}\n  {% when '12' %}{% assign maand = 'dec' %}\n{% endcase %}\n\n<div style=\"text-align: left; margin-bottom: 24px;\">\n  <span style=\"color: #007000; font-size: 15px;\">\n    • Vandaag besteld, verzonden vóór: {{ dag }} {{ maand }}\n  </span>\n</div>"
+            "custom_liquid": "{% assign today = 'now' | date: \"%s\" %}\n{% assign tomorrow = today | plus: 86400 %}\n{% assign day = tomorrow | date: \"%-d\" %}\n{% assign month_number = tomorrow | date: \"%-m\" %}\n\n{% case month_number %}\n  {% when '1' %}{% assign month = 'jan' %}\n  {% when '2' %}{% assign month = 'feb' %}\n  {% when '3' %}{% assign month = 'mrt' %}\n  {% when '4' %}{% assign month = 'apr' %}\n  {% when '5' %}{% assign month = 'mei' %}\n  {% when '6' %}{% assign month = 'jun' %}\n  {% when '7' %}{% assign month = 'jul' %}\n  {% when '8' %}{% assign month = 'aug' %}\n  {% when '9' %}{% assign month = 'sep' %}\n  {% when '10' %}{% assign month = 'okt' %}\n  {% when '11' %}{% assign month = 'nov' %}\n  {% when '12' %}{% assign month = 'dec' %}\n{% endcase %}\n\n<div class=\"hipipet-shipping-note\">\n  <div class=\"hipipet-shipping-icon\">\n    <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n      <path d=\"M3 6.5h11v9H3z\"></path>\n      <path d=\"M14 9h3.2l2.3 2.8v3.7H14z\"></path>\n      <circle cx=\"7\" cy=\"17.5\" r=\"1.6\"></circle>\n      <circle cx=\"17.5\" cy=\"17.5\" r=\"1.6\"></circle>\n    </svg>\n  </div>\n\n  <div class=\"hipipet-shipping-text\">\n    Vandaag besteld, verzonden uiterlijk:\n    <strong>{{ day }} {{ month }}</strong>\n  </div>\n</div>\n\n<style>\n  .hipipet-shipping-note {\n    display: flex;\n    align-items: center;\n    gap: 8px;\n    width: 100%;\n    box-sizing: border-box;\n\n    background: #faf7f3;\n    border: 1px solid #eadfd5;\n    border-radius: 9px;\n\n    padding: 9px 11px;\n    margin: 10px 0 14px;\n\n    color: #2d2723;\n  }\n\n  .hipipet-shipping-icon {\n    width: 22px;\n    height: 22px;\n    flex: 0 0 22px;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    background: #f1e7dd;\n    border-radius: 50%;\n  }\n\n  .hipipet-shipping-icon svg {\n    width: 14px;\n    height: 14px;\n\n    fill: none;\n    stroke: #9a6645;\n    stroke-width: 1.7;\n    stroke-linecap: round;\n    stroke-linejoin: round;\n  }\n\n  .hipipet-shipping-text {\n    font-size: 12.7px;\n    font-weight: 600;\n    line-height: 1.35;\n  }\n\n  .hipipet-shipping-text strong {\n    font-weight: 800;\n    color: #8a5a3c;\n  }\n\n  @media screen and (max-width: 749px) {\n    .hipipet-shipping-note {\n      gap: 7px;\n      padding: 8px 10px;\n      margin: 9px 0 12px;\n      border-radius: 8px;\n    }\n\n    .hipipet-shipping-icon {\n      width: 20px;\n      height: 20px;\n      flex-basis: 20px;\n    }\n\n    .hipipet-shipping-icon svg {\n      width: 13px;\n      height: 13px;\n    }\n\n    .hipipet-shipping-text {\n      font-size: 12.2px;\n      line-height: 1.3;\n    }\n  }\n</style>"
           }
         },
         "buy_buttons": {
@@ -273,7 +281,7 @@
         "custom_liquid_D3RWQ8": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div class=\"purchase-bubble\">\n  <div class=\"photo-group\">\n    <img src=\"https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?ga=GA1.1.512236851.1746736510&semt=ais_hybrid&w=740\" alt=\"Gebruiker 1\" class=\"photo\" />\n    <img src=\"https://img.freepik.com/free-photo/pretty-smiling-joyfully-female-with-fair-hair-dressed-casually-looking-with-satisfaction_176420-15187.jpg?t=st=1746650000~exp=1746653600~hmac=113f9adc8196161946ac06c2a29aa3130fcb266de9c12a906adcc34edee6a126&w=1380\" alt=\"Gebruiker 2\" class=\"photo\" />\n    <img src=\"https://img.freepik.com/free-photo/smiley-man-relaxing-outdoors_23-2148739334.jpg?ga=GA1.1.512236851.1746736510&semt=ais_hybrid&w=740\" alt=\"Gebruiker 3\" class=\"photo\" />\n  </div>\n  <div class=\"purchase-text\">\n    <span class=\"buyer-name\">Sara</span>\n    <img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Twitter_Verified_Badge.svg/800px-Twitter_Verified_Badge.svg.png\" alt=\"Geverifieerd\" class=\"checkmark-icon\" />\n    <span>en <b>1.856</b> anderen gingen je voor</span>\n  </div>\n</div>\n\n<style>\n.purchase-bubble {\n  display: flex;\n  align-items: center;\n  background: #fff;\n  padding: 6px 14px;\n  border-radius: 9px;\n  font-size: 12px;\n  color: #1a1a1a;\n  margin-top: 0px !important;\n  padding-top: 0px;\n}\n\n.photo-group {\n  display: inline-flex;\n  margin-inline-end: 12px;\n}\n\n.photo {\n  width: 22px;\n  height: 22px;\n  object-fit: cover;\n  border-radius: 50%;\n  border: 2px solid #fff;\n  margin-left: -6px;\n}\n\n.purchase-text {\n  display: inline-flex;\n  align-items: center;\n  column-gap: 4px;\n  font-weight: 400;\n}\n\n.buyer-name {\n  font-weight: 800;\n}\n\n.checkmark-icon {\n  height: 13px;\n  width: 13px;\n  margin-top: -1px;\n}\n</style>"
+            "custom_liquid": "<div class=\"hipipet-purchase-bubble\">\n  <div class=\"hipipet-photo-group\">\n    <img\n      src=\"https://cdn.shopify.com/s/files/1/0773/7458/7204/files/Scherm_afbeelding_2026-08-25_om_06.55.24.png?v=1787633744\"\n      alt=\"HIPIPET klant\"\n      class=\"hipipet-photo\"\n      loading=\"lazy\"\n    >\n\n    <img\n      src=\"https://cdn.shopify.com/s/files/1/0773/7458/7204/files/Scherm_afbeelding_2026-08-25_om_06.56.07.png?v=1787633777\"\n      alt=\"HIPIPET klant\"\n      class=\"hipipet-photo\"\n      loading=\"lazy\"\n    >\n\n    <img\n      src=\"https://cdn.shopify.com/s/files/1/0773/7458/7204/files/Scherm_afbeelding_2026-08-25_om_06.56.56.png?v=1787633825\"\n      alt=\"HIPIPET klant\"\n      class=\"hipipet-photo\"\n      loading=\"lazy\"\n    >\n  </div>\n\n  <div class=\"hipipet-purchase-text\">\n    <span class=\"hipipet-buyer-name\">Sophie</span>\n\n    <span class=\"hipipet-verified\" aria-label=\"Geverifieerd\">\n      <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n        <path d=\"M8.5 12.2l2.2 2.2 4.8-5\"></path>\n      </svg>\n    </span>\n\n    <span>\n      en <b>2000+</b> anderen kozen al voor HIPIPET\n    </span>\n  </div>\n</div>\n\n<style>\n  .hipipet-purchase-bubble {\n    display: flex;\n    align-items: center;\n    width: 100%;\n    box-sizing: border-box;\n\n    background: #FAF7F3;\n    border: 1px solid #EADFD5;\n    border-radius: 10px;\n\n    padding: 8px 11px;\n    margin: 8px 0 12px;\n\n    color: #2D2723;\n    box-shadow: 0 4px 14px rgba(69, 45, 31, 0.04);\n  }\n\n  .hipipet-photo-group {\n    display: inline-flex;\n    align-items: center;\n    margin-right: 10px;\n    flex-shrink: 0;\n  }\n\n  .hipipet-photo {\n    width: 25px;\n    height: 25px;\n    object-fit: cover;\n    border-radius: 50%;\n\n    border: 2px solid #FAF7F3;\n    margin-left: -7px;\n\n    box-shadow: 0 2px 5px rgba(70, 45, 30, 0.12);\n  }\n\n  .hipipet-photo:first-child {\n    margin-left: 0;\n  }\n\n  .hipipet-purchase-text {\n    display: flex;\n    align-items: center;\n    flex-wrap: wrap;\n    gap: 3px;\n\n    font-size: 12px;\n    font-weight: 500;\n    line-height: 1.3;\n\n    color: #62574F;\n  }\n\n  .hipipet-buyer-name {\n    font-weight: 800;\n    color: #2D2723;\n  }\n\n  .hipipet-purchase-text b {\n    color: #2D2723;\n    font-weight: 800;\n  }\n\n  .hipipet-verified {\n    width: 15px;\n    height: 15px;\n    flex: 0 0 15px;\n\n    display: inline-flex;\n    align-items: center;\n    justify-content: center;\n\n    border-radius: 50%;\n    background: #9A6645;\n  }\n\n  .hipipet-verified svg {\n    width: 9px;\n    height: 9px;\n\n    fill: none;\n    stroke: #FFFFFF;\n    stroke-width: 2.6;\n    stroke-linecap: round;\n    stroke-linejoin: round;\n  }\n\n  @media screen and (max-width: 480px) {\n    .hipipet-purchase-bubble {\n      padding: 7px 9px;\n      margin: 7px 0 10px;\n      border-radius: 9px;\n    }\n\n    .hipipet-photo-group {\n      margin-right: 8px;\n    }\n\n    .hipipet-photo {\n      width: 23px;\n      height: 23px;\n      margin-left: -6px;\n    }\n\n    .hipipet-purchase-text {\n      font-size: 11.3px;\n      line-height: 1.25;\n      gap: 3px;\n    }\n\n    .hipipet-verified {\n      width: 14px;\n      height: 14px;\n      flex-basis: 14px;\n    }\n  }\n</style>"
           }
         },
         "149aabfb-9fd8-4472-a633-6032dbe01ed0": {
@@ -307,8 +315,15 @@
             "margin_bottom": 24
           }
         },
+        "custom_liquid_VCiBtR": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% assign current_variant = product.selected_or_first_available_variant %}\n{% assign klarna_part = current_variant.price | divided_by: 3 %}\n\n<div class=\"hipipet-trust-list\">\n\n  <!-- Gratis verzending -->\n  <div class=\"hipipet-trust-row\">\n    <div class=\"hipipet-trust-icon\">\n      <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n        <path d=\"M3 6.5h11v9H3z\"></path>\n        <path d=\"M14 9h3.2l2.3 2.8v3.7H14z\"></path>\n        <circle cx=\"7\" cy=\"17.5\" r=\"1.6\"></circle>\n        <circle cx=\"17.5\" cy=\"17.5\" r=\"1.6\"></circle>\n      </svg>\n    </div>\n\n    <div class=\"hipipet-trust-text\">\n      Gratis verzending vanaf €20\n    </div>\n  </div>\n\n\n  <!-- 30 dagen retourneren -->\n  <div class=\"hipipet-trust-row\">\n    <div class=\"hipipet-trust-icon\">\n      <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n        <path d=\"M12 7v5l3 2\"></path>\n        <circle cx=\"12\" cy=\"12\" r=\"8\"></circle>\n      </svg>\n    </div>\n\n    <div class=\"hipipet-trust-text\">\n      30 dagen retourgarantie\n    </div>\n  </div>\n\n\n  <!-- Klarna -->\n  <div class=\"hipipet-trust-row\">\n    <div class=\"hipipet-klarna-icon\">\n      Klarna\n    </div>\n\n    <div class=\"hipipet-trust-text\">\n      Betaal in 3 termijnen van\n      <strong id=\"hipipet-klarna-price\">\n        {{ klarna_part | money }}\n      </strong>.\n      Rentvrij.\n    </div>\n  </div>\n\n</div>\n\n\n<script type=\"application/json\" id=\"hipipet-product-variants\">\n  {{ product.variants | json }}\n</script>\n\n\n<style>\n  .hipipet-trust-list {\n    display: grid;\n    gap: 8px;\n    width: 100%;\n    margin: 11px 0 15px;\n  }\n\n  .hipipet-trust-row {\n    display: flex;\n    align-items: center;\n    gap: 10px;\n    min-height: 32px;\n  }\n\n  .hipipet-trust-icon {\n    width: 38px;\n    height: 30px;\n    flex: 0 0 38px;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    background: #F4EBDD;\n    border-radius: 5px;\n  }\n\n  .hipipet-trust-icon svg {\n    width: 17px;\n    height: 17px;\n\n    fill: none;\n    stroke: #4A382C;\n    stroke-width: 1.6;\n    stroke-linecap: round;\n    stroke-linejoin: round;\n  }\n\n  .hipipet-klarna-icon {\n    width: 38px;\n    height: 30px;\n    flex: 0 0 38px;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    background: #FFB3C7;\n    color: #111111;\n\n    border-radius: 5px;\n\n    font-size: 8px;\n    font-weight: 800;\n    letter-spacing: -0.2px;\n  }\n\n  .hipipet-trust-text {\n    color: #342B25;\n    font-size: 12.8px;\n    font-weight: 500;\n    line-height: 1.3;\n  }\n\n  .hipipet-trust-text strong {\n    color: #211B17;\n    font-weight: 800;\n  }\n\n  @media screen and (max-width: 749px) {\n    .hipipet-trust-list {\n      gap: 6px;\n      margin: 9px 0 12px;\n    }\n\n    .hipipet-trust-row {\n      gap: 9px;\n      min-height: 29px;\n    }\n\n    .hipipet-trust-icon,\n    .hipipet-klarna-icon {\n      width: 35px;\n      height: 28px;\n      flex-basis: 35px;\n    }\n\n    .hipipet-trust-icon svg {\n      width: 16px;\n      height: 16px;\n    }\n\n    .hipipet-trust-text {\n      font-size: 12.2px;\n      line-height: 1.25;\n    }\n\n    .hipipet-klarna-icon {\n      font-size: 7.5px;\n    }\n  }\n</style>\n\n\n<script>\n  document.addEventListener('DOMContentLoaded', function () {\n    const variantsEl = document.getElementById('hipipet-product-variants');\n    const klarnaPriceEl = document.getElementById('hipipet-klarna-price');\n\n    if (!variantsEl || !klarnaPriceEl) return;\n\n    const variants = JSON.parse(variantsEl.textContent);\n\n    function formatMoney(cents) {\n      return new Intl.NumberFormat('nl-NL', {\n        style: 'currency',\n        currency: 'EUR'\n      }).format(cents / 100);\n    }\n\n    function updateKlarnaPrice() {\n      const variantInput = document.querySelector(\n        'form[action*=\"/cart/add\"] input[name=\"id\"]'\n      );\n\n      if (!variantInput) return;\n\n      const variantId = Number(variantInput.value);\n\n      const variant = variants.find(function (v) {\n        return Number(v.id) === variantId;\n      });\n\n      if (!variant) return;\n\n      const installmentPrice = variant.price / 3;\n\n      klarnaPriceEl.textContent = formatMoney(installmentPrice);\n    }\n\n    updateKlarnaPrice();\n\n    document.addEventListener('change', function () {\n      setTimeout(updateKlarnaPrice, 50);\n    });\n\n    const variantInput = document.querySelector(\n      'form[action*=\"/cart/add\"] input[name=\"id\"]'\n    );\n\n    if (variantInput) {\n      const observer = new MutationObserver(function () {\n        updateKlarnaPrice();\n      });\n\n      observer.observe(variantInput, {\n        attributes: true,\n        attributeFilter: ['value']\n      });\n    }\n  });\n</script>"
+          }
+        },
         "custom_liquid_mm96Ny": {
           "type": "custom_liquid",
+          "disabled": true,
           "settings": {
             "custom_liquid": "<div id='ss-emoji'></div"
           }
@@ -351,6 +366,7 @@
         "e9c7700d-8020-4263-9b68-bdde2669877b",
         "title",
         "price",
+        "custom_liquid_JhVk83",
         "de244682-4323-4802-b4ba-b79b08e0c71d",
         "44f9cdc2-f4bf-466e-87d5-fb765ad4864a",
         "sizing_chart_UcHatV",
@@ -361,6 +377,7 @@
         "98db29ee-a7dc-429e-8129-bf71131627da",
         "custom_liquid_D3RWQ8",
         "149aabfb-9fd8-4472-a633-6032dbe01ed0",
+        "custom_liquid_VCiBtR",
         "custom_liquid_mm96Ny",
         "collapsible_tab_VgYrrA",
         "collapsible_tab_JycfLA"
@@ -464,6 +481,7 @@
         "item_UeC7FQ",
         "item_rxWg8Y"
       ],
+      "disabled": true,
       "settings": {
         "trust_position": "below_buy",
         "emoji_font_size": 19,
