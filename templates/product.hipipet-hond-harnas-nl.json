@@ -339,7 +339,7 @@
             "display_top_border": true,
             "open": false,
             "content": "<p>Welke maat heeft mijn hond nodig?<br/><br/>Meet de borstomtrek en nekomtrek van je hond en vergelijk deze met de maattabel hieronder.</p><p><strong>Let op:</strong> het gewicht is alleen een richtlijn.</p><p>Twijfel je tussen twee maten? Kies dan de <strong>grotere maat</strong> voor extra comfort.</p>",
-            "page": "maat-tabel-dogjacket",
+            "page": "maat-tabel-hipipet",
             "margin_top": 0,
             "margin_bottom": 0
           }
@@ -426,7 +426,6 @@
         "enable_mobile_outher_spacing": false,
         "mobile_slides_container_width": 100,
         "mobile_slides_inner_width": 100,
-        "trust_badge": "shopify://shop_images/50__KORTING-removebg-preview_1.png",
         "trust_badge_position": "bottom-right",
         "trust_badge_size": "medium",
         "mobile_padding_top": 0,
