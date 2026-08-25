@@ -956,61 +956,16 @@
         "lazy": true
       }
     },
-    "ss_simple_faq_czzL8H": {
-      "type": "ss-simple-faq",
-      "blocks": {
-        "text_QXBxNA": {
-          "type": "text",
-          "settings": {
-            "question": "Zijn de jassen waterdicht?",
-            "answer": "<p>Onze jassen hebben een waterafstotende buitenlaag die lichte regen en sneeuw buiten houdt. Ze bieden een zeer goede bescherming tegen vocht.</p>"
-          }
-        },
-        "text_ACHFh9": {
-          "type": "text",
-          "settings": {
-            "question": "Kan de jas in de wasmachine?",
-            "answer": "<p>Ja, je kan de jas wassen in de wasmachine. Volg de wasinstructies op het etiket om een optimale verzorging te garanderen.</p>"
-          }
-        },
-        "text_PmBwJT": {
-          "type": "text",
-          "settings": {
-            "question": "Zijn de jassen geschikt voor alle hondenrassen?",
-            "answer": "<p>Onze jassen zijn verkrijgbaar in verschillende maten en passen op de meeste hondenrassen. Bekijk goed de maattabel om de juiste maat voor jouw hond te kiezen.</p>"
-          }
-        },
-        "text_wFgwJW": {
-          "type": "text",
-          "settings": {
-            "question": "Is de jas ook geschikt voor katten?",
-            "answer": "<p>Ja zeker, de jas past ook bij katten, zolang het overeenkomt met de maattabel moet de jas goed passen!</p>"
-          }
-        },
-        "text_A6dJBC": {
-          "type": "text",
-          "settings": {
-            "question": "Kan ik mijn bestelling retourneren als ik niet tevreden ben?",
-            "answer": "<p>Geen probleem! Neem binnen 30 dagen na ontvangst van de jas contact op met onze klantenservice.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "text_QXBxNA",
-        "text_ACHFh9",
-        "text_PmBwJT",
-        "text_wFgwJW",
-        "text_A6dJBC"
-      ],
+    "custom_liquid_j3t8Ac": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
       "settings": {
-        "heading": "Veelgestelde Vragen",
-        "icon_color": "#5b5b5b",
-        "hover_color": "#4a4a4a",
-        "question_color": "#000000",
-        "background_color": "#f3f3f3",
-        "answer_color": "#000000",
-        "answer_bg_color": "#ffffff",
-        "questions-font-size": 1.5
+        "display_id": false,
+        "visibility": "always-display",
+        "custom_liquid": "<section class=\"hipipet-faq\">\n  <div class=\"hipipet-faq__inner\">\n\n    <div class=\"hipipet-faq__header\">\n      <span class=\"hipipet-faq__eyebrow\">VEELGESTELDE VRAGEN</span>\n\n      <h2>Alles wat je wilt weten over HIPIPET</h2>\n\n      <p>\n        Van de juiste maat tot wandelen en dragen — hieronder vind je de belangrijkste antwoorden.\n      </p>\n    </div>\n\n\n    <div class=\"hipipet-faq__list\">\n\n      <!-- FAQ 1 -->\n      <details class=\"hipipet-faq__item\">\n        <summary>\n          <span>Hoe werkt HIPIPET precies?</span>\n          <span class=\"hipipet-faq__plus\"></span>\n        </summary>\n\n        <div class=\"hipipet-faq__answer\">\n          HIPIPET is een 2-in-1 harnas en draagoplossing. Je hond kan er gewoon\n          mee wandelen. Wanneer je hond moe wordt, gebruik je de handgrepen\n          of bevestig je de verstelbare schouderband om hem verder te dragen.\n        </div>\n      </details>\n\n\n      <!-- FAQ 2 -->\n      <details class=\"hipipet-faq__item\">\n        <summary>\n          <span>Kan mijn hond er gewoon mee wandelen?</span>\n          <span class=\"hipipet-faq__plus\"></span>\n        </summary>\n\n        <div class=\"hipipet-faq__answer\">\n          Ja. HIPIPET is ontworpen zodat je kleine hond tijdens de wandeling\n          gewoon kan meelopen. Je hoeft dus niet steeds te wisselen tussen\n          een los harnas en een draagtas.\n        </div>\n      </details>\n\n\n      <!-- FAQ 3 -->\n      <details class=\"hipipet-faq__item\">\n        <summary>\n          <span>Voor welke honden is HIPIPET geschikt?</span>\n          <span class=\"hipipet-faq__plus\"></span>\n        </summary>\n\n        <div class=\"hipipet-faq__answer\">\n          HIPIPET is bedoeld voor kleine honden. De beschikbare maten lopen\n          van S tot L. Kijk altijd naar de borstomtrek en nekomtrek van je hond;\n          het gewicht dient vooral als extra richtlijn.\n        </div>\n      </details>\n\n\n      <!-- FAQ 4 -->\n      <details class=\"hipipet-faq__item\">\n        <summary>\n          <span>Welke maat moet ik kiezen?</span>\n          <span class=\"hipipet-faq__plus\"></span>\n        </summary>\n\n        <div class=\"hipipet-faq__answer\">\n          Meet de borstomtrek en nekomtrek van je hond en vergelijk deze met\n          onze maattabel. Twijfel je tussen twee maten? Kies dan bij voorkeur\n          de grotere maat voor wat extra bewegingsruimte.\n        </div>\n      </details>\n\n\n      <!-- FAQ 5 -->\n      <details class=\"hipipet-faq__item\">\n        <summary>\n          <span>Is HIPIPET comfortabel tijdens het dragen?</span>\n          <span class=\"hipipet-faq__plus\"></span>\n        </summary>\n\n        <div class=\"hipipet-faq__answer\">\n          De vorm ondersteunt het lichaam horizontaal en de openingen geven\n          de poten bewegingsruimte. Zorg er altijd voor dat de gekozen maat\n          goed aansluit en dat alle bevestigingen correct zijn vastgemaakt.\n        </div>\n      </details>\n\n\n      <!-- FAQ 6 -->\n      <details class=\"hipipet-faq__item\">\n        <summary>\n          <span>Hoe kan ik mijn hond dragen?</span>\n          <span class=\"hipipet-faq__plus\"></span>\n        </summary>\n\n        <div class=\"hipipet-faq__answer\">\n          Je kunt je hond snel optillen met de korte handgrepen. Voor langere\n          stukken kun je de verstelbare band bevestigen en HIPIPET over je\n          schouder dragen.\n        </div>\n      </details>\n\n\n      <!-- FAQ 7 -->\n      <details class=\"hipipet-faq__item\">\n        <summary>\n          <span>Welke kleuren zijn verkrijgbaar?</span>\n          <span class=\"hipipet-faq__plus\"></span>\n        </summary>\n\n        <div class=\"hipipet-faq__answer\">\n          HIPIPET is verkrijgbaar in twee kleuren: wit met bruine details\n          en volledig zwart.\n        </div>\n      </details>\n\n\n      <!-- FAQ 8 -->\n      <details class=\"hipipet-faq__item\">\n        <summary>\n          <span>Wat ontvang ik bij mijn bestelling?</span>\n          <span class=\"hipipet-faq__plus\"></span>\n        </summary>\n\n        <div class=\"hipipet-faq__answer\">\n          Je ontvangt het HIPIPET draagharnas inclusief de verstelbare\n          schouderband en bijbehorende bevestigingen.\n        </div>\n      </details>\n\n    </div>\n\n\n    <div class=\"hipipet-faq__help\">\n      <div class=\"hipipet-faq__help-icon\">♥</div>\n\n      <div>\n        <strong>Nog niet helemaal zeker?</strong>\n        <span>\n          Bekijk de maattabel hierboven of neem contact met ons op voor hulp bij het kiezen.\n        </span>\n      </div>\n    </div>\n\n  </div>\n</section>\n\n\n<style>\n  .hipipet-faq {\n    width: 100%;\n    box-sizing: border-box;\n\n    background: #ffffff;\n\n    padding: 58px 20px 62px;\n  }\n\n  .hipipet-faq__inner {\n    width: 100%;\n    max-width: 900px;\n\n    margin: 0 auto;\n  }\n\n\n  /* HEADER */\n\n  .hipipet-faq__header {\n    text-align: center;\n\n    max-width: 650px;\n\n    margin: 0 auto 28px;\n  }\n\n  .hipipet-faq__eyebrow {\n    display: inline-flex;\n\n    padding: 6px 11px;\n    margin-bottom: 13px;\n\n    background: #f1e5db;\n    color: #8d5d3f;\n\n    border-radius: 999px;\n\n    font-size: 10px;\n    line-height: 1;\n\n    font-weight: 800;\n    letter-spacing: 0.7px;\n  }\n\n  .hipipet-faq__header h2 {\n    margin: 0 0 11px;\n\n    color: #2d2723;\n\n    font-size: clamp(29px, 3vw, 42px);\n    line-height: 1.08;\n\n    font-weight: 700;\n    letter-spacing: -0.9px;\n  }\n\n  .hipipet-faq__header p {\n    margin: 0;\n\n    color: #75685f;\n\n    font-size: 13px;\n    line-height: 1.5;\n    font-weight: 500;\n  }\n\n\n  /* FAQ LIST */\n\n  .hipipet-faq__list {\n    display: grid;\n    gap: 9px;\n  }\n\n  .hipipet-faq__item {\n    background: #faf7f3;\n\n    border: 1px solid #eadfd5;\n    border-radius: 11px;\n\n    overflow: hidden;\n\n    transition:\n      border-color .2s ease,\n      box-shadow .2s ease;\n  }\n\n  .hipipet-faq__item[open] {\n    border-color: #ddc9b9;\n\n    box-shadow: 0 5px 18px rgba(70, 45, 30, 0.045);\n  }\n\n  .hipipet-faq__item summary {\n    position: relative;\n\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n\n    gap: 20px;\n\n    padding: 16px 17px;\n\n    cursor: pointer;\n\n    list-style: none;\n\n    color: #342c27;\n\n    font-size: 13.2px;\n    line-height: 1.3;\n\n    font-weight: 750;\n  }\n\n  .hipipet-faq__item summary::-webkit-details-marker {\n    display: none;\n  }\n\n\n  /* PLUS / MIN */\n\n  .hipipet-faq__plus {\n    position: relative;\n\n    width: 24px;\n    height: 24px;\n\n    flex: 0 0 24px;\n\n    border-radius: 50%;\n\n    background: #f1e5db;\n  }\n\n  .hipipet-faq__plus::before,\n  .hipipet-faq__plus::after {\n    content: \"\";\n\n    position: absolute;\n\n    top: 50%;\n    left: 50%;\n\n    width: 10px;\n    height: 1.5px;\n\n    background: #956244;\n\n    border-radius: 2px;\n\n    transform: translate(-50%, -50%);\n    transition: transform .2s ease;\n  }\n\n  .hipipet-faq__plus::after {\n    transform: translate(-50%, -50%) rotate(90deg);\n  }\n\n  .hipipet-faq__item[open] .hipipet-faq__plus::after {\n    transform: translate(-50%, -50%) rotate(0deg);\n  }\n\n\n  /* ANSWER */\n\n  .hipipet-faq__answer {\n    padding: 0 52px 17px 17px;\n\n    color: #6d6057;\n\n    font-size: 12.2px;\n    line-height: 1.55;\n\n    font-weight: 500;\n  }\n\n\n  /* HELP BOX */\n\n  .hipipet-faq__help {\n    display: flex;\n    align-items: center;\n\n    gap: 11px;\n\n    margin-top: 23px;\n    padding: 14px 16px;\n\n    background: #f5ebe2;\n\n    border-radius: 11px;\n\n    color: #63544a;\n  }\n\n  .hipipet-faq__help-icon {\n    width: 31px;\n    height: 31px;\n\n    flex: 0 0 31px;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    border-radius: 50%;\n\n    background: #ffffff;\n\n    color: #9a6645;\n\n    font-size: 12px;\n  }\n\n  .hipipet-faq__help div:last-child {\n    display: grid;\n    gap: 2px;\n  }\n\n  .hipipet-faq__help strong {\n    color: #3c3029;\n\n    font-size: 12px;\n    line-height: 1.3;\n\n    font-weight: 750;\n  }\n\n  .hipipet-faq__help span {\n    font-size: 10.8px;\n    line-height: 1.4;\n\n    font-weight: 500;\n  }\n\n\n  /* MOBILE */\n\n  @media screen and (max-width: 749px) {\n\n    .hipipet-faq {\n      padding: 34px 14px 38px;\n    }\n\n    .hipipet-faq__header {\n      margin-bottom: 21px;\n    }\n\n    .hipipet-faq__eyebrow {\n      padding: 5px 9px;\n      margin-bottom: 10px;\n\n      font-size: 9px;\n    }\n\n    .hipipet-faq__header h2 {\n      margin-bottom: 8px;\n\n      font-size: 25px;\n      line-height: 1.09;\n\n      letter-spacing: -0.5px;\n    }\n\n    .hipipet-faq__header p {\n      font-size: 11.5px;\n      line-height: 1.45;\n    }\n\n    .hipipet-faq__list {\n      gap: 7px;\n    }\n\n    .hipipet-faq__item {\n      border-radius: 9px;\n    }\n\n    .hipipet-faq__item summary {\n      gap: 13px;\n\n      padding: 13px 12px;\n\n      font-size: 11.8px;\n      line-height: 1.3;\n    }\n\n    .hipipet-faq__plus {\n      width: 21px;\n      height: 21px;\n\n      flex-basis: 21px;\n    }\n\n    .hipipet-faq__plus::before,\n    .hipipet-faq__plus::after {\n      width: 8px;\n    }\n\n    .hipipet-faq__answer {\n      padding: 0 42px 13px 12px;\n\n      font-size: 10.8px;\n      line-height: 1.48;\n    }\n\n    .hipipet-faq__help {\n      gap: 9px;\n\n      margin-top: 17px;\n      padding: 11px 12px;\n\n      border-radius: 9px;\n    }\n\n    .hipipet-faq__help-icon {\n      width: 27px;\n      height: 27px;\n\n      flex-basis: 27px;\n    }\n\n    .hipipet-faq__help strong {\n      font-size: 11px;\n    }\n\n    .hipipet-faq__help span {\n      font-size: 9.8px;\n    }\n\n  }\n</style>",
+        "color_scheme": "background-1",
+        "padding_top": 0,
+        "padding_bottom": 0
       }
     },
     "1694520940915c1b12": {
@@ -1171,7 +1126,7 @@
     "related-products",
     "rich_text_ekRY63",
     "ss_slider_2_gRRwyn",
-    "ss_simple_faq_czzL8H",
+    "custom_liquid_j3t8Ac",
     "1694520940915c1b12",
     "ff8c333e-a71f-4aa3-a0eb-85610aeb8641",
     "a860c064-49ff-480a-8b82-6f0ec7facca5"
