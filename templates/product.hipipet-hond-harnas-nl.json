@@ -364,7 +364,7 @@
         "custom_liquid_WU67BE": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div id='ss-product-videos'></div> -"
+            "custom_liquid": "<div id='ss-product-videos'></div>"
           }
         }
       },
