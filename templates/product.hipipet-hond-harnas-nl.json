@@ -273,7 +273,7 @@
         "98db29ee-a7dc-429e-8129-bf71131627da": {
           "type": "payment_badges",
           "settings": {
-            "enabled_payment_types": "",
+            "enabled_payment_types": "apple_pay, american_express, ideal, klarna, maestro, visa",
             "margin_top": 15,
             "margin_bottom": 15
           }
