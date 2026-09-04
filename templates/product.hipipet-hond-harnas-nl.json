@@ -97,6 +97,7 @@
         },
         "sizing_chart_UcHatV": {
           "type": "sizing_chart",
+          "disabled": true,
           "settings": {
             "test_mode": false,
             "append": "none",
