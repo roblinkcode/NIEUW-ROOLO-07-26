@@ -456,6 +456,7 @@
         },
         "video_cMfP3p": {
           "type": "video",
+          "disabled": true,
           "settings": {
             "video": "shopify://files/videos/hipipet product video (1).mp4",
             "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
