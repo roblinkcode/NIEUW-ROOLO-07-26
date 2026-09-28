@@ -30,6 +30,7 @@
           "type": "price",
           "disabled": true,
           "settings": {
+            "layout": "price_first",
             "price_color": "accent-1",
             "compare_price_color": "text",
             "displayed_badge": "sale",
@@ -139,6 +140,7 @@
             "image_width": 70,
             "space_images": true,
             "vertical_images_position": "top",
+            "vertical_prices_layout": "vertical",
             "option_1_quantity": 1,
             "option_1_badge": "",
             "option_1_badge_style": "1",
@@ -230,6 +232,14 @@
             "margin_bottom": 24
           }
         },
+        "98db29ee-a7dc-429e-8129-bf71131627da": {
+          "type": "payment_badges",
+          "settings": {
+            "enabled_payment_types": "",
+            "margin_top": 15,
+            "margin_bottom": 15
+          }
+        },
         "d505cdfe-d5cf-4aff-8e9e-abca6dae66eb": {
           "type": "sticky_atc",
           "settings": {
@@ -262,49 +272,10 @@
             "mobile_transparent_bg": false
           }
         },
-        "98db29ee-a7dc-429e-8129-bf71131627da": {
-          "type": "payment_badges",
-          "settings": {
-            "enabled_payment_types": "",
-            "margin_top": 15,
-            "margin_bottom": 15
-          }
-        },
         "custom_liquid_D3RWQ8": {
           "type": "custom_liquid",
           "settings": {
             "custom_liquid": "<div class=\"purchase-bubble\">\n  <div class=\"photo-group\">\n    <img src=\"https://img.freepik.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?ga=GA1.1.512236851.1746736510&semt=ais_hybrid&w=740\" alt=\"Gebruiker 1\" class=\"photo\" />\n    <img src=\"https://img.freepik.com/free-photo/pretty-smiling-joyfully-female-with-fair-hair-dressed-casually-looking-with-satisfaction_176420-15187.jpg?t=st=1746650000~exp=1746653600~hmac=113f9adc8196161946ac06c2a29aa3130fcb266de9c12a906adcc34edee6a126&w=1380\" alt=\"Gebruiker 2\" class=\"photo\" />\n    <img src=\"https://img.freepik.com/free-photo/smiley-man-relaxing-outdoors_23-2148739334.jpg?ga=GA1.1.512236851.1746736510&semt=ais_hybrid&w=740\" alt=\"Gebruiker 3\" class=\"photo\" />\n  </div>\n  <div class=\"purchase-text\">\n    <span class=\"buyer-name\">Sara</span>\n    <img src=\"https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Twitter_Verified_Badge.svg/800px-Twitter_Verified_Badge.svg.png\" alt=\"Geverifieerd\" class=\"checkmark-icon\" />\n    <span>en <b>1.856</b> anderen gingen je voor</span>\n  </div>\n</div>\n\n<style>\n.purchase-bubble {\n  display: flex;\n  align-items: center;\n  background: #fff;\n  padding: 6px 14px;\n  border-radius: 9px;\n  font-size: 12px;\n  color: #1a1a1a;\n  margin-top: 0px !important;\n  padding-top: 0px;\n}\n\n.photo-group {\n  display: inline-flex;\n  margin-inline-end: 12px;\n}\n\n.photo {\n  width: 22px;\n  height: 22px;\n  object-fit: cover;\n  border-radius: 50%;\n  border: 2px solid #fff;\n  margin-left: -6px;\n}\n\n.purchase-text {\n  display: inline-flex;\n  align-items: center;\n  column-gap: 4px;\n  font-weight: 400;\n}\n\n.buyer-name {\n  font-weight: 800;\n}\n\n.checkmark-icon {\n  height: 13px;\n  width: 13px;\n  margin-top: -1px;\n}\n</style>"
-          }
-        },
-        "149aabfb-9fd8-4472-a633-6032dbe01ed0": {
-          "type": "reviews",
-          "disabled": true,
-          "settings": {
-            "color_scheme": "background-1",
-            "show_custom_bg": false,
-            "custom_bg_color": "#f2f2f2",
-            "corner_radius": 12,
-            "border_width": 0,
-            "border_color": "#b7b7b7",
-            "avatar_alignment": "top",
-            "avatar_corner_radius": 40,
-            "star_color": "#ffcc00",
-            "stars_translate": 0,
-            "checkmark_color": "#6d388b",
-            "checkmark_icon_color": "#ffffff",
-            "slider_type": "slide",
-            "autoplay": false,
-            "autoplay_speed": 5,
-            "display_arrows": false,
-            "display_dots": true,
-            "author_1": "Kyle",
-            "text_1": "<p>\"Een mooie toevoeging bij mijn huis, ze zijn heel handig voor in de slaapkamer!\"</p>",
-            "author_2": "Lisa",
-            "text_2": "<p>\"Hele leuke lampen! Ik heb er 2 in de slaapkamer en 1 in de woonkamer, super handig.\"</p>",
-            "author_3": "",
-            "text_3": "",
-            "margin_top": 24,
-            "margin_bottom": 24
           }
         },
         "custom_liquid_mm96Ny": {
@@ -357,10 +328,9 @@
         "48b7eaf2-2c4d-4d42-a430-ab9107e675d0",
         "custom_liquid_yAzWJb",
         "buy_buttons",
-        "d505cdfe-d5cf-4aff-8e9e-abca6dae66eb",
         "98db29ee-a7dc-429e-8129-bf71131627da",
+        "d505cdfe-d5cf-4aff-8e9e-abca6dae66eb",
         "custom_liquid_D3RWQ8",
-        "149aabfb-9fd8-4472-a633-6032dbe01ed0",
         "custom_liquid_mm96Ny",
         "collapsible_tab_VgYrrA",
         "collapsible_tab_JycfLA"
