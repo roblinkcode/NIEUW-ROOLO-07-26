@@ -30,6 +30,7 @@
           "type": "price",
           "disabled": true,
           "settings": {
+            "layout": "price_first",
             "price_color": "accent-1",
             "compare_price_color": "text",
             "displayed_badge": "sale",
@@ -139,6 +140,7 @@
             "image_width": 70,
             "space_images": true,
             "vertical_images_position": "top",
+            "vertical_prices_layout": "vertical",
             "option_1_quantity": 1,
             "option_1_badge": "",
             "option_1_badge_style": "1",
@@ -270,8 +272,15 @@
             "margin_bottom": 15
           }
         },
+        "custom_liquid_ABaGyN": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% assign current_variant = product.selected_or_first_available_variant %}\n{% assign klarna_part = current_variant.price | divided_by: 3 %}\n\n<div class=\"hipipet-trust-list\">\n\n  <!-- Kostenloser Versand -->\n  <div class=\"hipipet-trust-row\">\n    <div class=\"hipipet-trust-icon\">\n      <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n        <path d=\"M3 6.5h11v9H3z\"></path>\n        <path d=\"M14 9h3.2l2.3 2.8v3.7H14z\"></path>\n        <circle cx=\"7\" cy=\"17.5\" r=\"1.6\"></circle>\n        <circle cx=\"17.5\" cy=\"17.5\" r=\"1.6\"></circle>\n      </svg>\n    </div>\n\n    <div class=\"hipipet-trust-text\">\n      Kostenloser Versand ab 20 €\n    </div>\n  </div>\n\n\n  <!-- 30 Tage Rückgaberecht -->\n  <div class=\"hipipet-trust-row\">\n    <div class=\"hipipet-trust-icon\">\n      <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n        <path d=\"M12 7v5l3 2\"></path>\n        <circle cx=\"12\" cy=\"12\" r=\"8\"></circle>\n      </svg>\n    </div>\n\n    <div class=\"hipipet-trust-text\">\n      30 Tage Rückgaberecht\n    </div>\n  </div>\n\n\n  <!-- Klarna -->\n  <div class=\"hipipet-trust-row\">\n    <div class=\"hipipet-klarna-icon\">\n      Klarna\n    </div>\n\n    <div class=\"hipipet-trust-text\">\n      Bezahle in 3 Raten à\n      <strong id=\"hipipet-klarna-price\">\n        {{ klarna_part | money }}\n      </strong>.\n      Zinsfrei.\n    </div>\n  </div>\n\n</div>\n\n\n<script type=\"application/json\" id=\"hipipet-product-variants\">\n  {{ product.variants | json }}\n</script>\n\n\n<style>\n  .hipipet-trust-list {\n    display: grid;\n    gap: 8px;\n    width: 100%;\n    margin: 11px 0 15px;\n  }\n\n  .hipipet-trust-row {\n    display: flex;\n    align-items: center;\n    gap: 10px;\n    min-height: 32px;\n  }\n\n  .hipipet-trust-icon {\n    width: 38px;\n    height: 30px;\n    flex: 0 0 38px;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    background: #F4EBDD;\n    border-radius: 5px;\n  }\n\n  .hipipet-trust-icon svg {\n    width: 17px;\n    height: 17px;\n\n    fill: none;\n    stroke: #4A382C;\n    stroke-width: 1.6;\n    stroke-linecap: round;\n    stroke-linejoin: round;\n  }\n\n  .hipipet-klarna-icon {\n    width: 38px;\n    height: 30px;\n    flex: 0 0 38px;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    background: #FFB3C7;\n    color: #111111;\n\n    border-radius: 5px;\n\n    font-size: 8px;\n    font-weight: 800;\n    letter-spacing: -0.2px;\n  }\n\n  .hipipet-trust-text {\n    color: #342B25;\n    font-size: 12.8px;\n    font-weight: 500;\n    line-height: 1.3;\n  }\n\n  .hipipet-trust-text strong {\n    color: #211B17;\n    font-weight: 800;\n  }\n\n  @media screen and (max-width: 749px) {\n    .hipipet-trust-list {\n      gap: 6px;\n      margin: 9px 0 12px;\n    }\n\n    .hipipet-trust-row {\n      gap: 9px;\n      min-height: 29px;\n    }\n\n    .hipipet-trust-icon,\n    .hipipet-klarna-icon {\n      width: 35px;\n      height: 28px;\n      flex-basis: 35px;\n    }\n\n    .hipipet-trust-icon svg {\n      width: 16px;\n      height: 16px;\n    }\n\n    .hipipet-trust-text {\n      font-size: 12.2px;\n      line-height: 1.25;\n    }\n\n    .hipipet-klarna-icon {\n      font-size: 7.5px;\n    }\n  }\n</style>\n\n\n<script>\n  document.addEventListener('DOMContentLoaded', function () {\n    const variantsEl = document.getElementById('hipipet-product-variants');\n    const klarnaPriceEl = document.getElementById('hipipet-klarna-price');\n\n    if (!variantsEl || !klarnaPriceEl) return;\n\n    const variants = JSON.parse(variantsEl.textContent);\n\n    function formatMoney(cents) {\n      return new Intl.NumberFormat('de-DE', {\n        style: 'currency',\n        currency: 'EUR'\n      }).format(cents / 100);\n    }\n\n    function updateKlarnaPrice() {\n      const variantInput = document.querySelector(\n        'form[action*=\"/cart/add\"] input[name=\"id\"]'\n      );\n\n      if (!variantInput) return;\n\n      const variantId = Number(variantInput.value);\n\n      const variant = variants.find(function (v) {\n        return Number(v.id) === variantId;\n      });\n\n      if (!variant) return;\n\n      const installmentPrice = variant.price / 3;\n\n      klarnaPriceEl.textContent = formatMoney(installmentPrice);\n    }\n\n    updateKlarnaPrice();\n\n    document.addEventListener('change', function () {\n      setTimeout(updateKlarnaPrice, 50);\n    });\n\n    const variantInput = document.querySelector(\n      'form[action*=\"/cart/add\"] input[name=\"id\"]'\n    );\n\n    if (variantInput) {\n      const observer = new MutationObserver(function () {\n        updateKlarnaPrice();\n      });\n\n      observer.observe(variantInput, {\n        attributes: true,\n        attributeFilter: ['value']\n      });\n    }\n  });\n</script>"
+          }
+        },
         "custom_liquid_P93aLU": {
           "type": "custom_liquid",
+          "disabled": true,
           "settings": {
             "custom_liquid": "<div id='ss-emoji'></div>"
           }
@@ -370,6 +379,7 @@
         "buy_buttons_7RCVmi",
         "d505cdfe-d5cf-4aff-8e9e-abca6dae66eb",
         "98db29ee-a7dc-429e-8129-bf71131627da",
+        "custom_liquid_ABaGyN",
         "custom_liquid_P93aLU",
         "2edbf491-d07c-4718-b71e-18ffe22ab7dc",
         "149aabfb-9fd8-4472-a633-6032dbe01ed0",
@@ -475,6 +485,7 @@
         "item_Jj43Uq",
         "item_pDRNJw"
       ],
+      "disabled": true,
       "settings": {
         "trust_position": "below_buy",
         "emoji_font_size": 19,
