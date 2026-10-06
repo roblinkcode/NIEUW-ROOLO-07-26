@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "general": {
     "password_page": {
@@ -453,6 +462,33 @@
       "expired": "Har gått ut",
       "copy_code_success": "Koden kopierades",
       "print_gift_card": "Skriv ut"
+    }
+  },
+  "cart_drawer": {
+    "premium": {
+      "title": "Din varukorg ({{ count }})",
+      "free_shipping_active": "Fri frakt aktiverad",
+      "remove": "Ta bort",
+      "height": "Höjd",
+      "shoe_size": "Skostorlek",
+      "color": "Färg",
+      "complete_order": "Slutför din beställning",
+      "second_pair_half_price": "Ditt andra par är nu 50 % billigare",
+      "choose_height_size": "Välj höjd och skostorlek",
+      "add_half_price": "Lägg till med 50 % rabatt",
+      "other_models": "Se andra modeller",
+      "fewer_models": "Visa färre modeller",
+      "second_pair_discount_auto": "50% rabatt på ditt andra par dras av automatiskt",
+      "discount_auto": "Eventuell rabatt dras av automatiskt",
+      "subtotal": "Delsumma",
+      "secure_checkout": "Säker betalning",
+      "klarna": "Betala nu eller senare med Klarna",
+      "unavailable": "Inte tillgängligt",
+      "adding": "Lägg till...",
+      "added": "Tillagt",
+      "error": "Något gick fel. Försök igen.",
+      "empty_title": "Din varukorg är tom",
+      "return_to_shop": "Tillbaka till butiken"
     }
   }
 }
