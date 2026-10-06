@@ -35,7 +35,7 @@
             "compare_price_color": "text",
             "displayed_badge": "sale",
             "icon_scale": 140,
-            "custom_badge_text": "[icon_1] SPECIAL OFFER",
+            "custom_badge_text": "[icon_1] SPECIALERBJUDANDE",
             "icon_1": "redeem",
             "filled_icon_1": false,
             "icon_2": "check_circle",
@@ -48,7 +48,7 @@
           "type": "emoji_benefits",
           "disabled": true,
           "settings": {
-            "benefits": "<p>⭐️ 4200+ tevreden klanten</p><p>✅ Op voorraad, klaar voor onmiddellijke verzending!</p><p>🚛 Voor 23.00 uur besteld, dezelfde dag verzonden!</p>",
+            "benefits": "<p>⭐️ Över 4 200 nöjda kunder</p><p>✅ I lager, redo för omgående leverans!</p><p>🚛 Beställ före kl. 23.00 – skickas samma dag!</p>",
             "margin_top": 15,
             "margin_bottom": 15
           }
@@ -64,12 +64,12 @@
             "swatches_custom_colors_list": "#3b4868, #000000, #9a9a9a, #fc1e19, #666e33, #7c344c, #38c9c9",
             "full_width_dropdowns": false,
             "breaks_style": "normal",
-            "breaks_headline": "BUNDLE & SAVE",
+            "breaks_headline": "PAKET & SPARA",
             "breaks_display_selected_indicator": true,
             "breaks_border_radius": 10,
             "breaks_border_width": 2,
             "breaks_color_scheme": "accent-1",
-            "breaks_badges": "[empty], Most popular, [empty]",
+            "breaks_badges": "[empty], Populärast, [empty]",
             "breaks_badge_style": "1",
             "breaks_badge_color": "accent-1",
             "breaks_displayed_images": "none",
@@ -79,11 +79,11 @@
             "breaks_vertical_images_position": "top",
             "breaks_vertical_prices_layout": "vertical",
             "breaks_labels": "[name], [name], [name]",
-            "breaks_benefits": "[empty], Free Shipping, Free Shipping",
+            "breaks_benefits": "[empty], Fri frakt, Fri frakt",
             "breaks_benefit_position": "top",
             "breaks_benefit_style": "outlined",
             "breaks_benefit_color": "accent-1",
-            "breaks_captions": "Variant 1 caption, Variant 2 caption, Variant 3 caption",
+            "breaks_captions": "Alternativ 1, Alternativ 2, Alternativ 3",
             "breaks_price_texts": "[price], [price], [price]",
             "breaks_compare_price_texts": "[compare_price], [compare_price], [compare_price]",
             "margin_top": 15,
@@ -95,20 +95,20 @@
           "settings": {
             "test_mode": false,
             "append": "none",
-            "button_label": "Maattabel",
+            "button_label": "Storleksguide",
             "button_icon": "straighten",
             "button_filled_icon": false,
             "text_size": 17,
             "button_alignment": "start",
             "button_underline": false,
-            "headline": "Maattabel DogJacket",
+            "headline": "Storleksguide för DogJacket",
             "heading_size": "h3",
             "close_button_style": "minimalistic",
             "color_scheme": "background-1",
-            "table_header_content": "Maat, Borst (cm), Nek (cm), Rug (cm), Gewicht",
+            "table_header_content": "Storlek, Bröst (cm), Hals (cm), Rygg (cm), Vikt",
             "table_header_color_scheme": "inverse",
-            "table_content": "<p>S, 36, 27, 22, 1.5-2 kg</p><p>M, 40, 30, 26, 3-3.5 kg</p><p>L, 44, 32, 30, 3.5-5 kg</p><p>XL, 48, 34, 34, 5-7 kg</p><p>2XL, 52, 37, 38, 7-9 k</p><p>3XL, 62, 46, 43, 9-15 kg</p><p>4XL, 72, 52, 48, 15-20 kg</p><p>5XL, 84, 60, 56, 20+ kg</p>",
-            "caption_text": "<p><strong>LET OP: </strong>Meet volgens de afmetingen in de <strong>Maat Tabel</strong> om de juiste pasvorm voor jouw hond te krijgen.</p><p>Twijfel? Kies een maat groter.<br/>Kom je er niet uit? Neem contact op met onze klantenservice! info@roolo.nl</p>",
+            "table_content": "<p>S, 36, 27, 22, 1.5–2 kg</p><p>M, 40, 30, 26, 3–3.5 kg</p><p>L, 44, 32, 30, 3.5–5 kg</p><p>XL, 48, 34, 34, 5–7 kg</p><p>2XL, 52, 37, 38, 7–9 kg</p><p>3XL, 62, 46, 43, 9–15 kg</p><p>4XL, 72, 52, 48, 15–20 kg</p><p>5XL, 84, 60, 56, 20+ kg</p>",
+            "caption_text": "<p><strong>OBS: </strong>Mät enligt måtten i <strong>storleksguiden</strong> för att hitta rätt passform för din hund.</p><p>Osäker? Välj en storlek större.<br/>Behöver du hjälp? Kontakta vår kundservice! info@roolo.nl</p>",
             "caption_size": "1.45rem",
             "caption_color": "#121212",
             "caption_alignment": "left",
@@ -145,7 +145,7 @@
             "option_1_badge": "",
             "option_1_badge_style": "1",
             "option_1_badge_color": "accent-1",
-            "option_1_label": "1 Jas",
+            "option_1_label": "1 jacka",
             "option_1_benefit": "",
             "option_1_benefit_position": "top",
             "option_1_benefit_style": "outlined",
@@ -160,14 +160,14 @@
             "option_2_badge": "",
             "option_2_badge_style": "1",
             "option_2_badge_color": "accent-1",
-            "option_2_label": "2 Jassen",
+            "option_2_label": "2 jackor",
             "option_2_benefit": "",
             "option_2_benefit_position": "top",
             "option_2_benefit_style": "outlined",
             "option_2_benefit_color": "accent-1",
-            "option_2_caption": "Je bespaard 10%",
-            "option_2_percentage_off_text": "0",
-            "option_2_fixed_amount_off": "6.95",
+            "option_2_caption": "Du sparar 10 %",
+            "option_2_percentage_off_text": "10",
+            "option_2_fixed_amount_off": "0",
             "option_2_price_text": "<em><strong>[price]</strong></em>",
             "option_2_compare_price": "price",
             "option_2_compare_price_text": "[compare_price]",
@@ -175,12 +175,12 @@
             "option_3_badge": "",
             "option_3_badge_style": "1",
             "option_3_badge_color": "accent-1",
-            "option_3_label": "3 Jassen",
+            "option_3_label": "3 jackor",
             "option_3_benefit": "",
             "option_3_benefit_position": "top",
             "option_3_benefit_style": "outlined",
             "option_3_benefit_color": "accent-1",
-            "option_3_caption": "Je bespaard 20%",
+            "option_3_caption": "Du sparar 20 %",
             "option_3_percentage_off_text": "0",
             "option_3_fixed_amount_off": "0",
             "option_3_price_text": "<em><strong>[price]</strong></em>",
@@ -195,7 +195,7 @@
             "option_4_benefit_position": "top",
             "option_4_benefit_style": "outlined",
             "option_4_benefit_color": "accent-1",
-            "option_4_caption": "You save [amount]",
+            "option_4_caption": "Du sparar [amount]",
             "option_4_percentage_off_text": "0",
             "option_4_fixed_amount_off": "0",
             "option_4_price_text": "<em><strong>[price]</strong></em>",
@@ -208,7 +208,7 @@
         "custom_liquid_yAzWJb": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% assign today = 'now' | date: \"%s\" %}\n{% assign morgen = today | plus: 86400 %}\n{% assign dag = morgen | date: \"%-d\" %}\n{% assign maand_nummer = morgen | date: \"%-m\" %}\n\n{% case maand_nummer %}\n  {% when '1' %}{% assign maand = 'jan' %}\n  {% when '2' %}{% assign maand = 'feb' %}\n  {% when '3' %}{% assign maand = 'maart' %}\n  {% when '4' %}{% assign maand = 'april' %}\n  {% when '5' %}{% assign maand = 'mei' %}\n  {% when '6' %}{% assign maand = 'juni' %}\n  {% when '7' %}{% assign maand = 'juli' %}\n  {% when '8' %}{% assign maand = 'aug' %}\n  {% when '9' %}{% assign maand = 'sep' %}\n  {% when '10' %}{% assign maand = 'okt' %}\n  {% when '11' %}{% assign maand = 'nov' %}\n  {% when '12' %}{% assign maand = 'dec' %}\n{% endcase %}\n\n<div style=\"text-align: left; margin-bottom: 24px;\">\n  <span style=\"color: #007000; font-size: 15px;\">\n    • Vandaag besteld, verzonden vóór: {{ dag }} {{ maand }}\n  </span>\n</div>"
+            "custom_liquid": "{% assign today = 'now' | date: \"%s\" %}\n{% assign morgen = today | plus: 86400 %}\n{% assign dag = morgen | date: \"%-d\" %}\n{% assign maand_nummer = morgen | date: \"%-m\" %}\n\n{% case maand_nummer %}\n  {% when '1' %}{% assign maand = 'jan' %}\n  {% when '2' %}{% assign maand = 'feb' %}\n  {% when '3' %}{% assign maand = 'mars' %}\n  {% when '4' %}{% assign maand = 'apr' %}\n  {% when '5' %}{% assign maand = 'maj' %}\n  {% when '6' %}{% assign maand = 'juni' %}\n  {% when '7' %}{% assign maand = 'juli' %}\n  {% when '8' %}{% assign maand = 'aug' %}\n  {% when '9' %}{% assign maand = 'sep' %}\n  {% when '10' %}{% assign maand = 'okt' %}\n  {% when '11' %}{% assign maand = 'nov' %}\n  {% when '12' %}{% assign maand = 'dec' %}\n{% endcase %}\n\n<div style=\"text-align: left; margin-bottom: 24px;\">\n  <span style=\"color: #007000; font-size: 15px;\">\n    • Beställ idag, skickas senast: {{ dag }} {{ maand }}\n  </span>\n</div>"
           }
         },
         "buy_buttons": {
@@ -225,7 +225,7 @@
             "custom_color": "#dd1d1d",
             "prefix_icon": "shopify://shop_images/Scherm_afbeelding_2025-07-02_om_17.36.54-removebg-preview.png",
             "enable_secondary_btn": false,
-            "secondary_btn_label": "Buy It Now",
+            "secondary_btn_label": "Köp nu",
             "secondary_btn_enable_custom_color": false,
             "secondary_btn_custom_color": "#dd1d1d",
             "margin_top": 24,
@@ -245,12 +245,12 @@
           "settings": {
             "function": "add_to_cart",
             "display_when": "after_scroll",
-            "button_label": "In winkelwagen",
+            "button_label": "Lägg i varukorgen",
             "enable_custom_btn_color": false,
             "custom_btn_color": "#dd1d1d",
             "color_scheme": "background-1",
             "star_color": "#ffcc00",
-            "stars_label": "(xxxx Reviews)",
+            "stars_label": "(xxxx recensioner)",
             "picker_type": "combined",
             "desktop_show_image": false,
             "desktop_show_title": true,
@@ -275,13 +275,13 @@
         "custom_liquid_D3RWQ8": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "<div class=\"dogjacket-purchase-line\">\n  <div class=\"dogjacket-photo-group\">\n    <img\n      src=\"https://cdn.shopify.com/s/files/1/0773/7458/7204/files/Scherm_afbeelding_2026-08-25_om_06.55.24.png?v=1787633744\"\n      alt=\"Dog Jacket klant\"\n      class=\"dogjacket-photo\"\n      loading=\"lazy\"\n    >\n\n    <img\n      src=\"https://cdn.shopify.com/s/files/1/0773/7458/7204/files/Scherm_afbeelding_2026-08-25_om_06.56.07.png?v=1787633777\"\n      alt=\"Dog Jacket klant\"\n      class=\"dogjacket-photo\"\n      loading=\"lazy\"\n    >\n\n    <img\n      src=\"https://cdn.shopify.com/s/files/1/0773/7458/7204/files/Scherm_afbeelding_2026-08-25_om_06.56.56.png?v=1787633825\"\n      alt=\"Dog Jacket klant\"\n      class=\"dogjacket-photo\"\n      loading=\"lazy\"\n    >\n  </div>\n\n  <div class=\"dogjacket-purchase-text\">\n    <span class=\"dogjacket-buyer-name\">Eva</span>\n\n    <span class=\"dogjacket-verified\" aria-label=\"Geverifieerd\">\n      <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n        <path\n          class=\"dogjacket-verified-shape\"\n          d=\"M22.25 12c0 1.05-1.28 1.9-1.59 2.84-.32.98.22 2.4-.37 3.2-.59.82-2.1.73-2.91 1.32-.8.58-1.18 2.05-2.16 2.37-.94.3-2.11-.61-3.16-.61s-2.22.92-3.16.61c-.98-.32-1.36-1.79-2.16-2.37-.82-.59-2.32-.5-2.91-1.32-.59-.8-.05-2.22-.37-3.2C3.15 13.9 1.87 13.05 1.87 12s1.28-1.9 1.59-2.84c.32-.98-.22-2.4.37-3.2.59-.82 2.1-.73 2.91-1.32.8-.58 1.18-2.05 2.16-2.37.94-.3 2.11.61 3.16.61s2.22-.92 3.16-.61c.98.32 1.36 1.79 2.16 2.37.82.59 2.32.5 2.91 1.32.59.8.05 2.22.37 3.2.31.94 1.59 1.79 1.59 2.84z\"\n        ></path>\n\n        <path\n          class=\"dogjacket-verified-check\"\n          d=\"M7.4 12.2l3 3.1 6.4-6.7\"\n        ></path>\n      </svg>\n    </span>\n\n    <span>\n      en <b>2000+</b> anderen kozen voor Dog Jacket\n    </span>\n  </div>\n</div>\n\n<style>\n  .dogjacket-purchase-line {\n    display: flex;\n    align-items: center;\n    width: 100%;\n    box-sizing: border-box;\n\n    background: transparent;\n    border: none;\n    box-shadow: none;\n\n    padding: 4px 0;\n    margin: 8px 0 12px;\n\n    color: #2D2723;\n  }\n\n  .dogjacket-photo-group {\n    display: inline-flex;\n    align-items: center;\n    margin-right: 10px;\n    flex-shrink: 0;\n  }\n\n  .dogjacket-photo {\n    width: 25px;\n    height: 25px;\n    object-fit: cover;\n    border-radius: 50%;\n\n    border: 2px solid #FFFFFF;\n    margin-left: -7px;\n\n    box-shadow: 0 2px 5px rgba(70, 45, 30, 0.12);\n  }\n\n  .dogjacket-photo:first-child {\n    margin-left: 0;\n  }\n\n  .dogjacket-purchase-text {\n    display: flex;\n    align-items: center;\n    flex-wrap: wrap;\n    gap: 3px;\n\n    font-size: 12px;\n    font-weight: 500;\n    line-height: 1.3;\n\n    color: #62574F;\n  }\n\n  .dogjacket-buyer-name {\n    font-weight: 800;\n    color: #2D2723;\n  }\n\n  .dogjacket-purchase-text b {\n    color: #2D2723;\n    font-weight: 800;\n  }\n\n  .dogjacket-verified {\n    width: 17px;\n    height: 17px;\n    flex: 0 0 17px;\n\n    display: inline-flex;\n    align-items: center;\n    justify-content: center;\n  }\n\n  .dogjacket-verified svg {\n    width: 100%;\n    height: 100%;\n    display: block;\n  }\n\n  .dogjacket-verified-shape {\n    fill: #1D9BF0;\n  }\n\n  .dogjacket-verified-check {\n    fill: none;\n    stroke: #FFFFFF;\n    stroke-width: 2.4;\n    stroke-linecap: round;\n    stroke-linejoin: round;\n  }\n\n  @media screen and (max-width: 480px) {\n    .dogjacket-purchase-line {\n      padding: 3px 0;\n      margin: 7px 0 10px;\n    }\n\n    .dogjacket-photo-group {\n      margin-right: 8px;\n    }\n\n    .dogjacket-photo {\n      width: 23px;\n      height: 23px;\n      margin-left: -6px;\n    }\n\n    .dogjacket-purchase-text {\n      font-size: 11.3px;\n      line-height: 1.25;\n      gap: 3px;\n    }\n\n    .dogjacket-verified {\n      width: 16px;\n      height: 16px;\n      flex-basis: 16px;\n    }\n  }\n</style>"
+            "custom_liquid": "<div class=\"dogjacket-purchase-line\">\n  <div class=\"dogjacket-photo-group\">\n    <img\n      src=\"https://cdn.shopify.com/s/files/1/0773/7458/7204/files/Scherm_afbeelding_2026-08-25_om_06.55.24.png?v=1787633744\"\n      alt=\"Dog Jacket-kund\"\n      class=\"dogjacket-photo\"\n      loading=\"lazy\"\n    >\n\n    <img\n      src=\"https://cdn.shopify.com/s/files/1/0773/7458/7204/files/Scherm_afbeelding_2026-08-25_om_06.56.07.png?v=1787633777\"\n      alt=\"Dog Jacket-kund\"\n      class=\"dogjacket-photo\"\n      loading=\"lazy\"\n    >\n\n    <img\n      src=\"https://cdn.shopify.com/s/files/1/0773/7458/7204/files/Scherm_afbeelding_2026-08-25_om_06.56.56.png?v=1787633825\"\n      alt=\"Dog Jacket-kund\"\n      class=\"dogjacket-photo\"\n      loading=\"lazy\"\n    >\n  </div>\n\n  <div class=\"dogjacket-purchase-text\">\n    <span class=\"dogjacket-buyer-name\">Eva</span>\n\n    <span class=\"dogjacket-verified\" aria-label=\"Verifierad\">\n      <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n        <path\n          class=\"dogjacket-verified-shape\"\n          d=\"M22.25 12c0 1.05-1.28 1.9-1.59 2.84-.32.98.22 2.4-.37 3.2-.59.82-2.1.73-2.91 1.32-.8.58-1.18 2.05-2.16 2.37-.94.3-2.11-.61-3.16-.61s-2.22.92-3.16.61c-.98-.32-1.36-1.79-2.16-2.37-.82-.59-2.32-.5-2.91-1.32-.59-.8-.05-2.22-.37-3.2C3.15 13.9 1.87 13.05 1.87 12s1.28-1.9 1.59-2.84c.32-.98-.22-2.4.37-3.2.59-.82 2.1-.73 2.91-1.32.8-.58 1.18-2.05 2.16-2.37.94-.3 2.11.61 3.16.61s2.22-.92 3.16-.61c.98.32 1.36 1.79 2.16 2.37.82.59 2.32.5 2.91 1.32.59.8.05 2.22.37 3.2.31.94 1.59 1.79 1.59 2.84z\"\n        ></path>\n\n        <path\n          class=\"dogjacket-verified-check\"\n          d=\"M7.4 12.2l3 3.1 6.4-6.7\"\n        ></path>\n      </svg>\n    </span>\n\n    <span>\n      och över <b>2 000</b> andra valde Dog Jacket\n    </span>\n  </div>\n</div>\n\n<style>\n  .dogjacket-purchase-line {\n    display: flex;\n    align-items: center;\n    width: 100%;\n    box-sizing: border-box;\n\n    background: transparent;\n    border: none;\n    box-shadow: none;\n\n    padding: 4px 0;\n    margin: 8px 0 12px;\n\n    color: #2D2723;\n  }\n\n  .dogjacket-photo-group {\n    display: inline-flex;\n    align-items: center;\n    margin-right: 10px;\n    flex-shrink: 0;\n  }\n\n  .dogjacket-photo {\n    width: 25px;\n    height: 25px;\n    object-fit: cover;\n    border-radius: 50%;\n\n    border: 2px solid #FFFFFF;\n    margin-left: -7px;\n\n    box-shadow: 0 2px 5px rgba(70, 45, 30, 0.12);\n  }\n\n  .dogjacket-photo:first-child {\n    margin-left: 0;\n  }\n\n  .dogjacket-purchase-text {\n    display: flex;\n    align-items: center;\n    flex-wrap: wrap;\n    gap: 3px;\n\n    font-size: 12px;\n    font-weight: 500;\n    line-height: 1.3;\n\n    color: #62574F;\n  }\n\n  .dogjacket-buyer-name {\n    font-weight: 800;\n    color: #2D2723;\n  }\n\n  .dogjacket-purchase-text b {\n    color: #2D2723;\n    font-weight: 800;\n  }\n\n  .dogjacket-verified {\n    width: 17px;\n    height: 17px;\n    flex: 0 0 17px;\n\n    display: inline-flex;\n    align-items: center;\n    justify-content: center;\n  }\n\n  .dogjacket-verified svg {\n    width: 100%;\n    height: 100%;\n    display: block;\n  }\n\n  .dogjacket-verified-shape {\n    fill: #1D9BF0;\n  }\n\n  .dogjacket-verified-check {\n    fill: none;\n    stroke: #FFFFFF;\n    stroke-width: 2.4;\n    stroke-linecap: round;\n    stroke-linejoin: round;\n  }\n\n  @media screen and (max-width: 480px) {\n    .dogjacket-purchase-line {\n      padding: 3px 0;\n      margin: 7px 0 10px;\n    }\n\n    .dogjacket-photo-group {\n      margin-right: 8px;\n    }\n\n    .dogjacket-photo {\n      width: 23px;\n      height: 23px;\n      margin-left: -6px;\n    }\n\n    .dogjacket-purchase-text {\n      font-size: 11.3px;\n      line-height: 1.25;\n      gap: 3px;\n    }\n\n    .dogjacket-verified {\n      width: 16px;\n      height: 16px;\n      flex-basis: 16px;\n    }\n  }\n</style>"
           }
         },
         "custom_liquid_8e6nKj": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": "{% assign current_variant = product.selected_or_first_available_variant %}\n{% assign klarna_part = current_variant.price | divided_by: 3 %}\n\n<div class=\"hipipet-trust-list\">\n\n  <!-- Gratis verzending -->\n  <div class=\"hipipet-trust-row\">\n    <div class=\"hipipet-trust-icon\">\n      <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n        <path d=\"M3 6.5h11v9H3z\"></path>\n        <path d=\"M14 9h3.2l2.3 2.8v3.7H14z\"></path>\n        <circle cx=\"7\" cy=\"17.5\" r=\"1.6\"></circle>\n        <circle cx=\"17.5\" cy=\"17.5\" r=\"1.6\"></circle>\n      </svg>\n    </div>\n\n    <div class=\"hipipet-trust-text\">\n      Gratis verzending vanaf €20\n    </div>\n  </div>\n\n\n  <!-- 30 dagen retourneren -->\n  <div class=\"hipipet-trust-row\">\n    <div class=\"hipipet-trust-icon\">\n      <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n        <path d=\"M12 7v5l3 2\"></path>\n        <circle cx=\"12\" cy=\"12\" r=\"8\"></circle>\n      </svg>\n    </div>\n\n    <div class=\"hipipet-trust-text\">\n      30 dagen retourgarantie\n    </div>\n  </div>\n\n\n  <!-- Klarna -->\n  <div class=\"hipipet-trust-row\">\n    <div class=\"hipipet-klarna-icon\">\n      Klarna\n    </div>\n\n    <div class=\"hipipet-trust-text\">\n      Betaal in 3 termijnen van\n      <strong id=\"hipipet-klarna-price\">\n        {{ klarna_part | money }}\n      </strong>.\n      Rentvrij.\n    </div>\n  </div>\n\n</div>\n\n\n<script type=\"application/json\" id=\"hipipet-product-variants\">\n  {{ product.variants | json }}\n</script>\n\n\n<style>\n  .hipipet-trust-list {\n    display: grid;\n    gap: 8px;\n    width: 100%;\n    margin: 11px 0 15px;\n  }\n\n  .hipipet-trust-row {\n    display: flex;\n    align-items: center;\n    gap: 10px;\n    min-height: 32px;\n  }\n\n  .hipipet-trust-icon {\n    width: 38px;\n    height: 30px;\n    flex: 0 0 38px;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    background: #F4EBDD;\n    border-radius: 5px;\n  }\n\n  .hipipet-trust-icon svg {\n    width: 17px;\n    height: 17px;\n\n    fill: none;\n    stroke: #4A382C;\n    stroke-width: 1.6;\n    stroke-linecap: round;\n    stroke-linejoin: round;\n  }\n\n  .hipipet-klarna-icon {\n    width: 38px;\n    height: 30px;\n    flex: 0 0 38px;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    background: #FFB3C7;\n    color: #111111;\n\n    border-radius: 5px;\n\n    font-size: 8px;\n    font-weight: 800;\n    letter-spacing: -0.2px;\n  }\n\n  .hipipet-trust-text {\n    color: #342B25;\n    font-size: 12.8px;\n    font-weight: 500;\n    line-height: 1.3;\n  }\n\n  .hipipet-trust-text strong {\n    color: #211B17;\n    font-weight: 800;\n  }\n\n  @media screen and (max-width: 749px) {\n    .hipipet-trust-list {\n      gap: 6px;\n      margin: 9px 0 12px;\n    }\n\n    .hipipet-trust-row {\n      gap: 9px;\n      min-height: 29px;\n    }\n\n    .hipipet-trust-icon,\n    .hipipet-klarna-icon {\n      width: 35px;\n      height: 28px;\n      flex-basis: 35px;\n    }\n\n    .hipipet-trust-icon svg {\n      width: 16px;\n      height: 16px;\n    }\n\n    .hipipet-trust-text {\n      font-size: 12.2px;\n      line-height: 1.25;\n    }\n\n    .hipipet-klarna-icon {\n      font-size: 7.5px;\n    }\n  }\n</style>\n\n\n<script>\n  document.addEventListener('DOMContentLoaded', function () {\n    const variantsEl = document.getElementById('hipipet-product-variants');\n    const klarnaPriceEl = document.getElementById('hipipet-klarna-price');\n\n    if (!variantsEl || !klarnaPriceEl) return;\n\n    const variants = JSON.parse(variantsEl.textContent);\n\n    function formatMoney(cents) {\n      return new Intl.NumberFormat('nl-NL', {\n        style: 'currency',\n        currency: 'EUR'\n      }).format(cents / 100);\n    }\n\n    function updateKlarnaPrice() {\n      const variantInput = document.querySelector(\n        'form[action*=\"/cart/add\"] input[name=\"id\"]'\n      );\n\n      if (!variantInput) return;\n\n      const variantId = Number(variantInput.value);\n\n      const variant = variants.find(function (v) {\n        return Number(v.id) === variantId;\n      });\n\n      if (!variant) return;\n\n      const installmentPrice = variant.price / 3;\n\n      klarnaPriceEl.textContent = formatMoney(installmentPrice);\n    }\n\n    updateKlarnaPrice();\n\n    document.addEventListener('change', function () {\n      setTimeout(updateKlarnaPrice, 50);\n    });\n\n    const variantInput = document.querySelector(\n      'form[action*=\"/cart/add\"] input[name=\"id\"]'\n    );\n\n    if (variantInput) {\n      const observer = new MutationObserver(function () {\n        updateKlarnaPrice();\n      });\n\n      observer.observe(variantInput, {\n        attributes: true,\n        attributeFilter: ['value']\n      });\n    }\n  });\n</script>"
+            "custom_liquid": "{% assign current_variant = product.selected_or_first_available_variant %}\n{% assign klarna_part = current_variant.price | divided_by: 3 %}\n\n<div class=\"hipipet-trust-list\">\n\n  <!-- Fri frakt -->\n  <div class=\"hipipet-trust-row\">\n    <div class=\"hipipet-trust-icon\">\n      <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n        <path d=\"M3 6.5h11v9H3z\"></path>\n        <path d=\"M14 9h3.2l2.3 2.8v3.7H14z\"></path>\n        <circle cx=\"7\" cy=\"17.5\" r=\"1.6\"></circle>\n        <circle cx=\"17.5\" cy=\"17.5\" r=\"1.6\"></circle>\n      </svg>\n    </div>\n\n    <div class=\"hipipet-trust-text\">\n      Fri frakt – se villkor\n    </div>\n  </div>\n\n\n  <!-- 30 dagars returrätt -->\n  <div class=\"hipipet-trust-row\">\n    <div class=\"hipipet-trust-icon\">\n      <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\">\n        <path d=\"M12 7v5l3 2\"></path>\n        <circle cx=\"12\" cy=\"12\" r=\"8\"></circle>\n      </svg>\n    </div>\n\n    <div class=\"hipipet-trust-text\">\n      30 dagars returrätt\n    </div>\n  </div>\n\n\n  <!-- Klarna -->\n  <div class=\"hipipet-trust-row\">\n    <div class=\"hipipet-klarna-icon\">\n      Klarna\n    </div>\n\n    <div class=\"hipipet-trust-text\">\n      Betala i 3 delbetalningar på\n      <strong id=\"hipipet-klarna-price\">\n        {{ klarna_part | money }}\n      </strong>.\n      Räntefritt.\n    </div>\n  </div>\n\n</div>\n\n\n<script type=\"application/json\" id=\"hipipet-product-variants\">\n  {{ product.variants | json }}\n</script>\n\n\n<style>\n  .hipipet-trust-list {\n    display: grid;\n    gap: 8px;\n    width: 100%;\n    margin: 11px 0 15px;\n  }\n\n  .hipipet-trust-row {\n    display: flex;\n    align-items: center;\n    gap: 10px;\n    min-height: 32px;\n  }\n\n  .hipipet-trust-icon {\n    width: 38px;\n    height: 30px;\n    flex: 0 0 38px;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    background: #F4EBDD;\n    border-radius: 5px;\n  }\n\n  .hipipet-trust-icon svg {\n    width: 17px;\n    height: 17px;\n\n    fill: none;\n    stroke: #4A382C;\n    stroke-width: 1.6;\n    stroke-linecap: round;\n    stroke-linejoin: round;\n  }\n\n  .hipipet-klarna-icon {\n    width: 38px;\n    height: 30px;\n    flex: 0 0 38px;\n\n    display: flex;\n    align-items: center;\n    justify-content: center;\n\n    background: #FFB3C7;\n    color: #111111;\n\n    border-radius: 5px;\n\n    font-size: 8px;\n    font-weight: 800;\n    letter-spacing: -0.2px;\n  }\n\n  .hipipet-trust-text {\n    color: #342B25;\n    font-size: 12.8px;\n    font-weight: 500;\n    line-height: 1.3;\n  }\n\n  .hipipet-trust-text strong {\n    color: #211B17;\n    font-weight: 800;\n  }\n\n  @media screen and (max-width: 749px) {\n    .hipipet-trust-list {\n      gap: 6px;\n      margin: 9px 0 12px;\n    }\n\n    .hipipet-trust-row {\n      gap: 9px;\n      min-height: 29px;\n    }\n\n    .hipipet-trust-icon,\n    .hipipet-klarna-icon {\n      width: 35px;\n      height: 28px;\n      flex-basis: 35px;\n    }\n\n    .hipipet-trust-icon svg {\n      width: 16px;\n      height: 16px;\n    }\n\n    .hipipet-trust-text {\n      font-size: 12.2px;\n      line-height: 1.25;\n    }\n\n    .hipipet-klarna-icon {\n      font-size: 7.5px;\n    }\n  }\n</style>\n\n\n<script>\n  document.addEventListener('DOMContentLoaded', function () {\n    const variantsEl = document.getElementById('hipipet-product-variants');\n    const klarnaPriceEl = document.getElementById('hipipet-klarna-price');\n\n    if (!variantsEl || !klarnaPriceEl) return;\n\n    const variants = JSON.parse(variantsEl.textContent);\n    const marketCurrency = {{ localization.country.currency.iso_code | json }};\n\n    function formatMoney(cents) {\n      return new Intl.NumberFormat('sv-SE', {\n        style: 'currency',\n        currency: marketCurrency\n      }).format(cents / 100);\n    }\n\n    function updateKlarnaPrice() {\n      const variantInput = document.querySelector(\n        'form[action*=\"/cart/add\"] input[name=\"id\"]'\n      );\n\n      if (!variantInput) return;\n\n      const variantId = Number(variantInput.value);\n\n      const variant = variants.find(function (v) {\n        return Number(v.id) === variantId;\n      });\n\n      if (!variant) return;\n\n      const installmentPrice = variant.price / 3;\n\n      klarnaPriceEl.textContent = formatMoney(installmentPrice);\n    }\n\n    updateKlarnaPrice();\n\n    document.addEventListener('change', function () {\n      setTimeout(updateKlarnaPrice, 50);\n    });\n\n    const variantInput = document.querySelector(\n      'form[action*=\"/cart/add\"] input[name=\"id\"]'\n    );\n\n    if (variantInput) {\n      const observer = new MutationObserver(function () {\n        updateKlarnaPrice();\n      });\n\n      observer.observe(variantInput, {\n        attributes: true,\n        attributeFilter: ['value']\n      });\n    }\n  });\n</script>"
           }
         },
         "custom_liquid_mm96Ny": {
@@ -294,14 +294,14 @@
         "collapsible_tab_VgYrrA": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "MAAT TABEL (KLIK HIER)",
+            "heading": "STORLEKSGUIDE (KLICKA HÄR)",
             "heading_size": "large",
             "icon": "",
             "filled_icon": false,
             "collapse_icon": "carret",
             "display_top_border": true,
             "open": false,
-            "content": "<h4>Maat Tabel</h4><p>De jas heeft een <strong>perfecte pasvorm</strong> en zit geweldig op je trouwe viervoeter!</p><p><strong>LET OP: </strong>Meet volgens de afmetingen in de <strong>Maat Tabel</strong> om de juiste pasvorm voor jouw hond te krijgen.</p><p>Twijfel? Kies een maat groter.<br/>Kom je er niet uit? Neem contact op met onze klantenservice!</p>",
+            "content": "<h4>Storleksguide</h4><p>Jackan har en <strong>utmärkt passform</strong> och sitter bekvämt på din fyrbenta vän!</p><p><strong>OBS: </strong>Mät enligt måtten i <strong>storleksguiden</strong> för att hitta rätt passform för din hund.</p><p>Osäker? Välj en storlek större.<br/>Behöver du hjälp? Kontakta vår kundservice!</p>",
             "page": "maat-tabel-dogjacket",
             "margin_top": 0,
             "margin_bottom": 0
@@ -310,14 +310,14 @@
         "collapsible_tab_JycfLA": {
           "type": "collapsible_tab",
           "settings": {
-            "heading": "⚠️ Let op: Dit is de originele Roolo DogJacket",
+            "heading": "⚠️ Obs: Detta är den originala Roolo DogJacket",
             "heading_size": "medium",
             "icon": "",
             "filled_icon": false,
             "collapse_icon": "carret",
             "display_top_border": true,
             "open": false,
-            "content": "<p>Bij <strong>Roolo</strong> koop je uitsluitend de echte, originele <strong>Roolo DogJacket</strong>.</p><p>Helaas verschijnen er steeds vaker goedkopere namaakversies die er vergelijkbaar uitzien, maar gemaakt zijn van goedkope materialen en vaak al na korte tijd scheuren of hun vorm verliezen.</p><p>Deze kopieën missen belangrijke eigenschappen zoals <strong>waterdichte naden, reflecterende details</strong> en <strong>verstelbare riemen</strong>, die de Roolo DogJacket juist zo bijzonder en veilig maken.</p><p>Bestel daarom altijd via onze <strong>officiële webshop</strong>, zodat je zeker weet dat je een <strong>echte, hoogwaardige en duurzame DogJacket</strong> ontvangt.</p>",
+            "content": "<p>Hos <strong>Roolo</strong> köper du endast den äkta, originala <strong>Roolo DogJacket</strong>.</p><p>Tyvärr dyker det upp allt fler billigare kopior som ser liknande ut, men som är tillverkade av material av låg kvalitet och ofta går sönder eller tappar formen efter kort tid.</p><p>Kopiorna saknar viktiga egenskaper som <strong>vattentäta sömmar, reflekterande detaljer</strong> och <strong>justerbara remmar</strong> – det som gör Roolo DogJacket så speciell och säker.</p><p>Beställ därför alltid via vår <strong>officiella webbutik</strong>, så vet du att du får en <strong>äkta, högkvalitativ och hållbar DogJacket</strong>.</p>",
             "page": "",
             "margin_top": 24,
             "margin_bottom": 0
@@ -403,7 +403,7 @@
           "settings": {
             "icon": "🏆",
             "image": "shopify://shop_images/ChatGPT_Image_6_jun_2025__11_54_58-removebg-preview.png",
-            "title": "<p>Gratis Verzending vanaf €20</p>",
+            "title": "<p>Fri frakt – se villkor</p>",
             "subtitle": ""
           }
         },
@@ -412,7 +412,7 @@
           "settings": {
             "icon": "🌏",
             "image": "shopify://shop_images/ChatGPT_Image_6_jun_2025__12_13_20-removebg-preview.png",
-            "title": "<p>30 Dagen Retourgarantie</p>",
+            "title": "<p>30 dagars returrätt</p>",
             "subtitle": ""
           }
         },
@@ -421,7 +421,7 @@
           "settings": {
             "icon": "💪",
             "image": "shopify://shop_images/image-removebg-preview.png",
-            "title": "<p>Betaal later met Klarna</p>",
+            "title": "<p>Betala senare med Klarna</p>",
             "subtitle": ""
           }
         },
@@ -430,7 +430,7 @@
           "settings": {
             "icon": "🍃",
             "image": "shopify://shop_images/icons8-customer-support-96.png",
-            "title": "<p>24/7 Klantenservice</p>",
+            "title": "<p>Kundservice dygnet runt</p>",
             "subtitle": ""
           }
         }
@@ -482,18 +482,18 @@
             "post_author_avatar": "shopify://shop_images/Scherm_afbeelding_2025-10-01_om_22.37.21.png",
             "post_author_verified": false,
             "post_time": "",
-            "post_text": "<p>Mijn hondje heeft het eindelijk niet meer koud tijdens het wandelen! 💕<br/><br/>De stof is superzacht en houdt haar echt goed warm.<br/>#DogJacket #Roolo</p>",
+            "post_text": "<p>Min hund fryser äntligen inte längre under promenaderna! 💕<br/><br/>Tyget är supermjukt och håller henne riktigt varm.<br/>#DogJacket #Roolo</p>",
             "post_image": "shopify://shop_images/review_foto_groen.jpg",
             "post_reactions": "like, love, care",
             "post_reactions_text": "22",
-            "post_comments_text": "3 Comments",
-            "comment_1_author": "Comment author",
+            "post_comments_text": "3 kommentarer",
+            "comment_1_author": "Kommentarens författare",
             "comment_1_author_verified": false,
-            "comment_1_time": "2h ago",
+            "comment_1_time": "för 2 tim sedan",
             "comment_1_text": "",
-            "comment_2_author": "Comment author",
+            "comment_2_author": "Kommentarens författare",
             "comment_2_author_verified": false,
-            "comment_2_time": "3h ago",
+            "comment_2_time": "för 3 tim sedan",
             "comment_2_text": ""
           }
         },
@@ -504,18 +504,18 @@
             "post_author_avatar": "shopify://shop_images/Scherm_afbeelding_2025-10-01_om_22.44.44.png",
             "post_author_verified": false,
             "post_time": "",
-            "post_text": "<p>Ik heb de jas gekocht voor onze pup, zit perfect en houdt hem echt warm.<br/><br/>Zeker nu in de herfst is het ideaal voor tijdens het wandelen! 🐾</p>",
+            "post_text": "<p>Jag köpte jackan till vår valp. Den sitter perfekt och håller honom riktigt varm.<br/><br/>Nu på hösten är den perfekt för promenaderna! 🐾</p>",
             "post_image": "shopify://shop_images/review_puppy.jpg",
             "post_reactions": "like, love, care",
             "post_reactions_text": "8",
-            "post_comments_text": "2 Comments",
-            "comment_1_author": "Comment author",
+            "post_comments_text": "2 kommentarer",
+            "comment_1_author": "Kommentarens författare",
             "comment_1_author_verified": false,
-            "comment_1_time": "2h ago",
+            "comment_1_time": "för 2 tim sedan",
             "comment_1_text": "",
-            "comment_2_author": "Comment author",
+            "comment_2_author": "Kommentarens författare",
             "comment_2_author_verified": false,
-            "comment_2_time": "3h ago",
+            "comment_2_time": "för 3 tim sedan",
             "comment_2_text": ""
           }
         },
@@ -526,18 +526,18 @@
             "post_author_avatar": "shopify://shop_images/Scherm_afbeelding_2025-10-01_om_22.28.12.png",
             "post_author_verified": false,
             "post_time": "",
-            "post_text": "<p>Ik twijfelde eerst over de maat, maar hij past perfect!<br/><br/>Ziet er zo schattig uit en is makkelijk aan te trekken. 🐶</p>",
+            "post_text": "<p>Jag var först osäker på storleken, men den passar perfekt!<br/><br/>Den är så söt och enkel att ta på. 🐶</p>",
             "post_image": "shopify://shop_images/review_nog_een.jpg",
             "post_reactions": "like, love, care",
             "post_reactions_text": "19",
-            "post_comments_text": "1 Comment",
-            "comment_1_author": "Comment author",
+            "post_comments_text": "1 kommentar",
+            "comment_1_author": "Kommentarens författare",
             "comment_1_author_verified": false,
-            "comment_1_time": "2h ago",
+            "comment_1_time": "för 2 tim sedan",
             "comment_1_text": "",
-            "comment_2_author": "Comment author",
+            "comment_2_author": "Kommentarens författare",
             "comment_2_author_verified": false,
-            "comment_2_time": "3h ago",
+            "comment_2_time": "för 3 tim sedan",
             "comment_2_text": ""
           }
         }
@@ -551,7 +551,7 @@
       "settings": {
         "display_id": false,
         "visibility": "always-display",
-        "title": "🐕 Ervaringen uit de Roolo-community",
+        "title": "🐕 Erfarenheter från Roolo-communityn",
         "title_highlight_color": "#000000",
         "heading_size": "h2",
         "text": "",
@@ -583,10 +583,10 @@
         "separators_color": "#a4b0be",
         "post_border_color": "#dfdfdf",
         "border_width": 1,
-        "like_label": "Like",
-        "comment_label": "Comment",
-        "reply_label": "Reply",
-        "share_label": "Share",
+        "like_label": "Gilla",
+        "comment_label": "Kommentera",
+        "reply_label": "Svara",
+        "share_label": "Dela",
         "padding_top": 20,
         "padding_bottom": 20,
         "custom_colors_background": "#f3f3f3",
@@ -603,8 +603,8 @@
             "icon": "check_mark",
             "filled_icon": false,
             "image": "shopify://shop_images/icons8-hot-100.png",
-            "title": "Warm & Comfortabel",
-            "text": "<p>Gemaakt van warme, zachte materialen, ideaal voor koud weer</p>"
+            "title": "Varm och bekväm",
+            "text": "<p>Tillverkad av varma, mjuka material – perfekt för kallt väder.</p>"
           }
         },
         "icon_dYBXmN": {
@@ -613,8 +613,8 @@
             "icon": "check_mark",
             "filled_icon": false,
             "image": "shopify://shop_images/icons8-water-100_1.png",
-            "title": "Waterdicht",
-            "text": "<p>Beschermt je viervoeter tegen regen en vocht, ideaal voor  slecht weer!</p>"
+            "title": "Vattentät",
+            "text": "<p>Skyddar din fyrbenta vän mot regn och fukt – perfekt i dåligt väder!</p>"
           }
         },
         "icon_FTDVHK": {
@@ -623,14 +623,14 @@
             "icon": "check_mark",
             "filled_icon": false,
             "image": "shopify://shop_images/icons8-safety-100_1.png",
-            "title": "Reflecterende Details",
-            "text": "<p>Met leuke reflecterende details voor extra veiligheid tijdens avondwandelingen!</p>"
+            "title": "Reflekterande detaljer",
+            "text": "<p>Med fina reflexdetaljer för extra säkerhet under kvällspromenader!</p>"
           }
         },
         "heading_hcRriW": {
           "type": "heading",
           "settings": {
-            "title": "Combinatie van Functionaliteit & Veiligheid",
+            "title": "En kombination av funktion och säkerhet",
             "title_highlight_color": "#000000",
             "heading_size": "h1"
           }
@@ -641,8 +641,8 @@
             "icon": "check_mark",
             "filled_icon": false,
             "image": "shopify://shop_images/icons8-belt-100.png",
-            "title": "Verstelbaar",
-            "text": "<p>Makkelijk aan te passen aan verschillende hondenmaten, voor een comfortabele pasvorm.</p>"
+            "title": "Justerbar",
+            "text": "<p>Enkel att anpassa efter olika hundstorlekar för en bekväm passform.</p>"
           }
         }
       },
@@ -683,7 +683,7 @@
       "disabled": true,
       "settings": {
         "display_id": false,
-        "title": "You may also like",
+        "title": "Du kanske också gillar",
         "title_highlight_color": "#6d388b",
         "heading_size": "h2",
         "products_to_show": 4,
@@ -706,7 +706,7 @@
         "heading_XwgFdq": {
           "type": "heading",
           "settings": {
-            "title": "Warm & Stijlvol de Herfst en Winter Door",
+            "title": "Varm och stilren hela hösten och vintern",
             "title_highlight_color": "#000000",
             "heading_size": "h2"
           }
@@ -714,7 +714,7 @@
         "template--19900162113860__7c2381c3-1795-445b-91da-9765523b1638-text-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Houd je hond de hele winter warm en comfortabel met ons gezellige Dog Jacket. <strong>Het biedt maximale warmte en comfort</strong>, zodat jouw hond de koude temperaturen buiten kan vergeten.</p>",
+            "text": "<p>Håll din hund varm och bekväm hela vintern med vår mysiga Dog Jacket. <strong>Den ger maximal värme och komfort</strong>, så att din hund slipper frysa när temperaturen sjunker.</p>",
             "text_style": "body"
           }
         }
@@ -762,7 +762,7 @@
         "heading_MTMm6N": {
           "type": "heading",
           "settings": {
-            "title": "Beschermd tegen kou & regen",
+            "title": "Skydd mot kyla och regn",
             "title_highlight_color": "#6d388b",
             "heading_size": "h2"
           }
@@ -770,7 +770,7 @@
         "9bd8fb44-fa40-449d-be77-8f37af118496": {
           "type": "text",
           "settings": {
-            "text": "<p>Met de Dog Jacket hoeft je hond niet langer te vrezen voor kou of regen. De jas heeft een <strong>waterafstotende buitenlaag </strong>en een<strong> isolerende binnenlaag</strong>, zodat hij warm en droog blijft, zelfs bij ijskoud weer.</p>",
+            "text": "<p>Med Dog Jacket behöver din hund inte längre oroa sig för kyla eller regn. Jackan har ett <strong>vattenavvisande ytterlager </strong>och ett<strong> isolerande innerlager</strong> som håller hunden varm och torr även i isande väder.</p>",
             "text_style": "body"
           }
         }
@@ -819,7 +819,7 @@
           "type": "text",
           "disabled": true,
           "settings": {
-            "text": "<h4>Maat Tabel</h4><p>De jas heeft een <strong>perfecte pasvorm</strong> en zit geweldig op je trouwe viervoeter!</p><p><strong>LET OP: </strong>Meet volgens de <strong>Maat Tabel</strong> om de juiste pasvorm voor jouw hond te krijgen.</p><p>Bij twijfel raden we aan een maat groter te kiezen!<br/>Kom je er toch niet uit? Neem contact op met de klantenservice, dan helpen wij je graag verder!</p>",
+            "text": "<h4>Storleksguide</h4><p>Jackan har en <strong>utmärkt passform</strong> och sitter bekvämt på din fyrbenta vän!</p><p><strong>OBS: </strong>Mät enligt <strong>storleksguiden</strong> för att hitta rätt passform för din hund.</p><p>Om du är osäker rekommenderar vi att du väljer en storlek större!<br/>Behöver du hjälp? Kontakta vår kundservice, så hjälper vi dig gärna!</p>",
             "text_style": "body"
           }
         }
@@ -866,7 +866,7 @@
         "text_F46wQU": {
           "type": "text",
           "settings": {
-            "text": "<h4>Maat Tabel</h4><p>De jas heeft een <strong>perfecte pasvorm</strong> en zit geweldig op je trouwe viervoeter!</p><p><strong>LET OP: </strong>Meet volgens de afmetingen in de <strong>Maat Tabel</strong> om de juiste pasvorm voor jouw hond te krijgen.</p><p>Twijfel? Kies een maat groter.<br/>Kom je er niet uit? Neem contact op met onze klantenservice!</p>"
+            "text": "<h4>Storleksguide</h4><p>Jackan har en <strong>utmärkt passform</strong> och sitter bekvämt på din fyrbenta vän!</p><p><strong>OBS: </strong>Mät enligt måtten i <strong>storleksguiden</strong> för att hitta rätt passform för din hund.</p><p>Osäker? Välj en storlek större.<br/>Behöver du hjälp? Kontakta vår kundservice!</p>"
           }
         }
       },
@@ -897,7 +897,7 @@
         "heading_fMiFPa": {
           "type": "heading",
           "settings": {
-            "title": "Handige ritssluiting",
+            "title": "Smidig dragkedja",
             "title_highlight_color": "#000000",
             "heading_size": "h2"
           }
@@ -905,7 +905,7 @@
         "96069707-1f6a-4405-b46e-521e47f44ce0": {
           "type": "text",
           "settings": {
-            "text": "<p>De Dog Jacket past perfect en is dankzij de ritssluiting makkelijk aan en uit te trekken. <strong>De beschermflap voorkomt dat de rits irriteert</strong>, zodat je hond zich vrij kan bewegen terwijl je de jas moeiteloos verstelt. Zo verlies je geen tijd buitenshuis.</p>",
+            "text": "<p>Dog Jacket sitter perfekt och är enkel att ta på och av tack vare dragkedjan. <strong>Skyddsfliken förhindrar att dragkedjan skaver</strong>, så att din hund kan röra sig fritt samtidigt som du enkelt justerar jackan. Det sparar tid när ni ska ut.</p>",
             "text_style": "body"
           }
         }
@@ -989,7 +989,7 @@
         "heading_mfHC78": {
           "type": "heading",
           "settings": {
-            "title": "Geschikt voor alle honden!",
+            "title": "Passar alla hundar!",
             "title_highlight_color": "#6d388b",
             "heading_size": "h2"
           }
@@ -997,7 +997,7 @@
         "template--20109320978756__e4394e38-3ec5-4b0f-ad44-21d3ebfbddb6-text-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Of je hond nu klein of wat groter is, deze jas zit altijd goed. Comfortabel, waterafstotend en klaar voor elk avontuur!</p>",
+            "text": "<p>Oavsett om din hund är liten eller lite större sitter den här jackan bra. Bekväm, vattenavvisande och redo för alla äventyr!</p>",
             "text_style": "body"
           }
         }
@@ -1045,7 +1045,7 @@
         "heading_fQT7pL": {
           "type": "heading",
           "settings": {
-            "title": "Ingebouwd tuigje voor extra gemak",
+            "title": "Inbyggd sele för extra bekvämlighet",
             "title_highlight_color": "#6d388b",
             "heading_size": "h2"
           }
@@ -1053,7 +1053,7 @@
         "template--20109320978756__1257f402-04b3-4e08-93b3-6d6dd0b5f272-text-1": {
           "type": "text",
           "settings": {
-            "text": "<p>De Dog Jacket biedt niet alleen warmte, maar ook een ingebouwd tuigje. <strong>Geen aparte halsband nodig!</strong> Het geïntegreerde harnas zorgt voor <strong>veilige en comfortabele controle tijdens het lopen.</strong> Ideaal en stijlvol voor de winter!</p>",
+            "text": "<p>Dog Jacket håller inte bara hunden varm, utan har även en inbyggd sele. <strong>Inget separat halsband behövs!</strong> Den integrerade selen ger <strong>säker och bekväm kontroll under promenaden.</strong> Praktisk och stilren för vintern!</p>",
             "text_style": "body"
           }
         }
@@ -1101,7 +1101,7 @@
         "heading_eCpeM8": {
           "type": "heading",
           "settings": {
-            "title": "Zachte fleecevoering voor ultiem comfort",
+            "title": "Mjukt fleecefoder för maximal komfort",
             "title_highlight_color": "#6d388b",
             "heading_size": "h2"
           }
@@ -1109,7 +1109,7 @@
         "template--20109320978756__debb262c-7966-437e-9293-3d712dea0416-text-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Onze knusse Dog Jacket met zachte fleecevoering kan jouw harige vriend comfortabel het hele jaar door de natuur verkennen. De jas <strong>beschermt je hond tegen koude wind en lage temperaturen.</strong></p>",
+            "text": "<p>Vår mysiga Dog Jacket med mjukt fleecefoder gör det bekvämt för din fyrbenta vän att utforska naturen året runt. Jackan <strong>skyddar din hund mot kalla vindar och låga temperaturer.</strong></p>",
             "text_style": "body"
           }
         }
@@ -1157,7 +1157,7 @@
         "heading_97MqXp": {
           "type": "heading",
           "settings": {
-            "title": "Ingestuurde Ervaringen:",
+            "title": "Kundernas erfarenheter:",
             "title_highlight_color": "#000000",
             "heading_size": "h1"
           }
@@ -1193,7 +1193,7 @@
           "settings": {
             "image": "shopify://shop_images/4.jpg",
             "url": "",
-            "title": "\"Jerry loopt er geweldig mee!\"",
+            "title": "\"Jerry trivs jättebra i den!\"",
             "button": "",
             "button_url": ""
           }
@@ -1203,7 +1203,7 @@
           "settings": {
             "image": "shopify://shop_images/Schermafbeelding_2025-09-17_140637.png",
             "url": "",
-            "title": "\"Mijn honden zijn er super blij mee!\"",
+            "title": "\"Mina hundar är supernöjda med sina jackor!\"",
             "button": "",
             "button_url": ""
           }
@@ -1213,7 +1213,7 @@
           "settings": {
             "image": "shopify://shop_images/8.jpg",
             "url": "",
-            "title": "\"Was onmisbaar vorige winter.\"",
+            "title": "\"Oumbärlig förra vintern.\"",
             "button": "",
             "button_url": ""
           }
@@ -1223,7 +1223,7 @@
           "settings": {
             "image": "shopify://shop_images/5_ec23e92c-bc4d-403f-be07-6a3aac8ca105.jpg",
             "url": "",
-            "title": "\"Scheelt een hoop tijd met wassen.\"",
+            "title": "\"Sparar mycket tid på tvätten.\"",
             "button": "",
             "button_url": ""
           }
@@ -1233,7 +1233,7 @@
           "settings": {
             "image": "shopify://shop_images/7_75b84313-969e-49e5-9f22-64c9e57adff1.jpg",
             "url": "",
-            "title": "\"Lekker warm en droog :)\"",
+            "title": "\"Varm och torr :)\"",
             "button": "",
             "button_url": ""
           }
@@ -1324,36 +1324,36 @@
         "text_QXBxNA": {
           "type": "text",
           "settings": {
-            "question": "Zijn de jassen waterdicht?",
-            "answer": "<p>Onze jassen hebben een waterafstotende buitenlaag die lichte regen en sneeuw buiten houdt. Ze bieden een zeer goede bescherming tegen vocht.</p>"
+            "question": "Är jackorna vattentäta?",
+            "answer": "<p>Våra jackor har ett vattenavvisande ytterlager som håller lätt regn och snö ute. De ger ett mycket bra skydd mot fukt.</p>"
           }
         },
         "text_ACHFh9": {
           "type": "text",
           "settings": {
-            "question": "Kan de jas in de wasmachine?",
-            "answer": "<p>Ja, je kan de jas wassen in de wasmachine. Volg de wasinstructies op het etiket om een optimale verzorging te garanderen.</p>"
+            "question": "Kan jackan tvättas i tvättmaskin?",
+            "answer": "<p>Ja, jackan kan tvättas i tvättmaskin. Följ tvättråden på etiketten för bästa möjliga skötsel.</p>"
           }
         },
         "text_PmBwJT": {
           "type": "text",
           "settings": {
-            "question": "Zijn de jassen geschikt voor alle hondenrassen?",
-            "answer": "<p>Onze jassen zijn verkrijgbaar in verschillende maten en passen op de meeste hondenrassen. Bekijk goed de maattabel om de juiste maat voor jouw hond te kiezen.</p>"
+            "question": "Passar jackorna alla hundraser?",
+            "answer": "<p>Våra jackor finns i flera storlekar och passar de flesta hundraser. Läs storleksguiden noggrant för att välja rätt storlek till din hund.</p>"
           }
         },
         "text_wFgwJW": {
           "type": "text",
           "settings": {
-            "question": "Is de jas ook geschikt voor katten?",
-            "answer": "<p>Ja zeker, de jas past ook bij katten, zolang het overeenkomt met de maattabel moet de jas goed passen!</p>"
+            "question": "Passar jackan även katter?",
+            "answer": "<p>Ja, jackan passar även katter. Så länge måtten stämmer med storleksguiden bör den sitta bra!</p>"
           }
         },
         "text_A6dJBC": {
           "type": "text",
           "settings": {
-            "question": "Kan ik mijn bestelling retourneren als ik niet tevreden ben?",
-            "answer": "<p>Geen probleem! Neem binnen 30 dagen na ontvangst van de jas contact op met onze klantenservice.</p>"
+            "question": "Kan jag returnera min beställning om jag inte är nöjd?",
+            "answer": "<p>Självklart! Kontakta vår kundservice inom 30 dagar efter att du har fått jackan.</p>"
           }
         }
       },
@@ -1365,7 +1365,7 @@
         "text_A6dJBC"
       ],
       "settings": {
-        "heading": "Veelgestelde Vragen",
+        "heading": "Vanliga frågor",
         "icon_color": "#5b5b5b",
         "hover_color": "#4a4a4a",
         "question_color": "#000000",
@@ -1381,7 +1381,7 @@
         "template--19884972900676__66b6d233-ac90-40ab-87d7-9d5df4d7260c-text-1": {
           "type": "text",
           "settings": {
-            "text": "<h3>WAT KLANTEN OVER ONZE DOG JACKET ZEGGEN:<br/></h3>"
+            "text": "<h3>VAD KUNDERNA SÄGER OM VÅR DOG JACKET:<br/></h3>"
           }
         }
       },
@@ -1432,7 +1432,7 @@
       "settings": {
         "display_id": false,
         "visibility": "always-display",
-        "title": "Producten voor je trouwe viervoeter!",
+        "title": "Produkter för din fyrbenta vän!",
         "title_highlight_color": "#6d388b",
         "heading_size": "h2",
         "description": "",
@@ -1493,21 +1493,21 @@
           "type": "row",
           "settings": {
             "percentage": 90,
-            "row_text": "<p><strong>Zal nog een keer bij Roolo bestellen</strong></p>"
+            "row_text": "<p><strong>Skulle gärna handla hos Roolo igen</strong></p>"
           }
         },
         "template--19884972900676__a860c064-49ff-480a-8b82-6f0ec7facca5-row-2": {
           "type": "row",
           "settings": {
             "percentage": 98,
-            "row_text": "<p><strong>Zijn verrast door de efficiëntie van onze producten.</strong></p>"
+            "row_text": "<p><strong>Är positivt överraskade av hur effektiva våra produkter är.</strong></p>"
           }
         },
         "template--19884972900676__a860c064-49ff-480a-8b82-6f0ec7facca5-row-3": {
           "type": "row",
           "settings": {
             "percentage": 91,
-            "row_text": "<p><strong>Bevelen de producten van Roolo aan.</strong></p>"
+            "row_text": "<p><strong>Rekommenderar Roolos produkter.</strong></p>"
           }
         }
       },
@@ -1520,10 +1520,10 @@
       "settings": {
         "display_id": false,
         "visibility": "always-display",
-        "title": "ROOLO Tevredenheidsgarantie",
+        "title": "ROOLO nöjdhetsgaranti",
         "title_highlight_color": "#6d388b",
         "heading_size": "h1",
-        "text": "<p>Met ruim 4200+ tevreden klanten zijn wij overtuigd van Roolo en onze service. Mocht u toch ontevreden zijn, neem dan binnen het bedenktermijn van 30 dagen contact met ons op. Samen komen wij eruit..</p>",
+        "text": "<p>Med över 4 200 nöjda kunder är vi trygga med Roolo och vår service. Om du ändå inte är nöjd kan du kontakta oss inom 30 dagar. Tillsammans hittar vi en lösning.</p>",
         "video_muted_autoplay": true,
         "color_scheme": "background-1",
         "layout": "results_second",
