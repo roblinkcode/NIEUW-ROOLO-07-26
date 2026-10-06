@@ -782,7 +782,7 @@
       "settings": {
         "display_id": false,
         "visibility": "always-display",
-        "image": "shopify://shop_images/gif_1_vertaald.png",
+        "image": "shopify://shop_images/waterdicht_SE.png",
         "video_autoplay": true,
         "video_loop": true,
         "height": "adapt",
@@ -830,7 +830,7 @@
       "settings": {
         "display_id": false,
         "visibility": "always-display",
-        "image": "shopify://shop_images/Maattabel_800x700_Goed.png",
+        "image": "shopify://shop_images/Maattabel_dogjacket_SE.png",
         "video_autoplay": true,
         "video_loop": true,
         "height": "adapt",
@@ -917,7 +917,7 @@
       "settings": {
         "display_id": false,
         "visibility": "always-display",
-        "image": "shopify://shop_images/ritss.png",
+        "image": "shopify://shop_images/ritssluiting_SE.png",
         "video_autoplay": true,
         "video_loop": true,
         "height": "adapt",
@@ -1009,7 +1009,7 @@
       "settings": {
         "display_id": false,
         "visibility": "always-display",
-        "image": "shopify://shop_images/ChatGPT_Image_4_nov_2025_13_54_17.png",
+        "image": "shopify://shop_images/SE_elke_hond.png",
         "video_autoplay": true,
         "video_loop": true,
         "height": "adapt",
