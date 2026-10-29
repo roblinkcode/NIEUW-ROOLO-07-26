@@ -1,33 +1,20 @@
 {% comment %}Only rendered by product.hond-achterbank-bescherme. No global settings changed.{% endcomment %}
 {% case part %}
   {% when 'title' %}
-    <div class="product__title"><h1 class="h2">ROOLO PawGuard – Waterafstotende Achterbankbeschermer voor Honden</h1></div>
+    <div class="product__title"><h1 class="h2">ROOLO PawGuard – Waterdichte Achterbankbeschermer voor Honden</h1></div>
   {% when 'benefits' %}
     {{ 'pawguard.css' | asset_url | stylesheet_tag }}
     <script src="{{ 'pawguard.js' | asset_url }}" defer></script>
-    <div id="pawguard-page" class="pawguard-benefits" data-section="{{ section.id }}">
+    <pawguard-controller id="pawguard-page" class="pawguard-benefits" data-section="{{ section.id }}">
       <p>Bescherm je autobekleding tegen hondenharen, modder, natte poten en krassen.</p>
       <ul class="pawguard-checks">
         <li>Helpt beschermen tegen haren, modder en krassen</li>
-        <li>Waterafstotend en eenvoudig schoon te maken</li>
+        <li>Waterdicht & eenvoudig schoon te maken</li>
         <li>Bedekt je achterbank, inclusief de zijkanten</li>
       </ul>
-    </div>
+    </pawguard-controller>
   {% when 'trust' %}
-    <div class="pawguard-trust">
-      <div><span aria-hidden="true">{% render 'material-icon', icon: 'local_shipping' %}</span><p>{% if shop.shipping_policy != blank %}<a href="{{ shop.shipping_policy.url }}">Bekijk verzending & levertijd</a>{% else %}Verzendkosten zichtbaar bij het afrekenen{% endif %}</p></div>
-      <div><span aria-hidden="true">{% render 'material-icon', icon: 'assignment_return' %}</span><p>{% if shop.refund_policy != blank %}<a href="{{ shop.refund_policy.url }}">Retourneren volgens ons retourbeleid</a>{% else %}<a href="{{ routes.root_url }}pages/contact">Neem contact op over retourneren</a>{% endif %}</p></div>
-      <div><span aria-hidden="true">{% render 'material-icon', icon: 'lock' %}</span><p>Betaal met de beschikbare methoden bij het afrekenen</p></div>
-    </div>
-    {% comment %}A payment logo does not establish eligibility for Klarna Pay in 3. Enable only after merchant verification.{% endcomment %}
-    {% if product.metafields.custom.pawguard_klarna_pay_in_3_verified.value == true and localization.country.iso_code == 'NL' and cart.currency.iso_code == 'EUR' and shop.enabled_payment_types contains 'klarna' %}
-      <pawguard-installments class="pawguard-installments" data-section="{{ section.id }}" data-variant="{{ product.selected_or_first_available_variant.id }}">
-        <p>Klarna: 3 termijnen van circa <strong data-installment>{{ product.selected_or_first_available_variant.price | divided_by: 3.0 | round | money }}</strong>. Onder voorbehoud van goedkeuring door Klarna. Het definitieve betaalplan staat bij het afrekenen.</p>
-        <script type="application/json">{
-          {% for variant in product.variants %}"{{ variant.id }}": {{ variant.price | divided_by: 3.0 | round | money | json }}{% unless forloop.last %},{% endunless %}{% endfor %}
-        }</script>
-      </pawguard-installments>
-    {% endif %}
+    {% render 'pawguard-trust', product: product, section: section %}
   {% when 'installation' %}
     <section class="pawguard-section">
       <div class="pawguard-split">
@@ -43,7 +30,7 @@
       <header class="pawguard-heading"><p class="pawguard-eyebrow">ONTWORPEN VOOR SAMEN OP PAD</p><h2>Meer plezier onderweg. Minder vuil in je auto.</h2><p>Praktische bescherming voor dagelijkse ritten en avonturen buiten.</p></header>
       <div class="pawguard-features">
         <article>{% render 'pawguard-image', image: 'protection', alt: 'PawGuard met bescherming voor zitting, rugleuning en zijflappen' %}<h3>Bescherming rondom</h3><p>Bedekt de zitting, rugleuning en zijkanten. Helpt hondenharen, vuil en krassen van je bekleding te houden.</p></article>
-        <article>{% render 'pawguard-image', image: 'water', alt: 'Waterdruppels op de waterafstotende quilted stof' %}<h3>Voor natte poten</h3><p>De waterafstotende stof helpt vocht tegen te houden. Neem vocht en vuil na de rit af.</p></article>
+        <article>{% render 'pawguard-image', image: 'water', alt: 'Waterdruppels op de waterdichte quilted Oxford-stof' %}<h3>Voor natte poten</h3><p>De waterdichte Oxford-stof beschermt je achterbank tegen vocht, natte poten en modder. Neem vuil na de rit eenvoudig af.</p></article>
         <article>{% render 'pawguard-image', image: 'cleaning', alt: 'PawGuard reinigen met doek, stofzuiger of kledingroller' %}<h3>Snel weer schoon</h3><p>Verwijder losse haren met een kledingroller of stofzuiger. Gebruik een vochtige doek voor vuil.</p></article>
         <article>{% render 'pawguard-image', image: 'orange-trim', alt: 'Quilted zwarte achterbankbeschermer met oranje rand' %}<h3>Een comfortabele plek</h3><p>De quilted afwerking biedt je hond een prettige ondergrond tijdens de rit.</p></article>
       </div>
@@ -55,13 +42,13 @@
     </div></section>
   {% when 'dimensions' %}
     <section class="pawguard-section pawguard-section--white"><div class="pawguard-split">
-      <div><p class="pawguard-eyebrow">AFMETINGEN & GESCHIKTHEID</p><h2>Past PawGuard in jouw auto?</h2><p>Volgens de aangeleverde maatafbeelding is PawGuard circa <strong>137 × 147 cm</strong>. Controleer vóór bestellen de breedte van je achterbank en de beschikbare bevestigingspunten.</p><ol class="pawguard-steps"><li><strong>Meet je achterbank</strong><p>Vergelijk de breedte en de ruimte over zitting en rugleuning met de afbeelding.</p></li><li><strong>Controleer de hoofdsteunen</strong><p>De banden moeten goed kunnen worden bevestigd en aangespannen.</p></li><li><strong>Houd gordels bereikbaar</strong><p>Controleer de positie van de gordelopeningen in jouw auto.</p></li></ol><p>Geschikt voor veel sedans, hatchbacks en SUV’s; de daadwerkelijke pasvorm hangt af van je interieur.</p><a class="pawguard-link" href="{{ routes.root_url }}pages/contact">Hulp nodig bij het kiezen?</a></div>
+      <div><p class="pawguard-eyebrow">AFMETINGEN & GESCHIKTHEID</p><h2>Past PawGuard in jouw auto? Grote kans van wel!</h2><p>Of je nu in een compacte stadsauto, sedan, stationwagen of SUV rijdt: ROOLO PawGuard is ontworpen voor vrijwel iedere achterbank. Dankzij de flexibele vorm en verstelbare bevestigingsbanden pas je de bescherming eenvoudig aan jouw auto aan.</p><p><strong>Afmetingen: ca. 137 × 147 cm</strong></p><ul class="pawguard-checks"><li>Geschikt voor vrijwel alle gangbare auto's</li><li>Verstelbare bevestiging voor een goede pasvorm</li><li>Beschermt de zitting, rugleuning en zijkanten</li></ul><p class="pawguard-note">Controleer bij een afwijkende achterbankindeling voor de zekerheid de afmetingen.</p></div>
       {% render 'pawguard-image', image: 'dimensions', alt: 'PawGuard maatafbeelding: circa 137 bij 147 centimeter' %}
     </div></section>
   {% when 'faq' %}
     <section class="pawguard-section"><div class="pawguard-faq"><header class="pawguard-heading"><p class="pawguard-eyebrow">VEELGESTELDE VRAGEN</p><h2>Alles over ROOLO PawGuard</h2></header>
-      <details><summary>Is PawGuard waterdicht?</summary><p>De aangeleverde productinformatie beschrijft een waterafstotende stof. Volledige waterdichtheid is niet bevestigd. Neem vocht tijdig af en laat de beschermer goed drogen.</p></details>
-      <details><summary>Past PawGuard in iedere auto?</summary><p>PawGuard is circa 137 × 147 cm volgens de maatafbeelding. Meet je achterbank en controleer de hoofdsteunen en gordelposities. De pasvorm kan per auto verschillen.</p></details>
+      <details><summary>Is PawGuard waterdicht?</summary><p>Ja. De leverancier omschrijft PawGuard als een waterdichte achterbankbeschermer. De Oxford-stof beschermt je bekleding tegen vocht, natte poten en modder. Neem vuil na gebruik af en laat de beschermer goed drogen.</p></details>
+      <details><summary>Past PawGuard in iedere auto?</summary><p>PawGuard is ontworpen voor vrijwel alle gangbare auto’s, van compacte stadsauto tot stationwagen en SUV. De flexibele vorm en verstelbare banden maken de pasvorm eenvoudig aanpasbaar. Afmetingen: ca. 137 × 147 cm. Controleer bij een afwijkende achterbankindeling voor de zekerheid de afmetingen.</p></details>
       <details><summary>Welke delen van de auto worden beschermd?</summary><p>PawGuard bedekt de zitting en rugleuning van de achterbank. De zijflappen helpen de zijkanten te beschermen tegen vuil en krassen.</p></details>
       <details><summary>Hoe maak ik PawGuard schoon?</summary><p>Verwijder losse haren en vuil met een stofzuiger of kledingroller. Neem de stof af met een vochtige doek en laat volledig drogen. Volg het onderhoudslabel; machinewas is niet bevestigd.</p></details>
       <details><summary>Welke uitvoeringen zijn er?</summary><p>Volledig Zwart, Zwart / Oranje Rand en Zwart / Oranje Bevestigingen. Kies bovenaan de uitvoering die bij jouw auto past.</p><div class="pawguard-colors"><figure>{% render 'pawguard-image', image: 'black', alt: 'Volledig Zwart' %}<figcaption>Volledig Zwart</figcaption></figure><figure>{% render 'pawguard-image', image: 'orange-trim', alt: 'Zwart / Oranje Rand' %}<figcaption>Zwart / Oranje Rand</figcaption></figure><figure>{% render 'pawguard-image', image: 'orange-fixings', alt: 'Zwart / Oranje Bevestigingen' %}<figcaption>Zwart / Oranje Bevestigingen</figcaption></figure></div></details>

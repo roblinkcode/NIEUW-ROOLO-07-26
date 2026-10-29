@@ -3,8 +3,8 @@
   --color-background: 248, 247, 245;
   --gradient-background: #f8f7f5;
   --color-foreground: 23, 23, 23;
-  --color-button: 245, 130, 32;
-  --color-button-text: 23, 23, 23;
+  --color-button: 254, 190, 1;
+  --color-button-text: 0, 0, 0;
   --color-accent-1: 245, 130, 32;
   --color-accent-2: 23, 23, 23;
   background: #f8f7f5;
@@ -14,17 +14,12 @@
 #MainContent:has(#pawguard-page) .product__info-wrapper { min-width: 0; }
 #MainContent:has(#pawguard-page) .product__title h1 { line-height: 1.25; text-wrap: balance; }
 #MainContent:has(#pawguard-page) .price .main-price { color: #171717; }
+/* Restore the original theme button dimensions, radius, icon, hover and disabled state.
+   Only override the inherited colors inside this product template. */
 #MainContent:has(#pawguard-page) :is(.product-form__submit, .sticky-atc .button) {
-  --color-button: 245, 130, 32;
-  --color-button-text: 23, 23, 23;
-  background: #f58220;
-  color: #171717;
-  border-radius: 10px;
-  min-height: 48px;
-  font-weight: 700;
+  --color-button: 254, 190, 1;
+  --color-button-text: 0, 0, 0;
 }
-#MainContent:has(#pawguard-page) :is(.product-form__submit, .sticky-atc .button):hover:not(:disabled) { background: #e97513; }
-#MainContent:has(#pawguard-page) :is(.product-form__submit, .sticky-atc .button):disabled { background: #eae6e1; color: #57534e; opacity: 1; }
 #MainContent:has(#pawguard-page) .product-form__input input[type='radio'] + label {
   border: 1px solid #d6d0c9;
   background: #fff;
@@ -43,20 +38,26 @@
 #MainContent:has(#pawguard-page) :is(.accordion, .product__accordion) { border-color: #eae6e1; }
 #MainContent:has(#pawguard-page) .sticky-atc { background: #fff; color: #171717; border-top: 1px solid #eae6e1; }
 #MainContent:has(#pawguard-page) .list-payment { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; }
-.pawguard-benefits { padding: 16px 18px; border: 1px solid #eae6e1; background: #fff; border-radius: 12px; font-size: 14px; line-height: 1.55; scroll-margin-top: 120px; }
+.pawguard-benefits { display: block; padding: 16px 18px; border: 1px solid #eae6e1; background: #fff; border-radius: 12px; font-size: 14px; line-height: 1.55; scroll-margin-top: 120px; }
 .pawguard-benefits > p { margin: 0 0 10px; }
 .pawguard-checks { list-style: none; padding: 0; margin: 0; }
 .pawguard-checks li { position: relative; padding-left: 25px; margin: 7px 0; }
 .pawguard-checks li::before { content: '✓'; position: absolute; left: 0; color: #a84700; font-weight: 700; }
 .pawguard-benefits .pawguard-checks { font-weight: 600; }
-.pawguard-trust { display: grid; gap: 9px; font-size: 13px; line-height: 1.5; }
-.pawguard-trust > div { display: flex; align-items: center; gap: 10px; }
-.pawguard-trust > div > span { display: grid; place-items: center; flex: 0 0 30px; height: 30px; border-radius: 7px; background: #fff2e7; color: #a84700; }
-.pawguard-trust .material-icon { font-size: 18px; }
-.pawguard-trust p { margin: 0; }
-.pawguard-trust a, .pawguard-faq a { color: inherit; text-underline-offset: 3px; }
-.pawguard-installments { display: block; font-size: 12px; line-height: 1.5; }
+.pawguard-trust { display: grid; gap: 8px; width: 100%; margin: 11px 0 15px; }
+.pawguard-trust-row { display: flex; align-items: center; gap: 10px; min-height: 32px; }
+.pawguard-trust-icon, .pawguard-klarna-icon { width: 38px; height: 30px; flex: 0 0 38px; display: flex; align-items: center; justify-content: center; background: #f4ebdd; border-radius: 5px; }
+.pawguard-trust-icon svg { width: 17px; height: 17px; fill: none; stroke: #4a382c; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.pawguard-klarna-icon { background: #ffb3c7; }
+.pawguard-klarna-icon svg { width: 38px; height: 24px; }
+.pawguard-trust-text { color: #342b25; font-size: 12.8px; font-weight: 500; line-height: 1.3; }
+.pawguard-trust-text strong { color: #211b17; font-weight: 800; }
+.pawguard-trust-text a { color: inherit; text-decoration: none; }
+.pawguard-trust-text a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.pawguard-installments { display: block; }
 .pawguard-installments[hidden] { display: none; }
+.pawguard-installments-note { display: block; margin: 4px 0 0 48px; font-size: 10px; color: #625a53; line-height: 1.4; }
+.pawguard-faq a { color: inherit; text-underline-offset: 3px; }
 .pawguard-section { padding: 56px max(20px, calc((100% - 1200px) / 2)); background: #f8f7f5; color: #171717; }
 .pawguard-section--white { background: #fff; }
 .pawguard-section :is(h2, h3) { color: #171717; letter-spacing: -.025em; }
@@ -92,8 +93,14 @@
 }
 @media (max-width: 749px) {
   .pawguard-section { padding: 32px 20px; }
+  .pawguard-trust { gap: 6px; margin: 9px 0 12px; }
+  .pawguard-trust-row { gap: 9px; min-height: 29px; }
+  .pawguard-trust-icon, .pawguard-klarna-icon { width: 35px; height: 28px; flex-basis: 35px; }
+  .pawguard-trust-icon svg { width: 16px; height: 16px; }
+  .pawguard-trust-text { font-size: 12.2px; line-height: 1.25; }
+  .pawguard-installments-note { margin-left: 44px; }
   .pawguard-split { grid-template-columns: minmax(0, 1fr); }
-  .pawguard-benefits { padding: 14px; font-size: 13px; }
+  .pawguard-benefits { display: block; padding: 14px; font-size: 13px; }
   .pawguard-features { gap: 24px 14px; }
   .pawguard-features h3 { font-size: 17px; }
   .pawguard-features p { font-size: 13px; }

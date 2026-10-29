@@ -1,65 +1,46 @@
-# ROOLO PawGuard — concept via GitHub
+# ROOLO PawGuard — gerichte verbeteringen
 
-## Afbakening en reservekopie
+## Scope en reservekopieën
 
-Op 29 oktober 2026 in Shopify gecontroleerd:
-- Product-ID: `15758370472260`; verkoper Roolo; status **Concept**.
-- Handle: `pawguard-waterdichte-achterbankbeschermer-voor-honden`.
-- Volledige template: `hond-achterbank-bescherme`; editor meldt **toegewezen aan 1 product**.
-- Actief thema: `189755916612`, gekoppeld aan `roblinkcode/NIEUW-ROOLO-07-26`, branch `main`.
-- Alle drie varianten: €59,95; beschikbare voorraad 0. Vergelijkingsprijs in preview €100,00.
-- Nederland en België staan bij het product; de Nederlandse preview toont EUR.
-- De oorspronkelijke template blijft herstelbaar in Git-commit `71f17d9` en op `main`. Deze implementatie staat op `codex/pawguard-productpagina`.
+Alleen `product.hond-achterbank-bescherme` en eigen PawGuard-bestanden zijn aangepast. Deze template is in Shopify aan één product toegewezen: `15758370472260`, handle `pawguard-waterdichte-achterbankbeschermer-voor-honden`. Geen wijzigingen aan prijzen, voorraad, productstatus, variant-ID’s, media of gedeelde themaonderdelen.
 
-Er zijn geen gedeelde secties, snippets, algemene thema-instellingen of andere producttemplates gewijzigd. Nieuwe bestanden hebben het prefix `pawguard`. Niets naar `main` pushen of samenvoegen zonder goedkeuring: die branch voedt het actieve thema.
+Oorspronkelijke template: commit `71f17d9`. Eerste PawGuard-uitwerking en reservekopie voor deze vervolgronde: `63ba4c4`. De eerste uitwerking is ook op remote `main` aangetroffen; dit is aan de gebruiker gemeld. De vervolgaanpassingen worden alleen op `codex/pawguard-productpagina` opgeslagen. `main` voedt het actieve Shopify-thema; verdere publicatie of terugdraaien wacht op de keuze van de gebruiker.
 
-## Implementatie
+## Wijzigingen in deze ronde
 
-- Bestaande main-product-sectie met galerij links, informatie rechts, native variantkeuze, prijzen, voorraadgedrag, koopknop, betaallogo's en sticky add-to-cart behouden.
-- PawGuard USP-vak, installatie, vier productvoordelen, vergelijking, afmetingen en FAQ.
-- Aangeleverde beelden als geoptimaliseerde JPEG-bestanden; bronafbeeldingen ongewijzigd.
-- Zwart #171717, oranje #F58220, warm wit #F8F7F5, lichtgrijs #EAE6E1 en wit. Donkere tekst op oranje knoppen. Donkerder oranje voor leesbare kleine accenttekst.
-- Afmetingen-accordion: circa 137 × 147 cm, afkomstig van de aangeleverde maatafbeelding; geen zelfstandige fysieke meting.
-- HIPIPET-social-proof en testimonials verwijderd, Judge.me-blokken verborgen zolang geen echte productreviews zijn gecontroleerd. Bestaande videosectie behouden maar verborgen. Oude ongebruikte blokken van andere producten verwijderd uit uitsluitend deze template.
-- Onbevestigde morgen-verzendbelofte, retourtermijn, gratis-verzendclaim en vaste 50%-kortingsbadge verwijderd. Drie compacte vertrouwensregels verwijzen naar de actuele winkelvoorwaarden en betaalmogelijkheden.
-- De algemene aankondigingsbalk is niet gewijzigd: die valt buiten de producttemplate en toont nog de bestaande winkelbrede verzendclaim.
+- `templates/product.hond-achterbank-bescherme.json`: oorspronkelijke knop- en sticky-instellingen teruggezet; native aantalselector zichtbaar gemaakt; positieve tekst in afmetingen-accordion.
+- `assets/pawguard.css`: oorspronkelijke gele knopkleur #FEBE01 en zwarte tekst, met native afmetingen, hoeken en hovergedrag. Andere oranje accenten behouden. Compacte vertrouwensregels met beige iconen.
+- `snippets/pawguard-content.liquid`: waterdichtheidsteksten, positieve compatibiliteitssectie en consistente FAQ. Bestaande afbeeldingen ongewijzigd.
+- `snippets/pawguard-trust.liquid`: verzending, retourtermijn en voorwaardelijke Klarna-regel met actuele Shopify-variantprijzen.
+- `assets/pawguard.js`: dynamische termijnberekening en herstel van de bestaande sticky-formulierkoppeling, uitsluitend binnen PawGuard.
+- `tests/pawguard.test.cjs`: berekeningen, events, isolatie en sticky-submitgedrag.
 
-## Productgegevens die niet via thema-Git worden gewijzigd
-
-Een GitHub-themakoppeling wijzigt geen Shopify-productrecords. De zichtbare titel is daarom template-specifiek **ROOLO PawGuard – Waterafstotende Achterbankbeschermer voor Honden**. De oorspronkelijke administratieve titel en SEO-metadata blijven staan. “Waterdichte” is niet overgenomen in de nieuwe verkooptekst omdat de aangeleverde productinformatie slechts waterafstotend onderbouwt. Werk de administratieve titel en SEO-titel ook bij zodra de claim is vastgesteld.
-
-De variantknoppen krijgen weergavenamen zonder option-values of IDs te wijzigen:
-
-| Bestaande naam | Weergavenaam | Variant-ID | Verwachte bestaande foto |
-| --- | --- | --- | --- |
-| Zwart | Volledig Zwart | 57610795450692 | Quilted zwarte autostoelbeschermer in SUV.png |
-| Zwart / Oranje rand | Zwart / Oranje Rand | 57610829529412 | Roolo_PawGuard_Oranje_Afwerking.png |
-| Zwart / Oranje clips | Zwart / Oranje Bevestigingen | 57610829562180 | Roolo_PawGuard_Oranje_Bevestigingspunten.png |
-
-Alle varianten hebben volgens Shopify al een afbeelding toegewezen. De precieze koppeling moet in de conceptpreview visueel worden gecontroleerd. Deze branch verandert geen productmedia-koppelingen. De nieuwe uitvoeringfoto's staan ook in de FAQ. Winkelwagen en checkout gebruiken de oorspronkelijke administratieve variantnamen; hernoem de bestaande varianten in Shopify als dezelfde namen daar gewenst zijn, zonder ze te verwijderen of opnieuw aan te maken. Let op gekoppelde kleurmetavelden die ook andere producten kunnen gebruiken.
+De bestaande sticky-knop bleef behouden. De gedeelde legacy-handler verwijst naar een niet aanwezige `handleSubmit`-methode. Alleen voor PawGuard wordt de bestaande native productform via `requestSubmit` ingediend, met controle op uitverkocht/disabled. Geen tweede sticky-element of gedeelde JavaScript-wijziging.
 
 ## Klarna
 
-Een Klarna-logo bewijst niet dat betalen in 3 termijnen voor dit product beschikbaar is. Het aanvullende termijnbedrag blijft daarom standaard verborgen. De bestaande betaalbadges blijven intact.
+Zichtbaar bij Nederlandse markt, EUR en Klarna in `shop.enabled_payment_types`. Dit bewijst de winkelbetaalmethode; individuele toelating en definitieve termijnverdeling worden pas bij Klarna vastgesteld. Daarom staat de toelichting bij de indicatieve bedragen.
 
-Na controle van daadwerkelijke beschikbaarheid: maak een boolean productmetaveld `custom.pawguard_klarna_pay_in_3_verified` en zet het uitsluitend op dit product op waar. Het onderdeel verschijnt dan alleen bij Nederland, EUR en Klarna in `shop.enabled_payment_types`. Bedragen worden per variant met Shopify `money` geformatteerd en via het bestaande variantChange-event bijgewerkt. Bij €59,95 verschijnt “circa €19,98”; door afronding kan het definitieve betaalplan verschillen. Geen betaalinstellingen veranderen om de tekst zichtbaar te maken.
+De berekening gebruikt actuele variantprijs × geselecteerd aantal, native Shopify-prijsstaffels en berekenbare bestaande theme-bundel-/quantity-breakkortingen. Checkout-only kortingscodes en kortingen die niet op de productpagina beschikbaar zijn, kunnen niet vooraf worden meegenomen. Actueel zijn geen bundelkortingen ingesteld.
 
-## Plaatsing en controle
+Bij €59,95: 1 stuk → circa €19,98; 2 → circa €39,97; 3 → €59,95. Bedragen wijzigen zonder herladen en worden Nederlands geformatteerd. Onbekende of ongeldige selecties verbergen de termijnregel.
 
-1. Importeer de GitHub-branch `codex/pawguard-productpagina` als **conceptthema** via Webshop → Thema's → Thema's importeren → Verbinden via GitHub. Publiceer het conceptthema niet.
-2. Open de PawGuard-productpreview in dat conceptthema; het product gebruikt reeds `hond-achterbank-bescherme`.
-3. Controleer desktop en mobiel: alle afbeeldingen, de drie variantkeuzes en fotowissels, prijs, disabled Uitverkocht-knop, sticky balk, betaalbadges, FAQ en maatinformatie. De voorraad is 0, dus een geslaagde winkelwagentoevoeging kan niet worden getest zonder voorraad aan te passen; dat is niet toegestaan in deze taak.
-4. Controleer de Nederlandse markt expliciet, verzending, retourbeleid, echte reviews en Klarna voordat specifieke beloften worden ingeschakeld.
-5. Na expliciete toestemming alleen deze wijziging samenvoegen naar `main`. Controleer vooraf opnieuw op Shopify-editorwijzigingen in `main`. Publiceer niet het volledige conceptthema: dat kan inmiddels verouderde gegevens van andere pagina's bevatten.
+## Gecontroleerde bronnen op 29 oktober 2026
 
-Handmatige plaatsing als alternatief: zet `assets/pawguard*`, `snippets/pawguard-content.liquid`, `snippets/pawguard-image.liquid` en `templates/product.hond-achterbank-bescherme.json` op exact dezelfde paden in een kopie van het bestaande thema. Geen wijziging aan `layout/theme.liquid` of `config/settings_data.json` nodig.
+- [Verzendbeleid](https://roolo.nl/policies/shipping-policy): gratis verzending boven €20; de bestaande winkelbalk gebruikt “vanaf €20”, conform de gevraagde regel.
+- [Retourbeleid](https://roolo.nl/policies/refund-policy): 30 dagen; voorwaarden blijven via de regel bereikbaar.
+- [Leveranciersproduct](https://aliexpress.us/item/3256808863266048.html): titel en beschrijving noemen waterproof. Oxford-stof is daarnaast expliciet door de gebruiker bevestigd. De aangeleverde afbeeldingen zijn niet bewerkt, ook waar daarin nog waterafstotend staat.
+- [Shopify Klarna-documentatie](https://help.shopify.com/en/manual/payments/shopify-payments/local-payment-methods/klarna): Nederlandse ondersteuning en renteloos betalen in drie termijnen, afhankelijk van beschikbaarheid bij afrekenen.
 
-## Validatie
+## Werkelijk uitgevoerde controles
 
-- JSON gelezen en sectie-/blokverwijzingen gecontroleerd.
-- Instellingen gecontroleerd tegen de lokale Shopify-sectieschema's.
-- Alle nieuwe Liquid-inhoudsonderdelen met een Liquid-parser gerenderd met testgegevens.
-- Klarna getoetst op expliciete verificatie, NL/EUR, betaalmethode en berekening voor verschillende prijzen.
-- JavaScript syntaxcontrole en `git diff --check`.
-- Geen actieve HIPIPET-/DogJacket-content, verzonnen reviews of vaste kortingsclaim in deze template.
-- Shopify-checkout, echte variantfotokoppelingen en volledige desktop-/mobiele rendering blijven afhankelijk van de Shopify-conceptpreview; statische controles bewijzen deze niet.
+- Node-tests: aantallen 1/2/3, variantwijziging, inputupdates, staffels, procentuele en vaste bundelkorting, ongeldige gegevens, isolatie van andere producten, event cleanup, native sticky-submit en uitverkochtbeveiliging.
+- Alle acht Liquid-onderdelen gerenderd met testgegevens; Klarna alleen zichtbaar voor NL/EUR/ingeschakelde betaalmethode.
+- Lokale browserfixture op desktop en 390px mobiel: compacte vertrouwensregels, geel, geen horizontale overflow, aantallen en variantselectie. Bestaand sticky-element gaf variant en aantal aan dezelfde testform door.
+- JSON/schema-validatie en `git diff --check`.
+
+De lokale browserfixture gebruikt de echte PawGuard-snippets, CSS en JavaScript, maar vereenvoudigde thema-opmaak. Dit is geen volledige Shopify-runtime of checkouttest. In Shopify waren alle drie varianten €59,95 en voorraad 0, met productstatus Concept. Een succesvolle echte winkelwagentoevoeging is niet getest; voorraad en status zijn niet aangepast. Controleer de volledige conceptthemapreview en bestaande variantfotowissels vóór publicatie.
+
+## Publicatie
+
+Gebruik de conceptbranch in een Shopify-conceptthema voor de laatste controle. Alleen na toestemming de gerichte wijziging naar `main` samenvoegen; controleer eerst op tussentijdse Shopify-editorwijzigingen. Publiceer geen volledig ouder conceptthema over nieuwere winkelwijzigingen.
