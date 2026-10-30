@@ -56,7 +56,6 @@
 .pawguard-trust-text a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .pawguard-installments { display: block; }
 .pawguard-installments[hidden] { display: none; }
-.pawguard-installments-note { display: block; margin: 4px 0 0 48px; font-size: 10px; color: #625a53; line-height: 1.4; }
 .pawguard-faq a { color: inherit; text-underline-offset: 3px; }
 .pawguard-section { padding: 56px max(20px, calc((100% - 1200px) / 2)); background: #f8f7f5; color: #171717; }
 .pawguard-section--white { background: #fff; }
@@ -98,7 +97,6 @@
   .pawguard-trust-icon, .pawguard-klarna-icon { width: 35px; height: 28px; flex-basis: 35px; }
   .pawguard-trust-icon svg { width: 16px; height: 16px; }
   .pawguard-trust-text { font-size: 12.2px; line-height: 1.25; }
-  .pawguard-installments-note { margin-left: 44px; }
   .pawguard-split { grid-template-columns: minmax(0, 1fr); }
   .pawguard-benefits { display: block; padding: 14px; font-size: 13px; }
   .pawguard-features { gap: 24px 14px; }

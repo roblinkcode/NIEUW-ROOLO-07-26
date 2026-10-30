@@ -25,7 +25,6 @@
         <span class="pawguard-klarna-icon">{{ 'klarna' | payment_type_svg_tag }}</span>
         <div class="pawguard-trust-text">Betaal in 3 termijnen van circa <strong data-installment aria-live="polite" aria-atomic="true">{{ initial_total | divided_by: 3.0 | round | money }}</strong>. Rentevrij.</div>
       </div>
-      <small class="pawguard-installments-note">Indicatief. Beschikbaarheid en definitieve termijnverdeling worden door Klarna bepaald bij het afrekenen.</small>
       <script type="application/json">{
         {% for variant in product.variants %}
           "{{ variant.id }}": {
