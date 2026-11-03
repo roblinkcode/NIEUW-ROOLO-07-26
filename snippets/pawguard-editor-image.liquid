@@ -1,0 +1,5 @@
+{% if selected %}
+  {{ selected | image_url: width: 1500 | image_tag: class: 'pawguard-image', alt: alt, loading: 'lazy', widths: '375, 550, 750, 1100, 1500', sizes: '(min-width: 990px) 600px, 100vw' }}
+{% elsif fallback != blank and fallback != 'none' %}
+  {% render 'pawguard-image', image: fallback, alt: alt %}
+{% endif %}

@@ -1,0 +1,244 @@
+{% if template.suffix == 'hond-achterbank-bescherme' and section.settings.visible %}
+{{ 'pawguard.css' | asset_url | stylesheet_tag }}
+{% render 'pawguard-section-style', section: section %}
+<section class="pawguard-section">
+      <div class="pawguard-split">
+        {% if section.settings.show_image %}{% render 'pawguard-editor-image', selected: section.settings.image, fallback: section.settings.image_fallback, alt: section.settings.image_alt %}{% endif %}
+        <div>{% if section.settings.eyebrow != blank %}<p class="pawguard-eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}{% if section.settings.title != blank %}<h2>{{ section.settings.title | escape }}</h2>{% endif %}{{ section.settings.body }}
+          <ol class="pawguard-steps">{% for block in section.blocks %}{% if block.settings.visible %}<li {{ block.shopify_attributes }}><strong>{{ block.settings.title | escape }}</strong>{{ block.settings.body }}</li>{% endif %}{% endfor %}</ol>
+          {% if section.settings.note != blank %}<p class="pawguard-note">{{ section.settings.note | escape }}</p>{% endif %}
+        </div>
+      </div>
+    </section>
+{% endif %}
+{% schema %}
+{
+  "name": "PawGuard – Installatie",
+  "tag": "section",
+  "enabled_on": {
+    "templates": [
+      "product"
+    ]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "visible",
+      "label": "Tonen",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Achtergrond",
+      "default": "#f8f7f5"
+    },
+    {
+      "type": "color",
+      "id": "foreground",
+      "label": "Tekstkleur",
+      "default": "#171717"
+    },
+    {
+      "type": "color",
+      "id": "accent",
+      "label": "Oranje accent",
+      "default": "#f58220"
+    },
+    {
+      "type": "color",
+      "id": "accent_text",
+      "label": "Accenttekst en vinkjes",
+      "default": "#a84700"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Ruimte boven desktop",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Ruimte onder desktop",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_mobile_top",
+      "label": "Ruimte boven mobiel",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_mobile_bottom",
+      "label": "Ruimte onder mobiel",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "Afbeelding tonen",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Afbeelding"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Alternatieve tekst",
+      "default": "PawGuard bevestigen aan hoofdsteunen, uitvouwen en vastzetten"
+    },
+    {
+      "type": "select",
+      "id": "image_fallback",
+      "label": "Bestaand beginbeeld",
+      "options": [
+        {
+          "value": "none",
+          "label": "Geen"
+        },
+        {
+          "value": "installation",
+          "label": "Installatie"
+        },
+        {
+          "value": "protection",
+          "label": "Bescherming"
+        },
+        {
+          "value": "water",
+          "label": "Waterdicht"
+        },
+        {
+          "value": "cleaning",
+          "label": "Schoonmaken"
+        },
+        {
+          "value": "orange-trim",
+          "label": "Oranje rand"
+        },
+        {
+          "value": "comparison",
+          "label": "Probleem en oplossing"
+        },
+        {
+          "value": "dimensions",
+          "label": "Afmetingen"
+        },
+        {
+          "value": "black",
+          "label": "Volledig zwart"
+        },
+        {
+          "value": "orange-fixings",
+          "label": "Oranje bevestigingen"
+        }
+      ],
+      "default": "installation"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Boventitel",
+      "default": "KLAAR VOOR DE VOLGENDE RIT"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titel",
+      "default": "Eenvoudig te installeren"
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Opmerking",
+      "default": "PawGuard beschermt de bekleding. Gebruik daarnaast een geschikt veiligheidstuig met autogordel voor je hond."
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Tekst",
+      "default": "<p>Van een lege achterbank naar een comfortabele plek voor je hond.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Stap",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "visible",
+          "label": "Tonen",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titel",
+          "default": "Nieuwe stap"
+        },
+        {
+          "type": "richtext",
+          "id": "body",
+          "label": "Beschrijving",
+          "default": "<p>Beschrijving</p>"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 30,
+  "presets": [
+    {
+      "name": "PawGuard – Installatie",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "visible": true,
+            "title": "Bevestig aan de hoofdsteunen",
+            "body": "<p>Klik de verstelbare banden vast en stel ze af op je auto.</p>"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "visible": true,
+            "title": "Vouw uit over de achterbank",
+            "body": "<p>Leg de beschermer over de zitting en rugleuning en breng de zijflappen op hun plek.</p>"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "visible": true,
+            "title": "Controleer de bevestiging",
+            "body": "<p>Zet de banden vast en houd de gordelopeningen bereikbaar.</p>"
+          }
+        }
+      ]
+    }
+  ],
+  "class": "section"
+}
+{% endschema %}

@@ -1,3 +1,5 @@
+> Update 3 november 2026: zie [bewerkbare secties en actuele teststatus](EDITOR.md). Onderstaand verslag betreft de eerdere versie.
+
 # ROOLO PawGuard — gerichte verbeteringen
 
 ## Scope en reservekopieën

@@ -42,7 +42,7 @@
 .pawguard-benefits > p { margin: 0 0 10px; }
 .pawguard-checks { list-style: none; padding: 0; margin: 0; }
 .pawguard-checks li { position: relative; padding-left: 25px; margin: 7px 0; }
-.pawguard-checks li::before { content: '✓'; position: absolute; left: 0; color: #a84700; font-weight: 700; }
+.pawguard-checks li::before { content: var(--pawguard-check-icon, '✓'); position: absolute; left: 0; color: var(--pawguard-check-color, #a84700); font-weight: 700; }
 .pawguard-benefits .pawguard-checks { font-weight: 600; }
 .pawguard-trust { display: grid; gap: 8px; width: 100%; margin: 11px 0 15px; }
 .pawguard-trust-row { display: flex; align-items: center; gap: 10px; min-height: 32px; }

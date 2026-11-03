@@ -1,0 +1,251 @@
+{% if template.suffix == 'hond-achterbank-bescherme' and section.settings.visible %}
+{{ 'pawguard.css' | asset_url | stylesheet_tag }}
+{% render 'pawguard-section-style', section: section %}
+<section class="pawguard-section"><div class="pawguard-split">
+      {% if section.settings.show_image %}{% render 'pawguard-editor-image', selected: section.settings.image, fallback: section.settings.image_fallback, alt: section.settings.image_alt %}{% endif %}
+      <div>{% if section.settings.eyebrow != blank %}<p class="pawguard-eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}{% if section.settings.title != blank %}<h2>{{ section.settings.title | escape }}</h2>{% endif %}{{ section.settings.body }}<ul class="pawguard-checks">{% for block in section.blocks %}{% if block.settings.visible %}<li data-pawguard-icon="{{ block.settings.icon | escape }}" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</li>{% endif %}{% endfor %}</ul>{% if section.settings.link_text != blank and section.settings.link != blank %}<a class="pawguard-link" href="{{ section.settings.link }}">{{ section.settings.link_text | escape }} <span aria-hidden="true">{{ section.settings.link_icon | escape }}</span></a>{% endif %}</div>
+    </div></section>
+{% endif %}
+{% schema %}
+{
+  "name": "PawGuard – Probleem/opl.",
+  "tag": "section",
+  "enabled_on": {
+    "templates": [
+      "product"
+    ]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "visible",
+      "label": "Tonen",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Achtergrond",
+      "default": "#f8f7f5"
+    },
+    {
+      "type": "color",
+      "id": "foreground",
+      "label": "Tekstkleur",
+      "default": "#171717"
+    },
+    {
+      "type": "color",
+      "id": "accent",
+      "label": "Oranje accent",
+      "default": "#f58220"
+    },
+    {
+      "type": "color",
+      "id": "accent_text",
+      "label": "Accenttekst en vinkjes",
+      "default": "#a84700"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Ruimte boven desktop",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Ruimte onder desktop",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_mobile_top",
+      "label": "Ruimte boven mobiel",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_mobile_bottom",
+      "label": "Ruimte onder mobiel",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "Afbeelding tonen",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Afbeelding"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Alternatieve tekst",
+      "default": "Vergelijking van een vuile achterbank en een achterbank met PawGuard"
+    },
+    {
+      "type": "select",
+      "id": "image_fallback",
+      "label": "Bestaand beginbeeld",
+      "options": [
+        {
+          "value": "none",
+          "label": "Geen"
+        },
+        {
+          "value": "installation",
+          "label": "Installatie"
+        },
+        {
+          "value": "protection",
+          "label": "Bescherming"
+        },
+        {
+          "value": "water",
+          "label": "Waterdicht"
+        },
+        {
+          "value": "cleaning",
+          "label": "Schoonmaken"
+        },
+        {
+          "value": "orange-trim",
+          "label": "Oranje rand"
+        },
+        {
+          "value": "comparison",
+          "label": "Probleem en oplossing"
+        },
+        {
+          "value": "dimensions",
+          "label": "Afmetingen"
+        },
+        {
+          "value": "black",
+          "label": "Volledig zwart"
+        },
+        {
+          "value": "orange-fixings",
+          "label": "Oranje bevestigingen"
+        }
+      ],
+      "default": "comparison"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Boventitel",
+      "default": "ROOLO PAWGUARD"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titel",
+      "default": "Laat het avontuur buiten. Houd je auto verzorgd."
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Tekst",
+      "default": "<p>Na een wandeling neem je je hond graag mee naar huis. De haren, modder en natte poten liever niet op je bekleding.</p>"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Linktekst",
+      "default": "Kies jouw uitvoering"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Bestemming",
+      "default": "#pawguard-page"
+    },
+    {
+      "type": "text",
+      "id": "link_icon",
+      "label": "Linkicoon",
+      "default": "↑"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Voordeel",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "visible",
+          "label": "Tonen",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Tekst",
+          "default": "Nieuw voordeel"
+        },
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icoon / teken",
+          "default": "✓"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 30,
+  "presets": [
+    {
+      "name": "PawGuard – Probleem/opl.",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "visible": true,
+            "text": "Een extra beschermlaag tussen je hond en de achterbank",
+            "icon": "✓"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "visible": true,
+            "text": "Zijflappen helpen ook de zijkanten af te schermen",
+            "icon": "✓"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "visible": true,
+            "text": "Eenvoudig af te nemen voor de volgende rit",
+            "icon": "✓"
+          }
+        }
+      ]
+    }
+  ],
+  "class": "section"
+}
+{% endschema %}

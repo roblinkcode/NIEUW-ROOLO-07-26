@@ -1,0 +1,255 @@
+{% if template.suffix == 'hond-achterbank-bescherme' and section.settings.visible %}
+{{ 'pawguard.css' | asset_url | stylesheet_tag }}
+{% render 'pawguard-section-style', section: section %}
+<section class="pawguard-section pawguard-section--white">
+      <header class="pawguard-heading">{% if section.settings.eyebrow != blank %}<p class="pawguard-eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}{% if section.settings.title != blank %}<h2>{{ section.settings.title | escape }}</h2>{% endif %}{{ section.settings.body }}</header>
+      <div class="pawguard-features">
+        {% for block in section.blocks %}{% if block.settings.visible %}<article {{ block.shopify_attributes }}>{% if block.settings.show_image %}{% render 'pawguard-editor-image', selected: block.settings.image, fallback: block.settings.image_fallback, alt: block.settings.image_alt %}{% endif %}<h3>{{ block.settings.title | escape }}</h3>{{ block.settings.body }}</article>{% endif %}{% endfor %}
+      </div>
+    </section>
+{% endif %}
+{% schema %}
+{
+  "name": "PawGuard – Voordelen",
+  "tag": "section",
+  "enabled_on": {
+    "templates": [
+      "product"
+    ]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "visible",
+      "label": "Tonen",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Achtergrond",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "foreground",
+      "label": "Tekstkleur",
+      "default": "#171717"
+    },
+    {
+      "type": "color",
+      "id": "accent",
+      "label": "Oranje accent",
+      "default": "#f58220"
+    },
+    {
+      "type": "color",
+      "id": "accent_text",
+      "label": "Accenttekst en vinkjes",
+      "default": "#a84700"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Ruimte boven desktop",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Ruimte onder desktop",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_mobile_top",
+      "label": "Ruimte boven mobiel",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_mobile_bottom",
+      "label": "Ruimte onder mobiel",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Boventitel",
+      "default": "ONTWORPEN VOOR SAMEN OP PAD"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titel",
+      "default": "Meer plezier onderweg. Minder vuil in je auto."
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Tekst",
+      "default": "<p>Praktische bescherming voor dagelijkse ritten en avonturen buiten.</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Voordeel",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "visible",
+          "label": "Tonen",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titel",
+          "default": "Nieuw voordeel"
+        },
+        {
+          "type": "richtext",
+          "id": "body",
+          "label": "Beschrijving",
+          "default": "<p>Beschrijving</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_image",
+          "label": "Afbeelding tonen",
+          "default": true
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Afbeelding"
+        },
+        {
+          "type": "text",
+          "id": "image_alt",
+          "label": "Alternatieve tekst",
+          "default": "PawGuard met bescherming voor zitting, rugleuning en zijflappen"
+        },
+        {
+          "type": "select",
+          "id": "image_fallback",
+          "label": "Bestaand beginbeeld",
+          "options": [
+            {
+              "value": "none",
+              "label": "Geen"
+            },
+            {
+              "value": "installation",
+              "label": "Installatie"
+            },
+            {
+              "value": "protection",
+              "label": "Bescherming"
+            },
+            {
+              "value": "water",
+              "label": "Waterdicht"
+            },
+            {
+              "value": "cleaning",
+              "label": "Schoonmaken"
+            },
+            {
+              "value": "orange-trim",
+              "label": "Oranje rand"
+            },
+            {
+              "value": "comparison",
+              "label": "Probleem en oplossing"
+            },
+            {
+              "value": "dimensions",
+              "label": "Afmetingen"
+            },
+            {
+              "value": "black",
+              "label": "Volledig zwart"
+            },
+            {
+              "value": "orange-fixings",
+              "label": "Oranje bevestigingen"
+            }
+          ],
+          "default": "none"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 30,
+  "presets": [
+    {
+      "name": "PawGuard – Voordelen",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "visible": true,
+            "title": "Bescherming rondom",
+            "body": "<p>Bedekt de zitting, rugleuning en zijkanten. Helpt hondenharen, vuil en krassen van je bekleding te houden.</p>",
+            "show_image": true,
+            "image_fallback": "protection",
+            "image_alt": "PawGuard met bescherming voor zitting, rugleuning en zijflappen"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "visible": true,
+            "title": "Voor natte poten",
+            "body": "<p>De waterdichte Oxford-stof beschermt je achterbank tegen vocht, natte poten en modder. Neem vuil na de rit eenvoudig af.</p>",
+            "show_image": true,
+            "image_fallback": "water",
+            "image_alt": "Waterdruppels op de waterdichte quilted Oxford-stof"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "visible": true,
+            "title": "Snel weer schoon",
+            "body": "<p>Verwijder losse haren met een kledingroller of stofzuiger. Gebruik een vochtige doek voor vuil.</p>",
+            "show_image": true,
+            "image_fallback": "cleaning",
+            "image_alt": "PawGuard reinigen met doek, stofzuiger of kledingroller"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "visible": true,
+            "title": "Een comfortabele plek",
+            "body": "<p>De quilted afwerking biedt je hond een prettige ondergrond tijdens de rit.</p>",
+            "show_image": true,
+            "image_fallback": "orange-trim",
+            "image_alt": "Quilted zwarte achterbankbeschermer met oranje rand"
+          }
+        }
+      ]
+    }
+  ],
+  "class": "section"
+}
+{% endschema %}

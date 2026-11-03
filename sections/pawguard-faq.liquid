@@ -1,0 +1,425 @@
+{% if template.suffix == 'hond-achterbank-bescherme' and section.settings.visible %}
+{{ 'pawguard.css' | asset_url | stylesheet_tag }}
+{% render 'pawguard-section-style', section: section %}
+<section class="pawguard-section"><div class="pawguard-faq"><header class="pawguard-heading">{% if section.settings.eyebrow != blank %}<p class="pawguard-eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}{% if section.settings.title != blank %}<h2>{{ section.settings.title | escape }}</h2>{% endif %}</header>
+      {% for block in section.blocks %}{% if block.settings.visible %}<details {{ block.shopify_attributes }}><summary>{{ block.settings.title | escape }}</summary>{{ block.settings.body }}{% if block.settings.show_colors %}<div class="pawguard-colors"><figure>{% if block.settings.show_image_1 %}{% render 'pawguard-editor-image', selected: block.settings.image_1, fallback: block.settings.image_1_fallback, alt: block.settings.image_1_alt %}{% endif %}<figcaption>{{ block.settings.caption_1 | escape }}</figcaption></figure><figure>{% if block.settings.show_image_2 %}{% render 'pawguard-editor-image', selected: block.settings.image_2, fallback: block.settings.image_2_fallback, alt: block.settings.image_2_alt %}{% endif %}<figcaption>{{ block.settings.caption_2 | escape }}</figcaption></figure><figure>{% if block.settings.show_image_3 %}{% render 'pawguard-editor-image', selected: block.settings.image_3, fallback: block.settings.image_3_fallback, alt: block.settings.image_3_alt %}{% endif %}<figcaption>{{ block.settings.caption_3 | escape }}</figcaption></figure></div>{% endif %}</details>{% endif %}{% endfor %}
+    </div></section>
+{% endif %}
+{% schema %}
+{
+  "name": "PawGuard – FAQ",
+  "tag": "section",
+  "enabled_on": {
+    "templates": [
+      "product"
+    ]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "visible",
+      "label": "Tonen",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Achtergrond",
+      "default": "#f8f7f5"
+    },
+    {
+      "type": "color",
+      "id": "foreground",
+      "label": "Tekstkleur",
+      "default": "#171717"
+    },
+    {
+      "type": "color",
+      "id": "accent",
+      "label": "Oranje accent",
+      "default": "#f58220"
+    },
+    {
+      "type": "color",
+      "id": "accent_text",
+      "label": "Accenttekst en vinkjes",
+      "default": "#a84700"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Ruimte boven desktop",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Ruimte onder desktop",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_mobile_top",
+      "label": "Ruimte boven mobiel",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_mobile_bottom",
+      "label": "Ruimte onder mobiel",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Boventitel",
+      "default": "VEELGESTELDE VRAGEN"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titel",
+      "default": "Alles over ROOLO PawGuard"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Vraag",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "visible",
+          "label": "Tonen",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Vraag",
+          "default": "Nieuwe vraag"
+        },
+        {
+          "type": "richtext",
+          "id": "body",
+          "label": "Antwoord",
+          "default": "<p>Antwoord</p>"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_colors",
+          "label": "Uitvoeringfoto’s tonen",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "show_image_1",
+          "label": "Afbeelding tonen",
+          "default": true
+        },
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "Afbeelding"
+        },
+        {
+          "type": "text",
+          "id": "image_1_alt",
+          "label": "Alternatieve tekst"
+        },
+        {
+          "type": "select",
+          "id": "image_1_fallback",
+          "label": "Bestaand beginbeeld",
+          "options": [
+            {
+              "value": "none",
+              "label": "Geen"
+            },
+            {
+              "value": "installation",
+              "label": "Installatie"
+            },
+            {
+              "value": "protection",
+              "label": "Bescherming"
+            },
+            {
+              "value": "water",
+              "label": "Waterdicht"
+            },
+            {
+              "value": "cleaning",
+              "label": "Schoonmaken"
+            },
+            {
+              "value": "orange-trim",
+              "label": "Oranje rand"
+            },
+            {
+              "value": "comparison",
+              "label": "Probleem en oplossing"
+            },
+            {
+              "value": "dimensions",
+              "label": "Afmetingen"
+            },
+            {
+              "value": "black",
+              "label": "Volledig zwart"
+            },
+            {
+              "value": "orange-fixings",
+              "label": "Oranje bevestigingen"
+            }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "caption_1",
+          "label": "Bijschrift 1"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_image_2",
+          "label": "Afbeelding tonen",
+          "default": true
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "Afbeelding"
+        },
+        {
+          "type": "text",
+          "id": "image_2_alt",
+          "label": "Alternatieve tekst"
+        },
+        {
+          "type": "select",
+          "id": "image_2_fallback",
+          "label": "Bestaand beginbeeld",
+          "options": [
+            {
+              "value": "none",
+              "label": "Geen"
+            },
+            {
+              "value": "installation",
+              "label": "Installatie"
+            },
+            {
+              "value": "protection",
+              "label": "Bescherming"
+            },
+            {
+              "value": "water",
+              "label": "Waterdicht"
+            },
+            {
+              "value": "cleaning",
+              "label": "Schoonmaken"
+            },
+            {
+              "value": "orange-trim",
+              "label": "Oranje rand"
+            },
+            {
+              "value": "comparison",
+              "label": "Probleem en oplossing"
+            },
+            {
+              "value": "dimensions",
+              "label": "Afmetingen"
+            },
+            {
+              "value": "black",
+              "label": "Volledig zwart"
+            },
+            {
+              "value": "orange-fixings",
+              "label": "Oranje bevestigingen"
+            }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "caption_2",
+          "label": "Bijschrift 2"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_image_3",
+          "label": "Afbeelding tonen",
+          "default": true
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "Afbeelding"
+        },
+        {
+          "type": "text",
+          "id": "image_3_alt",
+          "label": "Alternatieve tekst"
+        },
+        {
+          "type": "select",
+          "id": "image_3_fallback",
+          "label": "Bestaand beginbeeld",
+          "options": [
+            {
+              "value": "none",
+              "label": "Geen"
+            },
+            {
+              "value": "installation",
+              "label": "Installatie"
+            },
+            {
+              "value": "protection",
+              "label": "Bescherming"
+            },
+            {
+              "value": "water",
+              "label": "Waterdicht"
+            },
+            {
+              "value": "cleaning",
+              "label": "Schoonmaken"
+            },
+            {
+              "value": "orange-trim",
+              "label": "Oranje rand"
+            },
+            {
+              "value": "comparison",
+              "label": "Probleem en oplossing"
+            },
+            {
+              "value": "dimensions",
+              "label": "Afmetingen"
+            },
+            {
+              "value": "black",
+              "label": "Volledig zwart"
+            },
+            {
+              "value": "orange-fixings",
+              "label": "Oranje bevestigingen"
+            }
+          ],
+          "default": "none"
+        },
+        {
+          "type": "text",
+          "id": "caption_3",
+          "label": "Bijschrift 3"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 30,
+  "presets": [
+    {
+      "name": "PawGuard – FAQ",
+      "blocks": [
+        {
+          "type": "question",
+          "settings": {
+            "visible": true,
+            "title": "Is PawGuard waterdicht?",
+            "body": "<p>Ja. De leverancier omschrijft PawGuard als een waterdichte achterbankbeschermer. De Oxford-stof beschermt je bekleding tegen vocht, natte poten en modder. Neem vuil na gebruik af en laat de beschermer goed drogen.</p>",
+            "show_colors": false
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "visible": true,
+            "title": "Past PawGuard in iedere auto?",
+            "body": "<p>PawGuard is ontworpen voor vrijwel alle gangbare auto’s, van compacte stadsauto tot stationwagen en SUV. De flexibele vorm en verstelbare banden maken de pasvorm eenvoudig aanpasbaar. Afmetingen: ca. 137 × 147 cm. Controleer bij een afwijkende achterbankindeling voor de zekerheid de afmetingen.</p>",
+            "show_colors": false
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "visible": true,
+            "title": "Welke delen van de auto worden beschermd?",
+            "body": "<p>PawGuard bedekt de zitting en rugleuning van de achterbank. De zijflappen helpen de zijkanten te beschermen tegen vuil en krassen.</p>",
+            "show_colors": false
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "visible": true,
+            "title": "Hoe maak ik PawGuard schoon?",
+            "body": "<p>Verwijder losse haren en vuil met een stofzuiger of kledingroller. Neem de stof af met een vochtige doek en laat volledig drogen. Volg het onderhoudslabel; machinewas is niet bevestigd.</p>",
+            "show_colors": false
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "visible": true,
+            "title": "Welke uitvoeringen zijn er?",
+            "body": "<p>Volledig Zwart, Zwart / Oranje Rand en Zwart / Oranje Bevestigingen. Kies bovenaan de uitvoering die bij jouw auto past.</p>",
+            "show_colors": true,
+            "image_1_fallback": "black",
+            "image_1_alt": "Volledig Zwart",
+            "show_image_1": true,
+            "caption_1": "Volledig Zwart",
+            "image_2_fallback": "orange-trim",
+            "image_2_alt": "Zwart / Oranje Rand",
+            "show_image_2": true,
+            "caption_2": "Zwart / Oranje Rand",
+            "image_3_fallback": "orange-fixings",
+            "image_3_alt": "Zwart / Oranje Bevestigingen",
+            "show_image_3": true,
+            "caption_3": "Zwart / Oranje Bevestigingen"
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "visible": true,
+            "title": "Kan ik de autogordels blijven gebruiken?",
+            "body": "<p>De beschermer heeft gordelopeningen. Controleer of die aansluiten op jouw auto. PawGuard vervangt geen veiligheidstuig of autogordel voor je hond.</p>",
+            "show_colors": false
+          }
+        },
+        {
+          "type": "question",
+          "settings": {
+            "visible": true,
+            "title": "Hoe zit het met verzending en retourneren?",
+            "body": "<p><a href=\"/policies/shipping-policy\">Bekijk ons verzendbeleid</a>. <a href=\"/policies/refund-policy\">Lees de voorwaarden voor retourneren</a>. Neem bij vragen <a href=\"/pages/contact\">contact met ons op</a>.</p>",
+            "show_colors": false
+          }
+        }
+      ]
+    }
+  ],
+  "class": "section"
+}
+{% endschema %}

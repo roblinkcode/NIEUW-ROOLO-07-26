@@ -1,0 +1,9 @@
+{% style %}
+#shopify-section-{{ section.id }} .pawguard-section { background: {{ section.settings.background }}; color: {{ section.settings.foreground }}; padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; }
+#shopify-section-{{ section.id }} :is(h2,h3,.pawguard-link) { color: {{ section.settings.foreground }}; }
+#shopify-section-{{ section.id }} .pawguard-eyebrow, #shopify-section-{{ section.id }} .pawguard-checks li::before, #shopify-section-{{ section.id }} .pawguard-faq summary::after { color: {{ section.settings.accent_text }}; }
+#shopify-section-{{ section.id }} .pawguard-steps li::before { background: {{ section.settings.accent }}; color: {{ section.settings.foreground }}; }
+#shopify-section-{{ section.id }} .pawguard-note { border-color: {{ section.settings.accent }}; }
+#shopify-section-{{ section.id }} .pawguard-checks li[data-pawguard-icon]::before { content: attr(data-pawguard-icon); }
+@media (max-width: 749px) { #shopify-section-{{ section.id }} .pawguard-section { padding-top: {{ section.settings.padding_mobile_top }}px; padding-bottom: {{ section.settings.padding_mobile_bottom }}px; } }
+{% endstyle %}

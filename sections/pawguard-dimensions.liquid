@@ -1,0 +1,245 @@
+{% if template.suffix == 'hond-achterbank-bescherme' and section.settings.visible %}
+{{ 'pawguard.css' | asset_url | stylesheet_tag }}
+{% render 'pawguard-section-style', section: section %}
+<section class="pawguard-section pawguard-section--white"><div class="pawguard-split">
+      <div>{% if section.settings.eyebrow != blank %}<p class="pawguard-eyebrow">{{ section.settings.eyebrow | escape }}</p>{% endif %}{% if section.settings.title != blank %}<h2>{{ section.settings.title | escape }}</h2>{% endif %}{{ section.settings.body }}{{ section.settings.body_2 }}<ul class="pawguard-checks">{% for block in section.blocks %}{% if block.settings.visible %}<li data-pawguard-icon="{{ block.settings.icon | escape }}" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</li>{% endif %}{% endfor %}</ul>{% if section.settings.note != blank %}<p class="pawguard-note">{{ section.settings.note | escape }}</p>{% endif %}</div>
+      {% if section.settings.show_image %}{% render 'pawguard-editor-image', selected: section.settings.image, fallback: section.settings.image_fallback, alt: section.settings.image_alt %}{% endif %}
+    </div></section>
+{% endif %}
+{% schema %}
+{
+  "name": "PawGuard – Afmetingen",
+  "tag": "section",
+  "enabled_on": {
+    "templates": [
+      "product"
+    ]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "visible",
+      "label": "Tonen",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Achtergrond",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "foreground",
+      "label": "Tekstkleur",
+      "default": "#171717"
+    },
+    {
+      "type": "color",
+      "id": "accent",
+      "label": "Oranje accent",
+      "default": "#f58220"
+    },
+    {
+      "type": "color",
+      "id": "accent_text",
+      "label": "Accenttekst en vinkjes",
+      "default": "#a84700"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Ruimte boven desktop",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Ruimte onder desktop",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 56
+    },
+    {
+      "type": "range",
+      "id": "padding_mobile_top",
+      "label": "Ruimte boven mobiel",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "padding_mobile_bottom",
+      "label": "Ruimte onder mobiel",
+      "min": 0,
+      "max": 120,
+      "step": 2,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "checkbox",
+      "id": "show_image",
+      "label": "Afbeelding tonen",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Afbeelding"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Alternatieve tekst",
+      "default": "PawGuard maatafbeelding: circa 137 bij 147 centimeter"
+    },
+    {
+      "type": "select",
+      "id": "image_fallback",
+      "label": "Bestaand beginbeeld",
+      "options": [
+        {
+          "value": "none",
+          "label": "Geen"
+        },
+        {
+          "value": "installation",
+          "label": "Installatie"
+        },
+        {
+          "value": "protection",
+          "label": "Bescherming"
+        },
+        {
+          "value": "water",
+          "label": "Waterdicht"
+        },
+        {
+          "value": "cleaning",
+          "label": "Schoonmaken"
+        },
+        {
+          "value": "orange-trim",
+          "label": "Oranje rand"
+        },
+        {
+          "value": "comparison",
+          "label": "Probleem en oplossing"
+        },
+        {
+          "value": "dimensions",
+          "label": "Afmetingen"
+        },
+        {
+          "value": "black",
+          "label": "Volledig zwart"
+        },
+        {
+          "value": "orange-fixings",
+          "label": "Oranje bevestigingen"
+        }
+      ],
+      "default": "dimensions"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Boventitel",
+      "default": "AFMETINGEN & GESCHIKTHEID"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titel",
+      "default": "Past PawGuard in jouw auto? Grote kans van wel!"
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Opmerking",
+      "default": "Controleer bij een afwijkende achterbankindeling voor de zekerheid de afmetingen."
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Tekst",
+      "default": "<p>Of je nu in een compacte stadsauto, sedan, stationwagen of SUV rijdt: ROOLO PawGuard is ontworpen voor vrijwel iedere achterbank. Dankzij de flexibele vorm en verstelbare bevestigingsbanden pas je de bescherming eenvoudig aan jouw auto aan.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "body_2",
+      "label": "Extra tekst",
+      "default": "<p><strong>Afmetingen: ca. 137 × 147 cm</strong></p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Voordeel",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "visible",
+          "label": "Tonen",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Tekst",
+          "default": "Nieuw voordeel"
+        },
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icoon / teken",
+          "default": "✓"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 30,
+  "presets": [
+    {
+      "name": "PawGuard – Afmetingen",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "visible": true,
+            "text": "Geschikt voor vrijwel alle gangbare auto's",
+            "icon": "✓"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "visible": true,
+            "text": "Verstelbare bevestiging voor een goede pasvorm",
+            "icon": "✓"
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "visible": true,
+            "text": "Beschermt de zitting, rugleuning en zijkanten",
+            "icon": "✓"
+          }
+        }
+      ]
+    }
+  ],
+  "class": "section"
+}
+{% endschema %}
